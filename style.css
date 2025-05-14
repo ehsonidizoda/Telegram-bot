@@ -1,4 +1,4 @@
-/* Основной фон и шрифт */
+/* Основной фон и текст */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -7,7 +7,7 @@ body {
   text-align: center;
 }
 
-/* Рекламный баннер */
+/* Промо баннер сверху */
 .promo-banner {
   background: linear-gradient(90deg, #ff2f8b, #e42072);
   color: white;
@@ -15,8 +15,6 @@ body {
   padding: 10px 0;
   overflow: hidden;
   position: relative;
-  font-size: 1em;
-  text-align: left;
 }
 
 .promo-banner span {
@@ -26,17 +24,17 @@ body {
   animation: scrollText 15s linear infinite;
 }
 
+@keyframes scrollText {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
 .promo-banner a {
   color: yellow;
   text-decoration: underline;
 }
 
-@keyframes scrollText {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
-}
-
-/* Верхние кнопки */
+/* Кнопки меню */
 .buttons {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -71,13 +69,13 @@ body {
   font-size: 1.2em;
 }
 
-/* Анимация кнопок */
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
+  0% { transform: scale(1); }
   50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
-/* Секции */
+/* Секции контента */
 .section {
   background: #111;
   border-radius: 12px;
@@ -86,7 +84,7 @@ body {
   color: #fff;
 }
 
-/* Заголовки с иконками */
+/* Заголовки секций с иконками */
 .section h2 i {
   margin-right: 8px;
 }
@@ -115,11 +113,4 @@ a.link-button:hover {
   margin: 0 6px;
   cursor: pointer;
   transition: transform 0.2s ease;
-}
-
-/* Счётчик */
-#view-counter {
-  font-size: 1.2em;
-  color: #ccc;
-  margin-top: 20px;
 }
