@@ -88,3 +88,23 @@ a.link-button:hover {
   cursor: pointer;
   transition: transform 0.2s ease;
 }
+
+.promo-banner {
+  background: linear-gradient(90deg, #ff2f8b, #e42072);
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  font-size: 1em;
+  animation: scrollText 20s linear infinite;
+}
+
+.promo-banner a {
+  color: yellow;
+  text-decoration: underline;
+}
+
+@keyframes scrollText {
+  0% {transform: translateX(100%);}
+  100% {transform: translateX(-100%);}
+}
