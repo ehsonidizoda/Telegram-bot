@@ -1,189 +1,245 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>18+ Контент</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #000;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
-        .buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            max-width: 500px;
-            margin: 30px auto;
-        }
-        button {
-            background: #0088cc;
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 18px;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-        button:hover {
-            background: #0077bb;
-            transform: translateY(-3px);
-        }
-        button::before {
-            content: "✦";
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 14px;
-        }
-        button::after {
-            content: "";
-            background: url('https://telegram.org/favicon.ico') no-repeat;
-            background-size: contain;
-            width: 20px;
-            height: 20px;
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        .vip {
-            background: linear-gradient(to right, #ffcc00, #ff9900);
-            color: #000;
-        }
-        .vip::before {
-            content: "★";
-            color: #fff;
-        }
-        .content-block {
-            background: #111;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px auto;
-            max-width: 500px;
-            text-align: left;
-        }
-        a {
-            color: #0088cc;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        code {
-            background: #222;
-            padding: 3px 6px;
-            border-radius: 4px;
-            font-family: monospace;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AJALI PETKAHO — 18+ Платформа</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>🔞 18+ Контент</h1>
-    
-    <div class="buttons">
-        <button onclick="showSection('channels')">Мои каналы</button>
-        <button onclick="showSection('bots')">Мои боты</button>
-        <button onclick="showSection('payment')">Оплата</button>
-        <button class="vip" onclick="showSection('vip')">VIP</button>
-    </div>
 
-    <div id="content">
-        <div class="content-block">
-            <p>Выберите раздел для просмотра</p>
-        </div>
-    </div>
+<header>
+  <h1>AJALI PETKAHO</h1>
+  <p>Эксклюзивный контент только для взрослых.</p>
+  <div class="buttons">
+    <a class="button" href="vip.html">Получить VIP доступ</a>
+  </div>
+  <div class="countdown">Обновление через: <span id="timer">00:00:00</span></div>
+</header>
 
-    <script>
-        function showSection(section) {
-            const content = {
-                channels: `
-                    <div class="content-block">
-                        <h2>Мои каналы</h2>
-                        
-                        <div class="content-block">
-                            <h3>Канал 1</h3>
-                            <p>Описание первого канала</p>
-                            <a href="https://t.me/channel1" target="_blank">Перейти →</a>
-                        </div>
-                        
-                        <div class="content-block">
-                            <h3>Канал 2</h3>
-                            <p>Описание второго канала</p>
-                            <a href="https://t.me/channel2" target="_blank">Перейти →</a>
-                        </div>
-                        
-                        <div class="content-block">
-                            <h3>Канал 3</h3>
-                            <p>Описание третьего канала</p>
-                            <a href="https://t.me/channel3" target="_blank">Перейти →</a>
-                        </div>
-                        
-                        <div class="content-block">
-                            <h3>Канал 4</h3>
-                            <p>Описание четвертого канала</p>
-                            <a href="https://t.me/channel4" target="_blank">Перейти →</a>
-                        </div>
-                    </div>
-                `,
-                bots: `
-                    <div class="content-block">
-                        <h2>Мои боты</h2>
-                        
-                        <div class="content-block">
-                            <h3>Бот 1</h3>
-                            <p>Описание первого бота</p>
-                            <a href="https://t.me/bot1" target="_blank">Перейти →</a>
-                        </div>
-                        
-                        <div class="content-block">
-                            <h3>Бот 2</h3>
-                            <p>Описание второго бота</p>
-                            <a href="https://t.me/bot2" target="_blank">Перейти →</a>
-                        </div>
-                        
-                        <div class="content-block">
-                            <h3>Бот 3</h3>
-                            <p>Описание третьего бота</p>
-                            <a href="https://t.me/bot3" target="_blank">Перейти →</a>
-                        </div>
-                    </div>
-                `,
-                payment: `
-                    <div class="content-block">
-                        <h2>Оплата</h2>
-                        
-                        <div class="content-block">
-                            <h3>Криптовалюта (USDT TRC20)</h3>
-                            <p><code>TXXXX...XXXX</code></p>
-                            <p>Пришлите TxID в Telegram</p>
-                        </div>
-                        
-                        <div class="content-block">
-                            <h3>СБП</h3>
-                            <p><code>+7XXX XXX-XX-XX</code></p>
-                            <p>Пришлите скрин чека</p>
-                        </div>
-                    </div>
-                `,
-                vip: `
-                    <div class="content-block">
-                        <h2>VIP доступ</h2>
-                        <p>Для получения VIP-доступа напишите администратору:</p>
-                        <a href="https://t.me/Fors_Admiin" target="_blank">@Fors_Admiin</a>
-                        <p>★ Эксклюзивный контент</p>
-                        <p>★ Персональные условия</p>
-                        <p>★ Приоритетная поддержка</p>
-                    </div>
-                `
-            };
-            document.getElementById('content').innerHTML = content[section];
-        }
-    </script>
+<!-- Замена "Оплата" на Instagram -->
+<div class="section" id="instagram-section">
+  <h2>Инстаграм</h2>
+  <p>Для получения доступа к эксклюзивному контенту, напишите в Instagram:</p>
+  <a href="https://instagram.com/your_instagram_profile" class="button">Перейти в Instagram</a>
+</div>
+
+<!-- VIP Доступ -->
+<div class="section" id="vip-section">
+  <h2>VIP Доступ</h2>
+  <div class="price-option" onclick="selectOption('1day')">1 день — 200₽</div>
+  <div class="price-option" onclick="selectOption('1month')">1 месяц — 400₽</div>
+  <div class="price-option" onclick="selectOption('lifetime')">Бессрочно — 600₽</div>
+
+  <div id="price-status" style="color: #ff2f8b;"></div>
+
+  <button onclick="confirmPayment()">Оплатил</button>
+</div>
+
+<!-- VIP Контент -->
+<div class="section" id="vip-content-section" style="display:none;">
+  <h2>VIP Контент</h2>
+  <p>Это скрытый контент, доступный только для пользователей с активным VIP доступом!</p>
+  <div id="media-box"></div>
+  <button onclick="showRandomMedia()">Показать случайное</button>
+  <div class="reaction">
+    <span>❤️</span>
+    <span>🔥</span>
+    <span>👎</span>
+  </div>
+</div>
+
+<!-- Сообщение, если доступ не активен -->
+<div id="no-access-message" class="section" style="display:none;">
+  <h2>Ваш доступ не активен!</h2>
+  <p>Пожалуйста, выберите вариант для получения VIP доступа.</p>
+</div>
+
+<!-- Игра "Правда или Чуръят" -->
+<div class="section">
+  <h2>Правда или Чуръят</h2>
+  <button onclick="askTruth()">Правда</button>
+  <button onclick="askDare()">Чуръят</button>
+  <div id="game-question"></div>
+</div>
+
+<!-- Переключение языка -->
+<div class="lang-switch">
+  <button onclick="setLang('tj')">🇹🇯 Тоҷикӣ</button>
+  <button onclick="setLang('ru')">🇷🇺 Русский</button>
+</div>
+
+<footer>
+  <p>© 2025 ajalipetkaho.ru</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
+
+<style>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #1c1c1c, #2c003e);
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.6em;
+  color: #ff2f8b;
+  margin: 0;
+}
+
+h2 {
+  font-size: 2em;
+  color: #ff2f8b;
+}
+
+h3 {
+  color: #ff2f8b;
+}
+
+.section {
+  background: #222;
+  padding: 25px;
+  margin: 30px 20px;
+  border-radius: 14px;
+  box-shadow: 0 0 12px #00000055;
+}
+
+.price-option {
+  background: #ff2f8b;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.price-option:hover {
+  background: #e42072;
+}
+
+button {
+  padding: 14px 24px;
+  background: #ff2f8b;
+  color: white;
+  border-radius: 12px;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.lang-switch {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.lang-switch button {
+  background: #ff2f8b;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+footer {
+  font-size: 0.85em;
+  color: #aaa;
+  padding: 30px 10px 20px;
+}
+
+/* Стилизация кнопок с стикерами */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.reaction span {
+  cursor: pointer;
+  font-size: 1.5em;
+  transition: transform 0.2s;
+}
+
+.reaction span:hover {
+  transform: scale(1.2);
+}
+
+.price-option {
+  cursor: pointer;
+}
+
+.price-option.selected {
+  background: #e42072;
+}
+
+</style>
+
+<script>
+const translations = {
+  tj: {
+    title: "Галерея",
+    random: "Тасодуфӣ намоиш деҳ",
+    vip: "🔒 Танҳо барои VIP",
+    adTitle: "🔞 Эълон: Танҳо барои калонсолон",
+    adText: "Ба Telegram @ajalipetkaho обуна шав ва гармиро бин!",
+    adBtn: "Гузар ба Telegram",
+    popup: "Ин сомона барои калонсолон аст. Шумо аз 18 гузаштаед?",
+    popupBtn: "Бале, гузаштаам",
+    gameTitle: "Ҳақиқат ё Ҷуръат",
+    gameBtn: "Саволи нав",
+    gameQuestions: [
+      "Аввалин бӯсаат кай буд?",
+      "Сирри шаҳвонии худатонро ошкор кунед",
+      "Бо кӣ мехостӣ шабро гузаронӣ?",
+      "Ту бо кӣ хаёл мекунӣ?",
+      "Се фикри шаҳвонии ту чӣ ҳаст?"
+    ]
+  },
+  ru: {
+    title: "Галерея",
+    random: "Показать случайное",
+    vip: "🔒 Только для VIP",
+    adTitle: "🔞 Реклама: Только для взрослых",
+    adText: "Подпишись на Telegram @ajalipetkaho и смотри самое 🔥",
+    adBtn: "Перейти в Telegram",
+    popup: "Сайт содержит материалы для взрослых. Вам уже исполнилось 18 лет?",
+    popupBtn: "Да, мне есть 18",
+    gameTitle: "Правда или действие",
+    gameBtn: "Следующий вопрос",
+    gameQuestions: [
+      "Когда был твой первый поцелуй?",
+      "Расскажи эротическую фантазию",
+      "С кем бы ты хотел провести ночь?",
+      "Ты бы согласился на интим в 1-й день?",
+      "Опиши любимое тело"
+    ]
+  }
+};
+
+let lang = localStorage.getItem('lang') || 'tj';
+
+function setLang(newLang) {
+  lang = newLang;
+  localStorage.setItem('lang', lang);
+  applyLang();
+}
+
+function applyLang() {
+  document.getElementById("gallery-title").textContent = translations[lang].title;
+  document.getElementById("random-btn").textContent = translations[lang].random;
+  document.getElementById("game-title").textContent = translations[lang].gameTitle;
+  document.getElementById("game-btn").textContent = translations[lang].gameBtn;
+  document.getElementById("popup-text").textContent = translations[lang].popup;
+  document.getElementById("popup-btn").textContent = translations[lang].popupBtn;
+}
+</script>
