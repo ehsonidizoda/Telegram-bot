@@ -12,7 +12,7 @@
   <h1>AJALI PETKAHO</h1>
   <p>Эксклюзивный контент только для взрослых.</p>
   <div class="buttons">
-    <a class="button" href="#" onclick="showVipContent()">Получить VIP доступ</a>
+    <a class="button" href="vip.html">Получить VIP доступ</a>
   </div>
   <div class="countdown">Обновление через: <span id="timer">00:00:00</span></div>
 </header>
@@ -146,115 +146,6 @@ footer {
   color: #aaa;
   padding: 30px 10px 20px;
 }
-// Функция выбора тарифа
-let selectedOption = '';
-function selectOption(option) {
-  selectedOption = option;
-  document.querySelectorAll('.price-option').forEach(option => option.classList.remove('selected'));
-  document.querySelector(`.price-option:nth-child(${['1day', '1month', 'lifetime'].indexOf(option) + 1})`).classList.add('selected');
-
-  const priceStatus = document.getElementById('price-status');
-  switch (option) {
-    case '1day':
-      priceStatus.textContent = 'Вы выбрали 1-дневный доступ (200₽).';
-      break;
-    case '1month':
-      priceStatus.textContent = 'Вы выбрали 1-месячный доступ (400₽).';
-      break;
-    case 'lifetime':
-      priceStatus.textContent = 'Вы выбрали бессрочный доступ (600₽).';
-      break;
-  }
-}
-
-// Функция для подтверждения оплаты
-function confirmPayment() {
-  if (!selectedOption) {
-    alert("Пожалуйста, выберите вариант доступа.");
-    return;
-  }
-
-  let expiryDate;
-  switch (selectedOption) {
-    case '1day':
-      expiryDate = new Date();
-      expiryDate.setDate(expiryDate.getDate() + 1); // 1 день
-      break;
-    case '1month':
-      expiryDate = new Date();
-      expiryDate.setMonth(expiryDate.getMonth() + 1); // 1 месяц
-      break;
-    case 'lifetime':
-      expiryDate = null; // бессрочно
-      break;
-  }
-
-  const vipData = {
-    option: selectedOption,
-    expiry: expiryDate ? expiryDate.toISOString() : null
-  };
-  localStorage.setItem('vipAccess', JSON.stringify(vipData));
-
-  alert("Ваш запрос на VIP доступ отправлен. Ожидайте подтверждения.");
-
-  showVipContent();
-}
-
-// Показ контента VIP
-function showVipContent() {
-  const vipData = JSON.parse(localStorage.getItem('vipAccess'));
-  const now = new Date().getTime();
-  let isVipValid = false;
-
-  if (vipData) {
-    if (vipData.option === 'lifetime' || (vipData.expiry && new Date(vipData.expiry).getTime() > now)) {
-      isVipValid = true;
-    }
-  }
-
-  if (isVipValid) {
-    document.getElementById('vip-content-section').style.display = 'block';
-    document.getElementById('no-access-message').style.display = 'none';
-  } else {
-    document.getElementById('vip-content-section').style.display = 'none';
-    document.getElementById('no-access-message').style.display = 'block';
-  }
-}
-
-// Вопросы для игры "Правда"
-function askTruth() {
-  const questions = [
-    "Когда был твой первый поцелуй?",
-    "Кому ты разбил(а) сердце?",
-    "Расскажи то, что скрываешь от всех"
-  ];
-  document.getElementById("game-question").textContent = questions[Math.floor(Math.random() * questions.length)];
-}
-
-// Вопросы для игры "Чуръят"
-function askDare() {
-  const questions = [
-    "Опиши себя как блогера 18+",
-    "Изобрази эротический голос",
-    "Напиши другу: 'Я влюблён(а)'"
-  ];
-  document.getElementById("game-question").textContent = questions[Math.floor(Math.random() * questions.length)];
-}
-
-// Переключение языка
-function setLang(lang) {
-  localStorage.setItem('lang', lang);
-  location.reload();
-}
-
-window.onload = () => {
-  const storedLang = localStorage.getItem('lang') || 'ru';
-  setLang(storedLang);
-  showVipContent();
-};
-
-<!-- Таймер для обновления контента -->
-<div class="countdown">Обновление через: <span id="timer">00:00:00</span></div>
 // Функции для выбора тарифа и VIP контента
 let selectedOption = '';
 function selectOption(option) {
@@ -275,6 +166,7 @@ function selectOption(option) {
   }
 }
 
+// Функция для подтверждения оплаты
 function confirmPayment() {
   if (!selectedOption) {
     alert("Пожалуйста, выберите вариант доступа.");
@@ -303,6 +195,7 @@ function confirmPayment() {
   showVipContent();
 }
 
+// Показ контента VIP
 function showVipContent() {
   const vipData = JSON.parse(localStorage.getItem('vipAccess'));
   const now = new Date().getTime();
