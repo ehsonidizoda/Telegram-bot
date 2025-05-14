@@ -56,13 +56,81 @@
     a.button:hover {
       background: #e42072;
     }
-
+    .reaction {
+      margin-top: 10px;
+      font-size: 1.4em;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .reaction span {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .reaction span:hover {
+      transform: scale(1.2);
+    }
+    .ad-block {
+      background: linear-gradient(135deg, #2c003e, #ff2f8b33);
+      border: 2px solid #ff2f8b;
+      padding: 20px;
+      border-radius: 16px;
+      margin: 30px auto;
+      max-width: 90%;
+    }
+    .ad-title {
+      font-size: 1.2em;
+      color: #ff2f8b;
+      margin-bottom: 8px;
+    }
+    .ad-text {
+      color: #ddd;
+      margin-bottom: 12px;
+    }
+    .ad-btn {
+      display: inline-block;
+      background: #ff2f8b;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .ad-btn:hover {
+      background: #e42072;
+    }
+    .game-box {
+      margin-top: 60px;
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 12px;
+    }
+    .game-box h3 {
+      color: #ff2f8b;
+    }
+    .game-question {
+      font-size: 1.2em;
+      margin: 20px 0;
+    }
+    .game-button {
+      background: #ff2f8b;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<!-- Попап 18+ -->
 <div id="age-popup" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;">
   <h2 style="color:#ff2f8b;">🔞</h2>
   <p id="popup-text">Ин сомона барои калонсолон аст. Шумо аз 18 гузаштаед?</p>
   <button id="popup-btn" onclick="acceptAge()" style="margin-top:20px;padding:12px 24px;background:#ff2f8b;color:white;border:none;border-radius:10px;font-size:1em;cursor:pointer;">Бале, гузаштаам</button>
 </div>
 
+<!-- Заголовок -->
 <header>
   <h1>AJALI PETKAHO</h1>
   <div style="margin-top: 10px;">
@@ -73,28 +141,31 @@
   <p class="tagline">Танҳо барои калонсолон. Контенти 18+</p>
 </header>
 
+<!-- Кнопки -->
 <div class="buttons">
   <a class="button" href="https://t.me/ajalipetkaho">Ачлаи Петкахо</a>
   <a class="button" href="https://t.me/hodisatv">Ходиса ТВ</a>
   <a class="button" href="secret.html">Сирри махсус</a>
 </div>
 
+<!-- Галерея -->
 <div class="media-gallery">
   <h2 id="gallery-title">Галерея</h2>
   <div id="media-box"></div>
   <button onclick="showRandomMedia()" id="random-btn" style="margin-top:20px;background:#ff2f8b;color:#fff;padding:12px 20px;border:none;border-radius:10px;">Тасодуфӣ намоиш деҳ</button>
 </div>
 
+<!-- Игра -->
 <div class="game-box">
   <h3 id="game-title">Ҳақиқат ё Ҷуръат</h3>
   <div class="game-question" id="game-question">Барои оғоз кардан зер кунед...</div>
   <button class="game-button" id="game-btn" onclick="nextGameQuestion()">Саволи нав</button>
 </div>
 
+<!-- Подвал -->
 <footer>
   <p style="margin-top: 50px; font-size: 0.9em; color: #888;">© 2025 ajalipetkaho.ru</p>
 </footer>
-
 <script>
 const mediaItems = [
   { type: 'image', src: 'https://via.placeholder.com/600x350?text=Фото+1' },
@@ -152,26 +223,7 @@ function startCountdown(duration) {
     if (--timer < 0) timer = duration;
   }, 1000);
 }
-
-window.onload = function () {
-  const now = new Date().getTime();
-  const nextUpdate = localStorage.getItem("nextUpdate") || (now + 3 * 60 * 60 * 1000);
-  if (!localStorage.getItem("nextUpdate")) {
-    localStorage.setItem("nextUpdate", nextUpdate);
-  }
-  const remaining = Math.floor((nextUpdate - now) / 1000);
-  startCountdown(remaining);
-
-  if (localStorage.getItem('ageConfirmed') !== 'true') {
-    document.getElementById('age-popup').style.display = 'flex';
-  } else {
-    document.getElementById('age-popup').style.display = 'none';
-  }
-
-  applyLang(); // применить язык при загрузке
-}
 </script>
-
 <script>
 const translations = {
   tj: {
@@ -230,4 +282,24 @@ function applyLang() {
   document.getElementById("popup-text").textContent = translations[lang].popup;
   document.getElementById("popup-btn").textContent = translations[lang].popupBtn;
 }
+
+window.onload = function () {
+  const now = new Date().getTime();
+  const nextUpdate = localStorage.getItem("nextUpdate") || (now + 3 * 60 * 60 * 1000);
+  if (!localStorage.getItem("nextUpdate")) {
+    localStorage.setItem("nextUpdate", nextUpdate);
+  }
+  const remaining = Math.floor((nextUpdate - now) / 1000);
+  startCountdown(remaining);
+
+  if (localStorage.getItem('ageConfirmed') !== 'true') {
+    document.getElementById('age-popup').style.display = 'flex';
+  } else {
+    document.getElementById('age-popup').style.display = 'none';
+  }
+
+  applyLang(); // применить язык при загрузке
+};
 </script>
+</body>
+</html>
