@@ -1,1 +1,69 @@
-у
+body {
+    font-family: 'Roboto', 'Noto Sans Arabic', sans-serif;
+    background: #17212B;
+    color: #fff;
+    margin: 0;
+    text-align: center;
+}
+
+.age-gate {
+    background: #1F2C38;
+    border: 2px solid #FF5588;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 20vh auto;
+    padding: 30px;
+}
+
+.lang-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.lang-switcher button {
+    background: #0088CC;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.payment-section {
+    background: #1F2C38;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+.method {
+    margin: 20px 0;
+    padding: 15px;
+    border-left: 3px solid #FF5588;
+}
+
+code {
+    background: #2B3A48;
+    padding: 8px;
+    border-radius: 5px;
+    display: inline-block;
+    font-family: monospace;
+}
+
+button {
+    background: #0088CC;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.rtl {
+    direction: rtl;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
