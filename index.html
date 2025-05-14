@@ -34,19 +34,17 @@
       padding: 10px 20px;
     }
     a.button {
-      background: #1a1a1a;
-      border: 2px solid #ff2f8b;
-      color: #ff2f8b;
+      background: #ff2f8b;
+      color: white;
       padding: 14px;
-      border-radius: 20px;
+      border-radius: 12px;
       text-decoration: none;
       font-weight: bold;
       font-size: 1em;
-      transition: all 0.3s;
+      transition: background 0.3s;
     }
     a.button:hover {
-      background: #ff2f8b;
-      color: white;
+      background: #e42072;
     }
     .vip {
       margin-top: 50px;
@@ -84,24 +82,6 @@
       font-weight: bold;
       font-size: 1.1em;
     }
-    .popup {
-      display: none;
-      position: fixed;
-      bottom: 80px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #2a002a;
-      color: white;
-      padding: 15px 25px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px #f06;
-      z-index: 999;
-      animation: fadeIn 0.5s ease;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-      to { opacity: 1; transform: translateX(-50%) translateY(0); }
-    }
   </style>
 </head>
 <body>
@@ -109,6 +89,8 @@
     <h1>AJALI PETKAHO</h1>
     <p class="tagline">Эксклюзивная 18+ коллекция. Всё только для взрослых.</p>
   </header>  <div class="buttons">
+    <a class="button" href="https://t.me/ajalipetkaho">Ачлаи Петкахо</a>
+    <a class="button" href="https://t.me/hodisatv">Ходиса ТВ</a>
     <a class="button" href="gallery.html">Галерея</a>
     <a class="button" href="models.html">Модели</a>
     <a class="button" href="subscribe.html">Оформить VIP</a>
@@ -119,13 +101,8 @@
     <a class="button" href="subscribe.html">Стать VIP</a>
   </div>  <div class="telegram-banner">
     <a href="https://t.me/ajalipetkaho">Подписаться на наш Telegram</a>
-  </div>  <div id="popup" class="popup">
-    Подпишись на Telegram — там ВСЁ самое горячее!
   </div>  <footer>
     © 2025 ajalipetkaho.ru — Только для лиц 18+ | Все права защищены
-  </footer>  <script>
-    setTimeout(() => {
-      document.getElementById('popup').style.display = 'block';
-    }, 5000);
-  </script></body>
+  </footer>
+</body>
 </html>
