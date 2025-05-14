@@ -75,6 +75,23 @@
       font-size: 1.1em;
       cursor: pointer;
     }
+    #promo-bar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ff2f8b;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #ff2f8b;
+      z-index: 1000;
+    }
+    #promo-bar a {
+      color: #fff;
+      text-decoration: underline;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body><div id="age-popup">
@@ -104,6 +121,14 @@
     <li>★ Персональные условия</li>
     <li>★ Приоритетная поддержка</li>
   </ul>
+  <div style="margin-top: 20px;">
+    <p>⚠️ Все горячее — только в Telegram</p>
+    <a class="button" href="https://t.me/ajalipetkaho">
+      <i class="fab fa-telegram"></i> Перейти в Telegram
+    </a>
+  </div>
+</div><div id="promo-bar">
+  Продолжение в Telegram — <a href="https://t.me/ajalipetkaho">@ajalipetkaho</a>
 </div><footer>
   <p>© 2025 ajalipetkaho.ru</p>
 </footer><script>
