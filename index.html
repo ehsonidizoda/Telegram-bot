@@ -1,24 +1,55 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>18+ Контент — AJALI PETKAHO</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1f001a);
+      background: linear-gradient(120deg, #1a1a1a, #2c003e, #1a1a1a);
+      background-size: 300% 300%;
+      animation: bgMove 15s ease infinite;
       color: white;
       text-align: center;
     }
-    header {
-      padding: 30px 10px 20px;
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
+
+    .promo-bar {
+      background: #ff2f8b;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .promo-bar span {
+      display: inline-block;
+      animation: scroll-left 12s linear infinite;
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    header {
+      padding: 30px 10px 10px;
+    }
+
     h1 {
       font-size: 2.2em;
     }
+
     .buttons {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -27,6 +58,7 @@
       margin: 20px auto;
       padding: 10px;
     }
+
     a.button {
       background: linear-gradient(145deg, #ff2f8b, #e42072);
       color: white;
@@ -42,27 +74,48 @@
       box-shadow: 0 4px 14px #ff2f8b55;
       transition: all 0.25s ease;
     }
+
     a.button:hover {
       transform: scale(1.05);
     }
+
     .section {
       background: #151515;
       margin: 20px;
       padding: 20px;
       border-radius: 14px;
       box-shadow: 0 0 14px #00000088;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 1s ease forwards;
     }
+
+    .section:nth-of-type(2) { animation-delay: 0.2s; }
+    .section:nth-of-type(3) { animation-delay: 0.4s; }
+    .section:nth-of-type(4) { animation-delay: 0.6s; }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     h2 {
       margin-bottom: 16px;
+      color: #ff2f8b;
     }
+
     .section a {
       color: #3fa9f5;
       font-weight: bold;
       text-decoration: none;
     }
+
     .section a:hover {
       text-decoration: underline;
     }
+
     footer {
       margin-top: 40px;
       color: #888;
@@ -71,6 +124,10 @@
   </style>
 </head>
 <body>
+
+<div class="promo-bar">
+  <span>🔥 Только для взрослых! Самый горячий контент — <a href="https://t.me/ajalipetkaho" style="color: yellow; text-decoration: underline;">@ajalipetkaho</a></span>
+</div>
 
 <header>
   <h1><i class="fas fa-ban"></i> 18+ Контент</h1>
@@ -84,19 +141,20 @@
 </div>
 
 <div class="section" id="channels">
-  <h2>Мои каналы</h2>
+  <h2><i class="fa-solid fa-paper-plane"></i> Мои каналы</h2>
   <p><strong>Канал 1:</strong> AJALI PETKAHO <br><a href="https://t.me/ajalipetkaho">Перейти →</a></p>
   <p><strong>Канал 2:</strong> Ходиса ТВ <br><a href="https://t.me/hodisatv">Перейти →</a></p>
+  <p><strong>Канал 3:</strong> VIP Lounge <br><a href="https://t.me/viploungechannel">Перейти →</a></p>
 </div>
 
 <div class="section" id="bots">
-  <h2>Мои боты</h2>
+  <h2><i class="fa-solid fa-robot"></i> Мои боты</h2>
   <p><strong>Бот 1:</strong> Контент-Бот <br><a href="https://t.me/VvediCodBot">Перейти →</a></p>
   <p><strong>Бот 2:</strong> Premium-бот <br><a href="https://t.me/Fors_Admiin">Перейти →</a></p>
 </div>
 
 <div class="section" id="vip">
-  <h2>VIP доступ</h2>
+  <h2><i class="fa-solid fa-star"></i> VIP доступ</h2>
   <p>Для получения доступа напишите: <br><a href="https://t.me/Fors_Admiin">@Fors_Admiin</a></p>
   <ul style="text-align: left; max-width: 420px; margin: auto;">
     <li>★ Эксклюзивный контент</li>
