@@ -1,245 +1,121 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AJALI PETKAHO — 18+ Платформа</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>18+ Контент — AJALI PETKAHO</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #000;
+      color: white;
+      text-align: center;
+    }
+    header {
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.2em;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 10px;
+    }
+    a.button {
+      background: linear-gradient(145deg, #ff2f8b, #e42072);
+      color: white;
+      padding: 14px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 14px #ff2f8b55;
+      transition: all 0.25s ease;
+    }
+    a.button:hover {
+      transform: scale(1.05);
+    }
+    .section {
+      background: #111;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 12px;
+    }
+    footer {
+      margin-top: 40px;
+      color: #888;
+    }
+    #age-popup {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+    }
+    #age-popup button {
+      background: #ff2f8b;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<body>
-
-<header>
-  <h1>AJALI PETKAHO</h1>
-  <p>Эксклюзивный контент только для взрослых.</p>
-  <div class="buttons">
-    <a class="button" href="vip.html">Получить VIP доступ</a>
-  </div>
-  <div class="countdown">Обновление через: <span id="timer">00:00:00</span></div>
-</header>
-
-<!-- Замена "Оплата" на Instagram -->
-<div class="section" id="instagram-section">
-  <h2>Инстаграм</h2>
-  <p>Для получения доступа к эксклюзивному контенту, напишите в Instagram:</p>
-  <a href="https://instagram.com/your_instagram_profile" class="button">Перейти в Instagram</a>
-</div>
-
-<!-- VIP Доступ -->
-<div class="section" id="vip-section">
-  <h2>VIP Доступ</h2>
-  <div class="price-option" onclick="selectOption('1day')">1 день — 200₽</div>
-  <div class="price-option" onclick="selectOption('1month')">1 месяц — 400₽</div>
-  <div class="price-option" onclick="selectOption('lifetime')">Бессрочно — 600₽</div>
-
-  <div id="price-status" style="color: #ff2f8b;"></div>
-
-  <button onclick="confirmPayment()">Оплатил</button>
-</div>
-
-<!-- VIP Контент -->
-<div class="section" id="vip-content-section" style="display:none;">
-  <h2>VIP Контент</h2>
-  <p>Это скрытый контент, доступный только для пользователей с активным VIP доступом!</p>
-  <div id="media-box"></div>
-  <button onclick="showRandomMedia()">Показать случайное</button>
-  <div class="reaction">
-    <span>❤️</span>
-    <span>🔥</span>
-    <span>👎</span>
-  </div>
-</div>
-
-<!-- Сообщение, если доступ не активен -->
-<div id="no-access-message" class="section" style="display:none;">
-  <h2>Ваш доступ не активен!</h2>
-  <p>Пожалуйста, выберите вариант для получения VIP доступа.</p>
-</div>
-
-<!-- Игра "Правда или Чуръят" -->
-<div class="section">
-  <h2>Правда или Чуръят</h2>
-  <button onclick="askTruth()">Правда</button>
-  <button onclick="askDare()">Чуръят</button>
-  <div id="game-question"></div>
-</div>
-
-<!-- Переключение языка -->
-<div class="lang-switch">
-  <button onclick="setLang('tj')">🇹🇯 Тоҷикӣ</button>
-  <button onclick="setLang('ru')">🇷🇺 Русский</button>
-</div>
-
-<footer>
+<body><div id="age-popup">
+  <h2>Подтвердите возраст</h2>
+  <p>Этот сайт содержит контент 18+. Вам есть 18 лет?</p>
+  <button onclick="acceptAge()">Да, мне есть 18</button>
+</div><header>
+  <h1><i class="fas fa-ban"></i> 18+ Контент</h1>
+</header><div class="buttons">
+  <a class="button" href="#channels"><i class="fa-solid fa-paper-plane"></i> Мои каналы</a>
+  <a class="button" href="#bots"><i class="fa-solid fa-robot"></i> Мои боты</a>
+  <a class="button" href="https://instagram.com/ajali_petka"><i class="fab fa-instagram"></i> Instagram</a>
+  <a class="button" href="#vip"><i class="fa-solid fa-star"></i> VIP</a>
+</div><div class="section" id="channels">
+  <h2>Мои каналы</h2>
+  <p><strong>Канал 1:</strong> Описание первого канала <br><a href="#">Перейти →</a></p>
+  <p><strong>Канал 2:</strong> Описание второго канала <br><a href="#">Перейти →</a></p>
+</div><div class="section" id="bots">
+  <h2>Мои боты</h2>
+  <p><strong>Бот 1:</strong> Описание первого бота <br><a href="#">Перейти →</a></p>
+  <p><strong>Бот 2:</strong> Описание второго бота <br><a href="#">Перейти →</a></p>
+</div><div class="section" id="vip">
+  <h2>VIP доступ</h2>
+  <p>Для получения VIP-доступа напишите администратору:<br><a href="https://t.me/Fors_Admiin">@Fors_Admiin</a></p>
+  <ul style="text-align: left; max-width: 400px; margin: auto;">
+    <li>★ Эксклюзивный контент</li>
+    <li>★ Персональные условия</li>
+    <li>★ Приоритетная поддержка</li>
+  </ul>
+</div><footer>
   <p>© 2025 ajalipetkaho.ru</p>
-</footer>
-
-<script src="script.js"></script>
-</body>
-</html>
-
-<style>
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #1c1c1c, #2c003e);
-  color: white;
-  text-align: center;
-}
-
-h1 {
-  font-size: 2.6em;
-  color: #ff2f8b;
-  margin: 0;
-}
-
-h2 {
-  font-size: 2em;
-  color: #ff2f8b;
-}
-
-h3 {
-  color: #ff2f8b;
-}
-
-.section {
-  background: #222;
-  padding: 25px;
-  margin: 30px 20px;
-  border-radius: 14px;
-  box-shadow: 0 0 12px #00000055;
-}
-
-.price-option {
-  background: #ff2f8b;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 12px;
-  font-size: 1.2em;
-  font-weight: bold;
-  margin: 10px 0;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.price-option:hover {
-  background: #e42072;
-}
-
-button {
-  padding: 14px 24px;
-  background: #ff2f8b;
-  color: white;
-  border-radius: 12px;
-  font-size: 1.2em;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-.lang-switch {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.lang-switch button {
-  background: #ff2f8b;
-  color: white;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 10px;
-  font-weight: bold;
-}
-
-footer {
-  font-size: 0.85em;
-  color: #aaa;
-  padding: 30px 10px 20px;
-}
-
-/* Стилизация кнопок с стикерами */
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.reaction span {
-  cursor: pointer;
-  font-size: 1.5em;
-  transition: transform 0.2s;
-}
-
-.reaction span:hover {
-  transform: scale(1.2);
-}
-
-.price-option {
-  cursor: pointer;
-}
-
-.price-option.selected {
-  background: #e42072;
-}
-
-</style>
-
-<script>
-const translations = {
-  tj: {
-    title: "Галерея",
-    random: "Тасодуфӣ намоиш деҳ",
-    vip: "🔒 Танҳо барои VIP",
-    adTitle: "🔞 Эълон: Танҳо барои калонсолон",
-    adText: "Ба Telegram @ajalipetkaho обуна шав ва гармиро бин!",
-    adBtn: "Гузар ба Telegram",
-    popup: "Ин сомона барои калонсолон аст. Шумо аз 18 гузаштаед?",
-    popupBtn: "Бале, гузаштаам",
-    gameTitle: "Ҳақиқат ё Ҷуръат",
-    gameBtn: "Саволи нав",
-    gameQuestions: [
-      "Аввалин бӯсаат кай буд?",
-      "Сирри шаҳвонии худатонро ошкор кунед",
-      "Бо кӣ мехостӣ шабро гузаронӣ?",
-      "Ту бо кӣ хаёл мекунӣ?",
-      "Се фикри шаҳвонии ту чӣ ҳаст?"
-    ]
-  },
-  ru: {
-    title: "Галерея",
-    random: "Показать случайное",
-    vip: "🔒 Только для VIP",
-    adTitle: "🔞 Реклама: Только для взрослых",
-    adText: "Подпишись на Telegram @ajalipetkaho и смотри самое 🔥",
-    adBtn: "Перейти в Telegram",
-    popup: "Сайт содержит материалы для взрослых. Вам уже исполнилось 18 лет?",
-    popupBtn: "Да, мне есть 18",
-    gameTitle: "Правда или действие",
-    gameBtn: "Следующий вопрос",
-    gameQuestions: [
-      "Когда был твой первый поцелуй?",
-      "Расскажи эротическую фантазию",
-      "С кем бы ты хотел провести ночь?",
-      "Ты бы согласился на интим в 1-й день?",
-      "Опиши любимое тело"
-    ]
+</footer><script>
+  function acceptAge() {
+    document.getElementById('age-popup').style.display = 'none';
+    localStorage.setItem('ageVerified', 'true');
   }
-};
 
-let lang = localStorage.getItem('lang') || 'tj';
-
-function setLang(newLang) {
-  lang = newLang;
-  localStorage.setItem('lang', lang);
-  applyLang();
-}
-
-function applyLang() {
-  document.getElementById("gallery-title").textContent = translations[lang].title;
-  document.getElementById("random-btn").textContent = translations[lang].random;
-  document.getElementById("game-title").textContent = translations[lang].gameTitle;
-  document.getElementById("game-btn").textContent = translations[lang].gameBtn;
-  document.getElementById("popup-text").textContent = translations[lang].popup;
-  document.getElementById("popup-btn").textContent = translations[lang].popupBtn;
-}
-</script>
+  window.onload = () => {
+    if (localStorage.getItem('ageVerified') === 'true') {
+      document.getElementById('age-popup').style.display = 'none';
+    }
+  };
+</script></body>
+</html>
