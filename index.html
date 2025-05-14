@@ -1,56 +1,27 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>18+ Контент</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Возрастной гейт -->
-    <div class="age-gate" id="ageGate">
-        <div class="container">
-            <h1 data-i18n="age_gate">Вам есть 18 лет?</h1>
+    <div id="ageGate" class="age-gate">
+        <div class="gate-content">
+            <h1>🔞 Вам есть 18 лет?</h1>
             <div class="buttons">
-                <button onclick="enterSite()" data-i18n="yes">Да</button>
-                <button onclick="exitSite()" data-i18n="no">Нет</button>
+                <button id="confirmBtn">Да</button>
+                <button id="exitBtn">Нет</button>
             </div>
         </div>
     </div>
 
-    <!-- Основной контент (скрыт до подтверждения возраста) -->
-    <div class="main-content" id="mainContent" style="display:none">
-        <!-- Переключатель языков -->
-        <div class="lang-switcher">
-            <button onclick="changeLanguage('ru')">RU</button>
-            <button onclick="changeLanguage('tg')">TJ</button>
-        </div>
-
-        <!-- Блок оплаты -->
-        <div class="payment-section">
-            <h2 data-i18n="payment">Оплата</h2>
-            
-            <div class="method">
-                <h3 data-i18n="crypto">Криптовалюта</h3>
-                <p data-i18n="crypto_guide">Переведите USDT (TRC20) на адрес:</p>
-                <code class="wallet">TXXXX...XXXX</code>
-                <p data-i18n="send_txid">Пришлите TxID в Telegram</p>
-            </div>
-
-            <div class="method">
-                <h3 data-i18n="sbp">СБП</h3>
-                <p data-i18n="sbp_guide">Переведите 500 руб. на номер:</p>
-                <code class="phone">+7XXX XXX-XX-XX</code>
-                <p data-i18n="send_screenshot">Пришлите скрин чека</p>
-            </div>
-        </div>
-
-        <!-- Контакты -->
-        <div class="contacts">
-            <a href="https://t.me/your_bot" data-i18n="contact_us">Связаться с поддержкой</a>
-        </div>
+    <!-- Основной контент -->
+    <div id="mainContent" class="main-content">
+        <h2>Добро пожаловать</h2>
+        <p>Здесь ваш контент...</p>
     </div>
 
     <script src="script.js"></script>
