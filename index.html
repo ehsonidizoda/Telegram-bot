@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,45 +76,40 @@
       font-size: 1.1em;
       cursor: pointer;
     }
-    #promo-bar {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #ff2f8b;
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px #ff2f8b;
-      z-index: 1000;
-    }
-    #promo-bar a {
-      color: #fff;
-      text-decoration: underline;
-      font-weight: bold;
-    }
   </style>
 </head>
-<body><div id="age-popup">
+<body>
+
+<div id="age-popup">
   <h2>Подтвердите возраст</h2>
   <p>Этот сайт содержит контент 18+. Вам есть 18 лет?</p>
   <button onclick="acceptAge()">Да, мне есть 18</button>
-</div><header>
+</div>
+
+<header>
   <h1><i class="fas fa-ban"></i> 18+ Контент</h1>
-</header><div class="buttons">
+</header>
+
+<div class="buttons">
   <a class="button" href="#channels"><i class="fa-solid fa-paper-plane"></i> Мои каналы</a>
   <a class="button" href="#bots"><i class="fa-solid fa-robot"></i> Мои боты</a>
   <a class="button" href="https://instagram.com/ajali_petka"><i class="fab fa-instagram"></i> Instagram</a>
   <a class="button" href="#vip"><i class="fa-solid fa-star"></i> VIP</a>
-</div><div class="section" id="channels">
+</div>
+
+<div class="section" id="channels">
   <h2>Мои каналы</h2>
   <p><strong>Канал 1:</strong> Описание первого канала <br><a href="#">Перейти →</a></p>
   <p><strong>Канал 2:</strong> Описание второго канала <br><a href="#">Перейти →</a></p>
-</div><div class="section" id="bots">
+</div>
+
+<div class="section" id="bots">
   <h2>Мои боты</h2>
   <p><strong>Бот 1:</strong> Описание первого бота <br><a href="#">Перейти →</a></p>
   <p><strong>Бот 2:</strong> Описание второго бота <br><a href="#">Перейти →</a></p>
-</div><div class="section" id="vip">
+</div>
+
+<div class="section" id="vip">
   <h2>VIP доступ</h2>
   <p>Для получения VIP-доступа напишите администратору:<br><a href="https://t.me/Fors_Admiin">@Fors_Admiin</a></p>
   <ul style="text-align: left; max-width: 400px; margin: auto;">
@@ -121,19 +117,14 @@
     <li>★ Персональные условия</li>
     <li>★ Приоритетная поддержка</li>
   </ul>
-  <div style="margin-top: 20px;">
-    <p>⚠️ Все горячее — только в Telegram</p>
-    <a class="button" href="https://t.me/ajalipetkaho">
-      <i class="fab fa-telegram"></i> Перейти в Telegram
-    </a>
-  </div>
-<div id="promo-bar" style="position: fixed; bottom: 0; left: 0; width: 100%; background: #1c1c1c; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 10px 15px; box-shadow: 0 -4px 10px #000; z-index: 999;">
-  <img src="https://example.com/banner18.jpg" alt="18+" style="height: 50px; border-radius: 10px; object-fit: cover;">
-  <span style="margin-left: 15px; flex: 1; font-size: 1em;">Продолжение — только в Telegram</span>
-  <a href="https://t.me/ajalipetkaho" style="margin-left: 15px; background: #ff2f8b; padding: 10px 16px; border-radius: 10px; color: #fff; font-weight: bold; text-decoration: none;">
-    Перейти
-  </a>
 </div>
+
+<footer>
+  <p>© 2025 ajalipetkaho.ru</p>
+</footer>
+
+<script>
+  function acceptAge() {
     document.getElementById('age-popup').style.display = 'none';
     localStorage.setItem('ageVerified', 'true');
   }
@@ -143,5 +134,6 @@
       document.getElementById('age-popup').style.display = 'none';
     }
   };
-</script></body>
+</script>
+</body>
 </html>
