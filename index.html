@@ -13,17 +13,26 @@
       overflow-x: hidden;
     }
     header {
-      padding: 50px 20px 20px;
+      padding: 50px 20px 10px;
     }
     h1 {
       font-size: 2.8em;
       margin: 0;
       color: #ff2f8b;
     }
+    .countdown {
+      font-size: 1.1em;
+      background: #ff2f8b;
+      color: white;
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
     p.tagline {
       font-size: 1.2em;
       color: #ccc;
-      margin-bottom: 40px;
+      margin: 20px 0 40px;
     }
     .buttons {
       display: grid;
@@ -60,6 +69,21 @@
     .vip p {
       color: #ccc;
     }
+    .reviews {
+      margin-top: 50px;
+      background: #1a1a1a;
+      padding: 30px 20px;
+      border-radius: 15px;
+    }
+    .reviews h3 {
+      color: #ff2f8b;
+      margin-bottom: 15px;
+    }
+    .review {
+      font-size: 0.95em;
+      color: #ccc;
+      margin-bottom: 12px;
+    }
     footer {
       margin-top: 60px;
       font-size: 0.9em;
@@ -87,6 +111,7 @@
 <body>
   <header>
     <h1>AJALI PETKAHO</h1>
+    <div class="countdown">Новое обновление через: <span id="timer">00:00:00</span></div>
     <p class="tagline">Эксклюзивная 18+ коллекция. Всё только для взрослых.</p>
   </header>  <div class="buttons">
     <a class="button" href="https://t.me/ajalipetkaho">Ачлаи Петкахо</a>
@@ -99,10 +124,38 @@
     <h2>VIP доступ</h2>
     <p>Оформи подписку и получи доступ к приватным фото, видео и эксклюзивным материалам.</p>
     <a class="button" href="subscribe.html">Стать VIP</a>
+  </div>  <div class="reviews">
+    <h3>Отзывы подписчиков</h3>
+    <div class="review">«Контент 🔥 каждый день что-то новое» — @hotuser</div>
+    <div class="review">«Лучше, чем OnlyFans!» — @madgirl</div>
+    <div class="review">«Зашёл ради интереса, остался навсегда» — @tajikvip</div>
   </div>  <div class="telegram-banner">
     <a href="https://t.me/ajalipetkaho">Подписаться на наш Telegram</a>
   </div>  <footer>
     © 2025 ajalipetkaho.ru — Только для лиц 18+ | Все права защищены
-  </footer>
-</body>
+  </footer>  <script>
+    function startCountdown(duration) {
+      let timer = duration, hours, minutes, seconds;
+      setInterval(function () {
+        hours = parseInt(timer / 3600, 10);
+        minutes = parseInt((timer % 3600) / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        document.getElementById('timer').textContent = hours + ":" + minutes + ":" + seconds;
+
+        if (--timer < 0) {
+          timer = duration;
+        }
+      }, 1000);
+    }
+
+    window.onload = function () {
+      const threeHours = 3 * 60 * 60; // 3 часа
+      startCountdown(threeHours);
+    };
+  </script></body>
 </html>
