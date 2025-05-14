@@ -23,3 +23,17 @@
   color: yellow;
   text-decoration: underline;
 }
+
+.promo-banner {
+  background: linear-gradient(90deg, #ff2f8b, #e42072);
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  font-size: 1em;
+}
+
+.promo-banner a {
+  color: yellow;
+  text-decoration: underline;
+}
