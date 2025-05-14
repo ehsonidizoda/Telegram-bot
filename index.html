@@ -1,258 +1,194 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AJALI PETKAHO — 18+ Платформа</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18+ Контент</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Возрастной гейт -->
+    <div class="age-gate" id="ageGate">
+        <div class="container">
+            <h1 data-i18n="age_gate">Вам есть 18 лет?</h1>
+            <div class="buttons">
+                <button onclick="enterSite()" data-i18n="yes">Да</button>
+                <button onclick="exitSite()" data-i18n="no">Нет</button>
+            </div>
+        </div>
+    </div>
 
-<header>
-  <h1>AJALI PETKAHO</h1>
-  <p>Эксклюзивный контент только для взрослых.</p>
-  <div class="buttons">
-    <a class="button" href="vip.html">Получить VIP доступ</a>
-  </div>
-  <div class="countdown">Обновление через: <span id="timer">00:00:00</span></div>
-</header>
+    <!-- Основной контент (скрыт до подтверждения возраста) -->
+    <div class="main-content" id="mainContent" style="display:none">
+        <!-- Переключатель языков -->
+        <div class="lang-switcher">
+            <button onclick="changeLanguage('ru')">RU</button>
+            <button onclick="changeLanguage('tg')">TJ</button>
+        </div>
 
-<!-- Выбор тарифа -->
-<div class="section" id="vip-section">
-  <h2>Выберите вариант доступа:</h2>
-  <div class="price-option" onclick="selectOption('1day')">1 день — 200₽</div>
-  <div class="price-option" onclick="selectOption('1month')">1 месяц — 400₽</div>
-  <div class="price-option" onclick="selectOption('lifetime')">Бессрочно — 600₽</div>
+        <!-- Блок оплаты -->
+        <div class="payment-section">
+            <h2 data-i18n="payment">Оплата</h2>
+            
+            <div class="method">
+                <h3 data-i18n="crypto">Криптовалюта</h3>
+                <p data-i18n="crypto_guide">Переведите USDT (TRC20) на адрес:</p>
+                <code class="wallet">TXXXX...XXXX</code>
+                <p data-i18n="send_txid">Пришлите TxID в Telegram</p>
+            </div>
 
-  <div id="price-status" style="color: #ff2f8b;"></div>
+            <div class="method">
+                <h3 data-i18n="sbp">СБП</h3>
+                <p data-i18n="sbp_guide">Переведите 500 руб. на номер:</p>
+                <code class="phone">+7XXX XXX-XX-XX</code>
+                <p data-i18n="send_screenshot">Пришлите скрин чека</p>
+            </div>
+        </div>
 
-  <button onclick="confirmPayment()">Оплатил</button>
-</div>
+        <!-- Контакты -->
+        <div class="contacts">
+            <a href="https://t.me/your_bot" data-i18n="contact_us">Связаться с поддержкой</a>
+        </div>
+    </div>
 
-<!-- Контент VIP -->
-<div class="section" id="vip-content-section" style="display:none;">
-  <h2>VIP Контент</h2>
-  <p>Это скрытый контент, доступный только для пользователей с активным VIP доступом!</p>
-  <div id="media-box"></div>
-  <button onclick="showRandomMedia()">Показать случайное</button>
-  <div class="reaction">
-    <span>❤️</span>
-    <span>🔥</span>
-    <span>👎</span>
-  </div>
-</div>
-
-<!-- Сообщение, если доступ не активен -->
-<div id="no-access-message" class="section" style="display:none;">
-  <h2>Ваш доступ не активен!</h2>
-  <p>Пожалуйста, выберите вариант для получения VIP доступа.</p>
-</div>
-
-<!-- Игра "Правда или Чуръят" -->
-<div class="section">
-  <h2>Правда или Чуръят</h2>
-  <button onclick="askTruth()">Правда</button>
-  <button onclick="askDare()">Чуръят</button>
-  <div id="game-question"></div>
-</div>
-
-<!-- Переключение языка -->
-<div class="lang-switch">
-  <button onclick="setLang('tj')">🇹🇯 Тоҷикӣ</button>
-  <button onclick="setLang('ru')">🇷🇺 Русский</button>
-</div>
-
-<footer>
-  <p>© 2025 ajalipetkaho.ru</p>
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #1c1c1c, #2c003e);
-  color: white;
-  text-align: center;
+    font-family: 'Roboto', 'Noto Sans Arabic', sans-serif;
+    background: #17212B;
+    color: #fff;
+    margin: 0;
+    text-align: center;
 }
 
-h1 {
-  font-size: 2.6em;
-  color: #ff2f8b;
-  margin: 0;
+.age-gate {
+    background: #1F2C38;
+    border: 2px solid #FF5588;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 20vh auto;
+    padding: 30px;
 }
 
-h2 {
-  font-size: 2em;
-  color: #ff2f8b;
+.lang-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
 }
 
-h3 {
-  color: #ff2f8b;
+.lang-switcher button {
+    background: #0088CC;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.section {
-  background: #222;
-  padding: 25px;
-  margin: 30px 20px;
-  border-radius: 14px;
-  box-shadow: 0 0 12px #00000055;
+.payment-section {
+    background: #1F2C38;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 30px auto;
 }
 
-.price-option {
-  background: #ff2f8b;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 12px;
-  font-size: 1.2em;
-  font-weight: bold;
-  margin: 10px 0;
-  cursor: pointer;
-  transition: background 0.3s;
+.method {
+    margin: 20px 0;
+    padding: 15px;
+    border-left: 3px solid #FF5588;
 }
 
-.price-option:hover {
-  background: #e42072;
+code {
+    background: #2B3A48;
+    padding: 8px;
+    border-radius: 5px;
+    display: inline-block;
+    font-family: monospace;
 }
 
 button {
-  padding: 14px 24px;
-  background: #ff2f8b;
-  color: white;
-  border-radius: 12px;
-  font-size: 1.2em;
-  cursor: pointer;
-  margin-top: 20px;
+    background: #0088CC;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
 }
 
-.lang-switch {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+.rtl {
+    direction: rtl;
+    font-family: 'Noto Sans Arabic', sans-serif;
+}
+// Загрузка переводов
+async function loadLanguage(lang) {
+    const response = await fetch(`lang/${lang}.json`);
+    return await response.json();
 }
 
-.lang-switch button {
-  background: #ff2f8b;
-  color: white;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 10px;
-  font-weight: bold;
-}
+// Смена языка
+async function changeLanguage(lang) {
+    const translations = await loadLanguage(lang);
+    
+    // Применяем перевод ко всем элементам с data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.textContent = translations[key];
+    });
 
-footer {
-  font-size: 0.85em;
-  color: #aaa;
-  padding: 30px 10px 20px;
-}
-// Функции для выбора тарифа и VIP контента
-let selectedOption = '';
-function selectOption(option) {
-  selectedOption = option;
-  document.querySelectorAll('.price-option').forEach(option => option.classList.remove('selected'));
-  document.querySelector(`.price-option:nth-child(${['1day', '1month', 'lifetime'].indexOf(option) + 1})`).classList.add('selected');
-  const priceStatus = document.getElementById('price-status');
-  switch (option) {
-    case '1day':
-      priceStatus.textContent = 'Вы выбрали 1-дневный доступ (200₽).';
-      break;
-    case '1month':
-      priceStatus.textContent = 'Вы выбрали 1-месячный доступ (400₽).';
-      break;
-    case 'lifetime':
-      priceStatus.textContent = 'Вы выбрали бессрочный доступ (600₽).';
-      break;
-  }
-}
-
-// Функция для подтверждения оплаты
-function confirmPayment() {
-  if (!selectedOption) {
-    alert("Пожалуйста, выберите вариант доступа.");
-    return;
-  }
-  let expiryDate;
-  switch (selectedOption) {
-    case '1day':
-      expiryDate = new Date();
-      expiryDate.setDate(expiryDate.getDate() + 1); // 1 день
-      break;
-    case '1month':
-      expiryDate = new Date();
-      expiryDate.setMonth(expiryDate.getMonth() + 1); // 1 месяц
-      break;
-    case 'lifetime':
-      expiryDate = null; // бессрочно
-      break;
-  }
-  const vipData = {
-    option: selectedOption,
-    expiry: expiryDate ? expiryDate.toISOString() : null
-  };
-  localStorage.setItem('vipAccess', JSON.stringify(vipData));
-  alert("Ваш запрос на VIP доступ отправлен. Ожидайте подтверждения.");
-  showVipContent();
-}
-
-// Показ контента VIP
-function showVipContent() {
-  const vipData = JSON.parse(localStorage.getItem('vipAccess'));
-  const now = new Date().getTime();
-  let isVipValid = false;
-  if (vipData) {
-    if (vipData.option === 'lifetime' || (vipData.expiry && new Date(vipData.expiry).getTime() > now)) {
-      isVipValid = true;
+    // Для арабской вязи (если нужно)
+    if (lang === 'tg') {
+        document.body.classList.add('rtl');
+    } else {
+        document.body.classList.remove('rtl');
     }
-  }
-  if (isVipValid) {
-    document.getElementById('vip-content-section').style.display = 'block';
-    document.getElementById('no-access-message').style.display = 'none';
-  } else {
-    document.getElementById('vip-content-section').style.display = 'none';
-    document.getElementById('no-access-message').style.display = 'block';
-  }
 }
 
-// Вопросы для игры "Правда"
-function askTruth() {
-  const questions = [
-    "Когда был твой первый поцелуй?",
-    "Кому ты разбил(а) сердце?",
-    "Расскажи то, что скрываешь от всех"
-  ];
-  document.getElementById("game-question").textContent = questions[Math.floor(Math.random() * questions.length)];
+// Возрастной гейт
+function enterSite() {
+    document.getElementById('ageGate').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+    localStorage.setItem('adult', 'true');
 }
 
-// Вопросы для игры "Чуръят"
-function askDare() {
-  const questions = [
-    "Опиши себя как блогера 18+",
-    "Изобрази эротический голос",
-    "Напиши другу: 'Я влюблён(а)'"
-  ];
-  document.getElementById("game-question").textContent = questions[Math.floor(Math.random() * questions.length)];
+function exitSite() {
+    window.location.href = 'https://google.com';
 }
 
-// Таймер до обновления
-function startCountdown(duration) {
-  let timer = duration, h, m, s;
-  setInterval(() => {
-    h = String(Math.floor(timer / 3600)).padStart(2, '0');
-    m = String(Math.floor((timer % 3600) / 60)).padStart(2, '0');
-    s = String(timer % 60).padStart(2, '0');
-    document.getElementById('timer').textContent = `${h}:${m}:${s}`;
-    if (--timer < 0) timer = duration;
-  }, 1000);
+// Проверяем, подтверждал ли пользователь возраст ранее
+if (localStorage.getItem('adult') === 'true') {
+    enterSite();
 }
 
-window.onload = () => {
-  const now = Date.now();
-  const next = localStorage.getItem("nextUpdate") || (now + 3 * 60 * 60 * 1000);
-  if (!localStorage.getItem("nextUpdate")) {
-    localStorage.setItem("nextUpdate", next);
-  }
-  const remain = Math.floor((next - now) / 1000);
-  startCountdown(remain);
-  showVipContent();
-};
+// По умолчанию загружаем русский
+changeLanguage('ru');
+{
+    "age_gate": "Вам есть 18 лет?",
+    "yes": "Да",
+    "no": "Нет",
+    "payment": "Оплата",
+    "crypto": "Криптовалюта",
+    "crypto_guide": "Переведите USDT (TRC20) на адрес:",
+    "send_txid": "Пришлите TxID в Telegram",
+    "sbp": "СБП",
+    "sbp_guide": "Переведите 500 руб. на номер:",
+    "send_screenshot": "Пришлите скрин чека",
+    "contact_us": "Связаться с поддержкой"
+}
+{
+    "age_gate": "Оё шумо 18-сола ҳастед?",
+    "yes": "Ҳа",
+    "no": "Не",
+    "payment": "Пардохт",
+    "crypto": "Криптовалют",
+    "crypto_guide": "USDT (TRC20)-ро ба суроға ирсол кунед:",
+    "send_txid": "TxID-ро ба Telegram фиристед",
+    "sbp": "СБП",
+    "sbp_guide": "500 руб. ба рақам ирсол кунед:",
+    "send_screenshot": "Скрин чекро фиристед",
+    "contact_us": "Бо дастгирӣ тамос гиред"
+}
