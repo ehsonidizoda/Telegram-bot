@@ -169,5 +169,34 @@ fetch('counter.php')
   });
 </script>
 
+<script>
+const giftList = [
+  "🔥 1 день VIP-доступа",
+  "🔐 Секретный канал",
+  "🤖 Доступ к приватному боту",
+  "📁 Приватный архив с видео",
+  "🎫 Промокод на скидку"
+];
+
+function getDailyGift() {
+  const today = new Date().toDateString();
+  const saved = localStorage.getItem("dailyGiftDate");
+  if (saved === today) {
+    document.getElementById("gift-result").textContent = "Ты уже получил подарок сегодня!";
+    return;
+  }
+
+  const gift = giftList[Math.floor(Math.random() * giftList.length)];
+  document.getElementById("gift-result").textContent = `Твой подарок: ${gift}`;
+  localStorage.setItem("dailyGiftDate", today);
+}
+</script>
+
 </body>
 </html>
+
+<div class="section" id="daily-gift">
+  <h3>🎁 Подарок дня</h3>
+  <button onclick="getDailyGift()">Получить</button>
+  <p id="gift-result" style="margin-top:10px; color: #ff2f8b;"></p>
+</div>
