@@ -1,65 +1,118 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AJALI PETKAHO — 18+</title>
-
-  <!-- Подключение внешнего CSS -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- Font Awesome для иконок -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .promo-bar {
+      background: #ff2f8b;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+    }
+    .promo-bar span {
+      display: inline-block;
+      animation: scroll-left 12s linear infinite;
+    }
+    @keyframes scroll-left {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .lang-switch {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 15px 0;
+    }
+    .lang-switch button {
+      background: #ff2f8b;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<body>
-
-<header>
+<body><div class="promo-bar">
+  <span>🔥 Всё самое 🔞 — только в Telegram! Подпишись @ajalipetkaho</span>
+</div><div class="lang-switch">
+  <button onclick="setLang('ru')">🇷🇺 Русский</button>
+  <button onclick="setLang('tj')">🇹🇯 Тоҷикӣ</button>
+</div><header>
   <h1><i class="fas fa-ban"></i> AJALI PETKAHO — 18+</h1>
-</header>
-
-<!-- Кнопки -->
-<div class="buttons">
-  <a class="button" href="#channels"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" width="20"> Каналы</a>
-  <a class="button" href="#bots"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712107.png" width="20"> Боты</a>
+</header><div class="buttons">
+  <a class="button" href="#channels"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" width="20"> <span data-txt="Каналы">Каналы</span></a>
+  <a class="button" href="#bots"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712107.png" width="20"> <span data-txt="Боты">Боты</span></a>
   <a class="button" href="https://instagram.com/ajali_petka" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-  <a class="button" href="#vip"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" width="20"> VIP</a>
-</div>
-
-<!-- Каналы -->
-<div class="section" id="channels">
-  <h2><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" width="24"> Мои каналы</h2>
+  <a class="button" href="#vip"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" width="20"> <span data-txt="VIP">VIP</span></a>
+</div><div class="section" id="channels">
+  <h2><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" width="24"> <span data-txt="Мои каналы">Мои каналы</span></h2>
   <p><strong>Канал 1:</strong> AJALI PETKAHO<br>
      <a class="link-button" href="https://t.me/ajali_petkaho" target="_blank">Перейти</a></p>
   <p><strong>Канал 2:</strong> Ходиса ТВ<br>
      <a class="link-button" href="https://t.me/hodisatv" target="_blank">Перейти</a></p>
   <p><strong>Канал 3:</strong> VIP Lounge<br>
      <a class="link-button" href="https://t.me/viplounge" target="_blank">Перейти</a></p>
-</div>
-
-<!-- Боты -->
-<div class="section" id="bots">
-  <h2><img src="https://cdn-icons-png.flaticon.com/512/4712/4712107.png" width="24"> Мои боты</h2>
+</div><div class="section" id="bots">
+  <h2><img src="https://cdn-icons-png.flaticon.com/512/4712/4712107.png" width="24"> <span data-txt="Мои боты">Мои боты</span></h2>
   <p><strong>Бот 1:</strong> Контент-Бот<br>
      <a class="link-button" href="https://t.me/VvediCodBot" target="_blank">Перейти</a></p>
   <p><strong>Бот 2:</strong> Premium-Бот<br>
      <a class="link-button" href="https://t.me/Fors_Admiin" target="_blank">Перейти</a></p>
-</div>
-
-<!-- VIP -->
-<div class="section" id="vip">
-  <h2><img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" width="24"> VIP доступ</h2>
-  <p>Для получения VIP-доступа напишите:<br>
+</div><div class="section" id="vip">
+  <h2><img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" width="24"> <span data-txt="VIP доступ">VIP доступ</span></h2>
+  <p><span data-txt="Для получения VIP-доступа напишите:">Для получения VIP-доступа напишите:</span><br>
      <a class="link-button" href="https://t.me/Fors_Admiin" target="_blank">@Fors_Admiin</a></p>
   <ul style="text-align: left; max-width: 400px; margin: auto;">
-    <li>★ Эксклюзивный контент</li>
-    <li>★ Персональные условия</li>
-    <li>★ Приоритетная поддержка</li>
+    <li>★ <span data-txt="Эксклюзивный контент">Эксклюзивный контент</span></li>
+    <li>★ <span data-txt="Персональные условия">Персональные условия</span></li>
+    <li>★ <span data-txt="Приоритетная поддержка">Приоритетная поддержка</span></li>
   </ul>
-</div>
-
-<footer>
+</div><div class="section">
+  <h2><span data-txt="Просмотров">Просмотров</span>: <span id="view-counter">0</span></h2>
+</div><footer>
   <p>© 2025 ajalipetkaho.ru</p>
-</footer>
+</footer><script>
+  // Переводы
+  const translations = {
+    ru: {},
+    tj: {
+      'Каналы': 'Каналҳо',
+      'Боты': 'Ботҳо',
+      'Мои каналы': 'Каналҳои ман',
+      'Мои боты': 'Ботҳои ман',
+      'VIP': 'VIP',
+      'VIP доступ': 'Дастрасии VIP',
+      'Для получения VIP-доступа напишите:': 'Барои гирифтани дастрасии VIP нависед:',
+      'Эксклюзивный контент': 'Контенти махфӣ',
+      'Персональные условия': 'Шартҳои инфиродӣ',
+      'Приоритетная поддержка': 'Дастгирии авлавиятнок',
+      'Просмотров': 'Бор дидан шудааст'
+    }
+  };
 
-</body>
+  function setLang(lang) {
+    document.querySelectorAll('[data-txt]').forEach(el => {
+      const key = el.dataset.txt;
+      el.textContent = translations[lang][key] || key;
+    });
+    localStorage.setItem('lang', lang);
+  }
+
+  window.onload = () => {
+    const lang = localStorage.getItem('lang') || 'ru';
+    setLang(lang);
+    let views = localStorage.getItem('views') || 0;
+    views++;
+    localStorage.setItem('views', views);
+    document.getElementById('view-counter').textContent = views;
+  }
+</script></body>
 </html>
