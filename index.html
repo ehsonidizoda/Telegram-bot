@@ -11,6 +11,10 @@
 <header>
   <h1>AJALI PETKAHO</h1>
   <p>Эксклюзивный контент только для взрослых.</p>
+  <div class="buttons">
+    <a class="button" href="#" onclick="showVipContent()">Получить VIP доступ</a>
+  </div>
+  <div class="countdown">Обновление через: <span id="timer">00:00:00</span></div>
 </header>
 
 <!-- Выбор тарифа -->
@@ -29,12 +33,27 @@
 <div class="section" id="vip-content-section" style="display:none;">
   <h2>VIP Контент</h2>
   <p>Это скрытый контент, доступный только для пользователей с активным VIP доступом!</p>
+  <div id="media-box"></div>
+  <button onclick="showRandomMedia()">Показать случайное</button>
+  <div class="reaction">
+    <span>❤️</span>
+    <span>🔥</span>
+    <span>👎</span>
+  </div>
 </div>
 
 <!-- Сообщение, если доступ не активен -->
 <div id="no-access-message" class="section" style="display:none;">
   <h2>Ваш доступ не активен!</h2>
   <p>Пожалуйста, выберите вариант для получения VIP доступа.</p>
+</div>
+
+<!-- Игра "Правда или Чуръят" -->
+<div class="section">
+  <h2>Правда или Чуръят</h2>
+  <button onclick="askTruth()">Правда</button>
+  <button onclick="askDare()">Чуръят</button>
+  <div id="game-question"></div>
 </div>
 
 <!-- Переключение языка -->
@@ -65,6 +84,10 @@ h1 {
 
 h2 {
   font-size: 2em;
+  color: #ff2f8b;
+}
+
+h3 {
   color: #ff2f8b;
 }
 
@@ -123,6 +146,7 @@ footer {
   color: #aaa;
   padding: 30px 10px 20px;
 }
+// Функция выбора тарифа
 let selectedOption = '';
 function selectOption(option) {
   selectedOption = option;
@@ -143,6 +167,7 @@ function selectOption(option) {
   }
 }
 
+// Функция для подтверждения оплаты
 function confirmPayment() {
   if (!selectedOption) {
     alert("Пожалуйста, выберите вариант доступа.");
@@ -175,6 +200,7 @@ function confirmPayment() {
   showVipContent();
 }
 
+// Показ контента VIP
 function showVipContent() {
   const vipData = JSON.parse(localStorage.getItem('vipAccess'));
   const now = new Date().getTime();
@@ -195,6 +221,27 @@ function showVipContent() {
   }
 }
 
+// Вопросы для игры "Правда"
+function askTruth() {
+  const questions = [
+    "Когда был твой первый поцелуй?",
+    "Кому ты разбил(а) сердце?",
+    "Расскажи то, что скрываешь от всех"
+  ];
+  document.getElementById("game-question").textContent = questions[Math.floor(Math.random() * questions.length)];
+}
+
+// Вопросы для игры "Чуръят"
+function askDare() {
+  const questions = [
+    "Опиши себя как блогера 18+",
+    "Изобрази эротический голос",
+    "Напиши другу: 'Я влюблён(а)'"
+  ];
+  document.getElementById("game-question").textContent = questions[Math.floor(Math.random() * questions.length)];
+}
+
+// Переключение языка
 function setLang(lang) {
   localStorage.setItem('lang', lang);
   location.reload();
@@ -203,5 +250,116 @@ function setLang(lang) {
 window.onload = () => {
   const storedLang = localStorage.getItem('lang') || 'ru';
   setLang(storedLang);
+  showVipContent();
+};
+
+<!-- Таймер для обновления контента -->
+<div class="countdown">Обновление через: <span id="timer">00:00:00</span></div>
+// Функции для выбора тарифа и VIP контента
+let selectedOption = '';
+function selectOption(option) {
+  selectedOption = option;
+  document.querySelectorAll('.price-option').forEach(option => option.classList.remove('selected'));
+  document.querySelector(`.price-option:nth-child(${['1day', '1month', 'lifetime'].indexOf(option) + 1})`).classList.add('selected');
+  const priceStatus = document.getElementById('price-status');
+  switch (option) {
+    case '1day':
+      priceStatus.textContent = 'Вы выбрали 1-дневный доступ (200₽).';
+      break;
+    case '1month':
+      priceStatus.textContent = 'Вы выбрали 1-месячный доступ (400₽).';
+      break;
+    case 'lifetime':
+      priceStatus.textContent = 'Вы выбрали бессрочный доступ (600₽).';
+      break;
+  }
+}
+
+function confirmPayment() {
+  if (!selectedOption) {
+    alert("Пожалуйста, выберите вариант доступа.");
+    return;
+  }
+  let expiryDate;
+  switch (selectedOption) {
+    case '1day':
+      expiryDate = new Date();
+      expiryDate.setDate(expiryDate.getDate() + 1); // 1 день
+      break;
+    case '1month':
+      expiryDate = new Date();
+      expiryDate.setMonth(expiryDate.getMonth() + 1); // 1 месяц
+      break;
+    case 'lifetime':
+      expiryDate = null; // бессрочно
+      break;
+  }
+  const vipData = {
+    option: selectedOption,
+    expiry: expiryDate ? expiryDate.toISOString() : null
+  };
+  localStorage.setItem('vipAccess', JSON.stringify(vipData));
+  alert("Ваш запрос на VIP доступ отправлен. Ожидайте подтверждения.");
+  showVipContent();
+}
+
+function showVipContent() {
+  const vipData = JSON.parse(localStorage.getItem('vipAccess'));
+  const now = new Date().getTime();
+  let isVipValid = false;
+  if (vipData) {
+    if (vipData.option === 'lifetime' || (vipData.expiry && new Date(vipData.expiry).getTime() > now)) {
+      isVipValid = true;
+    }
+  }
+  if (isVipValid) {
+    document.getElementById('vip-content-section').style.display = 'block';
+    document.getElementById('no-access-message').style.display = 'none';
+  } else {
+    document.getElementById('vip-content-section').style.display = 'none';
+    document.getElementById('no-access-message').style.display = 'block';
+  }
+}
+
+// Вопросы для игры "Правда"
+function askTruth() {
+  const questions = [
+    "Когда был твой первый поцелуй?",
+    "Кому ты разбил(а) сердце?",
+    "Расскажи то, что скрываешь от всех"
+  ];
+  document.getElementById("game-question").textContent = questions[Math.floor(Math.random() * questions.length)];
+}
+
+// Вопросы для игры "Чуръят"
+function askDare() {
+  const questions = [
+    "Опиши себя как блогера 18+",
+    "Изобрази эротический голос",
+    "Напиши другу: 'Я влюблён(а)'"
+  ];
+  document.getElementById("game-question").textContent = questions[Math.floor(Math.random() * questions.length)];
+}
+
+// Таймер до обновления
+function startCountdown(duration) {
+  let timer = duration, h, m, s;
+  setInterval(() => {
+    h = String(Math.floor(timer / 3600)).padStart(2, '0');
+    m = String(Math.floor((timer % 3600) / 60)).padStart(2, '0');
+    s = String(timer % 60).padStart(2, '0');
+    document.getElementById('timer').textContent = `${h}:${m}:${s}`;
+    if (--timer < 0) timer = duration;
+  }, 1000);
+}
+
+window.onload = () => {
+  const now = Date.now();
+  const next = localStorage.getItem("nextUpdate") || (now + 3 * 60 * 60 * 1000);
+  if (!localStorage.getItem("nextUpdate")) {
+    localStorage.setItem("nextUpdate", next);
+  }
+  const remain = Math.floor((next - now) / 1000);
+  startCountdown(remain);
   showVipContent();
 };
