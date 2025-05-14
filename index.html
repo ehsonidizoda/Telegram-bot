@@ -4,8 +4,95 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>18+ Контент — AJALI PETKAHO</title>
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #000000, #1c0022);
+      color: white;
+      text-align: center;
+    }
+    #age-popup {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+    }
+    #age-popup button {
+      background: #ff2f8b;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1em;
+      margin-top: 15px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-top: 30px;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      max-width: 400px;
+      margin: 20px auto;
+    }
+    .button {
+      background: #ff2f8b;
+      color: white;
+      padding: 12px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+    }
+    .button:hover {
+      transform: scale(1.05);
+      background: #e42072;
+    }
+    .section {
+      background: #111;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 0 12px #00000055;
+    }
+    .link-button {
+      display: inline-block;
+      background-color: #2196f3;
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      margin-top: 6px;
+      font-weight: bold;
+    }
+    .reaction {
+      margin: 10px 0;
+      font-size: 1.4em;
+    }
+    .reaction span {
+      cursor: pointer;
+      padding: 5px;
+    }
+    footer {
+      margin: 40px 0 20px;
+      color: #aaa;
+      font-size: 0.9em;
+    }
+  </style>
 </head>
 <body>
 
@@ -26,13 +113,19 @@
 
 <div class="section" id="channels">
   <h2><i class="fa-brands fa-telegram"></i> Мои каналы</h2>
-  <p><strong>Канал 1:</strong> AJALI PETKAHO <br><a class="link-button" href="#">Перейти</a>
+
+  <p><strong>Канал 1:</strong> AJALI PETKAHO <br>
+    <a class="link-button" href="#">Перейти</a>
     <div class="reaction" data-id="c1">❤️ 🔥 👎</div>
   </p>
-  <p><strong>Канал 2:</strong> Ходиса ТВ <br><a class="link-button" href="#">Перейти</a>
+
+  <p><strong>Канал 2:</strong> Ходиса ТВ <br>
+    <a class="link-button" href="#">Перейти</a>
     <div class="reaction" data-id="c2">❤️ 🔥 👎</div>
   </p>
-  <p><strong>Канал 3:</strong> VIP Lounge <br><a class="link-button" href="#">Перейти</a>
+
+  <p><strong>Канал 3:</strong> VIP Lounge <br>
+    <a class="link-button" href="#">Перейти</a>
     <div class="reaction" data-id="c3">❤️ 🔥 👎</div>
   </p>
 </div>
@@ -45,14 +138,24 @@
 
 <div class="section" id="vip">
   <h2><i class="fa-solid fa-star"></i> VIP доступ</h2>
-  <p>Для получения VIP-доступа напишите:<br><a class="link-button" href="https://t.me/Fors_Admiin">@Fors_Admiin</a></p>
+  <p>Для получения VIP-доступа напишите:<br>
+    <a class="link-button" href="https://t.me/Fors_Admiin">@Fors_Admiin</a>
+  </p>
+  <ul style="text-align:left; max-width:400px; margin:auto;">
+    <li>★ Эксклюзивный контент</li>
+    <li>★ Персональные условия</li>
+    <li>★ Приоритетная поддержка</li>
+  </ul>
 </div>
 
+<!-- Счётчик просмотров -->
 <div id="view-counter" class="section" style="display:none;">
   <h3>Просмотров: <span id="views">0</span></h3>
 </div>
 
-<footer><p>© 2025 ajalipetkaho.ru</p></footer>
+<footer>
+  <p>© 2025 ajalipetkaho.ru</p>
+</footer>
 
 <script>
 function acceptAge() {
