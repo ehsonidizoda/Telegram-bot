@@ -1,62 +1,25 @@
-/* Сброс стилей */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.button {
+  background: linear-gradient(145deg, #ff2f8b, #e42072);
+  color: white;
+  padding: 14px;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 14px #ff2f8b55;
+  transition: transform 0.3s ease;
+  animation: pulse 2.5s ease-in-out infinite;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #17212B;
-    color: white;
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
-/* Возрастной гейт */
-.age-gate {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(23, 33, 43, 0.95);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.gate-content {
-    background: #1F2C38;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    border: 2px solid #FF5588;
-}
-
-.gate-content h1 {
-    margin-bottom: 20px;
-    color: #FF5588;
-}
-
-.buttons button {
-    background: #0088CC;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 0 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.buttons button:hover {
-    opacity: 0.9;
-}
-
-/* Основной контент */
-.main-content {
-    display: none; /* Скрыто по умолчанию */
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
+.button:hover {
+  transform: scale(1.1);
 }
