@@ -62,10 +62,29 @@
             content: "★";
             color: #fff;
         }
+        .content-block {
+            background: #111;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px auto;
+            max-width: 500px;
+            text-align: left;
+        }
+        a {
+            color: #0088cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        code {
+            background: #222;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
     </style>
 </head>
 <body>
-    <h1>🔞 18+ КОНТЕНТ</h1>
+    <h1>🔞 18+ Контент</h1>
     
     <div class="buttons">
         <button onclick="showSection('channels')">Мои каналы</button>
@@ -74,47 +93,93 @@
         <button class="vip" onclick="showSection('vip')">VIP</button>
     </div>
 
-    <div id="content" style="margin-top: 30px;">
-        <!-- Контент будет здесь -->
+    <div id="content">
+        <div class="content-block">
+            <p>Выберите раздел для просмотра</p>
+        </div>
     </div>
 
     <script>
         function showSection(section) {
             const content = {
                 channels: `
-                    <h2>Мои каналы</h2>
-                    <div style="background:#111;padding:15px;border-radius:10px;margin:10px;">
-                        <h3>Канал 1</h3>
-                        <p>Описание канала...</p>
-                        <a href="https://t.me/your_channel1" style="color:#0088cc">Перейти →</a>
+                    <div class="content-block">
+                        <h2>Мои каналы</h2>
+                        
+                        <div class="content-block">
+                            <h3>Канал 1</h3>
+                            <p>Описание первого канала</p>
+                            <a href="https://t.me/channel1" target="_blank">Перейти →</a>
+                        </div>
+                        
+                        <div class="content-block">
+                            <h3>Канал 2</h3>
+                            <p>Описание второго канала</p>
+                            <a href="https://t.me/channel2" target="_blank">Перейти →</a>
+                        </div>
+                        
+                        <div class="content-block">
+                            <h3>Канал 3</h3>
+                            <p>Описание третьего канала</p>
+                            <a href="https://t.me/channel3" target="_blank">Перейти →</a>
+                        </div>
+                        
+                        <div class="content-block">
+                            <h3>Канал 4</h3>
+                            <p>Описание четвертого канала</p>
+                            <a href="https://t.me/channel4" target="_blank">Перейти →</a>
+                        </div>
                     </div>
-                    <!-- Добавьте остальные 3 канала аналогично -->
                 `,
                 bots: `
-                    <h2>Мои боты</h2>
-                    <div style="background:#111;padding:15px;border-radius:10px;margin:10px;">
-                        <h3>Бот 1</h3>
-                        <p>Описание бота...</p>
-                        <a href="https://t.me/your_bot1" style="color:#0088cc">Перейти →</a>
+                    <div class="content-block">
+                        <h2>Мои боты</h2>
+                        
+                        <div class="content-block">
+                            <h3>Бот 1</h3>
+                            <p>Описание первого бота</p>
+                            <a href="https://t.me/bot1" target="_blank">Перейти →</a>
+                        </div>
+                        
+                        <div class="content-block">
+                            <h3>Бот 2</h3>
+                            <p>Описание второго бота</p>
+                            <a href="https://t.me/bot2" target="_blank">Перейти →</a>
+                        </div>
+                        
+                        <div class="content-block">
+                            <h3>Бот 3</h3>
+                            <p>Описание третьего бота</p>
+                            <a href="https://t.me/bot3" target="_blank">Перейти →</a>
+                        </div>
                     </div>
-                    <!-- Добавьте остальные 2 бота аналогично -->
                 `,
                 payment: `
-                    <h2>Оплата</h2>
-                    <div style="background:#111;padding:15px;border-radius:10px;margin:10px;">
-                        <h3>Криптовалюта</h3>
-                        <p>USDT (TRC20): <code>TXXXX...XXXX</code></p>
-                        <p>Пришлите TxID в Telegram</p>
-                    </div>
-                    <div style="background:#111;padding:15px;border-radius:10px;margin:10px;">
-                        <h3>СБП</h3>
-                        <p>Номер: <code>+7XXX XXX-XX-XX</code></p>
-                        <p>Пришлите скрин чека</p>
+                    <div class="content-block">
+                        <h2>Оплата</h2>
+                        
+                        <div class="content-block">
+                            <h3>Криптовалюта (USDT TRC20)</h3>
+                            <p><code>TXXXX...XXXX</code></p>
+                            <p>Пришлите TxID в Telegram</p>
+                        </div>
+                        
+                        <div class="content-block">
+                            <h3>СБП</h3>
+                            <p><code>+7XXX XXX-XX-XX</code></p>
+                            <p>Пришлите скрин чека</p>
+                        </div>
                     </div>
                 `,
                 vip: `
-                    <h2>VIP доступ</h2>
-                    <p>Эксклюзивный контент</p>
+                    <div class="content-block">
+                        <h2>VIP доступ</h2>
+                        <p>Для получения VIP-доступа напишите администратору:</p>
+                        <a href="https://t.me/Fors_Admiin" target="_blank">@Fors_Admiin</a>
+                        <p>★ Эксклюзивный контент</p>
+                        <p>★ Персональные условия</p>
+                        <p>★ Приоритетная поддержка</p>
+                    </div>
                 `
             };
             document.getElementById('content').innerHTML = content[section];
