@@ -34,6 +34,39 @@
 
 <h1><i class="fas fa-ban"></i> 18+ Контент</h1>
 
+<!-- Онлайн-счётчик (Frontend-only) --><div id="live-counter" class="section">
+  <h3>
+    Сейчас на сайте: <span id="onlineUsers">1</span><br>
+    Всего посетителей: <span id="totalViews">0</span>
+  </h3>
+</div><script>
+// Увеличение общего количества (хранится в localStorage только для визуального эффекта)
+let views = localStorage.getItem("totalViews") || 0;
+views++;
+localStorage.setItem("totalViews", views);
+document.getElementById("totalViews").textContent = views;
+
+// Симуляция онлайн-посетителей
+function randomOnline(min = 1, max = 5) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function updateOnline() {
+  document.getElementById("onlineUsers").textContent = randomOnline();
+}
+updateOnline();
+setInterval(updateOnline, 8000);
+</script><style>
+#live-counter {
+  background: #111;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 10px;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+</style>
+
 <div class="buttons">
   <a class="button" href="#channels"><i class="fa-solid fa-paper-plane"></i> Каналы</a>
   <a class="button" href="#bots"><i class="fa-solid fa-robot"></i> Боты</a>
