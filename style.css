@@ -1,111 +1,25 @@
-/* Основной фон и шрифт */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #000000, #1c0022);
-  color: white;
-  text-align: center;
-}
-
-/* Верхние кнопки */
-.buttons {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  max-width: 400px;
-  margin: 20px auto;
-  padding: 10px;
-}
-
-.button {
-  background: linear-gradient(145deg, #ff2f8b, #e42072);
-  color: white;
-  padding: 14px;
-  border-radius: 16px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 4px 14px #ff2f8b55;
-  transition: transform 0.3s ease;
-  animation: pulse 2.5s ease-in-out infinite;
-}
-
-.button:hover {
-  transform: scale(1.1);
-}
-
-.buttons a.button i {
-  font-size: 1.2em;
-}
-
-/* Анимация пульсации */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-/* Секции */
-.section {
-  background: #111;
-  border-radius: 12px;
-  padding: 20px;
-  margin: 20px 10px;
-  color: #fff;
-}
-
-/* Заголовки с иконками */
-.section h2 i {
-  margin-right: 8px;
-}
-
-/* Кнопка "Перейти" */
-a.link-button {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 8px 16px;
-  background-color: #2196f3;
-  color: white;
-  text-decoration: none;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 0.95em;
-  transition: background 0.3s ease;
-}
-
-a.link-button:hover {
-  background-color: #0b7dda;
-}
-
-/* Реакции */
-.reaction span {
-  font-size: 1.5em;
-  margin: 0 6px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
 .promo-banner {
   background: linear-gradient(90deg, #ff2f8b, #e42072);
   color: white;
   font-weight: bold;
-  padding: 10px;
-  text-align: center;
-  font-size: 1em;
-  animation: scrollText 20s linear infinite;
+  padding: 10px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.promo-banner span {
+  display: inline-block;
+  padding-left: 100%;
+  white-space: nowrap;
+  animation: scrollText 15s linear infinite;
+}
+
+@keyframes scrollText {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
 }
 
 .promo-banner a {
   color: yellow;
   text-decoration: underline;
 }
-
-@keyframes scrollText {
-  0% {transform: translateX(100%);}
-  100% {transform: translateX(-100%);}
-}
-
