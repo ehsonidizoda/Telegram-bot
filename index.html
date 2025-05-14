@@ -4,11 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>18+ Контент</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Основные стили */
+        body {
+            font-family: Arial, sans-serif;
+            background: #17212B;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Возрастной гейт */
+        #ageGate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(23, 33, 43, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .gate-content {
+            background: #1F2C38;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #FF5588;
+            max-width: 500px;
+        }
+        
+        /* Основной контент */
+        #mainContent {
+            display: none;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Блоки контента */
+        .content-block {
+            background: #1F2C38;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        /* Кнопки */
+        button {
+            background: #0088CC;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <!-- Возрастной гейт -->
-    <div id="ageGate" class="age-gate">
+    <div id="ageGate">
         <div class="gate-content">
             <h1>🔞 Вам есть 18 лет?</h1>
             <div class="buttons">
@@ -19,11 +78,55 @@
     </div>
 
     <!-- Основной контент -->
-    <div id="mainContent" class="main-content">
-        <h2>Добро пожаловать</h2>
-        <p>Здесь ваш контент...</p>
+    <div id="mainContent">
+        <!-- Блок каналов -->
+        <div class="content-block">
+            <h2>📢 Мои каналы</h2>
+            <p>Описание и ссылки на каналы...</p>
+        </div>
+        
+        <!-- Блок ботов -->
+        <div class="content-block">
+            <h2>🤖 Мои боты</h2>
+            <p>Описание и ссылки на ботов...</p>
+        </div>
+        
+        <!-- Блок оплаты -->
+        <div class="content-block">
+            <h2>💳 Оплата</h2>
+            <h3>Криптовалюта</h3>
+            <p>USDT (TRC20): <code>TXXXX...XXXX</code></p>
+            <p>Пришлите TxID в Telegram</p>
+            
+            <h3>СБП</h3>
+            <p>Номер: <code>+7XXX XXX-XX-XX</code></p>
+            <p>Пришлите скрин чека</p>
+        </div>
+        
+        <!-- Контакты -->
+        <div class="content-block">
+            <h2>📞 Контакты</h2>
+            <p>Telegram: @ваш_аккаунт</p>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Проверка возраста при загрузке
+        if (localStorage.getItem('ageVerified') === 'true') {
+            document.getElementById('ageGate').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+        }
+        
+        // Обработчики кнопок
+        document.getElementById('confirmBtn').addEventListener('click', function() {
+            localStorage.setItem('ageVerified', 'true');
+            document.getElementById('ageGate').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+        });
+        
+        document.getElementById('exitBtn').addEventListener('click', function() {
+            window.location.href = 'https://google.com';
+        });
+    </script>
 </body>
 </html>
