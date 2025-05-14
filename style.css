@@ -23,3 +23,51 @@
 .button:hover {
   transform: scale(1.1);
 }
+
+/* Анимация кнопок */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.buttons a.button {
+  animation: pulse 2.5s infinite;
+}
+
+/* Кнопка "Перейти" */
+a.link-button {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 16px;
+  background-color: #2196f3;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.95em;
+  transition: background 0.3s ease;
+}
+
+a.link-button:hover {
+  background-color: #0b7dda;
+}
+
+/* Иконки для секций */
+.section h2 i {
+  margin-right: 8px;
+}
+
+/* Обновлённые цвета и шрифт */
+.section {
+  background: #111;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 10px;
+  color: #fff;
+}
+
+/* Кнопки в верхнем блоке */
+.buttons a.button i {
+  font-size: 1.2em;
+}
