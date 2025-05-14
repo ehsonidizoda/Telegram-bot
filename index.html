@@ -10,12 +10,13 @@
       background: linear-gradient(135deg, #1c1c1c, #2c003e);
       color: white;
       text-align: center;
+      overflow-x: hidden;
     }
     header {
       padding: 50px 20px 20px;
     }
     h1 {
-      font-size: 2.5em;
+      font-size: 2.8em;
       margin: 0;
       color: #ff2f8b;
     }
@@ -25,27 +26,30 @@
       margin-bottom: 40px;
     }
     .buttons {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 15px;
-      max-width: 400px;
+      max-width: 350px;
       margin: auto;
+      padding: 10px 20px;
     }
     a.button {
-      background: #ff2f8b;
-      color: white;
-      padding: 15px;
-      border-radius: 12px;
+      background: #1a1a1a;
+      border: 2px solid #ff2f8b;
+      color: #ff2f8b;
+      padding: 14px;
+      border-radius: 20px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1.1em;
-      transition: background 0.3s;
+      font-size: 1em;
+      transition: all 0.3s;
     }
     a.button:hover {
-      background: #e42072;
+      background: #ff2f8b;
+      color: white;
     }
     .vip {
-      margin-top: 60px;
+      margin-top: 50px;
       background: #2a002a;
       padding: 30px 20px;
       border-radius: 20px;
@@ -64,6 +68,40 @@
       color: #666;
       padding-bottom: 20px;
     }
+    .telegram-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #ff2f8b;
+      padding: 15px;
+      text-align: center;
+      z-index: 100;
+    }
+    .telegram-banner a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2a002a;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px #f06;
+      z-index: 999;
+      animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -71,7 +109,6 @@
     <h1>AJALI PETKAHO</h1>
     <p class="tagline">Эксклюзивная 18+ коллекция. Всё только для взрослых.</p>
   </header>  <div class="buttons">
-    <a class="button" href="https://t.me/ajalipetkaho">Наш Telegram</a>
     <a class="button" href="gallery.html">Галерея</a>
     <a class="button" href="models.html">Модели</a>
     <a class="button" href="subscribe.html">Оформить VIP</a>
@@ -80,8 +117,15 @@
     <h2>VIP доступ</h2>
     <p>Оформи подписку и получи доступ к приватным фото, видео и эксклюзивным материалам.</p>
     <a class="button" href="subscribe.html">Стать VIP</a>
+  </div>  <div class="telegram-banner">
+    <a href="https://t.me/ajalipetkaho">Подписаться на наш Telegram</a>
+  </div>  <div id="popup" class="popup">
+    Подпишись на Telegram — там ВСЁ самое горячее!
   </div>  <footer>
     © 2025 ajalipetkaho.ru — Только для лиц 18+ | Все права защищены
-  </footer>
-</body>
+  </footer>  <script>
+    setTimeout(() => {
+      document.getElementById('popup').style.display = 'block';
+    }, 5000);
+  </script></body>
 </html>
