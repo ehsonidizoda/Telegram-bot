@@ -4,262 +4,223 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AJALI PETKAHO — 18+ Платформа</title>
-  <style>
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #1c1c1c, #2c003e);
-    color: white;
-    text-align: center;
-    overflow-x: hidden;
-  }
-
-  header {
-    padding: 50px 20px 10px;
-  }
-
-  h1 {
-    font-size: 2.6em;
-    color: #ff2f8b;
-    margin: 0;
-  }
-
-  .countdown {
-    background: #ff2f8b;
-    padding: 8px 18px;
-    display: inline-block;
-    border-radius: 12px;
-    margin: 12px 0;
-  }
-
-  /* Новый стиль кнопок */
-  .buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 10px;
-  }
-
-  a.button {
-    background: linear-gradient(145deg, #ff2f8b, #e42072);
-    color: white;
-    padding: 14px 20px;
-    border-radius: 16px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1em;
-    box-shadow: 0 4px 14px #ff2f8b55;
-    transition: all 0.25s ease;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-  }
-
-  a.button i {
-    font-size: 1.2em;
-  }
-
-  .section {
-    background: #222;
-    padding: 25px;
-    margin: 30px 20px;
-    border-radius: 14px;
-    box-shadow: 0 0 12px #00000055;
-  }
-
-  .reaction {
-    margin-top: 10px;
-    font-size: 1.4em;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-
-  .reaction span:hover {
-    transform: scale(1.2);
-  }
-
-  .lang-switch {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .lang-switch button {
-    background: #ff2f8b;
-    color: white;
-    border: none;
-    padding: 6px 14px;
-    border-radius: 10px;
-    font-weight: bold;
-  }
-
-  footer {
-    font-size: 0.85em;
-    color: #aaa;
-    padding: 30px 10px 20px;
-  }
-</style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
 <header>
   <h1>AJALI PETKAHO</h1>
-  <div class="countdown">Навсозӣ пас аз: <span id="timer">00:00:00</span></div>
+  <p>Эксклюзивный контент только для взрослых.</p>
+  <div class="buttons">
+    <a class="button" href="vip.html">Получить VIP доступ</a>
+  </div>
 </header>
-<div class="buttons">
-  <a class="button" href="https://t.me/+_O5ISU7emQxjZmJi"><i class="bi bi-telegram"></i> Ачлаи Петкахо</a>
-  <a class="button" href="https://t.me/+-WmmN-aTwVZlMGEy"><i class="bi bi-telegram"></i> Ходиса ТВ</a>
-  <a class="button" href="https://t.me/VvediCodBot"><i class="bi bi-telegram"></i> @VvediCodBot</a>
-  <a class="button" href="secret.html"><i class="bi bi-lock-fill"></i> VIP контент <i class="bi bi-star-fill"></i></a>
-</div>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-<!-- Галерея -->
-<div class="section">
-  <h2 id="gallery-title">Галерея</h2>
-  <div id="media-box"></div>
-  <button onclick="showRandomMedia()" id="random-btn" class="game-button">Тасодуфӣ намоиш деҳ</button>
-  <p id="view-counter" style="margin-top: 15px; color: #bbb;">Медиа тамошо шуд: 0 бор</p>
-</div>
-
-<!-- Ҳақиқат ё Ҷуръат -->
-<div class="section">
-  <h2 id="game-title">Ҳақиқат ё Ҷуръат</h2>
-  <div class="lang-switch">
-    <button onclick="askTruth()">Ҳақиқат</button>
-    <button onclick="askDare()">Ҷуръат</button>
-  </div>
-  <div id="game-question" style="margin-top:15px;">Барои оғоз кардан интихоб кунед.</div>
-</div>
-
-<!-- Переключатель языка внизу -->
 <footer>
-  <div class="lang-switch">
-    <button onclick="setLang('tj')">🇹🇯 Тоҷикӣ</button>
-    <button onclick="setLang('ru')">🇷🇺 Русский</button>
-  </div>
   <p>© 2025 ajalipetkaho.ru</p>
 </footer>
-<script>
-const translations = {
-  tj: {
-    title: "Галерея",
-    random: "Тасодуфӣ намоиш деҳ",
-    vip: "🔒 Танҳо барои VIP",
-    truth: [
-      "Аввалин бӯсаат кай буд?",
-      "Шахсиятеро ном бар, ки дилашро шикастӣ",
-      "Чизеро гӯй, ки аз ҳама пинҳон медорӣ",
-      "Шармандагитарин лаҳзаи ҳаётат кадом аст?"
-    ],
-    dare: [
-      "Танатро тавсиф кун мисли блогер",
-      "Овози эротикиатонро нишон деҳ",
-      "Ба дӯстат СМС гӯй: 'Ман ошиқ шудам'",
-      "Бо овози баланд бигӯ: 'Ман шахсияти 18+ ҳастам!'"
-    ]
-  },
-  ru: {
-    title: "Галерея",
-    random: "Показать случайное",
-    vip: "🔒 Только для VIP",
-    truth: [
-      "Когда был твой первый поцелуй?",
-      "Кому ты разбил(а) сердце?",
-      "Расскажи то, что скрываешь от всех",
-      "Твой самый позорный момент?"
-    ],
-    dare: [
-      "Опиши себя как блогер 18+",
-      "Изобрази эротический голос",
-      "Напиши другу: 'Я влюблён(а)'",
-      "Громко скажи: 'Я взрослый и раскованный человек!'"
-    ]
-  }
-};
 
-let lang = localStorage.getItem('lang') || 'tj';
-
-function setLang(l) {
-  lang = l;
-  localStorage.setItem('lang', lang);
-  document.getElementById("gallery-title").textContent = translations[lang].title;
-  document.getElementById("random-btn").textContent = translations[lang].random;
-  document.getElementById("game-title").textContent = lang === 'tj' ? "Ҳақиқат ё Ҷуръат" : "Правда или Действие";
-}
-
-function askTruth() {
-  const q = translations[lang].truth[Math.floor(Math.random() * translations[lang].truth.length)];
-  document.getElementById("game-question").textContent = q;
-}
-
-function askDare() {
-  const q = translations[lang].dare[Math.floor(Math.random() * translations[lang].dare.length)];
-  document.getElementById("game-question").textContent = q;
-}
-
-const mediaItems = [
-  { type: 'image', src: 'https://via.placeholder.com/600x350?text=Фото+1' },
-  { type: 'video', src: 'https://www.w3schools.com/html/mov_bbb.mp4' },
-  { type: 'image', src: 'https://via.placeholder.com/600x350?text=Фото+VIP', vip: true }
-];
-
-let viewCount = 1;
-
-function showRandomMedia() {
-  const mediaBox = document.getElementById('media-box');
-  viewCount++;
-  let content = '';
-
-  const item = mediaItems[Math.floor(Math.random() * mediaItems.length)];
-  if (item.type === 'image') {
-    content += `<img src="${item.src}" style="width:90%;max-width:400px;border-radius:12px;">`;
-  } else {
-    content += `<video controls style="width:90%;max-width:400px;border-radius:12px;"><source src="${item.src}" type="video/mp4"></video>`;
-  }
-
-  content += `<div class="reaction"><span>❤️</span><span>🔥</span><span>👎</span></div>`;
-  if (item.vip) content += `<div style="color:#ff2f8b;margin-top:10px;">${translations[lang].vip}</div>`;
-
-  mediaBox.innerHTML = content;
-
-  // Счётчик просмотров
-  let totalViews = localStorage.getItem("viewCount") || 0;
-  totalViews++;
-  localStorage.setItem("viewCount", totalViews);
-  document.getElementById("view-counter").textContent = `Медиа тамошо шуд: ${totalViews} бор`;
-}
-
-function startCountdown(duration) {
-  let timer = duration, h, m, s;
-  setInterval(() => {
-    h = String(Math.floor(timer / 3600)).padStart(2, '0');
-    m = String(Math.floor((timer % 3600) / 60)).padStart(2, '0');
-    s = String(timer % 60).padStart(2, '0');
-    document.getElementById('timer').textContent = `${h}:${m}:${s}`;
-    if (--timer < 0) timer = duration;
-  }, 1000);
-}
-<script>
-window.onload = () => {
-  const now = Date.now();
-  const next = localStorage.getItem("nextUpdate") || (now + 3 * 60 * 60 * 1000);
-  if (!localStorage.getItem("nextUpdate")) {
-    localStorage.setItem("nextUpdate", next);
-  }
-  const remain = Math.floor((next - now) / 1000);
-  startCountdown(remain);
-  setLang(lang);
-
-  let storedViews = localStorage.getItem("viewCount") || 0;
-  document.getElementById("view-counter").textContent = `Медиа тамошо шуд: ${storedViews} бор`;
-};
-</script>
+<script src="script.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIP доступ — 18+ Платформа</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h1>VIP Доступ</h1>
+  <p>Выберите вариант доступа:</p>
+</header>
+
+<div class="section">
+  <div class="price-option" onclick="selectOption('1day')">1 день — 200₽</div>
+  <div class="price-option" onclick="selectOption('1month')">1 месяц — 400₽</div>
+  <div class="price-option" onclick="selectOption('lifetime')">Бессрочно — 600₽</div>
+
+  <div id="price-status" style="color: #ff2f8b;"></div>
+
+  <button onclick="confirmPayment()">Оплатил</button>
+</div>
+
+<footer>
+  <p>© 2025 ajalipetkaho.ru</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIP Контент — 18+ Платформа</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h1>VIP Контент</h1>
+</header>
+
+<div class="section">
+  <div id="vip-content" class="vip-content">Здесь будет скрытый VIP контент!</div>
+  <div id="no-access-message">Ваш доступ не активен.</div>
+</div>
+
+<footer>
+  <p>© 2025 ajalipetkaho.ru</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #1c1c1c, #2c003e);
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.6em;
+  color: #ff2f8b;
+  margin: 0;
+}
+
+h2 {
+  font-size: 2em;
+  color: #ff2f8b;
+}
+
+h3 {
+  color: #ff2f8b;
+}
+
+.section {
+  background: #222;
+  padding: 25px;
+  margin: 30px 20px;
+  border-radius: 14px;
+  box-shadow: 0 0 12px #00000055;
+}
+
+.price-option {
+  background: #ff2f8b;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.price-option:hover {
+  background: #e42072;
+}
+
+.price-option.selected {
+  background: #e42072;
+}
+
+button {
+  padding: 14px 24px;
+  background: #ff2f8b;
+  color: white;
+  border-radius: 12px;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+footer {
+  font-size: 0.85em;
+  color: #aaa;
+  padding: 30px 10px 20px;
+}
+
+// Функция выбора тарифа на странице vip.html
+let selectedOption = '';
+function selectOption(option) {
+  selectedOption = option;
+  document.querySelectorAll('.price-option').forEach(option => option.classList.remove('selected'));
+  document.querySelector(`.price-option:nth-child(${['1day', '1month', 'lifetime'].indexOf(option) + 1})`).classList.add('selected');
+  
+  // Отображаем информацию о выбранном тарифе
+  const priceStatus = document.getElementById('price-status');
+  switch (option) {
+    case '1day':
+      priceStatus.textContent = 'Вы выбрали 1-дневный доступ (200₽).';
+      break;
+    case '1month':
+      priceStatus.textContent = 'Вы выбрали 1-месячный доступ (400₽).';
+      break;
+    case 'lifetime':
+      priceStatus.textContent = 'Вы выбрали бессрочный доступ (600₽).';
+      break;
+  }
+}
+
+// Функция для подтверждения оплаты
+function confirmPayment() {
+  if (!selectedOption) {
+    alert("Пожалуйста, выберите вариант доступа.");
+    return;
+  }
+
+  // Сохраняем данные о VIP доступе в localStorage
+  let expiryDate;
+  switch (selectedOption) {
+    case '1day':
+      expiryDate = new Date();
+      expiryDate.setDate(expiryDate.getDate() + 1); // 1 день
+      break;
+    case '1month':
+      expiryDate = new Date();
+      expiryDate.setMonth(expiryDate.getMonth() + 1); // 1 месяц
+      break;
+    case 'lifetime':
+      expiryDate = null; // бессрочно
+      break;
+  }
+
+  // Сохраняем выбор в localStorage
+  const vipData = {
+    option: selectedOption,
+    expiry: expiryDate ? expiryDate.toISOString() : null
+  };
+  localStorage.setItem('vipAccess', JSON.stringify(vipData));
+  alert("Ваш запрос на VIP доступ отправлен. Ожидайте подтверждения.");
+
+  // Редирект на страницу с VIP контентом
+  window.location.href = "vip_content.html"; // Место для контента
+}
+
+// Страница vip_content.html проверяет localStorage на доступ
+window.onload = () => {
+  const vipData = JSON.parse(localStorage.getItem('vipAccess'));
+  const now = new Date().getTime();
+  let isVipValid = false;
+
+  if (vipData) {
+    if (vipData.option === 'lifetime' || (vipData.expiry && new Date(vipData.expiry).getTime() > now)) {
+      isVipValid = true;  // VIP доступ активен
+    }
+  }
+
+  if (isVipValid) {
+    document.getElementById('vip-content').style.display = 'block';
+    document.getElementById('no-access-message').style.display = 'none';
+  } else {
+    document.getElementById('vip-content').style.display = 'none';
+    document.getElementById('no-access-message').style.display = 'block';
+  }
+};
