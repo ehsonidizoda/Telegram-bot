@@ -17,23 +17,16 @@
       padding: 50px 20px 10px;
     }
     h1 {
-      font-size: 2.8em;
-      margin: 0;
+      font-size: 2.6em;
       color: #ff2f8b;
+      margin: 0;
     }
     .countdown {
-      font-size: 1.1em;
       background: #ff2f8b;
-      color: white;
+      padding: 8px 18px;
       display: inline-block;
-      padding: 8px 20px;
       border-radius: 12px;
-      margin-top: 10px;
-    }
-    p.tagline {
-      font-size: 1.2em;
-      color: #ccc;
-      margin: 20px 0 40px;
+      margin: 12px 0;
     }
     .buttons {
       display: grid;
@@ -56,6 +49,17 @@
     a.button:hover {
       background: #e42072;
     }
+    .section {
+      background: #222;
+      padding: 25px;
+      margin: 30px 20px;
+      border-radius: 14px;
+      box-shadow: 0 0 12px #00000055;
+    }
+    .section h2 {
+      color: #ff2f8b;
+      margin-bottom: 15px;
+    }
     .reaction {
       margin-top: 10px;
       font-size: 1.4em;
@@ -70,78 +74,43 @@
     .reaction span:hover {
       transform: scale(1.2);
     }
-    .ad-block {
-      background: linear-gradient(135deg, #2c003e, #ff2f8b33);
-      border: 2px solid #ff2f8b;
-      padding: 20px;
-      border-radius: 16px;
-      margin: 30px auto;
-      max-width: 90%;
-    }
-    .ad-title {
-      font-size: 1.2em;
-      color: #ff2f8b;
-      margin-bottom: 8px;
-    }
-    .ad-text {
-      color: #ddd;
-      margin-bottom: 12px;
-    }
-    .ad-btn {
-      display: inline-block;
-      background: #ff2f8b;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .ad-btn:hover {
-      background: #e42072;
-    }
-    .game-box {
-      margin-top: 60px;
-      background: #1a1a1a;
-      padding: 20px;
-      border-radius: 12px;
-    }
-    .game-box h3 {
-      color: #ff2f8b;
-    }
-    .game-question {
-      font-size: 1.2em;
-      margin: 20px 0;
-    }
     .game-button {
+      margin-top: 10px;
+      padding: 10px 20px;
       background: #ff2f8b;
       color: white;
-      padding: 12px 24px;
       border: none;
       border-radius: 10px;
       cursor: pointer;
+      font-weight: bold;
+    }
+    .lang-switch {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .lang-switch button {
+      background: #ff2f8b;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+    footer {
+      font-size: 0.85em;
+      color: #aaa;
+      padding: 30px 10px 20px;
     }
   </style>
 </head>
 <body>
-<!-- Попап 18+ -->
-<div id="age-popup" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;">
-  <h2 style="color:#ff2f8b;">🔞</h2>
-  <p id="popup-text">Ин сомона барои калонсолон аст. Шумо аз 18 гузаштаед?</p>
-  <button id="popup-btn" onclick="acceptAge()" style="margin-top:20px;padding:12px 24px;background:#ff2f8b;color:white;border:none;border-radius:10px;font-size:1em;cursor:pointer;">Бале, гузаштаам</button>
-</div>
-
-<!-- Заголовок -->
 <header>
   <h1>AJALI PETKAHO</h1>
-  <div style="margin-top: 10px;">
-    <button onclick="setLang('tj')" style="margin: 5px;">🇹🇯 Тоҷикӣ</button>
-    <button onclick="setLang('ru')" style="margin: 5px;">🇷🇺 Русский</button>
-  </div>
   <div class="countdown">Навсозӣ пас аз: <span id="timer">00:00:00</span></div>
-  <p class="tagline">Танҳо барои калонсолон. Контенти 18+</p>
 </header>
 
-<!-- Кнопки -->
 <div class="buttons">
   <a class="button" href="https://t.me/ajalipetkaho">Ачлаи Петкахо</a>
   <a class="button" href="https://t.me/hodisatv">Ходиса ТВ</a>
@@ -149,24 +118,89 @@
 </div>
 
 <!-- Галерея -->
-<div class="media-gallery">
+<div class="section">
   <h2 id="gallery-title">Галерея</h2>
   <div id="media-box"></div>
-  <button onclick="showRandomMedia()" id="random-btn" style="margin-top:20px;background:#ff2f8b;color:#fff;padding:12px 20px;border:none;border-radius:10px;">Тасодуфӣ намоиш деҳ</button>
+  <button onclick="showRandomMedia()" id="random-btn" class="game-button">Тасодуфӣ намоиш деҳ</button>
+  <p id="view-counter" style="margin-top: 15px; color: #bbb;">Медиа тамошо шуд: 0 бор</p>
 </div>
 
-<!-- Игра -->
-<div class="game-box">
-  <h3 id="game-title">Ҳақиқат ё Ҷуръат</h3>
-  <div class="game-question" id="game-question">Барои оғоз кардан зер кунед...</div>
-  <button class="game-button" id="game-btn" onclick="nextGameQuestion()">Саволи нав</button>
+<!-- Ҳақиқат ё Ҷуръат -->
+<div class="section">
+  <h2 id="game-title">Ҳақиқат ё Ҷуръат</h2>
+  <div class="lang-switch">
+    <button onclick="askTruth()">Ҳақиқат</button>
+    <button onclick="askDare()">Ҷуръат</button>
+  </div>
+  <div id="game-question" style="margin-top:15px;">Барои оғоз кардан интихоб кунед.</div>
 </div>
 
-<!-- Подвал -->
+<!-- Переключатель языка внизу -->
 <footer>
-  <p style="margin-top: 50px; font-size: 0.9em; color: #888;">© 2025 ajalipetkaho.ru</p>
+  <div class="lang-switch">
+    <button onclick="setLang('tj')">🇹🇯 Тоҷикӣ</button>
+    <button onclick="setLang('ru')">🇷🇺 Русский</button>
+  </div>
+  <p>© 2025 ajalipetkaho.ru</p>
 </footer>
 <script>
+const translations = {
+  tj: {
+    title: "Галерея",
+    random: "Тасодуфӣ намоиш деҳ",
+    vip: "🔒 Танҳо барои VIP",
+    truth: [
+      "Аввалин бӯсаат кай буд?",
+      "Шахсиятеро ном бар, ки дилашро шикастӣ",
+      "Чизеро гӯй, ки аз ҳама пинҳон медорӣ",
+      "Шармандагитарин лаҳзаи ҳаётат кадом аст?"
+    ],
+    dare: [
+      "Танатро тавсиф кун мисли блогер",
+      "Овози эротикиатонро нишон деҳ",
+      "Ба дӯстат СМС гӯй: 'Ман ошиқ шудам'",
+      "Бо овози баланд бигӯ: 'Ман шахсияти 18+ ҳастам!'"
+    ]
+  },
+  ru: {
+    title: "Галерея",
+    random: "Показать случайное",
+    vip: "🔒 Только для VIP",
+    truth: [
+      "Когда был твой первый поцелуй?",
+      "Кому ты разбил(а) сердце?",
+      "Расскажи то, что скрываешь от всех",
+      "Твой самый позорный момент?"
+    ],
+    dare: [
+      "Опиши себя как блогер 18+",
+      "Изобрази эротический голос",
+      "Напиши другу: 'Я влюблён(а)'",
+      "Громко скажи: 'Я взрослый и раскованный человек!'"
+    ]
+  }
+};
+
+let lang = localStorage.getItem('lang') || 'tj';
+
+function setLang(l) {
+  lang = l;
+  localStorage.setItem('lang', lang);
+  document.getElementById("gallery-title").textContent = translations[lang].title;
+  document.getElementById("random-btn").textContent = translations[lang].random;
+  document.getElementById("game-title").textContent = lang === 'tj' ? "Ҳақиқат ё Ҷуръат" : "Правда или Действие";
+}
+
+function askTruth() {
+  const q = translations[lang].truth[Math.floor(Math.random() * translations[lang].truth.length)];
+  document.getElementById("game-question").textContent = q;
+}
+
+function askDare() {
+  const q = translations[lang].dare[Math.floor(Math.random() * translations[lang].dare.length)];
+  document.getElementById("game-question").textContent = q;
+}
+
 const mediaItems = [
   { type: 'image', src: 'https://via.placeholder.com/600x350?text=Фото+1' },
   { type: 'video', src: 'https://www.w3schools.com/html/mov_bbb.mp4' },
@@ -180,125 +214,48 @@ function showRandomMedia() {
   viewCount++;
   let content = '';
 
-  if (viewCount % 5 === 0) {
-    content += `<div class="ad-block">
-      <p class="ad-title">${translations[lang].adTitle}</p>
-      <p class="ad-text">${translations[lang].adText}</p>
-      <a href="https://t.me/ajalipetkaho" class="ad-btn">${translations[lang].adBtn}</a>
-    </div>`;
+  const item = mediaItems[Math.floor(Math.random() * mediaItems.length)];
+  if (item.type === 'image') {
+    content += `<img src="${item.src}" style="width:90%;max-width:400px;border-radius:12px;">`;
   } else {
-    const item = mediaItems[Math.floor(Math.random() * mediaItems.length)];
-    if (item.type === 'image') {
-      content += `<img src="${item.src}" alt="Media" style="width:90%;max-width:400px;border-radius:12px;">`;
-    } else if (item.type === 'video') {
-      content += `<video controls style="width:90%;max-width:400px;border-radius:12px;"><source src="${item.src}" type="video/mp4"></video>`;
-    }
-    content += `<div class="reaction"><span>❤️</span><span>🔥</span><span>👎</span></div>`;
-    if (item.vip) content += `<div style="color:#ff2f8b;margin-top:10px;">${translations[lang].vip}</div>`;
+    content += `<video controls style="width:90%;max-width:400px;border-radius:12px;"><source src="${item.src}" type="video/mp4"></video>`;
   }
 
+  content += `<div class="reaction"><span>❤️</span><span>🔥</span><span>👎</span></div>`;
+  if (item.vip) content += `<div style="color:#ff2f8b;margin-top:10px;">${translations[lang].vip}</div>`;
+
   mediaBox.innerHTML = content;
-}
 
-function nextGameQuestion() {
-  const q = translations[lang].gameQuestions[Math.floor(Math.random() * translations[lang].gameQuestions.length)];
-  document.getElementById('game-question').innerText = q;
-}
-
-function acceptAge() {
-  document.getElementById('age-popup').style.display = 'none';
-  localStorage.setItem('ageConfirmed', 'true');
+  // Счётчик просмотров
+  let totalViews = localStorage.getItem("viewCount") || 0;
+  totalViews++;
+  localStorage.setItem("viewCount", totalViews);
+  document.getElementById("view-counter").textContent = `Медиа тамошо шуд: ${totalViews} бор`;
 }
 
 function startCountdown(duration) {
-  let timer = duration, hours, minutes, seconds;
-  setInterval(function () {
-    hours = parseInt(timer / 3600, 10);
-    minutes = parseInt((timer % 3600) / 60, 10);
-    seconds = parseInt(timer % 60, 10);
-    hours = hours < 10 ? "0" + hours : hours;
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-    document.getElementById('timer').textContent = hours + ":" + minutes + ":" + seconds;
+  let timer = duration, h, m, s;
+  setInterval(() => {
+    h = String(Math.floor(timer / 3600)).padStart(2, '0');
+    m = String(Math.floor((timer % 3600) / 60)).padStart(2, '0');
+    s = String(timer % 60).padStart(2, '0');
+    document.getElementById('timer').textContent = `${h}:${m}:${s}`;
     if (--timer < 0) timer = duration;
   }, 1000);
 }
-</script>
 <script>
-const translations = {
-  tj: {
-    title: "Галерея",
-    random: "Тасодуфӣ намоиш деҳ",
-    vip: "🔒 Танҳо барои VIP",
-    adTitle: "🔞 Эълон: Танҳо барои калонсолон",
-    adText: "Ба Telegram @ajalipetkaho обуна шав ва гармиро бин!",
-    adBtn: "Гузар ба Telegram",
-    popup: "Ин сомона барои калонсолон аст. Шумо аз 18 гузаштаед?",
-    popupBtn: "Бале, гузаштаам",
-    gameTitle: "Ҳақиқат ё Ҷуръат",
-    gameBtn: "Саволи нав",
-    gameQuestions: [
-      "Аввалин бӯсаат кай буд?",
-      "Сирри шаҳвонии худатонро ошкор кунед",
-      "Бо кӣ мехостӣ шабро гузаронӣ?",
-      "Ту бо кӣ хаёл мекунӣ?",
-      "Се фикри шаҳвонии ту чӣ ҳаст?"
-    ]
-  },
-  ru: {
-    title: "Галерея",
-    random: "Показать случайное",
-    vip: "🔒 Только для VIP",
-    adTitle: "🔞 Реклама: Только для взрослых",
-    adText: "Подпишись на Telegram @ajalipetkaho и смотри самое 🔥",
-    adBtn: "Перейти в Telegram",
-    popup: "Сайт содержит материалы для взрослых. Вам уже исполнилось 18 лет?",
-    popupBtn: "Да, мне есть 18",
-    gameTitle: "Правда или действие",
-    gameBtn: "Следующий вопрос",
-    gameQuestions: [
-      "Когда был твой первый поцелуй?",
-      "Расскажи эротическую фантазию",
-      "С кем бы ты хотел провести ночь?",
-      "Ты бы согласился на интим в 1-й день?",
-      "Опиши любимое тело"
-    ]
-  }
-};
-
-let lang = localStorage.getItem('lang') || 'tj';
-
-function setLang(newLang) {
-  lang = newLang;
-  localStorage.setItem('lang', lang);
-  applyLang();
-}
-
-function applyLang() {
-  document.getElementById("gallery-title").textContent = translations[lang].title;
-  document.getElementById("random-btn").textContent = translations[lang].random;
-  document.getElementById("game-title").textContent = translations[lang].gameTitle;
-  document.getElementById("game-btn").textContent = translations[lang].gameBtn;
-  document.getElementById("popup-text").textContent = translations[lang].popup;
-  document.getElementById("popup-btn").textContent = translations[lang].popupBtn;
-}
-
-window.onload = function () {
-  const now = new Date().getTime();
-  const nextUpdate = localStorage.getItem("nextUpdate") || (now + 3 * 60 * 60 * 1000);
+window.onload = () => {
+  const now = Date.now();
+  const next = localStorage.getItem("nextUpdate") || (now + 3 * 60 * 60 * 1000);
   if (!localStorage.getItem("nextUpdate")) {
-    localStorage.setItem("nextUpdate", nextUpdate);
+    localStorage.setItem("nextUpdate", next);
   }
-  const remaining = Math.floor((nextUpdate - now) / 1000);
-  startCountdown(remaining);
+  const remain = Math.floor((next - now) / 1000);
+  startCountdown(remain);
+  setLang(lang);
 
-  if (localStorage.getItem('ageConfirmed') !== 'true') {
-    document.getElementById('age-popup').style.display = 'flex';
-  } else {
-    document.getElementById('age-popup').style.display = 'none';
-  }
-
-  applyLang(); // применить язык при загрузке
+  let storedViews = localStorage.getItem("viewCount") || 0;
+  document.getElementById("view-counter").textContent = `Медиа тамошо шуд: ${storedViews} бор`;
 };
 </script>
 </body>
