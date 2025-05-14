@@ -115,6 +115,15 @@ window.onload = () => {
   });
 };
 </script>
+<h3>Просмотров: <span id="view-counter">загрузка...</span></h3>
+
+<script>
+fetch('counter.php')
+  .then(res => res.text())
+  .then(count => {
+    document.getElementById('view-counter').textContent = count;
+  });
+</script>
 
 </body>
 </html>
