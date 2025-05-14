@@ -1,7 +1,8 @@
-<!DOCTYPE html><html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AJALI PETKAHO — 18+ Платформа</title>
   <style>
     body {
@@ -55,103 +56,178 @@
     a.button:hover {
       background: #e42072;
     }
-    .media-gallery {
-      margin-top: 50px;
+
+<div id="age-popup" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;">
+  <h2 style="color:#ff2f8b;">🔞</h2>
+  <p id="popup-text">Ин сомона барои калонсолон аст. Шумо аз 18 гузаштаед?</p>
+  <button id="popup-btn" onclick="acceptAge()" style="margin-top:20px;padding:12px 24px;background:#ff2f8b;color:white;border:none;border-radius:10px;font-size:1em;cursor:pointer;">Бале, гузаштаам</button>
+</div>
+
+<header>
+  <h1>AJALI PETKAHO</h1>
+  <div style="margin-top: 10px;">
+    <button onclick="setLang('tj')" style="margin: 5px;">🇹🇯 Тоҷикӣ</button>
+    <button onclick="setLang('ru')" style="margin: 5px;">🇷🇺 Русский</button>
+  </div>
+  <div class="countdown">Навсозӣ пас аз: <span id="timer">00:00:00</span></div>
+  <p class="tagline">Танҳо барои калонсолон. Контенти 18+</p>
+</header>
+
+<div class="buttons">
+  <a class="button" href="https://t.me/ajalipetkaho">Ачлаи Петкахо</a>
+  <a class="button" href="https://t.me/hodisatv">Ходиса ТВ</a>
+  <a class="button" href="secret.html">Сирри махсус</a>
+</div>
+
+<div class="media-gallery">
+  <h2 id="gallery-title">Галерея</h2>
+  <div id="media-box"></div>
+  <button onclick="showRandomMedia()" id="random-btn" style="margin-top:20px;background:#ff2f8b;color:#fff;padding:12px 20px;border:none;border-radius:10px;">Тасодуфӣ намоиш деҳ</button>
+</div>
+
+<div class="game-box">
+  <h3 id="game-title">Ҳақиқат ё Ҷуръат</h3>
+  <div class="game-question" id="game-question">Барои оғоз кардан зер кунед...</div>
+  <button class="game-button" id="game-btn" onclick="nextGameQuestion()">Саволи нав</button>
+</div>
+
+<footer>
+  <p style="margin-top: 50px; font-size: 0.9em; color: #888;">© 2025 ajalipetkaho.ru</p>
+</footer>
+
+<script>
+const mediaItems = [
+  { type: 'image', src: 'https://via.placeholder.com/600x350?text=Фото+1' },
+  { type: 'video', src: 'https://www.w3schools.com/html/mov_bbb.mp4' },
+  { type: 'image', src: 'https://via.placeholder.com/600x350?text=Фото+VIP', vip: true }
+];
+
+let viewCount = 1;
+
+function showRandomMedia() {
+  const mediaBox = document.getElementById('media-box');
+  viewCount++;
+  let content = '';
+
+  if (viewCount % 5 === 0) {
+    content += `<div class="ad-block">
+      <p class="ad-title">${translations[lang].adTitle}</p>
+      <p class="ad-text">${translations[lang].adText}</p>
+      <a href="https://t.me/ajalipetkaho" class="ad-btn">${translations[lang].adBtn}</a>
+    </div>`;
+  } else {
+    const item = mediaItems[Math.floor(Math.random() * mediaItems.length)];
+    if (item.type === 'image') {
+      content += `<img src="${item.src}" alt="Media" style="width:90%;max-width:400px;border-radius:12px;">`;
+    } else if (item.type === 'video') {
+      content += `<video controls style="width:90%;max-width:400px;border-radius:12px;"><source src="${item.src}" type="video/mp4"></video>`;
     }
-    .reaction {
-      margin-top: 10px;
-      font-size: 1.4em;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    .reaction span {
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    .reaction span:hover {
-      transform: scale(1.2);
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>AJALI PETKAHO</h1>
-    <div class="countdown">Новое обновление через: <span id="timer">00:00:00</span></div>
-    <p class="tagline">Эксклюзивная 18+ коллекция. Всё только для взрослых.</p>
-  </header>  <div class="buttons">
-    <a class="button" href="https://t.me/ajalipetkaho">Ачлаи Петкахо</a>
-    <a class="button" href="https://t.me/hodisatv">Ходиса ТВ</a>
-    <a class="button" href="secret.html">Секретный раздел</a>
-  </div>  <div class="media-gallery">
-    <h2>Галерея</h2>
-    <div id="media-box">
-      <!-- Здесь будет медиа -->
-    </div>
-    <button onclick="showRandomMedia()" style="margin-top:20px;background:#ff2f8b;color:#fff;padding:12px 20px;border:none;border-radius:10px;">Показать случайное</button>
-  </div>  <footer>
-    <p style="margin-top: 50px; font-size: 0.9em; color: #888;">© 2025 ajalipetkaho.ru</p>
-  </footer>  <script id="gallery-data" type="application/json">
-  [
-    { "type": "image", "src": "https://via.placeholder.com/600x350?text=Фото+1" },
-    { "type": "image", "src": "https://via.placeholder.com/600x350?text=Фото+2" },
-    { "type": "video", "src": "https://www.w3schools.com/html/mov_bbb.mp4" },
-    { "type": "image", "src": "https://via.placeholder.com/600x350?text=Фото+3" },
-    { "type": "video", "src": "https://www.w3schools.com/html/movie.mp4" },
-    { "type": "image", "src": "https://via.placeholder.com/600x350?text=VIP+Контент", "vip": true }
-  ]
-  </script>  <script>
-    const mediaItems = JSON.parse(document.getElementById('gallery-data').textContent);
-    let viewCount = 1;
+    content += `<div class="reaction"><span>❤️</span><span>🔥</span><span>👎</span></div>`;
+    if (item.vip) content += `<div style="color:#ff2f8b;margin-top:10px;">${translations[lang].vip}</div>`;
+  }
 
-    function showRandomMedia() {
-      const mediaBox = document.getElementById('media-box');
-      viewCount++;
+  mediaBox.innerHTML = content;
+}
 
-      let content = '';
-      if (viewCount % 5 === 0) {
-        content += `<div style='padding:20px;color:#ff2f8b'>Реклама: Подпишись на Telegram @ajalipetkaho</div>`;
-      } else {
-        const item = mediaItems[Math.floor(Math.random() * mediaItems.length)];
-        if (item.type === 'image') {
-          content += `<img src="${item.src}" alt="Media" style="width:90%;max-width:400px;border-radius:12px;">`;
-        } else if (item.type === 'video') {
-          content += `<video controls style="width:90%;max-width:400px;border-radius:12px;"><source src="${item.src}" type="video/mp4"></video>`;
-        }
-        content += `<div class="reaction"><span>❤️</span><span>🔥</span><span>👎</span></div>`;
-        if (item.vip) content += `<div style="color:#ff2f8b;margin-top:10px;">🔒 Только для VIP</div>`;
-      }
+function nextGameQuestion() {
+  const q = translations[lang].gameQuestions[Math.floor(Math.random() * translations[lang].gameQuestions.length)];
+  document.getElementById('game-question').innerText = q;
+}
 
-      mediaBox.innerHTML = content;
-    }
+function acceptAge() {
+  document.getElementById('age-popup').style.display = 'none';
+  localStorage.setItem('ageConfirmed', 'true');
+}
 
-    function startCountdown(duration) {
-      let timer = duration, hours, minutes, seconds;
-      setInterval(function () {
-        hours = parseInt(timer / 3600, 10);
-        minutes = parseInt((timer % 3600) / 60, 10);
-        seconds = parseInt(timer % 60, 10);
+function startCountdown(duration) {
+  let timer = duration, hours, minutes, seconds;
+  setInterval(function () {
+    hours = parseInt(timer / 3600, 10);
+    minutes = parseInt((timer % 3600) / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+    hours = hours < 10 ? "0" + hours : hours;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    document.getElementById('timer').textContent = hours + ":" + minutes + ":" + seconds;
+    if (--timer < 0) timer = duration;
+  }, 1000);
+}
 
-        hours = hours < 10 ? "0" + hours : hours;
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+window.onload = function () {
+  const now = new Date().getTime();
+  const nextUpdate = localStorage.getItem("nextUpdate") || (now + 3 * 60 * 60 * 1000);
+  if (!localStorage.getItem("nextUpdate")) {
+    localStorage.setItem("nextUpdate", nextUpdate);
+  }
+  const remaining = Math.floor((nextUpdate - now) / 1000);
+  startCountdown(remaining);
 
-        document.getElementById('timer').textContent = hours + ":" + minutes + ":" + seconds;
+  if (localStorage.getItem('ageConfirmed') !== 'true') {
+    document.getElementById('age-popup').style.display = 'flex';
+  } else {
+    document.getElementById('age-popup').style.display = 'none';
+  }
 
-        if (--timer < 0) {
-          timer = duration;
-        }
-      }, 1000);
-    }
+  applyLang(); // применить язык при загрузке
+}
+</script>
 
-    window.onload = function () {
-      const now = new Date().getTime();
-      const nextUpdate = localStorage.getItem("nextUpdate") || (now + 3 * 60 * 60 * 1000);
-      if (!localStorage.getItem("nextUpdate")) {
-        localStorage.setItem("nextUpdate", nextUpdate);
-      }
-      const remaining = Math.floor((nextUpdate - now) / 1000);
-      startCountdown(remaining);
-    };
-  </script></body>
-</html>
+<script>
+const translations = {
+  tj: {
+    title: "Галерея",
+    random: "Тасодуфӣ намоиш деҳ",
+    vip: "🔒 Танҳо барои VIP",
+    adTitle: "🔞 Эълон: Танҳо барои калонсолон",
+    adText: "Ба Telegram @ajalipetkaho обуна шав ва гармиро бин!",
+    adBtn: "Гузар ба Telegram",
+    popup: "Ин сомона барои калонсолон аст. Шумо аз 18 гузаштаед?",
+    popupBtn: "Бале, гузаштаам",
+    gameTitle: "Ҳақиқат ё Ҷуръат",
+    gameBtn: "Саволи нав",
+    gameQuestions: [
+      "Аввалин бӯсаат кай буд?",
+      "Сирри шаҳвонии худатонро ошкор кунед",
+      "Бо кӣ мехостӣ шабро гузаронӣ?",
+      "Ту бо кӣ хаёл мекунӣ?",
+      "Се фикри шаҳвонии ту чӣ ҳаст?"
+    ]
+  },
+  ru: {
+    title: "Галерея",
+    random: "Показать случайное",
+    vip: "🔒 Только для VIP",
+    adTitle: "🔞 Реклама: Только для взрослых",
+    adText: "Подпишись на Telegram @ajalipetkaho и смотри самое 🔥",
+    adBtn: "Перейти в Telegram",
+    popup: "Сайт содержит материалы для взрослых. Вам уже исполнилось 18 лет?",
+    popupBtn: "Да, мне есть 18",
+    gameTitle: "Правда или действие",
+    gameBtn: "Следующий вопрос",
+    gameQuestions: [
+      "Когда был твой первый поцелуй?",
+      "Расскажи эротическую фантазию",
+      "С кем бы ты хотел провести ночь?",
+      "Ты бы согласился на интим в 1-й день?",
+      "Опиши любимое тело"
+    ]
+  }
+};
+
+let lang = localStorage.getItem('lang') || 'tj';
+
+function setLang(newLang) {
+  lang = newLang;
+  localStorage.setItem('lang', lang);
+  applyLang();
+}
+
+function applyLang() {
+  document.getElementById("gallery-title").textContent = translations[lang].title;
+  document.getElementById("random-btn").textContent = translations[lang].random;
+  document.getElementById("game-title").textContent = translations[lang].gameTitle;
+  document.getElementById("game-btn").textContent = translations[lang].gameBtn;
+  document.getElementById("popup-text").textContent = translations[lang].popup;
+  document.getElementById("popup-btn").textContent = translations[lang].popupBtn;
+}
+</script>
