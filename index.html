@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,108 +7,202 @@
     <title>18+ Проекты</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #000;
+            font-family: 'Arial', sans-serif;
+            background: #0f0f0f;
             color: #fff;
             text-align: center;
             padding: 20px;
+            background-image: url('https://i.imgur.com/JqYeARn.png');
+            background-size: 300px;
+            background-blend-mode: overlay;
         }
-        .buttons {
+        .header-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .main-buttons {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            max-width: 500px;
+            max-width: 600px;
             margin: 30px auto;
         }
         button {
-            background: #FF5588;
+            background: linear-gradient(135deg, #FF5588, #FF0066);
             color: white;
             border: none;
-            padding: 15px;
-            border-radius: 10px;
+            padding: 18px;
+            border-radius: 12px;
             font-size: 18px;
             cursor: pointer;
             transition: 0.3s;
+            box-shadow: 0 4px 8px rgba(255, 85, 136, 0.3);
+            border: 2px solid rgba(255,255,255,0.1);
         }
         button:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(255, 85, 136, 0.4);
         }
         .vip {
-            background: gold;
-            color: black;
+            background: linear-gradient(135deg, gold, #FFD700);
+            color: #000;
             font-weight: bold;
         }
-        .channel {
-            background: #1F2C38;
+        .content-block {
+            background: rgba(31, 44, 56, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px auto;
+            max-width: 600px;
+            text-align: left;
+            border: 1px solid #FF5588;
+            backdrop-filter: blur(5px);
+        }
+        .sticker {
+            width: 100px;
+            position: absolute;
+            opacity: 0.7;
+            z-index: -1;
+        }
+        .channel, .bot {
+            background: rgba(47, 60, 72, 0.6);
             padding: 15px;
             border-radius: 10px;
-            margin: 15px auto;
-            max-width: 500px;
-            text-align: left;
+            margin: 15px 0;
+            border-left: 4px solid #FF5588;
         }
-        .channel a {
-            color: #FF5588;
+        a {
+            color: #00a8ff;
             text-decoration: none;
+            font-weight: bold;
+        }
+        code {
+            background: rgba(0,0,0,0.3);
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: monospace;
         }
     </style>
 </head>
 <body>
-    <h1>🔞 18+ Контент</h1>
-    
-    <div class="buttons">
-        <button onclick="showSection('channels')">Мои каналы</button>
-        <button onclick="showSection('bots')">Мои боты</button>
+    <!-- Стикеры на фоне -->
+    <img src="https://i.imgur.com/5X5wM9P.png" class="sticker" style="top:10%;left:5%;">
+    <img src="https://i.imgur.com/7Q9m2Kl.png" class="sticker" style="top:70%;right:5%;">
+
+    <div class="header-buttons">
+        <button onclick="showSection('main')">Главная</button>
+        <button onclick="showSection('channels')">Каналы</button>
+        <button onclick="showSection('bots')">Боты</button>
         <button onclick="showSection('payment')">Оплата</button>
+    </div>
+
+    <h1 style="color:#FF5588;text-shadow:0 2px 4px rgba(255,85,136,0.5);">🔞 18+ Контент</h1>
+    
+    <div class="main-buttons">
+        <button onclick="showSection('channel1')">Канал 1</button>
+        <button onclick="showSection('channel2')">Канал 2</button>
+        <button onclick="showSection('bot1')">Бот 1</button>
         <button class="vip" onclick="showSection('vip')">VIP</button>
     </div>
 
-    <div id="content" style="margin-top: 30px;">
-        <!-- Контент будет загружаться здесь -->
+    <div id="content">
+        <div class="content-block">
+            <h2>Добро пожаловать!</h2>
+            <p>Выберите раздел для просмотра контента</p>
+        </div>
     </div>
 
     <script>
-        function showSection(section) {
-            const content = {
-                channels: `
-                    <h2>Мои каналы</h2>
+        const contentData = {
+            main: `
+                <div class="content-block">
+                    <h2>Добро пожаловать!</h2>
+                    <p>Выберите раздел для просмотра контента</p>
+                </div>
+            `,
+            channels: `
+                <div class="content-block">
+                    <h2>📢 Мои каналы</h2>
+                    
                     <div class="channel">
                         <h3>Канал 1</h3>
-                        <p>Описание первого канала...</p>
+                        <p>Эксклюзивный контент премиум-класса</p>
                         <a href="https://t.me/your_channel1" target="_blank">Перейти →</a>
                     </div>
+                    
                     <div class="channel">
                         <h3>Канал 2</h3>
-                        <p>Описание второго канала...</p>
+                        <p>Ежедневные обновления</p>
                         <a href="https://t.me/your_channel2" target="_blank">Перейти →</a>
                     </div>
+                    
                     <div class="channel">
                         <h3>Канал 3</h3>
-                        <p>Описание третьего канала...</p>
+                        <p>VIP-материалы</p>
                         <a href="https://t.me/your_channel3" target="_blank">Перейти →</a>
                     </div>
+                    
                     <div class="channel">
                         <h3>Канал 4</h3>
-                        <p>Описание четвертого канала...</p>
+                        <p>Эксклюзив для подписчиков</p>
                         <a href="https://t.me/your_channel4" target="_blank">Перейти →</a>
                     </div>
-                `,
-                bots: '<h2>Мои боты</h2><p>Здесь будут ваши боты...</p>',
-                payment: `
-                    <h2>Оплата</h2>
-                    <div class="channel">
-                        <h3>Криптовалюта</h3>
-                        <p>USDT (TRC20): <code>TXXXX...XXXX</code></p>
-                        <p>Пришлите TxID в Telegram</p>
+                </div>
+            `,
+            bots: `
+                <div class="content-block">
+                    <h2>🤖 Мои боты</h2>
+                    
+                    <div class="bot">
+                        <h3>Бот 1</h3>
+                        <p>Автопродажа контента</p>
+                        <a href="https://t.me/your_bot1" target="_blank">Перейти →</a>
                     </div>
-                    <div class="channel">
-                        <h3>СБП</h3>
-                        <p>Номер: <code>+7XXX XXX-XX-XX</code></p>
-                        <p>Пришлите скрин чека</p>
+                    
+                    <div class="bot">
+                        <h3>Бот 2</h3>
+                        <p>Поддержка и вопросы</p>
+                        <a href="https://t.me/your_bot2" target="_blank">Перейти →</a>
                     </div>
-                `,
-                vip: '<h2>VIP доступ</h2><p>Эксклюзивный контент для подписчиков</p>'
-            };
-            document.getElementById('content').innerHTML = content[section];
+                    
+                    <div class="bot">
+                        <h3>Бот 3</h3>
+                        <p>Платежи и доступы</p>
+                        <a href="https://t.me/your_bot3" target="_blank">Перейти →</a>
+                    </div>
+                </div>
+            `,
+            payment: `
+                <div class="content-block">
+                    <h2>💳 Оплата</h2>
+                    
+                    <div class="channel">
+                        <h3>Криптовалюта (USDT TRC20)</h3>
+                        <p><code>TXXXX...XXXX</code></p>
+                        <p>После оплаты пришлите TxID в <a href="https://t.me/your_bot" target="_blank">бота</a></p>
+                    </div>
+                    
+                    <div class="channel">
+                        <h3>СБП (Тинькофф/Сбер)</h3>
+                        <p><code>+7XXX XXX-XX-XX</code></p>
+                        <p>Пришлите скрин перевода</p>
+                    </div>
+                </div>
+            `,
+            vip: `
+                <div class="content-block">
+                    <h2>🌟 VIP доступ</h2>
+                    <p>Эксклюзивный контент для избранных</p>
+                    <p>Цена: <strong>5000 руб./месяц</strong></p>
+                    <button class="vip" style="width:100%">Купить доступ</button>
+                </div>
+            `
+        };
+
+        function showSection(section) {
+            document.getElementById('content').innerHTML = contentData[section] || contentData.main;
         }
     </script>
 </body>
