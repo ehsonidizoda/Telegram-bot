@@ -1,234 +1,245 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 Мои эксклюзивные проекты</title>
-    <style>
-        :root {
-            --main-color: #ff3366;
-            --bg-color: #121212;
-            --card-color: #1e1e1e;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            background: var(--bg-color);
-            color: white;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        /* Анимированная шапка */
-        header {
-            text-align: center;
-            padding: 40px 0;
-            background: linear-gradient(135deg, #ff3366 0%, #ff8c66 100%);
-            border-radius: 0 0 20px 20px;
-            margin-bottom: 40px;
-            animation: gradient 8s ease infinite;
-            background-size: 200% 200%;
-        }
-        
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* Блок с подтверждением возраста */
-        .age-gate {
-            background: var(--card-color);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px auto;
-            max-width: 500px;
-            box-shadow: 0 10px 30px rgba(255, 51, 102, 0.2);
-            text-align: center;
-        }
-        
-        .age-gate h1 {
-            color: var(--main-color);
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--main-color);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 10px 5px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
-        }
-        
-        /* Сетка проектов */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-        }
-        
-        .project-card {
-            background: var(--card-color);
-            border-radius: 15px;
-            padding: 20px;
-            transition: transform 0.3s ease;
-            border: 1px solid #333;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--main-color);
-        }
-        
-        .project-card h3 {
-            color: var(--main-color);
-            margin-top: 0;
-        }
-        
-        .project-card p {
-            color: #ccc;
-        }
-        
-        /* Футер */
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .social-links {
-            margin: 20px 0;
-        }
-        
-        .social-links a {
-            color: white;
-            margin: 0 10px;
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            color: var(--main-color);
-        }
-        
-        /* Адаптивность */
-        @media (max-width: 600px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            header {
-                padding: 30px 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мои эксклюзивные проекты</title>
+  <style>
+    :root {
+      --main-color: #ff3366;
+      --bg-color: #121212;
+      --card-color: #1e1e1e;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: var(--bg-color);
+      color: white;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Шапка */
+    header {
+      text-align: center;
+      padding: 40px 0;
+      background: linear-gradient(135deg, #ff3366 0%, #ff8c66 100%);
+      border-radius: 0 0 20px 20px;
+      margin-bottom: 40px;
+    }
+    
+    /* Медиа-контент */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+    
+    .media-item {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid #333;
+      transition: transform 0.3s;
+    }
+    
+    .media-item:hover {
+      transform: translateY(-10px);
+      border-color: var(--main-color);
+    }
+    
+    .media-item img, 
+    .media-item video {
+      width: 100%;
+      filter: blur(5px);
+      transition: filter 0.3s;
+    }
+    
+    .media-item:hover img,
+    .media-item:hover video {
+      filter: blur(0);
+    }
+    
+    /* Календарь */
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    
+    .day {
+      background: var(--card-color);
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    
+    /* Настройка размытия */
+    .blur-control {
+      background: var(--card-color);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 30px 0;
+    }
+    
+    /* Чат */
+    .chat-widget {
+      background: var(--card-color);
+      border-radius: 10px;
+      margin: 40px 0;
+      overflow: hidden;
+    }
+    
+    .chat-header {
+      background: var(--main-color);
+      padding: 15px;
+      font-weight: bold;
+    }
+    
+    .chat-body {
+      padding: 15px;
+      height: 200px;
+      overflow-y: auto;
+    }
+    
+    .message {
+      margin-bottom: 10px;
+      padding: 8px 12px;
+      border-radius: 18px;
+      max-width: 80%;
+    }
+    
+    .bot {
+      background: #333;
+      align-self: flex-start;
+    }
+    
+    /* Адаптивность */
+    @media (max-width: 768px) {
+      .media-grid,
+      .calendar {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Анимированная шапка -->
-    <header>
-        <div class="container">
-            <h1>Мои эксклюзивные проекты</h1>
-            <p>Только лучший контент для избранных</p>
-        </div>
-    </header>
-    
+  <!-- Шапка -->
+  <header>
     <div class="container">
-        <!-- Проверка возраста -->
-        <div class="age-gate" id="ageGate">
-            <h1>🔞 Вход только для 18+</h1>
-            <p>Этот сайт содержит материалы для взрослых. Подтвердите свой возраст.</p>
-            <button class="btn" onclick="enterSite()">Мне есть 18 лет</button>
-            <button class="btn" style="background: #333;" onclick="leaveSite()">Я несовершеннолетний</button>
-        </div>
-        
-        <!-- Основной контент (скрыт до подтверждения) -->
-        <div id="mainContent" style="display: none;">
-            <h2>Мои проекты</h2>
-            
-            <div class="projects-grid">
-                <!-- Пример бота 1 -->
-                <div class="project-card">
-                    <h3>🍑 Медиа-бот Premium</h3>
-                    <p>Эксклюзивный контент ежедневно. Более 10 000 подписчиков.</p>
-                    <a href="https://t.me/your_media_bot" class="btn">Перейти в бот</a>
-                </div>
-                
-                <!-- Пример бота 2 -->
-                <div class="project-card">
-                    <h3>💎 VIP Канал</h3>
-                    <p>Закрытое сообщество с премиум контентом.</p>
-                    <a href="https://t.me/your_vip_channel" class="btn">Перейти в канал</a>
-                </div>
-                
-                <!-- Пример бота 3 -->
-                <div class="project-card">
-                    <h3>🔥 Горячий чат</h3>
-                    <p>Анонимный чат для взрослых.</p>
-                    <a href="https://t.me/your_chat" class="btn">Присоединиться</a>
-                </div>
-            </div>
-            
-            <div class="social-links">
-                <p>Свяжитесь со мной:</p>
-                <a href="https://t.me/your_username" target="_blank">📱 Telegram</a>
-                <a href="https://instagram.com/your_username" target="_blank">📸 Instagram</a>
-            </div>
-        </div>
+      <h1>Мои эксклюзивные проекты</h1>
+      <p>Только лучший контент для избранных</p>
     </div>
+  </header>
+
+  <div class="container">
+    <!-- Медиа-контент -->
+    <section>
+      <h2>🎥 Примеры контента</h2>
+      <div class="media-grid">
+        <div class="media-item">
+          <img src="media/preview1.jpg" alt="Пример 1" loading="lazy">
+        </div>
+        <div class="media-item">
+          <video autoplay loop muted playsinline>
+            <source src="media/demo.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- 📅 Календарь релизов -->
+    <section>
+      <h2>📅 График новых видео</h2>
+      <div class="calendar">
+        <div class="day">
+          <h3>Понедельник</h3>
+          <p>Эксклюзив #1</p>
+        </div>
+        <div class="day">
+          <h3>Среда</h3>
+          <p>VIP-материалы</p>
+        </div>
+        <div class="day">
+          <h3>Пятница</h3>
+          <p>Сюрприз</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🎚️ Настройка размытия -->
+    <div class="blur-control">
+      <label>
+        🔘 Уровень размытия: 
+        <input type="range" id="blur-slider" min="0" max="10" value="5">
+        <span id="blur-value">5</span>/10
+      </label>
+    </div>
+
+    <!-- 📱 Фейк-чат -->
+    <div class="chat-widget">
+      <div class="chat-header">💬 Поддержка</div>
+      <div class="chat-body" id="chat-messages">
+        <div class="message bot">Админ: Задайте вопрос...</div>
+      </div>
+      <input type="text" id="chat-input" placeholder="Напишите сообщение...">
+      <button onclick="sendFakeMessage()">Отправить</button>
+    </div>
+  </div>
+
+  <script>
+    // 🎚️ Контроль размытия
+    const blurSlider = document.getElementById('blur-slider');
+    const blurValue = document.getElementById('blur-value');
     
-    <footer>
-        © 2023 Все права защищены | Только для взрослых
-    </footer>
-    
-    <script>
-        // Проверяем, подтверждал ли пользователь возраст ранее
-        if (localStorage.getItem('adultConfirmed') === 'true') {
-            enterSite();
-        }
-        
-        function enterSite() {
-            document.getElementById('ageGate').style.display = 'none';
-            document.getElementById('mainContent').style.display = 'block';
-            localStorage.setItem('adultConfirmed', 'true');
-        }
-        
-        function leaveSite() {
-            window.location.href = 'https://www.google.com';
-        }
-        
-        // Плавное появление элементов
-        document.addEventListener('DOMContentLoaded', function() {
-            if (localStorage.getItem('adultConfirmed') === 'true') {
-                document.body.style.opacity = '0';
-                setTimeout(function() {
-                    document.body.style.transition = 'opacity 0.5s ease';
-                    document.body.style.opacity = '1';
-                }, 100);
-            }
-        });
-    </script>
+    blurSlider.addEventListener('input', function() {
+      const blurLevel = this.value;
+      blurValue.textContent = blurLevel;
+      
+      document.querySelectorAll('.media-item img, .media-item video').forEach(media => {
+        media.style.filter = `blur(${blurLevel}px)`;
+      });
+    });
+
+    // 📱 Фейк-чат
+    function sendFakeMessage() {
+      const input = document.getElementById('chat-input');
+      const chat = document.getElementById('chat-messages');
+      
+      if (input.value.trim() === '') return;
+      
+      // Сообщение пользователя
+      const userMsg = document.createElement('div');
+      userMsg.className = 'message';
+      userMsg.textContent = `Вы: ${input.value}`;
+      chat.appendChild(userMsg);
+      
+      // "Ответ" бота
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'message bot';
+        botMsg.textContent = 'Админ: Для связи используйте Telegram @ваш_аккаунт';
+        chat.appendChild(botMsg);
+        chat.scrollTop = chat.scrollHeight;
+      }, 1000);
+      
+      input.value = '';
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    // Автопрокрутка чата
+    document.getElementById('chat-input').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') sendFakeMessage();
+    });
+  </script>
 </body>
 </html>
