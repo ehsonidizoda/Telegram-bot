@@ -114,3 +114,18 @@ a.link-button:hover {
   cursor: pointer;
   transition: transform 0.2s ease;
 }
+
+#daily-gift button {
+  background: #ff2f8b;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#daily-gift button:hover {
+  background: #e42072;
+}
