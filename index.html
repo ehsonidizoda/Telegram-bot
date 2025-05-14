@@ -55,55 +55,22 @@
     a.button:hover {
       background: #e42072;
     }
-    .vip {
+    .media-gallery {
       margin-top: 50px;
-      background: #2a002a;
-      padding: 30px 20px;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(255,47,139,0.4);
     }
-    .vip h2 {
-      color: #ff70c7;
-      margin-bottom: 10px;
+    .reaction {
+      margin-top: 10px;
+      font-size: 1.4em;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
     }
-    .vip p {
-      color: #ccc;
+    .reaction span {
+      cursor: pointer;
+      transition: transform 0.2s;
     }
-    .teaser {
-      margin-top: 60px;
-    }
-    .teaser img {
-      width: 90%;
-      max-width: 500px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255,47,139,0.3);
-    }
-    .teaser-text {
-      font-size: 1.2em;
-      margin: 20px 0 10px;
-      color: #ff2f8b;
-    }
-    footer {
-      margin-top: 60px;
-      font-size: 0.9em;
-      color: #666;
-      padding-bottom: 20px;
-    }
-    .telegram-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #ff2f8b;
-      padding: 15px;
-      text-align: center;
-      z-index: 100;
-    }
-    .telegram-banner a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.1em;
+    .reaction span:hover {
+      transform: scale(1.2);
     }
   </style>
 </head>
@@ -116,19 +83,48 @@
     <a class="button" href="https://t.me/ajalipetkaho">Ачлаи Петкахо</a>
     <a class="button" href="https://t.me/hodisatv">Ходиса ТВ</a>
     <a class="button" href="secret.html">Секретный раздел</a>
-  </div>  <div class="vip">
-    <h2>VIP доступ</h2>
-    <p>Оформи подписку и получи доступ к приватным фото, видео и эксклюзивным материалам.</p>
-    <a class="button" href="subscribe.html">Стать VIP</a>
-  </div>  <div class="teaser">
-    <img src="https://via.placeholder.com/600x350?text=Горячее+фото" alt="Превью">
-    <div class="teaser-text">Хочешь больше? Загляни в галерею</div>
-    <a class="button" href="gallery.html">Перейти к галерее</a>
-  </div>  <div class="telegram-banner">
-    <a href="https://t.me/ajalipetkaho">Подписаться на наш Telegram</a>
+  </div>  <div class="media-gallery">
+    <h2>Галерея</h2>
+    <div id="media-box">
+      <!-- Здесь будет медиа -->
+    </div>
+    <button onclick="showRandomMedia()" style="margin-top:20px;background:#ff2f8b;color:#fff;padding:12px 20px;border:none;border-radius:10px;">Показать случайное</button>
   </div>  <footer>
-    © 2025 ajalipetkaho.ru — Только для лиц 18+ | Все права защищены
-  </footer>  <script>
+    <p style="margin-top: 50px; font-size: 0.9em; color: #888;">© 2025 ajalipetkaho.ru</p>
+  </footer>  <script id="gallery-data" type="application/json">
+  [
+    { "type": "image", "src": "https://via.placeholder.com/600x350?text=Фото+1" },
+    { "type": "image", "src": "https://via.placeholder.com/600x350?text=Фото+2" },
+    { "type": "video", "src": "https://www.w3schools.com/html/mov_bbb.mp4" },
+    { "type": "image", "src": "https://via.placeholder.com/600x350?text=Фото+3" },
+    { "type": "video", "src": "https://www.w3schools.com/html/movie.mp4" },
+    { "type": "image", "src": "https://via.placeholder.com/600x350?text=VIP+Контент", "vip": true }
+  ]
+  </script>  <script>
+    const mediaItems = JSON.parse(document.getElementById('gallery-data').textContent);
+    let viewCount = 1;
+
+    function showRandomMedia() {
+      const mediaBox = document.getElementById('media-box');
+      viewCount++;
+
+      let content = '';
+      if (viewCount % 5 === 0) {
+        content += `<div style='padding:20px;color:#ff2f8b'>Реклама: Подпишись на Telegram @ajalipetkaho</div>`;
+      } else {
+        const item = mediaItems[Math.floor(Math.random() * mediaItems.length)];
+        if (item.type === 'image') {
+          content += `<img src="${item.src}" alt="Media" style="width:90%;max-width:400px;border-radius:12px;">`;
+        } else if (item.type === 'video') {
+          content += `<video controls style="width:90%;max-width:400px;border-radius:12px;"><source src="${item.src}" type="video/mp4"></video>`;
+        }
+        content += `<div class="reaction"><span>❤️</span><span>🔥</span><span>👎</span></div>`;
+        if (item.vip) content += `<div style="color:#ff2f8b;margin-top:10px;">🔒 Только для VIP</div>`;
+      }
+
+      mediaBox.innerHTML = content;
+    }
+
     function startCountdown(duration) {
       let timer = duration, hours, minutes, seconds;
       setInterval(function () {
@@ -143,7 +139,7 @@
         document.getElementById('timer').textContent = hours + ":" + minutes + ":" + seconds;
 
         if (--timer < 0) {
-          timer = 0;
+          timer = duration;
         }
       }, 1000);
     }
@@ -151,11 +147,9 @@
     window.onload = function () {
       const now = new Date().getTime();
       const nextUpdate = localStorage.getItem("nextUpdate") || (now + 3 * 60 * 60 * 1000);
-
       if (!localStorage.getItem("nextUpdate")) {
         localStorage.setItem("nextUpdate", nextUpdate);
       }
-
       const remaining = Math.floor((nextUpdate - now) / 1000);
       startCountdown(remaining);
     };
