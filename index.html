@@ -1,132 +1,65 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>18+ Контент</title>
+    <title>Мои проекты</title>
     <style>
-        /* Основные стили */
         body {
             font-family: Arial, sans-serif;
-            background: #17212B;
-            color: white;
-            margin: 0;
-            padding: 0;
-        }
-        
-        /* Возрастной гейт */
-        #ageGate {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(23, 33, 43, 0.95);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        
-        .gate-content {
-            background: #1F2C38;
-            padding: 30px;
-            border-radius: 10px;
+            background: #000;
+            color: #fff;
             text-align: center;
-            border: 2px solid #FF5588;
+            padding: 20px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
             max-width: 500px;
+            margin: 30px auto;
         }
-        
-        /* Основной контент */
-        #mainContent {
-            display: none;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        /* Блоки контента */
-        .content-block {
-            background: #1F2C38;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-        }
-        
-        /* Кнопки */
         button {
-            background: #0088CC;
+            background: #FF5588;
             color: white;
             border: none;
-            padding: 10px 20px;
-            margin: 10px;
-            border-radius: 5px;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
             cursor: pointer;
+        }
+        .vip {
+            background: gold;
+            color: black;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <!-- Возрастной гейт -->
-    <div id="ageGate">
-        <div class="gate-content">
-            <h1>🔞 Вам есть 18 лет?</h1>
-            <div class="buttons">
-                <button id="confirmBtn">Да</button>
-                <button id="exitBtn">Нет</button>
-            </div>
-        </div>
+    <h1>🔞 18+ Контент</h1>
+    
+    <div class="buttons">
+        <button onclick="showSection('channels')">Мои каналы</button>
+        <button onclick="showSection('bots')">Мои боты</button>
+        <button onclick="showSection('payment')">Оплата</button>
+        <button class="vip" onclick="showSection('vip')">VIP</button>
     </div>
 
-    <!-- Основной контент -->
-    <div id="mainContent">
-        <!-- Блок каналов -->
-        <div class="content-block">
-            <h2>📢 Мои каналы</h2>
-            <p>Описание и ссылки на каналы...</p>
-        </div>
-        
-        <!-- Блок ботов -->
-        <div class="content-block">
-            <h2>🤖 Мои боты</h2>
-            <p>Описание и ссылки на ботов...</p>
-        </div>
-        
-        <!-- Блок оплаты -->
-        <div class="content-block">
-            <h2>💳 Оплата</h2>
-            <h3>Криптовалюта</h3>
-            <p>USDT (TRC20): <code>TXXXX...XXXX</code></p>
-            <p>Пришлите TxID в Telegram</p>
-            
-            <h3>СБП</h3>
-            <p>Номер: <code>+7XXX XXX-XX-XX</code></p>
-            <p>Пришлите скрин чека</p>
-        </div>
-        
-        <!-- Контакты -->
-        <div class="content-block">
-            <h2>📞 Контакты</h2>
-            <p>Telegram: @ваш_аккаунт</p>
-        </div>
+    <div id="content" style="margin-top: 30px;">
+        <!-- Контент будет здесь -->
     </div>
 
     <script>
-        // Проверка возраста при загрузке
-        if (localStorage.getItem('ageVerified') === 'true') {
-            document.getElementById('ageGate').style.display = 'none';
-            document.getElementById('mainContent').style.display = 'block';
+        function showSection(section) {
+            const content = {
+                channels: '<h2>Каналы</h2><p>Описание и ссылки...</p>',
+                bots: '<h2>Боты</h2><p>Описание и функционал...</p>',
+                payment: '<h2>Оплата</h2><p>USDT: <code>TXXXX...XXXX</code></p><p>СБП: <code>+7XXX XXX-XX-XX</code></p>',
+                vip: '<h2>VIP доступ</h2><p>Эксклюзивный контент</p>'
+            };
+            document.getElementById('content').innerHTML = content[section];
         }
-        
-        // Обработчики кнопок
-        document.getElementById('confirmBtn').addEventListener('click', function() {
-            localStorage.setItem('ageVerified', 'true');
-            document.getElementById('ageGate').style.display = 'none';
-            document.getElementById('mainContent').style.display = 'block';
-        });
-        
-        document.getElementById('exitBtn').addEventListener('click', function() {
-            window.location.href = 'https://google.com';
-        });
     </script>
 </body>
 </html>
