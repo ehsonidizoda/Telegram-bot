@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мои проекты</title>
+    <title>18+ Проекты</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,11 +27,27 @@
             border-radius: 10px;
             font-size: 18px;
             cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            transform: scale(1.05);
         }
         .vip {
             background: gold;
             color: black;
             font-weight: bold;
+        }
+        .channel {
+            background: #1F2C38;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px auto;
+            max-width: 500px;
+            text-align: left;
+        }
+        .channel a {
+            color: #FF5588;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -47,16 +62,50 @@
     </div>
 
     <div id="content" style="margin-top: 30px;">
-        <!-- Контент будет здесь -->
+        <!-- Контент будет загружаться здесь -->
     </div>
 
     <script>
         function showSection(section) {
             const content = {
-                channels: '<h2>Каналы</h2><p>Описание и ссылки...</p>',
-                bots: '<h2>Боты</h2><p>Описание и функционал...</p>',
-                payment: '<h2>Оплата</h2><p>USDT: <code>TXXXX...XXXX</code></p><p>СБП: <code>+7XXX XXX-XX-XX</code></p>',
-                vip: '<h2>VIP доступ</h2><p>Эксклюзивный контент</p>'
+                channels: `
+                    <h2>Мои каналы</h2>
+                    <div class="channel">
+                        <h3>Канал 1</h3>
+                        <p>Описание первого канала...</p>
+                        <a href="https://t.me/your_channel1" target="_blank">Перейти →</a>
+                    </div>
+                    <div class="channel">
+                        <h3>Канал 2</h3>
+                        <p>Описание второго канала...</p>
+                        <a href="https://t.me/your_channel2" target="_blank">Перейти →</a>
+                    </div>
+                    <div class="channel">
+                        <h3>Канал 3</h3>
+                        <p>Описание третьего канала...</p>
+                        <a href="https://t.me/your_channel3" target="_blank">Перейти →</a>
+                    </div>
+                    <div class="channel">
+                        <h3>Канал 4</h3>
+                        <p>Описание четвертого канала...</p>
+                        <a href="https://t.me/your_channel4" target="_blank">Перейти →</a>
+                    </div>
+                `,
+                bots: '<h2>Мои боты</h2><p>Здесь будут ваши боты...</p>',
+                payment: `
+                    <h2>Оплата</h2>
+                    <div class="channel">
+                        <h3>Криптовалюта</h3>
+                        <p>USDT (TRC20): <code>TXXXX...XXXX</code></p>
+                        <p>Пришлите TxID в Telegram</p>
+                    </div>
+                    <div class="channel">
+                        <h3>СБП</h3>
+                        <p>Номер: <code>+7XXX XXX-XX-XX</code></p>
+                        <p>Пришлите скрин чека</p>
+                    </div>
+                `,
+                vip: '<h2>VIP доступ</h2><p>Эксклюзивный контент для подписчиков</p>'
             };
             document.getElementById('content').innerHTML = content[section];
         }
