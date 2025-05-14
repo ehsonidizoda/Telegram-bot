@@ -11,34 +11,11 @@
 <header>
   <h1>AJALI PETKAHO</h1>
   <p>Эксклюзивный контент только для взрослых.</p>
-  <div class="buttons">
-    <a class="button" href="vip.html">Получить VIP доступ</a>
-  </div>
 </header>
 
-<footer>
-  <p>© 2025 ajalipetkaho.ru</p>
-</footer>
-
-<script src="script.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VIP доступ — 18+ Платформа</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-
-<header>
-  <h1>VIP Доступ</h1>
-  <p>Выберите вариант доступа:</p>
-</header>
-
-<div class="section">
+<!-- Выбор тарифа -->
+<div class="section" id="vip-section">
+  <h2>Выберите вариант доступа:</h2>
   <div class="price-option" onclick="selectOption('1day')">1 день — 200₽</div>
   <div class="price-option" onclick="selectOption('1month')">1 месяц — 400₽</div>
   <div class="price-option" onclick="selectOption('lifetime')">Бессрочно — 600₽</div>
@@ -48,30 +25,22 @@
   <button onclick="confirmPayment()">Оплатил</button>
 </div>
 
-<footer>
-  <p>© 2025 ajalipetkaho.ru</p>
-</footer>
+<!-- Контент VIP -->
+<div class="section" id="vip-content-section" style="display:none;">
+  <h2>VIP Контент</h2>
+  <p>Это скрытый контент, доступный только для пользователей с активным VIP доступом!</p>
+</div>
 
-<script src="script.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VIP Контент — 18+ Платформа</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+<!-- Сообщение, если доступ не активен -->
+<div id="no-access-message" class="section" style="display:none;">
+  <h2>Ваш доступ не активен!</h2>
+  <p>Пожалуйста, выберите вариант для получения VIP доступа.</p>
+</div>
 
-<header>
-  <h1>VIP Контент</h1>
-</header>
-
-<div class="section">
-  <div id="vip-content" class="vip-content">Здесь будет скрытый VIP контент!</div>
-  <div id="no-access-message">Ваш доступ не активен.</div>
+<!-- Переключение языка -->
+<div class="lang-switch">
+  <button onclick="setLang('tj')">🇹🇯 Тоҷикӣ</button>
+  <button onclick="setLang('ru')">🇷🇺 Русский</button>
 </div>
 
 <footer>
@@ -99,10 +68,6 @@ h2 {
   color: #ff2f8b;
 }
 
-h3 {
-  color: #ff2f8b;
-}
-
 .section {
   background: #222;
   padding: 25px;
@@ -127,10 +92,6 @@ h3 {
   background: #e42072;
 }
 
-.price-option.selected {
-  background: #e42072;
-}
-
 button {
   padding: 14px 24px;
   background: #ff2f8b;
@@ -141,20 +102,33 @@ button {
   margin-top: 20px;
 }
 
+.lang-switch {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.lang-switch button {
+  background: #ff2f8b;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
 footer {
   font-size: 0.85em;
   color: #aaa;
   padding: 30px 10px 20px;
 }
-
-// Функция выбора тарифа на странице vip.html
 let selectedOption = '';
 function selectOption(option) {
   selectedOption = option;
   document.querySelectorAll('.price-option').forEach(option => option.classList.remove('selected'));
   document.querySelector(`.price-option:nth-child(${['1day', '1month', 'lifetime'].indexOf(option) + 1})`).classList.add('selected');
-  
-  // Отображаем информацию о выбранном тарифе
+
   const priceStatus = document.getElementById('price-status');
   switch (option) {
     case '1day':
@@ -169,14 +143,12 @@ function selectOption(option) {
   }
 }
 
-// Функция для подтверждения оплаты
 function confirmPayment() {
   if (!selectedOption) {
     alert("Пожалуйста, выберите вариант доступа.");
     return;
   }
 
-  // Сохраняем данные о VIP доступе в localStorage
   let expiryDate;
   switch (selectedOption) {
     case '1day':
@@ -192,35 +164,44 @@ function confirmPayment() {
       break;
   }
 
-  // Сохраняем выбор в localStorage
   const vipData = {
     option: selectedOption,
     expiry: expiryDate ? expiryDate.toISOString() : null
   };
   localStorage.setItem('vipAccess', JSON.stringify(vipData));
+
   alert("Ваш запрос на VIP доступ отправлен. Ожидайте подтверждения.");
 
-  // Редирект на страницу с VIP контентом
-  window.location.href = "vip_content.html"; // Место для контента
+  showVipContent();
 }
 
-// Страница vip_content.html проверяет localStorage на доступ
-window.onload = () => {
+function showVipContent() {
   const vipData = JSON.parse(localStorage.getItem('vipAccess'));
   const now = new Date().getTime();
   let isVipValid = false;
 
   if (vipData) {
     if (vipData.option === 'lifetime' || (vipData.expiry && new Date(vipData.expiry).getTime() > now)) {
-      isVipValid = true;  // VIP доступ активен
+      isVipValid = true;
     }
   }
 
   if (isVipValid) {
-    document.getElementById('vip-content').style.display = 'block';
+    document.getElementById('vip-content-section').style.display = 'block';
     document.getElementById('no-access-message').style.display = 'none';
   } else {
-    document.getElementById('vip-content').style.display = 'none';
+    document.getElementById('vip-content-section').style.display = 'none';
     document.getElementById('no-access-message').style.display = 'block';
   }
+}
+
+function setLang(lang) {
+  localStorage.setItem('lang', lang);
+  location.reload();
+}
+
+window.onload = () => {
+  const storedLang = localStorage.getItem('lang') || 'ru';
+  setLang(storedLang);
+  showVipContent();
 };
