@@ -1,1 +1,97 @@
-.
+<!DOCTYPE html><html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Модели</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #000;
+      color: white;
+      font-family: sans-serif;
+      padding-bottom: 40px;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .filter-btns {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    .filter-btns button {
+      padding: 8px 14px;
+      background: #e42072;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .model-card {
+      background: #111;
+      border-radius: 16px;
+      padding: 15px;
+      margin: 15px auto;
+      max-width: 320px;
+      color: white;
+      box-shadow: 0 0 10px #e42072;
+      text-align: center;
+    }
+    .model-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+    .model-card p {
+      margin: 5px 0;
+    }
+    .model-card button {
+      background: #e42072;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin: 5px 4px;
+      color: white;
+      cursor: pointer;
+    }
+    .model-card.hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>  <h2>★ МОДЕЛИ</h2>  <div class="filter-btns">
+    <button onclick="filterModels('all')">Все</button>
+    <button onclick="filterModels('vip')">VIP</button>
+    <button onclick="filterModels('free')">Обычные</button>
+  </div>  <div id="models">
+    <div class="model-card" data-type="free">
+      <img src="model1.jpg" alt="Фарзона">
+      <h3>Фарзона</h3>
+      <p>Милая и 🔥</p>
+      <button onclick="window.open('https://instagram.com/farzona', '_blank')">Instagram</button>
+      <button onclick="window.open('https://t.me/farzonabot', '_blank')">Telegram</button>
+      <button onclick="window.open('https://site.com/photos/farzona', '_blank')">Фото</button>
+    </div>
+    <div class="model-card" data-type="vip">
+      <img src="model2.jpg" alt="Мадина">
+      <h3>Мадина</h3>
+      <p>Только VIP</p>
+      <button onclick="window.open('https://instagram.com/madina', '_blank')">Instagram</button>
+      <button onclick="window.open('https://t.me/madinabot', '_blank')">Telegram</button>
+      <button onclick="window.open('https://site.com/photos/madina', '_blank')">Фото</button>
+    </div>
+  </div>  <script>
+    function filterModels(type) {
+      const cards = document.querySelectorAll('.model-card');
+      cards.forEach(card => {
+        card.classList.remove('hidden');
+        if (type !== 'all' && card.dataset.type !== type) {
+          card.classList.add('hidden');
+        }
+      });
+    }
+  </script></body>
+</html>
