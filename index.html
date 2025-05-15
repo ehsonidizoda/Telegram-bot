@@ -20,11 +20,22 @@
 </head>
 <body>
 
-<!-- БАННЕР -->
-<div class="promo-banner">
-  <span>🔥 Подпишись на секретный канал — <a href="https://t.me/yourchannel" target="_blank">Перейти в Telegram</a></span>
+<!-- === АНИМИРОВАННЫЙ БАННЕР === -->
+<div class="promo-rotator" id="promoRotator">
+  <div class="promo-slide active">
+    🔥 <a href="https://t.me/link1" target="_blank">Текст рекламы 1</a>
+  </div>
+  <div class="promo-slide">
+    ❤️ <a href="https://t.me/link2" target="_blank">Текст рекламы 2</a>
+  </div>
+  <div class="promo-slide">
+    🔥 <a href="https://t.me/link3" target="_blank">Текст рекламы 3</a>
+  </div>
+  <div class="promo-slide">
+    ❤️ <a href="https://t.me/link4" target="_blank">Текст рекламы 4</a>
+  </div>
 </div>
-<script>
+
   function confirmAge() {
     localStorage.setItem('ageConfirmed', 'true');
     document.getElementById('age-modal').style.display = 'none';
@@ -424,3 +435,14 @@ function filterBots(type) {
   <span style="left: 70%; animation-delay: 3s;">👄</span>
   <span style="left: 90%; animation-delay: 7s;">🔥</span>
 </div>
+
+<script>
+  const slides = document.querySelectorAll('.promo-slide');
+  let currentSlide = 0;
+
+  setInterval(() => {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }, 10000); // каждые 10 секунд
+</script>
