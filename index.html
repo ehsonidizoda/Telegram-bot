@@ -363,19 +363,12 @@ spinBtn.addEventListener("click", () => {
 <script>
 const banners = [
 
-  {
-    text: "🔥 Подпишись на секретный канал — топ контент!",
-    link: "https://t.me/+2q3J4US8cXdjMTFi"
-  },
-  {
-    text: "🎁 Получи VIP доступ и бонусы каждый день!",
-    link: "https://t.me/Fors_Admiin"
-  },
-  {
-    text: "🚀 Присоединяйся к чату: только 18+ обсуждения!",
-    link: "https://t.me/+fby7r2QR75w5ZWFi"
-  }
-];
+  <div class="promo-banner">
+  <marquee behavior="scroll" direction="left">
+    🔥 Подпишись на секретный канал — топ контент! 💋 
+    <a href="https://t.me/yourchannel" target="_blank">Перейти в Telegram</a>
+  </marquee>
+</div>
 
 let index = 0;
 const textEl = document.getElementById("banner-text");
