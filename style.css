@@ -308,4 +308,6 @@ function filterChannels(type) {
   background: #e42072;
   transform: scale(1.05);
 }
-
+.button i {
+  font-size: 1.2em;
+}
