@@ -209,3 +209,29 @@ a.link-button:hover { background: #1976d2; transform: scale(1.05); box-shadow: 0
 .reaction span:hover {
   transform: scale(1.3);
 }
+
+.link-button {
+  display: inline-block;
+  background: #2196f3;
+  color: white;
+  font-weight: bold;
+  padding: 12px 22px;
+  text-decoration: none;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #2196f3;
+  transition: transform 0.3s ease;
+  animation: pulseBtn 2s infinite;
+}
+
+.link-button:hover {
+  transform: scale(1.05);
+}
+
+@keyframes pulseBtn {
+  0%, 100% {
+    box-shadow: 0 0 12px #2196f3;
+  }
+  50% {
+    box-shadow: 0 0 25px #2196f3, 0 0 35px #2196f3;
+  }
+}
