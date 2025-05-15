@@ -272,3 +272,66 @@ body {
 .filter-buttons button:hover {
   background: #ff2f8b;
 }
+
+.fortune-section {
+  background: #1a0a1e;
+  color: white;
+  padding: 25px;
+  border-radius: 16px;
+  max-width: 420px;
+  margin: 30px auto;
+  box-shadow: 0 0 20px #ff2f8b80;
+  text-align: center;
+}
+
+.wheel-container {
+  margin: 20px auto;
+  width: 120px;
+  height: 120px;
+  border: 6px solid #ff2f8b;
+  border-radius: 50%;
+  position: relative;
+  animation: none;
+}
+
+.wheel.spin {
+  animation: spinWheel 2.5s ease-out;
+}
+
+@keyframes spinWheel {
+  from { transform: rotate(0); }
+  to { transform: rotate(1440deg); }
+}
+
+#spin-btn {
+  margin-top: 16px;
+  background: #ff2f8b;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+#spin-btn:hover {
+  background: #e42072;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 1.1em;
+}
+
+.flash-effect {
+  animation: flash 0.5s ease-in-out 3;
+  color: #fff;
+  text-shadow: 0 0 10px #ff2f8b, 0 0 20px #ff2f8b;
+}
+
+@keyframes flash {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.2); }
+  100% { opacity: 1; transform: scale(1); }
+}
