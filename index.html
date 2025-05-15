@@ -157,3 +157,19 @@ document.querySelectorAll(".reaction").forEach(r => {
   });
 });
 </script>
+
+<script>
+  document.querySelectorAll(".reaction").forEach(r => {
+    const id = r.dataset.id;
+    const saved = localStorage.getItem("react-" + id);
+    if (saved) r.innerHTML = saved;
+
+    r.addEventListener("click", e => {
+      if (e.target.tagName === "SPAN" || e.target.tagName === "DIV") {
+        e.target.style.transform = "scale(1.5)";
+        setTimeout(() => e.target.style.transform = "", 300);
+        localStorage.setItem("react-" + id, r.innerHTML);
+      }
+    });
+  });
+</script>
