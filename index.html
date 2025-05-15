@@ -108,28 +108,61 @@ getDoc(docRef).then(snapshot => {
   <a href="models.html" class="button"><i class="fa-solid fa-heart"></i> Модели</a>
 </div>
 
-<!--1: Карточки каналов и ботов с кнопкой Даромадан --><div class="section">
-  <h2><i class="fa-brands fa-telegram"></i> Каналҳо</h2>  <div class="card">
-    <h3>Канал 1: AJALI PETKA 🔞</h3>
-    <p>Видеоҳои Сексуали Нав</p>
-    <a class="link-button glow" href="https://t.me/+_O5ISU7emQxjZmJi" target="_blank">
-      <i class="fa-solid fa-lock"></i> Даромадан
-    </a>
-  </div>  <div class="card">
-    <h3>Канал 2: ХОДИСА ТВ 🔞</h3>
-    <p>Навигариҳои 18+ ҳар рӯз</p>
-    <a class="link-button glow" href="https://t.me/+-WmmN-aTwVZlMGEy" target="_blank">
-      <i class="fa-solid fa-lock"></i> Даромадан
-    </a>
-  </div>  <div class="card">
-    <h3>Канал 3: VIP KANAL 🔞</h3>
-    <p>VIP Дастрасии махфӣ</p>
-    <a class="link-button glow" href="https://t.me/+IUec_xlw8dVjMjJi" target="_blank">
-      <i class="fa-solid fa-lock"></i> Даромадан
-    </a>
+<!-- Фильтр по типу каналов -->
+<div class="channel-filter">
+  <button onclick="filterChannels('all')">Все</button>
+  <button onclick="filterChannels('free')">Открытые</button>
+  <button onclick="filterChannels('vip')">VIP</button>
+</div>
+
+<!-- Секция каналов -->
+<div class="section" id="channels">
+  <h2><i class="fa-brands fa-telegram"></i> КАНАЛҲОИ МО</h2>
+
+  <div class="channel-card" data-type="free">
+    <p><strong>Канал 1:</strong> AJALI PETKA 🔞<br>
+      <a class="link-button" href="https://t.me/+_O5ISU7emQxjZmJi" target="_blank">Даромадан</a>
+      <div class="reaction" data-id="c1"></div>
+    </p>
   </div>
-</div><div class="section">
-  <h2><i class="fa-solid fa-robot"></i> Ботҳо</h2>  <div class="card">
+
+  <div class="channel-card" data-type="free">
+    <p><strong>Канал 2:</strong> ХОДИСА ТВ 🔞<br>
+      <a class="link-button" href="https://t.me/+-WmmN-aTwVZlMGEy" target="_blank">Даромадан</a>
+      <div class="reaction" data-id="c2"></div>
+    </p>
+  </div>
+
+  <div class="channel-card" data-type="vip">
+    <p><strong>Канал 3:</strong> VIP KANAL 🔞<br>
+      <a class="link-button" href="https://t.me/+IUec_xlw8dVjMjJi" target="_blank">Даромадан</a>
+      <div class="reaction" data-id="c3"></div>
+    </p>
+  </div>
+
+  <div class="channel-card" data-type="free">
+    <p><strong>Канал 4:</strong> ХУБТАРИН 🔥<br>
+      <a class="link-button" href="https://t.me/link4" target="_blank">Даромадан</a>
+      <div class="reaction" data-id="c4"></div>
+    </p>
+  </div>
+
+  <div class="channel-card" data-type="vip">
+    <p><strong>Канал 5:</strong> СЕКРЕТ 1 🔐<br>
+      <a class="link-button" href="https://t.me/link5" target="_blank">Даромадан</a>
+      <div class="reaction" data-id="c5"></div>
+    </p>
+  </div>
+
+  <div class="channel-card" data-type="vip">
+    <p><strong>Канал 6:</strong> СЕКРЕТ 2 🔐<br>
+      <a class="link-button" href="https://t.me/link6" target="_blank">Даромадан</a>
+      <div class="reaction" data-id="c6"></div>
+    </p>
+  </div>
+</div> 
+
+Ботҳо</h2>  <div class="card">
     <h3>Бот 1: @VVEDICODBOT 🔞</h3>
     <p>Фармоиш видеоҳое махфӣ</p>
     <a class="link-button glow" href="https://t.me/VVEDICODBOT" target="_blank">
@@ -225,6 +258,14 @@ function getDailyGift() {
 </script>
 
 </body>
+
+<script>
+function filterChannels(type) {
+  document.querySelectorAll('.channel-card').forEach(el => {
+    el.style.display = (type === 'all' || el.dataset.type === type) ? 'block' : 'none';
+  });
+}
+</script>
 
 </html>
 <script>
