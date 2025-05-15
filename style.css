@@ -1,4 +1,70 @@
-body {
+.vip-card {
+  background: linear-gradient(145deg, #2b002f, #000000);
+  border-radius: 20px;
+  padding: 25px 20px;
+  margin: 30px auto;
+  color: white;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 0 20px #ff2f8b80;
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+.vip-card h2 {
+  font-size: 1.5em;
+  color: #ff2f8b;
+  text-shadow: 0 0 5px #ff2f8b;
+}
+
+.vip-features {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.vip-features li {
+  font-size: 1.05em;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vip-features li span {
+  font-size: 1.2em;
+}
+
+.vip-btn {
+  display: inline-block;
+  background: #1da1f2;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 1.05em;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 15px;
+  transition: 0.3s ease;
+  box-shadow: 0 0 10px #1da1f2aa;
+}
+
+.vip-btn:hover {
+  background: #168dd6;
+  transform: scale(1.05);
+}
+
+.vip-footer {
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #ccc;
+  opacity: 0.7;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 12px #ff2f8b80; }
+  50% { box-shadow: 0 0 25px #ff2f8b; }
+}body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #000000, #1c0022);
