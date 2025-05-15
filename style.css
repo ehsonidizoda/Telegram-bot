@@ -121,3 +121,47 @@ a.link-button:hover { background: #1976d2; transform: scale(1.05); box-shadow: 0
   opacity: 1;
   position: relative;
 }
+
+.channel-card {
+  background: #111;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 18px;
+  box-shadow: 0 0 25px #ff2f8b55;
+  max-width: 480px;
+  color: white;
+}
+
+.channel-card h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.link-button {
+  background: #2196f3;
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 10px;
+  box-shadow: 0 0 12px #2196f3aa;
+}
+
+.vip-glow {
+  box-shadow: 0 0 25px #ff2f8b, 0 0 45px #e42072;
+}
+
+.glow {
+  animation: glowPulse 2s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 12px #ff2f8b;
+  }
+  50% {
+    box-shadow: 0 0 25px #ff2f8b, 0 0 45px #ff2f8b;
+  }
+}
