@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>18+ КОНТЕНТ — AJALI PETKAHO</title>
 
+<div class="filter-buttons" style="text-align: center; margin: 20px 0;">
+  <button onclick="filterAll('all')">Ҳама</button>
+  <button onclick="filterAll('free')">Озод</button>
+  <button onclick="filterAll('vip')">VIP</button>
+</div>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KDHFW61PM"></script>
 <script>
@@ -115,90 +121,40 @@ getDoc(docRef).then(snapshot => {
   <button onclick="filterChannels('vip')">VIP</button>
 </div>
 
-<!-- Секция каналов -->
-<div class="channel-filter">
-  <button onclick="filterChannels('all')"><i class="fa-solid fa-globe"></i> Все</button>
-  <button onclick="filterChannels('free')"><i class="fa-solid fa-unlock"></i> Бесплатные</button>
-  <button onclick="filterChannels('vip')"><i class="fa-solid fa-lock"></i> VIP</button>
+<!-- Объединённый список -->
+<div class="section" id="content">
+
+  <!-- Канал 1 -->
+  <div class="channel-card" data-type="free">
+    <p><strong><i class="fa-brands fa-telegram"></i> AJALI PETKA 🔞</strong><br>
+    <a class="link-button" href="https://t.me/+_O5ISU7emQxjZmJi" target="_blank">Даромадан</a></p>
+  </div>
+
+  <!-- Канал 2 -->
+  <div class="channel-card" data-type="free">
+    <p><strong><i class="fa-brands fa-telegram"></i> ХОДИСА ТВ 🔞</strong><br>
+    <a class="link-button" href="https://t.me/+-WmmN-aTwVZlMGEy" target="_blank">Даромадан</a></p>
+  </div>
+
+  <!-- VIP Канал -->
+  <div class="channel-card" data-type="vip">
+    <p><strong><i class="fa-solid fa-star"></i> VIP KANAL 🔞</strong><br>
+    <a class="link-button" href="https://t.me/+IUec_xlw8dVjMjJi" target="_blank">Даромадан</a></p>
+  </div>
+
+  <!-- Бот 1 -->
+  <div class="channel-card" data-type="free">
+    <p><strong><i class="fa-solid fa-robot"></i> @VVEDICODBOT 🔞</strong><br>
+    <a class="link-button" href="https://t.me/VVEDICODBOT" target="_blank">Даромадан</a></p>
+  </div>
+
+  <!-- Бот 2 -->
+  <div class="channel-card" data-type="vip">
+    <p><strong><i class="fa-solid fa-heart"></i> ФАРЗОНА 🍑💋</strong><br>
+    <a class="link-button" href="https://t.me/Farzoona_bot?start=" target="_blank">Даромадан</a></p>
+  </div>
+
 </div>
-
-<!-- Каналы -->
-<div class="section" id="channels">
-  <h2><i class="fa-brands fa-telegram"></i> КАНАЛҲОИ МО</h2>
-
-  <div class="channel-card" data-type="free">
-    <h3><i class="fa-solid fa-paper-plane"></i> AJALI PETKA 🔞</h3>
-    <a class="link-button" href="https://t.me/+_O5ISU7emQxjZmJi" target="_blank">Даромадан</a>
-    <div class="reaction" data-id="c1"></div>
-  </div>
-
-  <div class="channel-card" data-type="free">
-    <h3><i class="fa-solid fa-paper-plane"></i> ХОДИСА ТВ 🔞</h3>
-    <a class="link-button" href="https://t.me/+-WmmN-aTwVZlMGEy" target="_blank">Даромадан</a>
-    <div class="reaction" data-id="c2"></div>
-  </div>
-
-  <div class="channel-card vip-glow" data-type="vip">
-    <h3><i class="fa-solid fa-star"></i> VIP KANAL 🔞</h3>
-    <a class="link-button glow" href="https://t.me/+IUec_xlw8dVjMjJi" target="_blank">Даромадан</a>
-    <div class="reaction" data-id="c3"></div>
-  </div>
-
-  <div class="channel-card" data-type="free">
-    <h3><i class="fa-solid fa-eye-slash"></i> Сексои Кудакона 🤫</h3>
-    <a class="link-button" href="https://t.me/+w4jDVeVHElMyYzli" target="_blank">Даромадан</a>
-    <div class="reaction" data-id="c4"></div>
-  </div>
-
-  <div class="channel-card vip-glow" data-type="vip">
-    <h3><i class="fa-solid fa-lock"></i> СЕКРЕТЫ 18+ 🔐</h3>
-    <a class="link-button glow" href="https://t.me/+EJVr7iyuIR4zYWQy" target="_blank">Даромадан</a>
-    <div class="reaction" data-id="c5"></div>
-  </div>
-
-  <div class="channel-card vip-glow" data-type="vip">
-    <h3><i class="fa-solid fa-fire-flame-curved"></i> МАРО БАХО ДИХЕД! 🔐</h3>
-    <a class="link-button glow" href="https://t.me/VvediCod" target="_blank">Даромадан</a>
-    <div class="reaction" data-id="c6"></div>
-  </div>
-</div> 
-<-- Секция ботов -->
-<div class="section" id="bots">
-  <h2><i class="fa-solid fa-robot"></i> Ботҳоӣ мо</h2>
-
-  <div class="channel-card" data-type="free" style="text-align: center;">
-    <p style="font-weight: bold; font-size: 1.2em; color: #ff2f8b;">
-      <i class="fa-solid fa-robot"></i> @VVEDICODBOT <span style="font-size: 0.9em;">🔞</span>
-    </p>
-    <a class="link-button" href="https://t.me/VVEDICODBOT" target="_blank">Даромадан</a>
-    <div class="reaction" data-id="b1"></div>
-  </div>
-
-  <div class="channel-card" data-type="vip" style="text-align: center;">
-    <p style="font-weight: bold; font-size: 1.2em; color: #ff2f8b;">
-      <i class="fa-solid fa-heart"></i> ФАРЗОНА <span>🍑💋</span>
-    </p>
-    <a class="link-button" href="https://t.me/Farzoona_bot?start=" target="_blank">Даромадан</a>
-    <div class="reaction" data-id="b2"></div>
-  </div>
-</div>
-  <!-- Фильтр -->
-  <div class="filter-buttons">
-    <button onclick="filterBots('all')">Ҳама</button>
-    <button onclick="filterBots('free')">Озод</button>
-    <button onclick="filterBots('vip')">VIP</button>
-  </div>
-
-  function filterBots(type) {
-    document.querySelectorAll("#bots .channel-card").forEach(card => {
-      if (type === 'all' || card.dataset.type === type) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
-    });
-  }
-</script>
 
 <div class="section vip-highlight" id="vip">
   <h2><i class="fa-solid fa-star"></i> VIP Доступ</h2>
@@ -431,4 +387,16 @@ function filterBots(type) {
     }
   });
 }
+</script>
+
+<script>
+  function filterAll(type) {
+    document.querySelectorAll('.channel-card').forEach(card => {
+      if (type === 'all' || card.dataset.type === type) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
 </script>
