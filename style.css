@@ -206,6 +206,7 @@ a.link-button:hover {
   box-shadow: 0 0 15px #ff0080;
   transition: 0.3s;
 }
+
 <div class="buttons">
   <a href="#channels" class="button"><i class="fa-brands fa-telegram"></i> Каналы</a>
   <a href="#bots" class="button"><i class="fa-solid fa-robot"></i> Боты</a>
