@@ -1,1 +1,99 @@
-.
+<!DOCTYPE html><html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AJALI PETKAHО — 18+</title>  <!-- Стили сайта -->  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #000000, #1c0022);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* Анимированный баннер */
+    .promo-rotator {
+      background: linear-gradient(90deg, #ff2f8b, #e42072);
+      color: white;
+      font-weight: bold;
+      padding: 14px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 20px #ff2f8b;
+      z-index: 10;
+    }
+    .promo-slide {
+      display: none;
+      white-space: nowrap;
+      animation: scrollText 15s linear infinite;
+    }
+    .promo-slide.active {
+      display: block;
+    }
+    @keyframes scrollText {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .promo-slide a {
+      color: yellow;
+      text-decoration: underline;
+    }
+
+    /* Кнопки меню */
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      max-width: 420px;
+      margin: 20px auto;
+      padding: 10px;
+    }
+    .button {
+      background: linear-gradient(145deg, #ff2f8b, #e42072);
+      color: white;
+      padding: 14px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 14px #ff2f8b55;
+      transition: transform 0.3s ease;
+      animation: pulseGlow 2.5s ease-in-out infinite;
+    }
+    .button:hover {
+      transform: scale(1.1);
+    }
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 0 12px #ff2f8b;
+      }
+      50% {
+        box-shadow: 0 0 25px #ff2f8b, 0 0 45px #ff2f8b;
+      }
+    }
+  </style></head>
+<body>  <!-- Баннер -->  <div class="promo-rotator" id="promoRotator">
+    <div class="promo-slide active">🔥 <a href="#">Текст рекламы 1</a></div>
+    <div class="promo-slide">❤️ <a href="#">Текст рекламы 2</a></div>
+    <div class="promo-slide">🔥 <a href="#">Текст рекламы 3</a></div>
+    <div class="promo-slide">❤️ <a href="#">Текст рекламы 4</a></div>
+  </div>  <!-- Кнопки меню -->  <div class="buttons">
+    <a href="#" class="button"><i class="fa-brands fa-telegram"></i> Каналы</a>
+    <a href="#" class="button"><i class="fa-solid fa-robot"></i> Боты</a>
+    <a href="#" class="button"><i class="fa-solid fa-star"></i> VIP</a>
+    <a href="#" class="button"><i class="fa-solid fa-dice"></i> Колесо Фортуны</a>
+  </div>  <!-- Скрипт для баннера -->  <script>
+    const slides = document.querySelectorAll('.promo-slide');
+    let currentSlide = 0;
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 10000);
+  </script></body>
+</html>
