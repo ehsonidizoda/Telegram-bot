@@ -1,185 +1,39 @@
-<!DOCTYPE html><html lang="ru">
+<!-- index.html --><!DOCTYPE html><html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AJALI PETKAHО — 18+</title>  <!-- Стили сайта -->  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #000000, #1c0022);
-      color: white;
-      text-align: center;
-      overflow-x: hidden;
-    }
-
-    /* Анимированный баннер */
-    .promo-rotator {
-      background: linear-gradient(90deg, #ff2f8b, #e42072);
-      color: white;
-      font-weight: bold;
-      padding: 14px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 0 20px #ff2f8b;
-      z-index: 10;
-    }
-    .promo-slide {
-      display: none;
-      white-space: nowrap;
-      animation: scrollText 15s linear infinite;
-    }
-    .promo-slide.active {
-      display: block;
-    }
-    @keyframes scrollText {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-    .promo-slide a {
-      color: yellow;
-      text-decoration: underline;
-    }
-
-    /* Кнопки меню */
-    .buttons {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      max-width: 420px;
-      margin: 20px auto;
-      padding: 10px;
-    }
-    .button {
-      background: linear-gradient(145deg, #ff2f8b, #e42072);
-      color: white;
-      padding: 14px;
-      border-radius: 16px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1em;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 4px 14px #ff2f8b55;
-      transition: transform 0.3s ease;
-      animation: pulseGlow 2.5s ease-in-out infinite;
-    }
-    .button:hover {
-      transform: scale(1.1);
-    }
-    @keyframes pulseGlow {
-      0%, 100% {
-        box-shadow: 0 0 12px #ff2f8b;
-      }
-      50% {
-        box-shadow: 0 0 25px #ff2f8b, 0 0 45px #ff2f8b;
-      }
-    }
-  </style></head>
-
-<body>  <!-- Баннер -->  <div class="promo-rotator" id="promoRotator">
+  <title>AJALI PETKAHO — 18+</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>  <div class="promo-rotator" id="promoRotator">
     <div class="promo-slide active">🔥 <a href="#">Текст рекламы 1</a></div>
     <div class="promo-slide">❤️ <a href="#">Текст рекламы 2</a></div>
     <div class="promo-slide">🔥 <a href="#">Текст рекламы 3</a></div>
     <div class="promo-slide">❤️ <a href="#">Текст рекламы 4</a></div>
-  </div>  <!-- Кнопки меню -->  <div class="buttons">
-    <a href="#" class="button"><i class="fa-brands fa-telegram"></i> Каналы</a>
-    <a href="#" class="button"><i class="fa-solid fa-robot"></i> Боты</a>
-    <a href="#" class="button"><i class="fa-solid fa-star"></i> VIP</a>
-    <a href="#" class="button"><i class="fa-solid fa-dice"></i> Колесо Фортуны</a>
-  </div>  <!-- Скрипт для баннера -->  <script>
-    const slides = document.querySelectorAll('.promo-slide');
-    let currentSlide = 0;
-    setInterval(() => {
-      slides[currentSlide].classList.remove('active');
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add('active');
-    }, 10000);
-  </script></body>
+  </div>  <div class="buttons">
+    <a href="#channels" class="button"><i class="fa-brands fa-telegram"></i> Каналы</a>
+    <a href="#bots" class="button"><i class="fa-solid fa-robot"></i> Боты</a>
+    <a href="#vip" class="button"><i class="fa-solid fa-star"></i> VIP</a>
+    <a href="#bonus-wheel" class="button full-width"><i class="fa-solid fa-dice"></i> Колесо Фортуны</a>
+  </div>  <div class="section" id="channels">
+    <h2><i class="fa-brands fa-telegram"></i> КАНАЛҲОИ МО</h2>
+    <!-- Пример канала -->
+    <div class="channel-card">
+      <h3><i class="fa-brands fa-telegram"></i> AJALI PETKA <span>🔞</span></h3>
+      <a class="link-button glow" href="#" target="_blank">Даромадан</a>
+      <div class="reaction" data-id="c1">
+        <span data-type="like">❤️ 0</span>
+        <span data-type="fire">🔥 0</span>
+        <span data-type="dislike">👎 0</span>
+      </div>
+    </div>
+  </div>  <div class="section" id="bots">
+    <h2><i class="fa-solid fa-robot"></i> БОТҲОИ МО</h2>
+    <div class="channel-card">
+      <h3><i class="fa-solid fa-robot"></i> @VVEDICODBOT <span>🔞</span></h3>
+      <a class="link-button glow" href="#" target="_blank">Даромадан</a>
+      <div class="reaction" data-id="b1"></div>
+    </div>
+  </div>  <script src="script.js"></script></body>
 </html>
-
-<!-- === БЛОК КАНАЛОВ === --><div class="section" id="channels">
-  <h2><i class="fa-brands fa-telegram"></i> КАНАЛҲОИ МО</h2>
-  <div class="filter-buttons">
-    <button onclick="filterChannels('all')">Ҳама</button>
-    <button onclick="filterChannels('free')">Озод</button>
-    <button onclick="filterChannels('vip')">VIP</button>
-  </div>  <div class="channel-card" data-type="free">
-    <h3><i class="fa-brands fa-telegram"></i> AJALI PETKA <span>🔞</span></h3>
-    <a class="link-button glow" href="#" target="_blank">Даромадан</a>
-  </div>  <div class="channel-card" data-type="free">
-    <h3><i class="fa-brands fa-telegram"></i> ХОДИСА ТВ <span>🔞</span></h3>
-    <a class="link-button glow" href="#" target="_blank">Даромадан</a>
-  </div>  <div class="channel-card vip-glow" data-type="vip">
-    <h3><i class="fa-solid fa-star"></i> VIP KANAL <span>🔞</span></h3>
-    <a class="link-button glow" href="#" target="_blank">Даромадан</a>
-  </div>  <div class="channel-card" data-type="free">
-    <h3><i class="fa-solid fa-eye-slash"></i> Сексои Кудакона <span>🤫</span></h3>
-    <a class="link-button glow" href="#" target="_blank">Даромадан</a>
-  </div>  <div class="channel-card vip-glow" data-type="vip">
-    <h3><i class="fa-solid fa-lock"></i> СЕКРЕТЫ 18+ <span>🔐</span></h3>
-    <a class="link-button glow" href="#" target="_blank">Даромадан</a>
-  </div>  <div class="channel-card vip-glow" data-type="vip">
-    <h3><i class="fa-solid fa-key"></i> МАРО БАХО ДИХЕД! <span>🔐</span></h3>
-    <a class="link-button glow" href="#" target="_blank">Даромадан</a>
-  </div>
-</div><!-- === БЛОК БОТОВ === --><div class="section" id="bots">
-  <h2><i class="fa-solid fa-robot"></i> БОТҲОИ МО</h2>  <div class="channel-card" data-type="free">
-    <h3><i class="fa-solid fa-robot"></i> @VVEDICODBOT <span>🔞</span></h3>
-    <a class="link-button glow" href="#" target="_blank">Даромадан</a>
-  </div>  <div class="channel-card vip-glow" data-type="vip">
-    <h3><i class="fa-solid fa-heart"></i> ФАРЗОНА 🍑💋</h3>
-    <a class="link-button glow" href="#" target="_blank">Даромадан</a>
-  </div>
-</div>
-
-<script>
-document.querySelectorAll(".reaction").forEach(r => {
-  const id = r.dataset.id;
-  const saved = localStorage.getItem("react-" + id);
-  if (saved) r.innerHTML = saved;
-
-  r.innerHTML = `
-    <span data-type="like">❤️</span>
-    <span data-type="fire">🔥</span>
-    <span data-type="bad">👎</span>
-  `;
-
-  r.addEventListener("click", e => {
-    if (e.target.tagName === "SPAN") {
-      e.target.style.transform = "scale(1.5)";
-      setTimeout(() => e.target.style.transform = "", 300);
-      localStorage.setItem("react-" + id, r.innerHTML);
-    }
-  });
-});
-</script>
-
-<script>
-  document.querySelectorAll(".reaction").forEach(r => {
-    const id = r.dataset.id;
-    const saved = localStorage.getItem("react-" + id);
-    if (saved) r.innerHTML = saved;
-
-    r.addEventListener("click", e => {
-      if (e.target.tagName === "SPAN" || e.target.tagName === "DIV") {
-        e.target.style.transform = "scale(1.5)";
-        setTimeout(() => e.target.style.transform = "", 300);
-        localStorage.setItem("react-" + id, r.innerHTML);
-      }
-    });
-  });
-</script>
-
-<div class="channel-card" data-type="free">
-  <h3><i class="fa-brands fa-telegram"></i> AJALI PETKA <span>🔞</span></h3>
-  <a class="link-button glow" href="https://t.me/+_O5ISU7emQxjZmJi" target="_blank">
-    <i class="fa-brands fa-telegram"></i> Даромадан
-  </a>
-  <div class="reaction" data-id="c1">
-    <span data-type="like">❤️ 0</span>
-    <span data-type="fire">🔥 0</span>
-    <span data-type="dislike">👎 0</span>
-  </div>
-</div>
