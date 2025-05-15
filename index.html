@@ -326,3 +326,45 @@ spinBtn.addEventListener("click", () => {
 });
 </script>
 
+<script>
+const banners = [
+  {
+    text: "🔥 Подпишись на секретный канал — топ контент!",
+    link: "https://t.me/+2q3J4US8cXdjMTFi"
+  },
+  {
+    text: "🎁 Получи VIP доступ и бонусы каждый день!",
+    link: "https://t.me/Fors_Admiin"
+  },
+  {
+    text: "🚀 Присоединяйся к чату: только 18+ обсуждения!",
+    link: "https://t.me/+fby7r2QR75w5ZWFi"
+  }
+];
+
+let index = 0;
+const textEl = document.getElementById("banner-text");
+const linkEl = document.getElementById("banner-link");
+const bannerArea = document.getElementById("banner-area");
+
+function rotateBanner() {
+  textEl.textContent = banners[index].text;
+  linkEl.href = banners[index].link;
+  index = (index + 1) % banners.length;
+}
+
+let bannerInterval = setInterval(rotateBanner, 12000);
+rotateBanner();
+
+// Пауза при наведении
+bannerArea.addEventListener("mouseenter", () => {
+  bannerArea.classList.add("paused");
+  clearInterval(bannerInterval);
+});
+
+bannerArea.addEventListener("mouseleave", () => {
+  bannerArea.classList.remove("paused");
+  bannerInterval = setInterval(rotateBanner, 12000);
+});
+</script>
+
