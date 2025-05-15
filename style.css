@@ -131,13 +131,6 @@ a.link-button:hover {
 }
 
 .reaction {
-  margin-top: 8px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.reaction {
   display: flex;
   justify-content: center;
   gap: 15px;
@@ -145,16 +138,18 @@ a.link-button:hover {
   margin-top: 8px;
   margin-bottom: 10px;
   user-select: none;
-  color: #fff; /* Вот это обязательно! */
+  color: #fff; /* Обязательно для белого текста */
 }
 
-.reaction {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  font-size: 1.4em;
-  margin-top: 8px;
-  margin-bottom: 10px;
-  user-select: none;
-  color: #fff; /* Вот это обязательно! */
+.reaction span {
+  background: #222;
+  padding: 6px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.reaction span:hover {
+  transform: scale(1.1);
+  background: #333;
 }
