@@ -1,29 +1,17 @@
-
-/* Анимированный фон со стикерами */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: black;
-  color: white;
-  text-align: center;
-  position: relative;
-  overflow-x: hidden;
-}
-
 body::before {
   content: '';
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background-image: 
     url('https://cdn-icons-png.flaticon.com/512/2583/2583427.png'),
-    url('https://cdn-icons-png.flaticon.com/512/2583/2583426.png'),
-    url('https://cdn-icons-png.flaticon.com/512/2583/2583434.png');
-  background-size: 40px;
+    url('https://cdn-icons-png.flaticon.com/512/2583/2583426.png');
+  background-size: 60px, 60px;
   background-repeat: repeat;
-  background-position: 0 0, 100px 100px, 200px 50px;
-  opacity: 0.05;
+  background-position: 0 0, 100px 100px;
+  opacity: 0.1;
   z-index: 0;
   pointer-events: none;
   animation: moveBg 60s linear infinite;
@@ -31,22 +19,11 @@ body::before {
 
 @keyframes moveBg {
   0% {
-    background-position: 0 0, 100px 100px, 200px 50px;
+    background-position: 0 0, 100px 100px;
   }
   100% {
-    background-position: 1000px 1000px, 1100px 1100px, 1200px 1050px;
+    background-position: 1000px 1000px, 1100px 1100px;
   }
-}
-
-/* Остальные стили ниже... */
-
-/* Секции контента */
-.section {
-  background: #111;
-  border-radius: 12px;
-  padding: 20px;
-  margin: 20px 10px;
-  color: #fff;
 }
 
 /* Заголовки секций с иконками */
