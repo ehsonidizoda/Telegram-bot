@@ -77,24 +77,13 @@ getDoc(docRef).then(snapshot => {
   <span>Самое 🔥 только в Telegram — <a href="https://t.me/+CptBoIPw0cw0NjAy" target="_blank">Перейти в канал</a></span>
 </div>
 
+<!-- Блок подтверждения возраста -->
+<div id="age-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); z-index: 9999; color: white; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 20px; text-align: center;">
+  <h2>Вам уже есть 18 лет?</h2>
+  <p>Сайт содержит материалы 18+. Подтвердите, что вам исполнилось 18 лет.</p>
+  <button onclick="confirmAge()" style="padding: 10px 20px; background: #e42072; border: none; border-radius: 10px; color: white; font-size: 18px; margin-top: 20px;">Мне есть 18</button>
+</div>
 
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-function updateOnline() {
-  document.getElementById("onlineUsers").textContent = randomOnline();
-}
-updateOnline();
-setInterval(updateOnline, 8000);
-</script><style>
-#live-counter {
-  background: #111;
-  padding: 20px;
-  border-radius: 12px;
-  margin: 20px 10px;
-  color: #fff;
-  font-size: 1.2em;
-  font-weight: bold;
-}
 </style>
 
 <div class="buttons">
