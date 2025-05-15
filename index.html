@@ -189,23 +189,6 @@ getDoc(docRef).then(snapshot => {
     <button onclick="filterBots('vip')">VIP</button>
   </div>
 
-  <!-- Бот 1 - Free -->
-  <div class="channel-card" data-type="free">
-    <p><strong><i class="fa-solid fa-robot"></i> @VVEDICODBOT 🔞</strong><br>
-      <a class="link-button" href="https://t.me/VVEDICODBOT" target="_blank">Даромадан</a>
-      <div class="reaction" data-id="b1"></div>
-    </p>
-  </div>
-
-  <!-- Бот 2 - VIP -->
-  <div class="channel-card" data-type="vip">
-    <p><strong><i class="fa-solid fa-heart"></i> ФАРЗОНА 🍑💋</strong><br>
-      <a class="link-button" href="https://t.me/Farzoona_bot" target="_blank">Даромадан</a>
-      <div class="reaction" data-id="b2"></div>
-    </p>
-  </div>
-</div>
-
   function filterBots(type) {
     document.querySelectorAll("#bots .channel-card").forEach(card => {
       if (type === 'all' || card.dataset.type === type) {
