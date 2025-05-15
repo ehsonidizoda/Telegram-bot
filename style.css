@@ -24,3 +24,16 @@ a.link-button:hover { background: #1976d2; transform: scale(1.05); box-shadow: 0
 
 .filter-buttons button:hover { background: #e42072; transform: scale(1.05); }
 
+.button, .link-button, .filter-buttons button {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px #ff2f8b;
+  }
+  50% {
+    box-shadow: 0 0 20px #ff2f8b, 0 0 40px #ff2f8b;
+  }
+}
+
