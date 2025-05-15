@@ -54,29 +54,6 @@
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // Подгружаем реакции
-  document.querySelectorAll(".reaction").forEach(block => {
-    const id = block.dataset.id;
-    const docRef = doc(db, "реакции", id);
-
-    
-getDoc(docRef).then(snapshot => {
-  if (snapshot.exists()) {
-    const data = snapshot.data();
-    block.innerHTML = `
-      <span data-type="love">❤️ ${data.love || 0}</span>
-      <span data-type="fire">🔥 ${data.fire || 0}</span>
-      <span data-type="bad">👎 ${data.bad || 0}</span>
-    `;
-  } else {
-    block.innerHTML = `
-      <span data-type="love">❤️ 0</span>
-      <span data-type="fire">🔥 0</span>
-      <span data-type="bad">👎 0</span>
-    `;
-  }
-});
-
     block.addEventListener("click", async e => {
       if (e.target.tagName === "SPAN") {
         const type = e.target.dataset.type;
@@ -115,8 +92,8 @@ getDoc(docRef).then(snapshot => {
 
   <!-- Фильтр -->
   <div class="filter-buttons">
-    <button onclick="filterChannels('all')">Ҳама</button>
-    <button onclick="filterChannels('free')">Озод</button>
+    <button onclick="filterChannels('all')">Ҳама Каналхо</button>
+    <button onclick="filterChannels('free')">18+</button>
     <button onclick="filterChannels('vip')">VIP</button>
   </div>
 
