@@ -163,19 +163,33 @@ getDoc(docRef).then(snapshot => {
   </div>
 </div> 
 
-<!-- БОТҲОИ МО --><div class="section" id="bots">
-  <h2><i class="fa-solid fa-robot"></i> Ботҳоӣ мо</h2>  <div class="channel-card vip-glow">
+<!-- Секция ботов --><div class="section" id="bots">
+  <h2><i class="fa-solid fa-robot"></i> Ботҳоӣ мо</h2>  <div class="channel-card vip-glow" data-type="free">
     <p><strong>Бот 1:</strong> @VVEDICODBOT 🔞<br>
       <a class="link-button" href="https://t.me/VVEDICODBOT" target="_blank">Даромадан</a>
       <div class="reaction" data-id="b1"></div>
     </p>
-  </div>  <div class="channel-card vip-glow">
-    <p><strong>Бот 2:</strong> ФАРЗОНА 🍑💋<br>
+  </div>  <div class="channel-card vip-glow" data-type="vip">
+    <p><strong>Бот 2:</strong> ФАРЗОНА🍑💋<br>
       <a class="link-button" href="https://t.me/Farzoona_bot?start=" target="_blank">Даромадан</a>
       <div class="reaction" data-id="b2"></div>
     </p>
   </div>
-</div>
+</div><!-- Фильтр ботов --><div style="text-align:center; margin: 10px auto;">
+  <button onclick="filterBots('all')">Все</button>
+  <button onclick="filterBots('free')">Бесплатные</button>
+  <button onclick="filterBots('vip')">VIP</button>
+</div><script>
+function filterBots(type) {
+  document.querySelectorAll('#bots .channel-card').forEach(el => {
+    if (type === 'all' || el.dataset.type === type) {
+      el.style.display = 'block';
+    } else {
+      el.style.display = 'none';
+    }
+  });
+}
+</script>
 
 <div class="section vip-highlight" id="vip">
   <h2><i class="fa-solid fa-star"></i> VIP Доступ</h2>
