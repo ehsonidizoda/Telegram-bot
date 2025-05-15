@@ -129,3 +129,24 @@ a.link-button:hover {
 #daily-gift button:hover {
   background: #e42072;
 }
+
+.reaction {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.reaction span {
+  background: #1c1c1c;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.reaction span:hover {
+  transform: scale(1.2);
+  background: #ff2f8b;
+}
