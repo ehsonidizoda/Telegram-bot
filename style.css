@@ -106,3 +106,162 @@ body {
   cursor: pointer;
   transition: transform 0.2s ease;
 }
+
+<style>
+  .section { margin: 40px 0; padding: 10px; }
+  .section h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px #ff2f8b;
+  }
+
+  .filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+  }
+
+  .filter-buttons button {
+    background: #e42072;
+    border: none;
+    padding: 8px 18px;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .filter-buttons button:hover {
+    background: #ff2f8b;
+  }
+
+  .channel-card {
+    background: #1a0a1e;
+    border-radius: 16px;
+    padding: 16px;
+    margin: 16px auto;
+    max-width: 420px;
+    box-shadow: 0 0 20px #ff2f8b88;
+    animation: fadeIn 0.6s ease;
+  }
+
+  .channel-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.2em;
+  }
+
+  .link-button {
+    display: inline-block;
+    background: #2196f3;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 10px 0;
+    animation: glowPulse 2s infinite;
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 10px #2196f3; }
+    50% { box-shadow: 0 0 20px #2196f3; }
+  }
+
+  .reaction {
+    margin-top: 10px;
+    font-size: 1.3em;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    cursor: pointer;
+  }
+
+  .reaction span {
+    transition: 0.2s;
+  }
+
+  .reaction span:hover {
+    transform: scale(1.4);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<div class="section" id="channels">
+  <h2>📢 КАНАЛҲОИ МО</h2>
+  <div class="filter-buttons">
+    <button onclick="filter('all')">Ҳама</button>
+    <button onclick="filter('free')">Озод</button>
+    <button onclick="filter('vip')">VIP</button>
+  </div>
+
+  <div class="channel-card" data-type="free">
+    <h3>🚀 AJALI PETKA 🔞</h3>
+    <a class="link-button" href="#">Даромадан</a>
+    <div class="reaction" data-id="c1">
+      <span>❤️ 0</span> <span>🔥 0</span> <span>👎 0</span>
+    </div>
+  </div>
+
+  <div class="channel-card" data-type="vip">
+    <h3>⭐ VIP KANAL 🔞</h3>
+    <a class="link-button" href="#">Даромадан</a>
+    <div class="reaction" data-id="c2">
+      <span>❤️ 0</span> <span>🔥 0</span> <span>👎 0</span>
+    </div>
+  </div>
+
+  <div class="channel-card" data-type="free">
+    <h3>📺 ХОДИСА ТВ 🔞</h3>
+    <a class="link-button" href="#">Даромадан</a>
+    <div class="reaction" data-id="c3">
+      <span>❤️ 0</span> <span>🔥 0</span> <span>👎 0</span>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="bots">
+  <h2>🤖 БОТҲОИ МО</h2>
+
+  <div class="channel-card" data-type="free">
+    <h3>🤖 @VVEDICODBOT 🔞</h3>
+    <a class="link-button" href="#">Даромадан</a>
+    <div class="reaction" data-id="b1">
+      <span>❤️ 0</span> <span>🔥 0</span> <span>👎 0</span>
+    </div>
+  </div>
+
+  <div class="channel-card" data-type="vip">
+    <h3>❤️ ФАРЗОНА 🍑💋</h3>
+    <a class="link-button" href="#">Даромадан</a>
+    <div class="reaction" data-id="b2">
+      <span>❤️ 0</span> <span>🔥 0</span> <span>👎 0</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ФИЛЬТР КАНАЛОВ И БОТОВ
+  function filter(type) {
+    document.querySelectorAll('.channel-card').forEach(el => {
+      const elType = el.getAttribute('data-type');
+      el.style.display = (type === 'all' || elType === type) ? 'block' : 'none';
+    });
+  }
+
+  // АНИМАЦИЯ РЕАКЦИЙ
+  document.querySelectorAll(".reaction").forEach(r => {
+    const id = r.dataset.id;
+    r.addEventListener("click", e => {
+      if (e.target.tagName === "SPAN") {
+        e.target.style.transform = "scale(1.6)";
+        setTimeout(() => e.target.style.transform = "", 200);
+      }
+    });
+  });
+</script>
