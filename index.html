@@ -266,3 +266,62 @@ function getDailyGift() {
   <button onclick="getDailyGift()">Получить</button>
   <p id="gift-result" style="margin-top:10px; color: #ff2f8b;"></p>
 </div>
+
+<div class="section" id="bonus-wheel">
+  <h2>🎁 Крути колесо — получи приз!</h2>
+  <button id="spin-btn" disabled>Загрузка...</button>
+  <div id="result" style="margin-top: 20px;"></div>
+</div>
+
+<script>
+const COOLDOWN_HOURS = 24;
+const spinBtn = document.getElementById("spin-btn");
+const resultEl = document.getElementById("result");
+const wheelUsedAt = localStorage.getItem("wheelUsedAt");
+const now = Date.now();
+
+// Подарки
+const prizes = [
+  "🎉 Скидка на VIP канал!",
+  "🤐 Ничего не выпало... Повезёт в следующий раз!",
+  "🚀 Секретный канал открылся: <a href='https://t.me/bonus_channel1' target='_blank'>Перейти</a>",
+  "🔥 Ещё один секретный канал: <a href='https://t.me/bonus_channel2' target='_blank'>Смотреть</a>"
+];
+
+// Запуск таймера
+function showCooldown(remaining) {
+  spinBtn.disabled = true;
+  const interval = setInterval(() => {
+    remaining -= 1000;
+    const h = Math.floor(remaining / 3600000);
+    const m = Math.floor((remaining % 3600000) / 60000);
+    const s = Math.floor((remaining % 60000) / 1000);
+    spinBtn.textContent = `Попробуй через ${h}ч ${m}м ${s}с`;
+    if (remaining <= 0) {
+      clearInterval(interval);
+      spinBtn.disabled = false;
+      spinBtn.textContent = "Крутить колесо!";
+      localStorage.removeItem("wheelUsedAt");
+    }
+  }, 1000);
+}
+
+// Проверка доступа
+if (wheelUsedAt && now - parseInt(wheelUsedAt) < COOLDOWN_HOURS * 3600000) {
+  const remaining = COOLDOWN_HOURS * 3600000 - (now - parseInt(wheelUsedAt));
+  showCooldown(remaining);
+} else {
+  spinBtn.disabled = false;
+  spinBtn.textContent = "Крутить колесо!";
+}
+
+// Событие нажатия
+spinBtn.addEventListener("click", () => {
+  const prize = prizes[Math.floor(Math.random() * prizes.length)];
+  resultEl.innerHTML = `<div style="margin-top: 15px; font-size: 1.2em;">${prize}</div>`;
+  spinBtn.disabled = true;
+  spinBtn.textContent = "До завтра!";
+  localStorage.setItem("wheelUsedAt", Date.now().toString());
+  showCooldown(COOLDOWN_HOURS * 3600000);
+});
+</script>
