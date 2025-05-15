@@ -184,20 +184,23 @@ getDoc(docRef).then(snapshot => {
   </div>
 </div>
 
-</div><!-- Фильтр ботов --><div style="text-align:center; margin: 10px auto;">
-  <button onclick="filterBots('all')">Все</button>
-  <button onclick="filterBots('free')">Бесплатные</button>
+<!-- Фильтр для ботов -->
+<div class="filter-buttons" style="margin-bottom: 20px;">
+  <button onclick="filterBots('all')">Ҳама</button>
+  <button onclick="filterBots('free')">Озод</button>
   <button onclick="filterBots('vip')">VIP</button>
-</div><script>
-function filterBots(type) {
-  document.querySelectorAll('#bots .channel-card').forEach(el => {
-    if (type === 'all' || el.dataset.type === type) {
-      el.style.display = 'block';
-    } else {
-      el.style.display = 'none';
-    }
-  });
-}
+</div>
+
+<script>
+  function filterBots(type) {
+    document.querySelectorAll("#bots .channel-card").forEach(card => {
+      if (type === 'all' || card.dataset.type === type) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
 </script>
 
 <div class="section vip-highlight" id="vip">
