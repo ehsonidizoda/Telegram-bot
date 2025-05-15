@@ -152,7 +152,14 @@ a.link-button:hover {
   cursor: pointer;
   transition: transform 0.2s;
 }
-.reaction span:hover {
-  transform: scale(1.1);
-  background: #333;
+
+.reaction {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: 1.4em;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  user-select: none;
+  color: #fff; /* Вот это обязательно! */
 }
