@@ -311,3 +311,7 @@ function filterChannels(type) {
 .button i {
   font-size: 1.2em;
 }
+
+html {
+  scroll-behavior: smooth;
+}
