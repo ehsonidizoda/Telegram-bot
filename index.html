@@ -1,39 +1,132 @@
-<!-- index.html --><!DOCTYPE html><html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AJALI PETKAHO — 18+</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каналы и Боты</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #000000, #1c0022);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  background: #e42072;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.buttons button:hover {
+  background: #ff2f8b;
+}
+
+.block {
+  margin: 20px auto;
+  max-width: 420px;
+  background: #1a1a1a;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #ff2f8b88;
+  padding: 20px;
+}
+
+.block h3 {
+  margin-top: 0;
+  color: #ff2f8b;
+}
+
+.join-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: #007bff;
+  padding: 10px 20px;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 0 10px #007bff80;
+}
+
+.reaction span {
+  font-size: 1.2em;
+  margin: 5px;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.reaction span:hover {
+  transform: scale(1.4);
+}
+
+.hidden { display: none; }
+
+  </style>
 </head>
-<body>  <div class="promo-rotator" id="promoRotator">
-    <div class="promo-slide active">🔥 <a href="#">Текст рекламы 1</a></div>
-    <div class="promo-slide">❤️ <a href="#">Текст рекламы 2</a></div>
-    <div class="promo-slide">🔥 <a href="#">Текст рекламы 3</a></div>
-    <div class="promo-slide">❤️ <a href="#">Текст рекламы 4</a></div>
-  </div>  <div class="buttons">
-    <a href="#channels" class="button"><i class="fa-brands fa-telegram"></i> Каналы</a>
-    <a href="#bots" class="button"><i class="fa-solid fa-robot"></i> Боты</a>
-    <a href="#vip" class="button"><i class="fa-solid fa-star"></i> VIP</a>
-    <a href="#bonus-wheel" class="button full-width"><i class="fa-solid fa-dice"></i> Колесо Фортуны</a>
-  </div>  <div class="section" id="channels">
-    <h2><i class="fa-brands fa-telegram"></i> КАНАЛҲОИ МО</h2>
-    <!-- Пример канала -->
-    <div class="channel-card">
-      <h3><i class="fa-brands fa-telegram"></i> AJALI PETKA <span>🔞</span></h3>
-      <a class="link-button glow" href="#" target="_blank">Даромадан</a>
-      <div class="reaction" data-id="c1">
-        <span data-type="like">❤️ 0</span>
-        <span data-type="fire">🔥 0</span>
-        <span data-type="dislike">👎 0</span>
-      </div>
+<body>
+  <div class="buttons">
+    <button onclick="filter('all')">Все</button>
+    <button onclick="filter('channel')">Каналы</button>
+    <button onclick="filter('bot')">Боты</button>
+  </div>  <div class="block channel" id="block1">
+    <h3><i class="fa-brands fa-telegram"></i> AJALI PETKA <span>🔞</span></h3>
+    <a href="#" class="join-btn">Даромадан</a>
+    <div class="reaction" data-id="1">
+      <span>❤️ 0</span><span>🔥 0</span><span>👎 0</span>
     </div>
-  </div>  <div class="section" id="bots">
-    <h2><i class="fa-solid fa-robot"></i> БОТҲОИ МО</h2>
-    <div class="channel-card">
-      <h3><i class="fa-solid fa-robot"></i> @VVEDICODBOT <span>🔞</span></h3>
-      <a class="link-button glow" href="#" target="_blank">Даромадан</a>
-      <div class="reaction" data-id="b1"></div>
+  </div>  <div class="block channel" id="block2">
+    <h3><i class="fa-brands fa-telegram"></i> VIP KANAL <span>🔞</span></h3>
+    <a href="#" class="join-btn">Даромадан</a>
+    <div class="reaction" data-id="2">
+      <span>❤️ 0</span><span>🔥 0</span><span>👎 0</span>
     </div>
-  </div>  <script src="script.js"></script></body>
+  </div>  <div class="block bot" id="block3">
+    <h3><i class="fa-solid fa-robot"></i> @VVEDICODBOT</h3>
+    <a href="#" class="join-btn">Даромадан</a>
+    <div class="reaction" data-id="3">
+      <span>❤️ 0</span><span>🔥 0</span><span>👎 0</span>
+    </div>
+  </div>  <div class="block bot" id="block4">
+    <h3><i class="fa-solid fa-heart"></i> ФАРЗОНА 🍑💋</h3>
+    <a href="#" class="join-btn">Даромадан</a>
+    <div class="reaction" data-id="4">
+      <span>❤️ 0</span><span>🔥 0</span><span>👎 0</span>
+    </div>
+  </div>  <script>
+    function filter(type) {
+      document.querySelectorAll('.block').forEach(el => {
+        if (type === 'all') {
+          el.classList.remove('hidden');
+        } else {
+          el.classList.toggle('hidden', !el.classList.contains(type));
+        }
+      });
+    }
+
+    document.querySelectorAll('.reaction').forEach(r => {
+      r.addEventListener('click', e => {
+        if (e.target.tagName === 'SPAN') {
+          const parts = e.target.innerText.split(' ');
+          let count = parseInt(parts[1]);
+          count++;
+          e.target.innerText = parts[0] + ' ' + count;
+          e.target.style.transform = 'scale(1.4)';
+          setTimeout(() => e.target.style.transform = '', 300);
+        }
+      });
+    });
+  </script></body>
 </html>
