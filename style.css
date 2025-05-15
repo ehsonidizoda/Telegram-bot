@@ -235,3 +235,19 @@ a.link-button:hover { background: #1976d2; transform: scale(1.05); box-shadow: 0
     box-shadow: 0 0 25px #2196f3, 0 0 35px #2196f3;
   }
 }
+
+.channel-card {
+  background: #111;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 20px;
+  box-shadow: 0 0 25px #ff2f8b;
+  max-width: 420px;
+  transition: transform 0.3s ease;
+}
+.channel-card:hover {
+  transform: scale(1.02);
+}
+.vip-glow {
+  box-shadow: 0 0 35px #ff2f8b, 0 0 60px #e42072;
+}
