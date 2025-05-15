@@ -77,29 +77,9 @@ getDoc(docRef).then(snapshot => {
   <span>Самое 🔥 только в Telegram — <a href="https://t.me/+CptBoIPw0cw0NjAy" target="_blank">Перейти в канал</a></span>
 </div>
 
-<!-- Подтверждение возраста -->
-<div id="age-popup">
-  <h2>Подтвердите возраст</h2>
-  <p>Этот сайт содержит контент 18+. Вам есть 18 лет?</p>
-  <button onclick="acceptAge()">Да, мне есть 18</button>
-</div>
+<!DOCTYPE html><html lang="ru">
+<
 
-<h1><i class="fas fa-ban"></i> 18+ Контент</h1>
-
-<!-- Онлайн-счётчик (Frontend-only) --><div id="live-counter" class="section">
-  <h3>
-    Сейчас на сайте: <span id="onlineUsers">1</span><br>
-    Всего посетителей: <span id="totalViews">0</span>
-  </h3>
-</div><script>
-// Увеличение общего количества (хранится в localStorage только для визуального эффекта)
-let views = localStorage.getItem("totalViews") || 0;
-views++;
-localStorage.setItem("totalViews", views);
-document.getElementById("totalViews").textContent = views;
-
-// Симуляция онлайн-посетителей
-function randomOnline(min = 1, max = 5) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 function updateOnline() {
