@@ -87,17 +87,37 @@ a.link-button:hover { background: #1976d2; transform: scale(1.05); box-shadow: 0
   }
 }
 
-.promo-banner {
-  background: linear-gradient(90deg, #ff2f8b, #e42072);
-  padding: 16px 0;
+.promo-rotator {
+  background: linear-gradient(90deg, #ff0033, #cc0033);
+  padding: 14px 10px;
   font-size: 1.1em;
   text-align: center;
-  box-shadow: 0 0 20px #ff2f8b;
   color: white;
+  box-shadow: 0 0 20px #ff0033;
+  border-radius: 12px;
+  margin: 20px auto;
+  max-width: 600px;
+  overflow: hidden;
+  height: 40px;
+  position: relative;
 }
 
-.promo-banner a {
+.promo-rotator a {
   color: yellow;
   font-weight: bold;
   text-decoration: underline;
+}
+
+.promo-slide {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.promo-slide.active {
+  opacity: 1;
+  position: relative;
 }
