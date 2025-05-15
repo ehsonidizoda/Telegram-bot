@@ -20,6 +20,58 @@
 </head>
 <body>
 
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+  import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA_MpTaZSR_TbP6Z2TLsE1iyK1bSTbks24",
+    authDomain: "ajalipetkaho-97376.firebaseapp.com",
+    projectId: "ajalipetkaho-97376",
+    storageBucket: "ajalipetkaho-97376.appspot.com",
+    messagingSenderId: "578375981999",
+    appId: "1:578375981999:web:cc29613643df8be4406d5a",
+    measurementId: "G-3YVP9ZP8KN"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Подгружаем реакции
+  document.querySelectorAll(".reaction").forEach(block => {
+    const id = block.dataset.id;
+    const docRef = doc(db, "реакции", id);
+
+    
+getDoc(docRef).then(snapshot => {
+  if (snapshot.exists()) {
+    const data = snapshot.data();
+    block.innerHTML = `
+      <span data-type="love">❤️ ${data.love || 0}</span>
+      <span data-type="fire">🔥 ${data.fire || 0}</span>
+      <span data-type="bad">👎 ${data.bad || 0}</span>
+    `;
+  } else {
+    block.innerHTML = `
+      <span data-type="love">❤️ 0</span>
+      <span data-type="fire">🔥 0</span>
+      <span data-type="bad">👎 0</span>
+    `;
+  }
+});
+
+    block.addEventListener("click", async e => {
+      if (e.target.tagName === "SPAN") {
+        const type = e.target.dataset.type;
+        const snapshot = await getDoc(docRef);
+        const current = snapshot.exists() ? snapshot.data() : {};
+        const updated = { ...current, [type]: (current[type] || 0) + 1 };
+        await setDoc(docRef, updated);
+        e.target.textContent = e.target.textContent.split(" ")[0] + " " + updated[type];
+      }
+    });
+  });
+</script>
 <!-- Баннер -->
 <div class="promo-banner">
   <span>Самое 🔥 только в Telegram — <a href="https://t.me/+CptBoIPw0cw0NjAy" target="_blank">Перейти в канал</a></span>
@@ -74,23 +126,26 @@ setInterval(updateOnline, 8000);
   <a class="button" href="#vip"><i class="fa-solid fa-star"></i> VIP</a>
 </div>
 
+
 <!-- Каналы -->
 <div class="section" id="channels">
   <h2><i class="fa-brands fa-telegram"></i> КАНАЛХОИ МО</h2>
+
   <p><strong>Канал 1:</strong> AJALI PETKA🔞 <br>
     <a class="link-button" href="https://t.me/+_O5ISU7emQxjZmJi" target="_blank">Перейти</a>
-    <div class="reaction" data-id="c1">❤️ 🔥 👎</div>
+    <div class="reaction" data-id="c1"></div>
   </p>
+
   <p><strong>Канал 2:</strong> ХОДИСА ТВ🔞 <br>
     <a class="link-button" href="https://t.me/+-WmmN-aTwVZlMGEy" target="_blank">Перейти</a>
-    <div class="reaction" data-id="c2">❤️ 🔥 👎</div>
+    <div class="reaction" data-id="c2"></div>
   </p>
+
   <p><strong>Канал 3:</strong> VIP KANAL🔞 <br>
     <a class="link-button" href="https://t.me/+IUec_xlw8dVjMjJi" target="_blank">Перейти</a>
-    <div class="reaction" data-id="c3">❤️ 🔥 👎</div>
+    <div class="reaction" data-id="c3"></div>
   </p>
 </div>
-
 <!-- Боты -->
 <div class="section" id="bots">
   <h2><i class="fa-solid fa-robot"></i> Ботҳои мо</h2>
