@@ -283,3 +283,29 @@ function filterChannels(type) {
     card.style.display = (type === 'all' || card.dataset.type === type) ? 'block' : 'none';
   });
 }
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-buttons button {
+  background: #ff2f8b;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ff2f8b80;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.filter-buttons button:hover {
+  background: #e42072;
+  transform: scale(1.05);
+}
+
