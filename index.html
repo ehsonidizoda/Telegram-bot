@@ -305,3 +305,35 @@ document.querySelectorAll(".reaction").forEach(r => {
 </div>
 
 <link rel="stylesheet" href="style.css" />
+
+<div class="channel-card" data-type="free" data-subtype="vip">
+  <h3><i class="fa-solid fa-eye-slash"></i> Сексои Кудакона 🤫</h3>
+  <a class="link-button glow" href="#">Даромадан</a>
+</div>
+
+<div class="channel-card" data-type="vip" data-subtype="vip">
+  <h3><i class="fa-solid fa-lock"></i> СЕКРЕТЫ 18+ 🔐</h3>
+  <a class="link-button glow" href="#">Даромадан</a>
+</div>
+
+<div class="channel-card" data-type="vip" data-subtype="vip">
+  <h3><i class="fa-solid fa-key"></i> МАРО БАХО ДИХЕД! 🔐</h3>
+  <a class="link-button glow" href="#">Даромадан</a>
+</div>
+
+<script>
+function filterChannels(type) {
+  document.querySelectorAll('.channel-card').forEach(el => {
+    const cardType = el.dataset.type;
+    const subtype = el.dataset.subtype;
+
+    if (type === 'vip') {
+      el.style.display = (cardType === 'vip' || subtype === 'vip') ? 'block' : 'none';
+    } else if (type === 'all') {
+      el.style.display = 'block';
+    } else {
+      el.style.display = (cardType === type) ? 'block' : 'none';
+    }
+  });
+}
+</script>
