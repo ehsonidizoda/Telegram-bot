@@ -184,14 +184,34 @@ getDoc(docRef).then(snapshot => {
   </div>
 </div>
 
-<!-- Фильтр для ботов -->
-<div class="filter-buttons" style="margin-bottom: 20px;">
-  <button onclick="filterBots('all')">Ҳама</button>
-  <button onclick="filterBots('free')">Озод</button>
-  <button onclick="filterBots('vip')">VIP</button>
+<!-- БОТҲОИ МО -->
+<div class="section" id="bots">
+  <h2><i class="fa-solid fa-robot"></i> Ботҳой мо</h2>
+
+  <!-- Фильтр -->
+  <div class="filter-buttons">
+    <button onclick="filterBots('all')">Ҳама</button>
+    <button onclick="filterBots('free')">Озод</button>
+    <button onclick="filterBots('vip')">VIP</button>
+  </div>
+
+  <!-- Бот 1 - Free -->
+  <div class="channel-card" data-type="free">
+    <p><strong><i class="fa-solid fa-robot"></i> @VVEDICODBOT 🔞</strong><br>
+      <a class="link-button" href="https://t.me/VVEDICODBOT" target="_blank">Даромадан</a>
+      <div class="reaction" data-id="b1"></div>
+    </p>
+  </div>
+
+  <!-- Бот 2 - VIP -->
+  <div class="channel-card" data-type="vip">
+    <p><strong><i class="fa-solid fa-heart"></i> ФАРЗОНА 🍑💋</strong><br>
+      <a class="link-button" href="https://t.me/Farzoona_bot" target="_blank">Даромадан</a>
+      <div class="reaction" data-id="b2"></div>
+    </p>
+  </div>
 </div>
 
-<script>
   function filterBots(type) {
     document.querySelectorAll("#bots .channel-card").forEach(card => {
       if (type === 'all' || card.dataset.type === type) {
@@ -424,3 +444,14 @@ bannerArea.addEventListener("mouseleave", () => {
 });
 </script>
 
+<script>
+function filterBots(type) {
+  document.querySelectorAll("#bots .channel-card").forEach(card => {
+    if (type === 'all' || card.dataset.type === type) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+</script>
