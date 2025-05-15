@@ -134,7 +134,6 @@ a.link-button:hover {
 }
 
 
-
 .vip-highlight {
   background: radial-gradient(circle at center, #2c003e, #000);
   box-shadow: 0 0 20px #ff2f8b80;
@@ -225,4 +224,26 @@ a.link-button:hover {
   max-width: 400px;
   box-shadow: 0 0 10px #ff2f8b55;
   text-align: center;
+}
+
+.channel-filter {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.channel-filter button {
+  padding: 8px 14px;
+  background: #ff2f8b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.channel-filter button:hover {
+  background: #e42072;
 }
