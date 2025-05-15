@@ -236,8 +236,37 @@ function getDailyGift() {
 </script>
 
 </body>
-</html>
 
+</html>
+<script>
+const banners = [
+  {
+    text: "🔥 Подпишись на секретный канал — топ контент!",
+    link: "https://t.me/+CptBoIPw0cw0NjAy"
+  },
+  {
+    text: "🎁 Получи VIP доступ и бонусы каждый день!",
+    link: "https://t.me/Fors_Admiin"
+  },
+  {
+    text: "🚀 Присоединяйся к чату: только 18+ обсуждения!",
+    link: "https://t.me/yourChatHere"
+  }
+];
+
+let index = 0;
+const textEl = document.getElementById("banner-text");
+const linkEl = document.getElementById("banner-link");
+
+function rotateBanner() {
+  textEl.textContent = banners[index].text;
+  linkEl.href = banners[index].link;
+  index = (index + 1) % banners.length;
+}
+
+rotateBanner();
+setInterval(rotateBanner, 12000); // каждые 12 секунд
+</script>
 <div class="section" id="bonus-wheel">
   <h2>🎁 Крути колесо — получи приз!</h2>
   <button id="spin-btn" disabled>Загрузка...</button>
