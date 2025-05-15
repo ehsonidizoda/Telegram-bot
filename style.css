@@ -165,3 +165,47 @@ a.link-button:hover { background: #1976d2; transform: scale(1.05); box-shadow: 0
     box-shadow: 0 0 25px #ff2f8b, 0 0 45px #ff2f8b;
   }
 }
+.link-button {
+  background: linear-gradient(145deg, #00aaff, #0055ff);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 0 12px #00aaff;
+  animation: pulseGlow 2s infinite;
+}
+
+.link-button:hover {
+  transform: scale(1.05);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 12px #00aaff;
+  }
+  50% {
+    box-shadow: 0 0 24px #00aaff, 0 0 40px #00aaff;
+  }
+}
+
+.reaction {
+  margin-top: 10px;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.reaction span {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.reaction span:hover {
+  transform: scale(1.3);
+}
