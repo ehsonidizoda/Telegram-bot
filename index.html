@@ -261,6 +261,22 @@ function getDailyGift() {
 </body>
 
 <script>
+  function confirmAge() {
+    localStorage.setItem('ageConfirmed', 'true');
+    document.getElementById('age-modal').style.display = 'none';
+  }
+
+  window.addEventListener('load', () => {
+    const confirmed = localStorage.getItem('ageConfirmed');
+    if (!confirmed) {
+      document.getElementById('age-modal').style.display = 'flex';
+    } else {
+      document.getElementById('age-modal').style.display = 'none';
+    }
+  });
+</script>
+
+<script>
 function filterChannels(type) {
   document.querySelectorAll('.channel-card').forEach(el => {
     el.style.display = (type === 'all' || el.dataset.type === type) ? 'block' : 'none';
