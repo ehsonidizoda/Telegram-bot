@@ -1,37 +1,31 @@
 /* Основной фон и текст */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #000000, #1c0022);
-  color: white;
-  text-align: center;
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    url('https://cdn-icons-png.flaticon.com/512/2583/2583427.png'),
+    url('https://cdn-icons-png.flaticon.com/512/2583/2583426.png');
+  background-size: 60px, 60px;
+  background-repeat: repeat;
+  background-position: 0 0, 100px 100px;
+  opacity: 0.1;
+  z-index: 0;
+  pointer-events: none;
+  animation: moveBg 60s linear infinite;
 }
 
-.promo-banner {
-  background: linear-gradient(90deg, #ff2f8b, #e42072);
-  padding: 16px 0;
-  font-size: 1.1em;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 0 20px #ff2f8b;
-  text-align: center;
+@keyframes moveBg {
+  0% {
+    background-position: 0 0, 100px 100px;
+  }
+  100% {
+    background-position: 1000px 1000px, 1100px 1100px;
+  }
 }
-
-.promo-banner a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  text-shadow: 0 0 10px #fff;
-  display: inline-block;
-  animation: scrollText 15s linear infinite;
-  white-space: nowrap;
-}
-
-@keyframes scrollText {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
-
 .promo-banner a {
   color: yellow;
   text-decoration: underline;
