@@ -16,20 +16,24 @@ body::before {
   width: 100vw;
   height: 100vh;
   background-image: 
-    url('https://cdn-icons-png.flaticon.com/512/535/535183.png'), 
-    url('https://cdn-icons-png.flaticon.com/512/2583/2583434.png');
-  background-size: 64px, 48px;
+    url('https://cdn-icons-png.flaticon.com/512/535/535183.png'), /* 🔞 */
+    url('https://cdn-icons-png.flaticon.com/512/2583/2583434.png'); /* 💋 */
+  background-size: 64px;
   background-repeat: repeat;
   background-position: 0 0, 120px 120px;
   opacity: 0.03;
   z-index: 0;
   pointer-events: none;
-  animation: moveBg 120s linear infinite;
+  animation: moveBg 100s linear infinite;
 }
 
 @keyframes moveBg {
-  0% { background-position: 0 0, 120px 120px; }
-  100% { background-position: 1000px 800px, 1100px 900px; }
+  0% {
+    background-position: 0 0, 120px 120px;
+  }
+  100% {
+    background-position: 1200px 800px, 1350px 900px;
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
