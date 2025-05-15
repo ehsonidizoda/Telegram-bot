@@ -153,3 +153,24 @@ a.link-button:hover {
   transform: scale(1.1);
   background: #333;
 }
+
+.reaction {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: 1.4em;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  user-select: none;
+  color: #fff;
+}
+
+.reaction span {
+  background: #222;
+  padding: 6px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  text-align: center;
+  white-space: nowrap; /* Вот это обязательно! */
+}
