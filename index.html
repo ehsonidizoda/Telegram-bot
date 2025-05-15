@@ -434,3 +434,17 @@ function filterBots(type) {
     slides[currentSlide].classList.add('active');
   }, 10000); // каждые 10 секунд
 </script>
+
+<script>
+  function confirmAge() {
+    localStorage.setItem('ageConfirmed', 'true');
+    document.getElementById('age-modal').style.display = 'none';
+  }
+
+  window.addEventListener('load', () => {
+    const confirmed = localStorage.getItem('ageConfirmed');
+    if (!confirmed) {
+      document.getElementById('age-modal').style.display = 'flex';
+    }
+  });
+</script>
