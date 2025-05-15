@@ -1,31 +1,3 @@
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: 
-    url('https://cdn-icons-png.flaticon.com/512/2583/2583427.png'),
-    url('https://cdn-icons-png.flaticon.com/512/2583/2583426.png');
-  background-size: 60px, 60px;
-  background-repeat: repeat;
-  background-position: 0 0, 100px 100px;
-  opacity: 0.1;
-  z-index: 0;
-  pointer-events: none;
-  animation: moveBg 60s linear infinite;
-}
-
-@keyframes moveBg {
-  0% {
-    background-position: 0 0, 100px 100px;
-  }
-  100% {
-    background-position: 1000px 1000px, 1100px 1100px;
-  }
-}
-
 /* Заголовки секций с иконками */
 .section h2 i {
   margin-right: 8px;
@@ -356,23 +328,4 @@ html {
   margin-bottom: 10px;
   color: #ff2f8b;
   font-size: 1.6em;
-}
-
-.promo-action-btn {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 10px 20px;
-  background: #ff2f8b;
-  color: white;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 1em;
-  text-decoration: none;
-  box-shadow: 0 0 10px #ff2f8b99;
-  transition: 0.3s ease;
-}
-
-.promo-action-btn:hover {
-  background: #e42072;
-  transform: scale(1.05);
 }
