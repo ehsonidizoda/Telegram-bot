@@ -353,27 +353,22 @@ html {
 
 .background-stickers {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
   overflow: hidden;
+  opacity: 0.06;
 }
 
 .background-stickers span {
   position: absolute;
-  font-size: 32px;
-  animation: floatSticker 20s linear infinite;
-  opacity: 0.08;
+  font-size: 50px;
+  animation: float 30s linear infinite;
+  filter: blur(1px);
 }
 
-@keyframes floatSticker {
-  0% {
-    transform: translateY(100vh) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-100vh) rotate(360deg);
-  }
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(0deg); }
+  100% { transform: translateY(-120vh) rotate(360deg); }
 }
