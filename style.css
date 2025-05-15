@@ -340,3 +340,39 @@ html {
   60% { transform: translateX(-3px); }
   80% { transform: translateX(3px); }
 }
+
+.discount-block {
+  background: linear-gradient(135deg, #2c003e, #000000);
+  padding: 20px;
+  margin: 20px 10px;
+  border-radius: 14px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 0 25px #ff2f8b55;
+  animation: pulseBox 3s ease-in-out infinite;
+}
+
+.discount-block h2 {
+  margin-bottom: 10px;
+  color: #ff2f8b;
+  font-size: 1.6em;
+}
+
+.promo-action-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 20px;
+  background: #ff2f8b;
+  color: white;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1em;
+  text-decoration: none;
+  box-shadow: 0 0 10px #ff2f8b99;
+  transition: 0.3s ease;
+}
+
+.promo-action-btn:hover {
+  background: #e42072;
+  transform: scale(1.05);
+}
