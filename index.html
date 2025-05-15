@@ -266,3 +266,16 @@
     });
   });
 </script>
+
+
+<script>
+document.querySelectorAll(".reaction").forEach(r => {
+  const id = r.dataset.id;
+  r.addEventListener("click", e => {
+    if (e.target.tagName === "SPAN") {
+      e.target.style.transform = "scale(1.5)";
+      setTimeout(() => e.target.style.transform = "", 200);
+    }
+  });
+});
+</script>
