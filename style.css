@@ -216,3 +216,13 @@ a.link-button:hover {
   <a href="#vip" class="button"><i class="fa-solid fa-star"></i> VIP</a>
   <a href="models.html" class="button"><i class="fa-solid fa-heart"></i> Модели</a>
 </div>
+
+.card {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 15px;
+  margin: 15px auto;
+  max-width: 400px;
+  box-shadow: 0 0 10px #ff2f8b55;
+  text-align: center;
+}
