@@ -116,49 +116,50 @@ getDoc(docRef).then(snapshot => {
 </div>
 
 <!-- Секция каналов -->
+<div class="channel-filter">
+  <button onclick="filterChannels('all')"><i class="fa-solid fa-globe"></i> Все</button>
+  <button onclick="filterChannels('free')"><i class="fa-solid fa-unlock"></i> Бесплатные</button>
+  <button onclick="filterChannels('vip')"><i class="fa-solid fa-lock"></i> VIP</button>
+</div>
+
+<!-- Каналы -->
 <div class="section" id="channels">
   <h2><i class="fa-brands fa-telegram"></i> КАНАЛҲОИ МО</h2>
 
   <div class="channel-card" data-type="free">
-    <p><strong>Канал 1:</strong> AJALI PETKA 🔞<br>
-      <a class="link-button" href="https://t.me/+_O5ISU7emQxjZmJi" target="_blank">Даромадан</a>
-      <div class="reaction" data-id="c1"></div>
-    </p>
+    <h3><i class="fa-solid fa-paper-plane"></i> AJALI PETKA 🔞</h3>
+    <a class="link-button" href="https://t.me/+_O5ISU7emQxjZmJi" target="_blank">Даромадан</a>
+    <div class="reaction" data-id="c1"></div>
   </div>
 
   <div class="channel-card" data-type="free">
-    <p><strong>Канал 2:</strong> ХОДИСА ТВ 🔞<br>
-      <a class="link-button" href="https://t.me/+-WmmN-aTwVZlMGEy" target="_blank">Даромадан</a>
-      <div class="reaction" data-id="c2"></div>
-    </p>
+    <h3><i class="fa-solid fa-paper-plane"></i> ХОДИСА ТВ 🔞</h3>
+    <a class="link-button" href="https://t.me/+-WmmN-aTwVZlMGEy" target="_blank">Даромадан</a>
+    <div class="reaction" data-id="c2"></div>
   </div>
 
-  <div class="channel-card" data-type="vip">
-    <p><strong>Канал 3:</strong> VIP KANAL 🔞<br>
-      <a class="link-button" href="https://t.me/+IUec_xlw8dVjMjJi" target="_blank">Даромадан</a>
-      <div class="reaction" data-id="c3"></div>
-    </p>
+  <div class="channel-card vip-glow" data-type="vip">
+    <h3><i class="fa-solid fa-star"></i> VIP KANAL 🔞</h3>
+    <a class="link-button glow" href="https://t.me/+IUec_xlw8dVjMjJi" target="_blank">Даромадан</a>
+    <div class="reaction" data-id="c3"></div>
   </div>
 
   <div class="channel-card" data-type="free">
-    <p><strong>Канал 4:</strong>🔞Сексои Кудакона🤫<br>
-      <a class="link-button" href="https://t.me/+w4jDVeVHElMyYzli" target="_blank">Даромадан</a>
-      <div class="reaction" data-id="c4"></div>
-    </p>
+    <h3><i class="fa-solid fa-eye-slash"></i> Сексои Кудакона 🤫</h3>
+    <a class="link-button" href="https://t.me/+w4jDVeVHElMyYzli" target="_blank">Даромадан</a>
+    <div class="reaction" data-id="c4"></div>
   </div>
 
-  <div class="channel-card" data-type="vip">
-    <p><strong>Канал 5:</strong> СЕКРЕТЫ 18+🔐<br>
-      <a class="link-button" href="https://t.me/+EJVr7iyuIR4zYWQy" target="_blank">Даромадан</a>
-      <div class="reaction" data-id="c5"></div>
-    </p>
+  <div class="channel-card vip-glow" data-type="vip">
+    <h3><i class="fa-solid fa-lock"></i> СЕКРЕТЫ 18+ 🔐</h3>
+    <a class="link-button glow" href="https://t.me/+EJVr7iyuIR4zYWQy" target="_blank">Даромадан</a>
+    <div class="reaction" data-id="c5"></div>
   </div>
 
-  <div class="channel-card" data-type="vip">
-    <p><strong>Канал 6:</strong> МАРО БАХО ДИХЕД!🔐<br>
-      <a class="link-button" href="https://t.me/VvediCod" target="_blank">Даромадан</a>
-      <div class="reaction" data-id="c6"></div>
-    </p>
+  <div class="channel-card vip-glow" data-type="vip">
+    <h3><i class="fa-solid fa-fire-flame-curved"></i> МАРО БАХО ДИХЕД! 🔐</h3>
+    <a class="link-button glow" href="https://t.me/VvediCod" target="_blank">Даромадан</a>
+    <div class="reaction" data-id="c6"></div>
   </div>
 </div> 
 
