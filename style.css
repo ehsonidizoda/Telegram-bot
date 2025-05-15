@@ -317,3 +317,50 @@ function filterChannels(type) {
     transform: translateY(0);
   }
 }
+
+
+.top-banner {
+  background: linear-gradient(90deg, #ff2f8b, #e42072);
+  color: white;
+  padding: 14px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  font-size: 1em;
+  animation: bannerGlow 3s ease-in-out infinite;
+}
+
+.banner-slide {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  animation: slideIn 1s ease;
+}
+.banner-slide.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.banner-btn {
+  margin-top: 8px;
+  background: #fff;
+  color: #e42072;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.banner-btn:hover {
+  background: #ffe6f0;
+}
+
+@keyframes bannerGlow {
+  0%, 100% { box-shadow: 0 0 10px #ff2f8b; }
+  50% { box-shadow: 0 0 25px #ff2f8b; }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
