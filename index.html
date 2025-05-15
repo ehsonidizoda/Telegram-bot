@@ -36,18 +36,6 @@
   </div>
 </div>
 
-  function confirmAge() {
-    localStorage.setItem('ageConfirmed', 'true');
-    document.getElementById('age-modal').style.display = 'none';
-  }
-
-  window.addEventListener('load', () => {
-    const confirmed = localStorage.getItem('ageConfirmed');
-    if (!confirmed) {
-      document.getElementById('age-modal').style.display = 'flex';
-    }
-  });
-
 </script>
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
