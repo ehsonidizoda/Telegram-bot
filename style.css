@@ -37,3 +37,7 @@ a.link-button:hover { background: #1976d2; transform: scale(1.05); box-shadow: 0
   }
 }
 
+.button:hover, .link-button:hover, .filter-buttons button:hover {
+  transform: scale(1.05);
+  background-color: #ff55a5;
+}
