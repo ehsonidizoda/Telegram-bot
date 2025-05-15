@@ -193,3 +193,35 @@ function filterChannels(type) {
   });
 }
 </script>
+
+.vip-highlight {
+  background: radial-gradient(circle at center, #2c003e, #000);
+  padding: 25px 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #ff2f8b80;
+  animation: pulseBox 4s ease-in-out infinite;
+  color: white;
+}
+
+@keyframes pulseBox {
+  0%, 100% { box-shadow: 0 0 12px #ff2f8b80; }
+  50% { box-shadow: 0 0 30px #ff2f8b; }
+}
+
+.link-button.glow {
+  background: linear-gradient(145deg, #ff2f8b, #e42072);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-weight: bold;
+  font-size: 1.05em;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 0 15px #ff2f8b;
+  transition: 0.3s;
+}
+
+.link-button.glow:hover {
+  transform: scale(1.05);
+  background: #e42072;
+}
