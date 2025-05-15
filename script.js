@@ -1,63 +1,40 @@
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: black;
-  color: white;
-  text-align: center;
-  position: relative;
-  overflow-x: hidden;
+// АНИМИРОВАННЫЙ БАННЕР
+const slides = document.querySelectorAll('.promo-slide');
+let currentSlide = 0;
+setInterval(() => {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add('active');
+}, 10000);
+
+// ФИЛЬТР КАНАЛОВ И БОТОВ
+function filterChannels(type) {
+  document.querySelectorAll('.channel-card').forEach(card => {
+    card.style.display = (type === 'all' || card.dataset.type === type) ? 'block' : 'none';
+  });
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: 
-    url('https://cdn-icons-png.flaticon.com/512/535/535183.png'), /* 🔞 */
-    url('https://cdn-icons-png.flaticon.com/512/2583/2583434.png'); /* 💋 */
-  background-size: 64px;
-  background-repeat: repeat;
-  background-position: 0 0, 120px 120px;
-  opacity: 0.03;
-  z-index: 0;
-  pointer-events: none;
-  animation: moveBg 100s linear infinite;
-}
-
-@keyframes moveBg {
-  0% {
-    background-position: 0 0, 120px 120px;
+// РЕАКЦИИ
+document.querySelectorAll(".reaction").forEach(r => {
+  const id = r.dataset.id;
+  const saved = localStorage.getItem("react-" + id);
+  if (saved) r.innerHTML = saved;
+  else {
+    r.innerHTML = `
+      <span data-type="like">❤️ 0</span>
+      <span data-type="fire">🔥 0</span>
+      <span data-type="dislike">👎 0</span>
+    `;
   }
-  100% {
-    background-position: 1200px 800px, 1350px 900px;
-  }
-}
 
-document.addEventListener('DOMContentLoaded', function() {
-    const ageGate = document.getElementById('ageGate');
-    const mainContent = document.getElementById('mainContent');
-    const confirmBtn = document.getElementById('confirmBtn');
-    const exitBtn = document.getElementById('exitBtn');
-
-    // Проверяем, подтвержден ли уже возраст
-    if (localStorage.getItem('ageVerified') === 'true') {
-        ageGate.style.display = 'none';
-        mainContent.style.display = 'block';
+  r.addEventListener("click", e => {
+    if (e.target.tagName === "SPAN") {
+      e.target.style.transform = "scale(1.5)";
+      setTimeout(() => e.target.style.transform = "", 300);
+      const parts = e.target.textContent.split(" ");
+      let count = parseInt(parts[1] || "0") + 1;
+      e.target.textContent = parts[0] + " " + count;
+      localStorage.setItem("react-" + id, r.innerHTML);
     }
-
-    // Обработчик кнопки "Да"
-    confirmBtn.addEventListener('click', function() {
-        localStorage.setItem('ageVerified', 'true');
-        ageGate.style.display = 'none';
-        mainContent.style.display = 'block';
-    });
-
-    // Обработчик кнопки "Нет"
-    exitBtn.addEventListener('click', function() {
-        localStorage.removeItem('ageVerified');
-        window.location.href = 'https://google.com';
-    });
+  });
 });
