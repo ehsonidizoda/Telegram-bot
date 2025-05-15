@@ -159,3 +159,28 @@ a.link-button:hover {
     box-shadow: 0 0 20px #ff2f8b, 0 0 30px #ff2f8b;
   }
 }
+
+#bonus-wheel {
+  background: #111;
+  padding: 20px;
+  border-radius: 14px;
+  margin: 20px 10px;
+  color: #fff;
+  text-align: center;
+}
+
+#spin-btn {
+  padding: 12px 20px;
+  background: #ff2f8b;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.1em;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#spin-btn:disabled {
+  background: #888;
+  cursor: not-allowed;
+}
