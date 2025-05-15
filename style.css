@@ -147,3 +147,14 @@ a.link-button:hover {
   user-select: none;
   color: #fff; /* Вот это обязательно! */
 }
+
+.reaction {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: 1.4em;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  user-select: none;
+  color: #fff; /* Вот это обязательно! */
+}
