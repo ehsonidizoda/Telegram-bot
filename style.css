@@ -1,3 +1,13 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #000000, #1c0022);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* VIP-карта */
 .vip-card {
   background: linear-gradient(145deg, #2b002f, #000000);
   border-radius: 20px;
@@ -7,22 +17,27 @@
   max-width: 420px;
   text-align: center;
   box-shadow: 0 0 20px #ff2f8b80;
-  animation: pulseGlow 4s infinite ease-in-out;
+  animation: fadeInUp 1s ease forwards, pulseGlow 4s infinite ease-in-out;
+  opacity: 0;
+  transform: translateY(30px);
 }
-
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .vip-card h2 {
   font-size: 1.5em;
   color: #ff2f8b;
   text-shadow: 0 0 5px #ff2f8b;
 }
-
 .vip-features {
   list-style: none;
   padding: 0;
   margin: 20px 0;
   text-align: left;
 }
-
 .vip-features li {
   font-size: 1.05em;
   margin: 10px 0;
@@ -30,11 +45,9 @@
   align-items: center;
   gap: 10px;
 }
-
 .vip-features li span {
   font-size: 1.2em;
 }
-
 .vip-btn {
   display: inline-block;
   background: #1da1f2;
@@ -47,13 +60,12 @@
   margin-top: 15px;
   transition: 0.3s ease;
   box-shadow: 0 0 10px #1da1f2aa;
+  animation: glowPulse 2s infinite ease-in-out;
 }
-
 .vip-btn:hover {
   background: #168dd6;
   transform: scale(1.05);
 }
-
 .vip-footer {
   margin-top: 20px;
   font-size: 0.9em;
@@ -61,46 +73,47 @@
   opacity: 0.7;
 }
 
-@keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 12px #ff2f8b80; }
-  50% { box-shadow: 0 0 25px #ff2f8b; }
-}body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #000000, #1c0022);
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
-}
-
-/* БАННЕР */
-.promo-rotator {
+/* Баннер */
+.top-banner {
   background: linear-gradient(90deg, #ff2f8b, #e42072);
   color: white;
-  font-weight: bold;
-  padding: 14px;
-  overflow: hidden;
-  position: relative;
+  padding: 12px;
+  text-align: center;
   box-shadow: 0 0 20px #ff2f8b;
+  position: relative;
+  z-index: 99;
+  animation: bannerGlow 3s ease-in-out infinite;
 }
-.promo-slide {
+.banner-slide {
   display: none;
-  white-space: nowrap;
-  animation: scrollText 15s linear infinite;
+  font-size: 1em;
 }
-.promo-slide.active {
+.banner-slide.active {
   display: block;
+  animation: fade 0.6s ease-in-out;
 }
-@keyframes scrollText {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+.banner-btn {
+  background: white;
+  color: #e42072;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-left: 10px;
+  text-decoration: none;
 }
-.promo-slide a {
-  color: yellow;
-  text-decoration: underline;
+.banner-btn:hover {
+  background: #ffe6f0;
+}
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes bannerGlow {
+  0%, 100% { box-shadow: 0 0 10px #ff2f8b; }
+  50% { box-shadow: 0 0 25px #ff2f8b; }
 }
 
-/* КНОПКИ МЕНЮ */
+/* Кнопки меню */
 .buttons {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -133,265 +146,129 @@
   50% { box-shadow: 0 0 25px #ff2f8b, 0 0 45px #ff2f8b; }
 }
 
-/* КАРТОЧКИ КАНАЛОВ И БОТОВ */
+/* Навигационные кнопки */
+.nav-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 400px;
+  margin: 30px auto 20px;
+}
+.nav-btn {
+  background: linear-gradient(145deg, #ff2f8b, #e42072);
+  color: white;
+  padding: 14px;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 0 14px #ff2f8b77;
+  transition: 0.3s;
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+.nav-btn:hover {
+  transform: scale(1.08);
+  background: #e42072;
+}
+
+/* Отдельная кнопка Колесо Фортуны */
+.fortune-btn {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 420px;
+  background: linear-gradient(145deg, #e42072, #ff2f8b);
+  border-radius: 16px;
+  padding: 20px 10px;
+  box-shadow: 0 0 20px #ff2f8b99;
+}
+.fortune-btn a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Карточки каналов и ботов */
 .section {
   margin: 20px auto;
   max-width: 600px;
 }
 .channel-card {
-  background: #1a1a1a;
-  padding: 18px;
-  border-radius: 14px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 10px #00000080;
-  transition: 0.3s;
+  background: #1a0a1e;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 16px auto;
+  max-width: 420px;
+  box-shadow: 0 0 20px #ff2f8b88;
+  animation: fadeIn 0.6s ease;
 }
 .channel-card h3 {
-  margin-bottom: 10px;
-  color: #ff2f8b;
+  margin: 0 0 10px;
   font-size: 1.2em;
+  color: #ff2f8b;
 }
 .link-button {
+  display: inline-block;
   background: #2196f3;
   color: white;
-  padding: 10px 18px;
+  padding: 10px 20px;
   border-radius: 10px;
   text-decoration: none;
   font-weight: bold;
-  display: inline-block;
-  margin-top: 10px;
+  margin: 10px 0;
+  animation: glowPulse 2s infinite;
 }
-.link-button.glow {
-  box-shadow: 0 0 12px #2196f3;
-}
-
-/* РЕАКЦИИ */
-.reaction span {
-  font-size: 1.5em;
-  margin: 0 6px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-<style>
-  .section { margin: 40px 0; padding: 10px; }
-  .section h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    text-shadow: 0 0 10px #ff2f8b;
-  }
-
-  .filter-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 15px 0;
-  }
-
-  .filter-buttons button {
-    background: #e42072;
-    border: none;
-    padding: 8px 18px;
-    color: white;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  .filter-buttons button:hover {
-    background: #ff2f8b;
-  }
-
-  .channel-card {
-    background: #1a0a1e;
-    border-radius: 16px;
-    padding: 16px;
-    margin: 16px auto;
-    max-width: 420px;
-    box-shadow: 0 0 20px #ff2f8b88;
-    animation: fadeIn 0.6s ease;
-  }
-
-  .channel-card h3 {
-    margin: 0 0 10px;
-    font-size: 1.2em;
-  }
-
-  .link-button {
-    display: inline-block;
-    background: #2196f3;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 10px 0;
-    animation: glowPulse 2s infinite;
-  }
-
-  @keyframes glowPulse {
-    0%, 100% { box-shadow: 0 0 10px #2196f3; }
-    50% { box-shadow: 0 0 20px #2196f3; }
-  }
-
-  .reaction {
-    margin-top: 10px;
-    font-size: 1.3em;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    cursor: pointer;
-  }
-
-  .reaction span {
-    transition: 0.2s;
-  }
-
-  .reaction span:hover {
-    transform: scale(1.4);
-  }
-
- <script>
-function filterChannels(type) {
-  document.querySelectorAll('.channel-card').forEach(el => {
-    el.style.display = (type === 'all' || el.dataset.type === type) ? 'block' : 'none';
-  });
-}
-</script>
-
-.vip-highlight {
-  background: radial-gradient(circle at center, #2c003e, #000);
-  padding: 25px 20px;
-  border-radius: 16px;
-  box-shadow: 0 0 20px #ff2f8b80;
-  animation: pulseBox 4s ease-in-out infinite;
-  color: white;
-}
-
-@keyframes pulseBox {
-  0%, 100% { box-shadow: 0 0 12px #ff2f8b80; }
-  50% { box-shadow: 0 0 30px #ff2f8b; }
-}
-
 .link-button.glow {
   background: linear-gradient(145deg, #ff2f8b, #e42072);
   color: white;
-  padding: 12px 20px;
-  border-radius: 14px;
-  font-weight: bold;
-  font-size: 1.05em;
-  text-decoration: none;
-  display: inline-block;
   box-shadow: 0 0 15px #ff2f8b;
   transition: 0.3s;
 }
-
 .link-button.glow:hover {
   transform: scale(1.05);
   background: #e42072;
 }
 
-@keyframes glowPulse {
-  0%, 100% {
-    box-shadow: 0 0 12px #3a5afe;
-  }
-  50% {
-    box-shadow: 0 0 24px #3a5afe, 0 0 48px #3a5afe;
-  }
-}
-
-.vip-btn {
-  animation: glowPulse 2s infinite ease-in-out;
-}
-
-.vip-card {
-  animation: fadeInUp 1s ease forwards;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-.top-banner {
-  background: linear-gradient(90deg, #ff2f8b, #e42072);
-  color: white;
-  padding: 14px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  font-size: 1em;
-  animation: bannerGlow 3s ease-in-out infinite;
-}
-
-.banner-slide {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  animation: slideIn 1s ease;
-}
-.banner-slide.active {
+/* Реакции */
+.reaction {
+  margin-top: 10px;
+  font-size: 1.3em;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  cursor: pointer;
+}
+.reaction span {
+  transition: 0.2s;
+}
+.reaction span:hover {
+  transform: scale(1.4);
 }
 
-.banner-btn {
-  margin-top: 8px;
-  background: #fff;
-  color: #e42072;
-  padding: 8px 16px;
-  border-radius: 10px;
+/* Фильтры */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+.filter-buttons button {
+  background: #e42072;
+  border: none;
+  padding: 8px 18px;
+  color: white;
   font-weight: bold;
-  text-decoration: none;
+  border-radius: 8px;
+  cursor: pointer;
   transition: 0.3s;
 }
-.banner-btn:hover {
-  background: #ffe6f0;
-}
-
-@keyframes bannerGlow {
-  0%, 100% { box-shadow: 0 0 10px #ff2f8b; }
-  50% { box-shadow: 0 0 25px #ff2f8b; }
-}
-@keyframes slideIn {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-.top-banner {
-  background: linear-gradient(90deg, #ff2f8b, #e42072);
-  color: white;
-  padding: 12px;
-  text-align: center;
-  box-shadow: 0 0 20px #ff2f8b;
-  position: relative;
-  z-index: 99;
-}
-.banner-slide {
-  display: none;
-  font-size: 1em;
-}
-.banner-slide.active {
-  display: block;
-  animation: fade 0.6s ease-in-out;
-}
-@keyframes fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-.banner-btn {
-  background: white;
-  color: #e42072;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-weight: bold;
-  margin-left: 10px;
-  text-decoration: none;
+.filter-buttons button:hover {
+  background: #ff2f8b;
 }
