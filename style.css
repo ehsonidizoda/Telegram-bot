@@ -130,3 +130,32 @@ a.link-button:hover {
   background: #e42072;
 }
 
+
+
+.vip-highlight {
+  background: radial-gradient(circle at center, #2c003e, #000);
+  box-shadow: 0 0 20px #ff2f8b80;
+  animation: pulseBox 4s ease-in-out infinite;
+}
+
+@keyframes pulseBox {
+  0%, 100% {
+    box-shadow: 0 0 10px #ff2f8b80;
+  }
+  50% {
+    box-shadow: 0 0 25px #ff2f8b;
+  }
+}
+
+.glow {
+  animation: glowPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px #ff2f8b;
+  }
+  50% {
+    box-shadow: 0 0 20px #ff2f8b, 0 0 30px #ff2f8b;
+  }
+}
