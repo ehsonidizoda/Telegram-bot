@@ -141,3 +141,25 @@
     <div class="reaction" data-id="b2"></div>
   </div>
 </div>
+
+<script>
+document.querySelectorAll(".reaction").forEach(r => {
+  const id = r.dataset.id;
+  const saved = localStorage.getItem("react-" + id);
+  if (saved) r.innerHTML = saved;
+
+  r.innerHTML = `
+    <span data-type="like">❤️</span>
+    <span data-type="fire">🔥</span>
+    <span data-type="bad">👎</span>
+  `;
+
+  r.addEventListener("click", e => {
+    if (e.target.tagName === "SPAN") {
+      e.target.style.transform = "scale(1.5)";
+      setTimeout(() => e.target.style.transform = "", 300);
+      localStorage.setItem("react-" + id, r.innerHTML);
+    }
+  });
+});
+</script>
