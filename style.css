@@ -186,4 +186,10 @@ body {
     transform: scale(1.4);
   }
 
- 
+ <script>
+function filterChannels(type) {
+  document.querySelectorAll('.channel-card').forEach(el => {
+    el.style.display = (type === 'all' || el.dataset.type === type) ? 'block' : 'none';
+  });
+}
+</script>
