@@ -206,32 +206,3 @@ a.link-button:hover {
   box-shadow: 0 0 15px #ff0080;
   transition: 0.3s;
 }
-
-.model-card:hover {
-  transform: scale(1.03);
-}
-
-.model-card img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.model-links {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.model-links a {
-  background: #e42072;
-  padding: 6px 10px;
-  border-radius: 8px;
-  color: white;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-
-.model-links a:hover {
-  background: #ff4080;
-}
