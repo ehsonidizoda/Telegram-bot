@@ -372,3 +372,32 @@ html {
   0% { transform: translateY(100vh) rotate(0deg); }
   100% { transform: translateY(-120vh) rotate(360deg); }
 }
+
+.back-button {
+  background: linear-gradient(145deg, #ff2f8b, #e42072);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  box-shadow: 0 0 15px #ff2f8b80;
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  animation: shake 2.5s infinite;
+}
+
+.back-button:hover {
+  background: #e42072;
+  transform: scale(1.05);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(3px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+}
