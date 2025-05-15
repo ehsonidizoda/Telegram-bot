@@ -315,3 +315,38 @@ function filterChannels(type) {
 html {
   scroll-behavior: smooth;
 }
+
+.vip-highlight {
+  background: radial-gradient(circle at center, #3d003d, #0c0013);
+  border: 2px solid #ff2f8b;
+  border-radius: 16px;
+  box-shadow: 
+    0 0 15px #ff2f8b,
+    0 0 25px #e42072 inset;
+  padding: 25px;
+  animation: pulseBox 4s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.vip-highlight:hover {
+  transform: scale(1.02);
+}
+
+@keyframes pulseBox {
+  0%, 100% {
+    box-shadow: 0 0 15px #ff2f8b, 0 0 20px #e42072 inset;
+  }
+  50% {
+    box-shadow: 0 0 25px #ff2f8b, 0 0 35px #e42072 inset;
+  }
+}
+
+.vip-highlight .link-button {
+  background-color: #ff2f8b;
+  box-shadow: 0 0 10px #ff2f8b80;
+}
+
+.vip-highlight .link-button:hover {
+  background-color: #e42072;
+  transform: scale(1.05);
+}
