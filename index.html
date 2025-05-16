@@ -224,6 +224,12 @@
   </a>
 </div>
 
+<div class="fortune-big-button">
+  <button onclick="scrollToWheel()">
+    <i class="fa-solid fa-dice"></i> Играть в Колесо Фортуны
+  </button>
+</div>
+
 </style><!-- === Скролл к якорю === --><script>
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -431,3 +437,12 @@ function filterChannels(type) {
   <div id="result" class="result"></div>
   <audio id="spin-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_b92ba58c18.mp3" preload="auto"></audio>
 </div>
+
+<script>
+  function scrollToWheel() {
+    const target = document.getElementById("bonus-wheel");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+</script>
