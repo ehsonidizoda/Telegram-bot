@@ -392,3 +392,32 @@ body {
     border-radius: 12px;
   }
 }
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding: 20px;
+}
+
+.menu-tile {
+  background: #ff2f8b;
+  color: white;
+  border-radius: 16px;
+  text-align: center;
+  padding: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(255, 47, 139, 0.5);
+}
+
+.menu-tile:hover {
+  background: #e42072;
+}
+
+.menu-tile i {
+  display: block;
+  font-size: 22px;
+  margin-bottom: 6px;
+}
