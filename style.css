@@ -145,3 +145,15 @@
   font-size: 20px;
   margin-bottom: 6px;
 }
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+  color: var(--vip-color);
+}
