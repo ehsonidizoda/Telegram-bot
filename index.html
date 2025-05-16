@@ -186,44 +186,78 @@ section#vip ul li {
   <button onclick="filterCards('vip')">VIP</button>
 </div>
 
-</div><div class="cards-wrapper">
-  <h2 class="section-title">Каналы 18+</h2>
-  <div class="cards-grid">
-    <div class="card channel">
-      <h3><i class="fa-solid fa-star"></i> VIP KANAL <span class="badge">18+</span></h3>
-      <a href="https://t.me/+IUec_xlw8dVjMjJi" class="link-button"><i class="fa-brands fa-telegram"></i> ВОЙТИ</a>
-    </div>
-    <div class="card channel vip">
-      <h3><i class="fa-solid fa-lock"></i> Секретный Канал <span class="badge">18+</span></h3>
-      <a href="https://t.me/+2q3J4US8cXdjMTFi" class="link-button"><i class="fa-solid fa-eye"></i> СМОТРЕТЬ</a>
-    </div>
-    <div class="card channel">
-      <h3><i class="fa-solid fa-image"></i> АЧАЛИ ПЕТКАХО <span class="badge">18+</span></h3>
-      <a href="https://t.me/+_O5ISU7emQxjZmJi" class="link-button"><i class="fa-brands fa-telegram"></i>ТАМОШО КАРДАН</a>
-    </div>
-    <div class="card channel">
-      <h3><i class="fa-solid fa-fire"></i> Кудакона <span class="badge">18+</span></h3>
-      <a href="https://t.me/+w4jDVeVHElMyYzli" class="link-button"><i class="fa-brands fa-telegram"></i> ДАРОМАДАН</a>
-    </div>
-    <div class="card channel">
-      <h3><i class="fa-solid fa-film"></i> Канал Филмхо 18+<span class="badge">18+</span></h3>
-      <a href="https://t.me/+7EB_m9ACW2RjYjli" class="link-button"><i class="fa-solid fa-play"></i> СМОТРЕТЬ</a>
-    </div>
-    <div class="card channel">
-      <h3><i class="fa-solid fa-unlock-keyhole"></i> Обходной канал <span class="badge">18+</span></h3>
-      <a href="https://t.me/+t-tdaXtQvdw1NzJi" class="link-button"><i class="fa-solid fa-unlock"></i> ОБОЙТИ</a>
-    </div>
-  </div>  <h2 class="section-title">Боты 18+</h2>
-  <div class="cards-grid">
-    <div class="card bot">
-      <h3><i class="fa-solid fa-robot"></i> VVEDI COD BOT <span class="badge">18+</span></h3>
-      <a href="https://t.me/VvediCodBot?start" class="link-button"><i class="fa-brands fa-telegram"></i> Запуск</a>
-    </div>
-    <div class="card bot">
-      <h3><i class="fa-solid fa-heart"></i> ФАРЗОНА BOT <span class="badge">18+</span></h3>
-      <a href="https://t.me/Farzoona_bot?start=" class="link-button"><i class="fa-brands fa-telegram"></i> Дохил Шудан</a>
-    </div>
+<style>
+  .link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ff2f8b;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 12px rgba(255, 47, 139, 0.4);
+  }
+
+  .link-button:hover {
+    transform: scale(1.05);
+    background: #e42072;
+  }
+
+  .link-button i {
+    margin-right: 8px;
+  }
+</style>
+
+<div class="cards-grid">
+
+  <!-- Каналы -->
+  <div class="card channel">
+    <h3><i class="fa-solid fa-star"></i> VIP KANAL <span class="badge">18+</span></h3>
+    <a href="https://t.me/+IUec_xlw8dVjMjJi" class="link-button"><i class="fa-brands fa-telegram"></i> Войти</a>
   </div>
+
+  <div class="card channel vip">
+    <h3><i class="fa-solid fa-lock"></i> Секретный Канал <span class="badge">18+</span></h3>
+    <a href="https://t.me/+2q3J4US8cXdjMTFi" class="link-button"><i class="fa-solid fa-eye"></i> Смотреть</a>
+  </div>
+
+  <div class="card channel">
+    <h3><i class="fa-solid fa-image"></i> АЧАЛИ ПЕТКАХО <span class="badge">18+</span></h3>
+    <a href="https://t.me/+_O5ISU7emQxjZmJi" class="link-button"><i class="fa-brands fa-telegram"></i> Тамошо кардан</a>
+  </div>
+
+  <div class="card channel">
+    <h3><i class="fa-solid fa-fire"></i> Кудакона <span class="badge">18+</span></h3>
+    <a href="https://t.me/+w4jDVeVHElMyYzli" class="link-button"><i class="fa-brands fa-telegram"></i> Даромадан</a>
+  </div>
+
+  <div class="card channel">
+    <h3><i class="fa-solid fa-film"></i> Канал Филмхо 18+ <span class="badge">18+</span></h3>
+    <a href="https://t.me/+7EB_m9ACW2RjYjli" class="link-button"><i class="fa-solid fa-play"></i> Смотреть</a>
+  </div>
+
+  <div class="card channel">
+    <h3><i class="fa-solid fa-unlock-keyhole"></i> Обходной канал <span class="badge">18+</span></h3>
+    <a href="https://t.me/+t-tdaXtQvdw1NzJi" class="link-button"><i class="fa-solid fa-unlock"></i> Обойти</a>
+  </div>
+
+  <!-- Боты -->
+  <div class="card bot">
+    <h3><i class="fa-solid fa-robot"></i> VVEDI COD BOT <span class="badge">18+</span></h3>
+    <a href="https://t.me/VvediCodBot?start" class="link-button"><i class="fa-brands fa-telegram"></i> Запуск</a>
+  </div>
+
+  <div class="card bot">
+    <h3><i class="fa-solid fa-heart"></i> ФАРЗОНА BOT <span class="badge">18+</span></h3>
+    <a href="https://t.me/Farzoona_bot?start=" class="link-button"><i class="fa-brands fa-telegram"></i> Дохил Шудан</a>
+  </div>
+
+</div>
+ 
 </div><script>
 function filterCards(type) {
   const cards = document.querySelectorAll('.card');
