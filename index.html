@@ -20,33 +20,41 @@
       scroll-behavior: smooth;
     }
     .menu {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      padding: 20px;
-      background: var(--primary);
-      text-align: center;
-    }
-    .menu a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: var(--primary);
-      color: white;
-      border-radius: 16px;
-      padding: 16px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.3s;
-      box-shadow: 0 0 10px rgba(255, 47, 139, 0.5);
-    }
-    .menu a:hover {
-      background: var(--primary-hover);
-    }
-    .menu i {
-      font-size: 22px;
-      margin-bottom: 6px;
-    }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding: 20px;
+  background: linear-gradient(135deg, #ff1493, #ff2f8b);
+  text-align: center;
+  border-bottom: 2px solid #ff1493;
+}
+
+.menu a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #111;
+  color: white;
+  border-radius: 16px;
+  padding: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 47, 139, 0.3);
+  font-size: 16px;
+}
+
+.menu a:hover {
+  background: #222;
+  transform: scale(1.08);
+}
+
+.menu i {
+  font-size: 26px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 5px #ff2f8b;
+}
+
     .content-section {
       padding: 40px 20px;
     }
@@ -115,44 +123,6 @@
   <img src="https://i.postimg.cc/s2mJMmBf/file-0000000822c6246a058a7e881195cb3.png"
        alt="VIP Banner">
 </a>
-
-<style>
-  .menu {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    padding: 20px;
-    background: linear-gradient(135deg, #ff1493, #ff2f8b);
-    text-align: center;
-    border-bottom: 2px solid #ff1493;
-  }
-
-  .menu a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #111;
-    color: white;
-    border-radius: 16px;
-    padding: 20px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: transform 0.3s ease, background 0.3s ease;
-    box-shadow: 0 0 15px rgba(255, 47, 139, 0.3);
-    font-size: 16px;
-  }
-
-  .menu a:hover {
-    background: #222;
-    transform: scale(1.08);
-  }
-
-  .menu i {
-    font-size: 26px;
-    margin-bottom: 8px;
-    text-shadow: 0 0 5px #ff2f8b;
-  }
-</style>
 
 <section id="movies" class="content-section">
   <h2>Фильмҳо 18+</h2>
