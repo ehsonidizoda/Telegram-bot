@@ -335,3 +335,31 @@ body {
   50% { opacity: 0.3; transform: scale(1.2); }
   100% { opacity: 1; transform: scale(1); }
 }
+
+.fortune-big-button {
+  text-align: center;
+  margin: 40px auto 20px;
+}
+
+.fortune-big-button button {
+  background: linear-gradient(145deg, #ff2f8b, #e42072);
+  color: white;
+  font-size: 1.3em;
+  padding: 18px 30px;
+  border: none;
+  border-radius: 16px;
+  font-weight: bold;
+  box-shadow: 0 0 20px #ff2f8b80;
+  cursor: pointer;
+  transition: 0.3s;
+  animation: pulseBig 3s ease-in-out infinite;
+}
+
+.fortune-big-button button:hover {
+  transform: scale(1.05);
+}
+
+@keyframes pulseBig {
+  0%, 100% { box-shadow: 0 0 15px #ff2f8b; }
+  50% { box-shadow: 0 0 30px #ff2f8b; }
+}
