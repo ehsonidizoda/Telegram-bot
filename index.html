@@ -229,77 +229,82 @@
     <div id="spin-result" style="margin-top: 20px; font-weight: bold;"></div>
     <p id="next-spin-timer" style="margin-top: 10px; font-weight: bold; color: var(--primary-hover);"></p>
   </div>  <script>
+ 
+ <div class="filter-buttons">
+  <button onclick="filterChannels('all')">Ҳама</button>
+  <button onclick="filterChannels('free')">18+ Каналҳо</button>
+  <button onclick="filterChannels('vip')">VIP</button>
+  <button onclick="filterChannels('bot')">Ботҳо</button>
+</div><script>
+  // Слайдер баннера
+  const slides = document.querySelectorAll('.banner-slide');
+  let currentSlide = 0;
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    slides[index].classList.add('active');
+  }
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+  setInterval(nextSlide, 7000);
 
-    // Слайдер баннера
-    const slides = document.querySelectorAll('.banner-slide');
-    let currentSlide = 0;
-    function showSlide(index) {
-      slides.forEach(slide => slide.classList.remove('active'));
-      slides[index].classList.add('active');
-    }
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
-    }
-    setInterval(nextSlide, 7000);
-
-    // Фильтрация каналов
-    function filterChannels(type) {
-      document.querySelectorAll('.channel-card').forEach(el => {
-        const cardType = el.dataset.type;
-        el.style.display = (type === 'all' || cardType === type) ? 'block' : 'none';
-      });
-    }
-
-    // Обработка реакций
-    document.querySelectorAll('.reaction').forEach(r => {
-      r.addEventListener('click', e => {
-        if (e.target.tagName === 'SPAN') {
-          const parts = e.target.innerText.split(' ');
-          let count = parseInt(parts[1]) || 0;
-          count++;
-          e.target.innerText = parts[0] + ' ' + count;
-          e.target.style.transform = 'scale(1.4)';
-          setTimeout(() => e.target.style.transform = '', 300);
-        }
-      });
+  // Фильтрация каналов и ботов
+  function filterChannels(type) {
+    document.querySelectorAll('.channel-card').forEach(el => {
+      const cardType = el.dataset.type;
+      el.style.display = (type === 'all' || cardType === type) ? 'block' : 'none';
     });
+  }
 
-    // Колесо фортуны
-    const spinBtn = document.getElementById('spin-btn');
-    const spinResult = document.getElementById('spin-result');
-    const nextSpinTimer = document.getElementById('next-spin-timer');
-    if (spinBtn) {
-      spinBtn.addEventListener('click', function() {
-        spinBtn.disabled = true;
-        spinBtn.textContent = 'Крутится...';
-        spinResult.textContent = '';
+  // Обработка реакций
+  document.querySelectorAll('.reaction').forEach(r => {
+    r.addEventListener('click', e => {
+      if (e.target.tagName === 'SPAN') {
+        const parts = e.target.innerText.split(' ');
+        let count = parseInt(parts[1]) || 0;
+        count++;
+        e.target.innerText = parts[0] + ' ' + count;
+        e.target.style.transform = 'scale(1.4)';
+        setTimeout(() => e.target.style.transform = '', 300);
+      }
+    });
+  });
 
-        setTimeout(() => {
-          const prizes = [
-            'VIP на 1 день',
-            'Бесплатный доступ к каналу',
-            '100 баллов',
-            'Попробуйте ещё раз',
-            'Секретный бонус'
-          ];
-          const prize = prizes[Math.floor(Math.random() * prizes.length)];
-          spinResult.innerHTML = `<span style="color: var(--vip-color);">🎉 Вы выиграли: ${prize}!</span>`;
-          spinBtn.textContent = 'Крутить снова';
-          spinBtn.disabled = false;
+  // Колесо фортуны
+  const spinBtn = document.getElementById('spin-btn');
+  const spinResult = document.getElementById('spin-result');
+  const nextSpinTimer = document.getElementById('next-spin-timer');
+  if (spinBtn) {
+    spinBtn.addEventListener('click', function() {
+      spinBtn.disabled = true;
+      spinBtn.textContent = 'Крутится...';
+      spinResult.textContent = '';
 
-          let seconds = 60;
+      setTimeout(() => {
+        const prizes = [
+          'VIP на 1 день',
+          'Бесплатный доступ к каналу',
+          '100 баллов',
+          'Попробуйте ещё раз',
+          'Секретный бонус'
+        ];
+        const prize = prizes[Math.floor(Math.random() * prizes.length)];
+        spinResult.innerHTML = `<span style="color: var(--vip-color);">🎉 Вы выиграли: ${prize}!</span>`;
+        spinBtn.textContent = 'Крутить снова';
+        spinBtn.disabled = false;
+
+        let seconds = 60;
+        nextSpinTimer.textContent = `Следующее кручение через: ${seconds} сек`;
+        const timer = setInterval(() => {
+          seconds--;
           nextSpinTimer.textContent = `Следующее кручение через: ${seconds} сек`;
-          const timer = setInterval(() => {
-            seconds--;
-            nextSpinTimer.textContent = `Следующее кручение через: ${seconds} сек`;
-            if (seconds <= 0) {
-              clearInterval(timer);
-              nextSpinTimer.textContent = '';
-            }
-          }, 1000);
-        }, 2000);
-      });
-    }
-  </script></body>
-</html>
+          if (seconds <= 0) {
+            clearInterval(timer);
+            nextSpinTimer.textContent = '';
+          }
+        }, 1000);
+      }, 2000);
+    });
+  }
+</script>
