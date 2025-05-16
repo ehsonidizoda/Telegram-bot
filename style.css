@@ -421,3 +421,56 @@ body {
   font-size: 22px;
   margin-bottom: 6px;
 }
+
+.card-section {
+  padding: 20px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.card {
+  background: #111;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(255, 47, 139, 0.2);
+  transition: transform 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+.card-btn {
+  background: #ff2f8b;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 10px;
+}
+.card-btn:hover {
+  background: #e42072;
+}
+.reactions {
+  margin-top: 12px;
+  font-size: 1.1rem;
+  display: flex;
+  gap: 20px;
+}
+.vip-card {
+  border-left: 4px solid gold;
+}
+.secret-card {
+  border-left: 4px solid crimson;
+}
+.fun-card {
+  border-left: 4px solid limegreen;
+}
+
+.bot-card {
+  border-left: 4px solid deepskyblue;
+}
