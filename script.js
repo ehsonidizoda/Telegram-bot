@@ -142,3 +142,9 @@ document.addEventListener("DOMContentLoaded", () => {
   0%, 100% { box-shadow: 0 0 12px #ff2f8b80; }
   50% { box-shadow: 0 0 25px #ff2f8b; }
 }
+
+.cards-container {
+  max-width: 100%;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
