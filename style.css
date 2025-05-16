@@ -62,3 +62,24 @@ body { margin: 0; font-family: 'Segoe UI', sans-serif; background: linear-gradie
 .moving-banner:nth-child(3) {
   animation-delay: 1s;
 }
+
+.banner-slide {
+  display: none;
+  font-size: 1.05em;
+  animation: fade 1s ease-in-out;
+}
+
+.banner-slide.active {
+  display: block;
+}
+
+.banner-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
