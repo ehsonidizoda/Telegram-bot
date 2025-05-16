@@ -304,12 +304,18 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  align-items: stretch; /* вот это главное */
+  align-items: stretch;
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* чтобы кнопка всегда внизу */
-  height: 100%; /* выравнивание высоты */
+  justify-content: space-between;
+  background: #111;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(255, 47, 139, 0.3);
+  transition: transform 0.3s ease;
+  height: 100%;
 }
