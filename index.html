@@ -177,49 +177,107 @@
     <button onclick="filterChannels('free')">18+</button>
     <button onclick="filterChannels('vip')">VIP</button>
 
-<!-- Каналы --><div id="channels">
-  <div class="channel-card vip-channel" data-type="vip">
-    <h3><i class="fa-solid fa-star"></i> VIP KANAL</h3>
-    <a href="https://t.me/+IUec_xlw8dVjMjJi" class="menu-tile">Войти</a>
-    <div class="reaction" data-id="c1">
-      <span>❤️ 10</span>
-      <span>🔥 25</span>
-      <span>👎 1</span>
-    </div>
-  </div>  <div class="channel-card" data-type="free">
-    <h3><i class="fa-solid fa-lock"></i> Секретный 18+ Канал</h3>
-    <a href="https://t.me/+2q3J4US8cXdjMTFi" class="menu-tile">Смотреть</a>
-    <div class="reaction" data-id="c2">
-      <span>❤️ 45</span>
-      <span>🔥 30</span>
-      <span>👎 2</span>
-    </div>
-  </div>  <div class="channel-card" data-type="free">
-    <h3><i class="fa-solid fa-fire"></i> Кудакона 🔞</h3>
-    <a href="https://t.me/+w4jDVeVHElMyYzli" class="menu-tile">Даромадан</a>
-    <div class="reaction" data-id="c3">
-      <span>❤️ 30</span>
-      <span>🔥 15</span>
-      <span>👎 0</span>
-    </div>
+<style>
+  .channel-card {
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 420px;
+    color: white;
+    background: linear-gradient(145deg, #111, #000);
+    box-shadow: 0 0 20px rgba(255, 47, 139, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .channel-card h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .vip-channel {
+    background: linear-gradient(145deg, #2b0032, #000);
+    border: 1px solid #ffd700;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+  }
+
+  .card-button {
+    display: inline-block;
+    background: #ff2f8b;
+    color: white;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    margin-top: 10px;
+  }
+
+  .card-button:hover {
+    background: #e42072;
+    transform: scale(1.05);
+  }
+
+  .reaction {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+    font-size: 1.2em;
+  }
+
+  .reaction span {
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .reaction span:hover {
+    transform: scale(1.3);
+  }
+</style><!-- Пример карточки --><div class="channel-card vip-channel" data-type="vip">
+  <h3><i class="fa-solid fa-star"></i> VIP KANAL</h3>
+  <a href="https://t.me/+IUec_xlw8dVjMjJi" class="card-button">Войти</a>
+  <div class="reaction" data-id="c1">
+    <span>❤️ 10</span>
+    <span>🔥 25</span>
+    <span>👎 1</span>
   </div>
-</div><!-- Боты --><div id="bots">
-  <div class="channel-card" data-type="free">
-    <h3><i class="fa-solid fa-robot"></i> VVEDI COD BOT</h3>
-    <a class="menu-tile" href="https://t.me/VvediCodBot?start">Запуск</a>
-    <div class="reaction" data-id="b1">
-      <span>❤️ 0</span>
-      <span>🔥 0</span>
-      <span>👎 0</span>
-    </div>
-  </div>  <div class="channel-card vip-channel" data-type="vip">
-    <h3><i class="fa-solid fa-heart"></i> ФАРЗОНА BOT</h3>
-    <a class="menu-tile" href="https://t.me/Farzoona_bot?start=">Дохил Шудан!</a>
-    <div class="reaction" data-id="b2">
-      <span>❤️ 0</span>
-      <span>🔥 0</span>
-      <span>👎 0</span>
-    </div>
+</div><div class="channel-card" data-type="free">
+  <h3><i class="fa-solid fa-lock"></i> Секретный 18+ Канал</h3>
+  <a href="https://t.me/+2q3J4US8cXdjMTFi" class="card-button">Смотреть</a>
+  <div class="reaction" data-id="c2">
+    <span>❤️ 45</span>
+    <span>🔥 30</span>
+    <span>👎 2</span>
+  </div>
+</div><div class="channel-card" data-type="free">
+  <h3><i class="fa-solid fa-fire"></i> Кудакона 🔞</h3>
+  <a href="https://t.me/+w4jDVeVHElMyYzli" class="card-button">Даромадан</a>
+  <div class="reaction" data-id="c3">
+    <span>❤️ 30</span>
+    <span>🔥 15</span>
+    <span>👎 0</span>
+  </div>
+</div><div class="channel-card" data-type="bot">
+  <h3><i class="fa-solid fa-robot"></i> VVEDI COD BOT</h3>
+  <a href="https://t.me/VvediCodBot?start" class="card-button">Запуск</a>
+  <div class="reaction" data-id="b1">
+    <span>❤️ 0</span>
+    <span>🔥 0</span>
+    <span>👎 0</span>
+  </div>
+</div><div class="channel-card vip-channel" data-type="bot">
+  <h3><i class="fa-solid fa-heart"></i> ФАРЗОНА BOT</h3>
+  <a href="https://t.me/Farzoona_bot?start=" class="card-button">Дохил Шудан!</a>
+  <div class="reaction" data-id="b2">
+    <span>❤️ 0</span>
+    <span>🔥 0</span>
+    <span>👎 0</span>
   </div>
 </div>
 
