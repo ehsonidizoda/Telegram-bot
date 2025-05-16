@@ -176,13 +176,6 @@ section#vip ul li {
 <a href="#film-bots"><i class="fa-solid fa-film"></i>БОТИ ФИЛМХОИ 18+</a>
   
 
- </div>  <div class="filters">
-    <button>Ҳама Каналҳо</button>
-    <button>18+</button>
-    <button>VIP</button>
-  </div>
-
-
   
 <h2 class="section-title">Каналы 18+</h2>
 <div class="cards-grid">
@@ -243,3 +236,23 @@ section#vip ul li {
   </section>
 </body>
 </html>
+
+<script>
+function filterCards(type) {
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    card.style.display = 'block';
+    if (type === 'vip' && !card.classList.contains('vip')) {
+      card.style.display = 'none';
+    } else if (type === '18' && !card.classList.contains('channel') && !card.classList.contains('bot')) {
+      card.style.display = 'none';
+    } else if (type === 'all') {
+      card.style.display = 'block';
+    }
+  });
+}
+</script>
+
+<div class="card channel">...</div>
+<div class="card vip">...</div>
+<div class="card bot">...</div>
