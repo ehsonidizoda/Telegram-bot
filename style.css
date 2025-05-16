@@ -430,29 +430,3 @@ body {
 .category-button:hover {
   transform: scale(1.07);
 }
-
-/* Уникальные стили */
-.category-vip {
-  background: linear-gradient(145deg, #ff2f8b, #e42072);
-}
-
-.category-adult {
-  background: linear-gradient(145deg, #ff6b00, #ff2e00);
-}
-
-.category-secret {
-  background: linear-gradient(145deg, #6c00ff, #a700ff);
-}
-
-.category-bot {
-  background: linear-gradient(145deg, #00b3ff, #0079ff);
-}
-
-.category-channel {
-  background: linear-gradient(145deg, #00ff95, #00d37f);
-}
-
-@keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 12px #fff2; }
-  50% { box-shadow: 0 0 25px #fff5; }
-}
