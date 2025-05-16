@@ -73,7 +73,10 @@
   background: var(--primary-hover);
 }
 
-.card-section {
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
   padding: 20px;
 }
 
@@ -81,177 +84,138 @@
   background: var(--bg-card);
   border-radius: 16px;
   padding: 20px;
-  margin: 15px auto;
-  box-shadow: 0 0 12px rgba(255, 47, 139, 0.3);
+  box-shadow: 0 0 15px rgba(255, 47, 139, 0.2);
+  transition: transform 0.3s ease;
   animation: fadeIn 0.6s ease;
-  max-width: 400px;
+}
+
+.card:hover {
+  transform: scale(1.02);
 }
 
 .card h3 {
-  margin: 0 0 10px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  font-size: 18px;
+  margin-bottom: 12px;
 }
 
-.link-button {
+.card a {
   display: inline-block;
   background: var(--primary);
   color: white;
-  padding: 12px 25px;
+  padding: 10px 20px;
   border-radius: 10px;
   font-weight: bold;
   text-decoration: none;
-  margin-top: 10px;
-  transition: 0.3s;
 }
 
-.link-button:hover {
+.card a:hover {
   background: var(--primary-hover);
 }
 
-.reaction {
-  margin-top: 15px;
-  font-size: 1.2em;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+.badge {
+  background: #ff2f8b;
+  color: white;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 12px;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+section#vip {
+  margin: 50px 20px;
+  padding: 30px;
+  background: #0b0b0b;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(255, 47, 139, 0.3);
+  text-align: center;
+}
+
+section#vip ul {
+  list-style: none;
+  padding: 0;
+  max-width: 400px;
+  margin: 0 auto 30px;
+  text-align: left;
+  color: #ddd;
+}
+
+section#vip ul li {
+  margin-bottom: 10px;
+}
+
+.vip-btn {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.vip-btn:hover {
+  background: var(--primary-hover);
 }
 
   </style>
 </head>
-<body>  <!-- Меню -->  <div class="menu">
+<body>
+  <div class="menu">
     <a href="#channels"><i class="fa-brands fa-telegram"></i>Каналы</a>
     <a href="#bots"><i class="fa-solid fa-robot"></i>Боты</a>
     <a href="#vip"><i class="fa-solid fa-star"></i>VIP</a>
     <a href="#models"><i class="fa-solid fa-heart"></i>Модели</a>
     <a href="#wheel"><i class="fa-solid fa-dice"></i>Колесо</a>
     <a href="#film-bots"><i class="fa-solid fa-film"></i>БОТИ ФИЛМХОИ 18+</a>
-
-  <div class="filters">
-  <button>Ҳама Каналҳо</button>
-  <button>18+</button>
-  <button>VIP</button>
-</div>
-
-<div class="cards-wrapper">
-
-  <!-- === Блок Каналов === -->
-  <h2 class="section-title">Каналҳо 18+</h2>
-  <div class="cards-container">
-    <!-- VIP KANAL -->
+  </div>  <div class="filters">
+    <button>Ҳама Каналҳо</button>
+    <button>18+</button>
+    <button>VIP</button>
+  </div>  <div class="cards-container">
     <div class="card">
       <h3><i class="fa-solid fa-star"></i> VIP KANAL <span class="badge">18+</span></h3>
-      <a href="https://t.me/+IUec_xlw8dVjMjJi" class="link-button">Войти</a>
+      <a href="https://t.me/+IUec_xlw8dVjMjJi">Войти</a>
     </div>
-
-    <!-- Секретный -->
     <div class="card">
       <h3><i class="fa-solid fa-lock"></i> Секретный 18+ Канал <span class="badge">18+</span></h3>
-      <a href="https://t.me/+2q3J4US8cXdjMTFi" class="link-button">Смотреть</a>
+      <a href="https://t.me/+2q3J4US8cXdjMTFi">Смотреть</a>
     </div>
-
-    <!-- Кудакона -->
     <div class="card">
       <h3><i class="fa-solid fa-fire"></i> Кудакона <span class="badge">18+</span></h3>
-      <a href="https://t.me/+w4jDVeVHElMyYzli" class="link-button">Даромадан</a>
+      <a href="https://t.me/+w4jDVeVHElMyYzli">Даромадан</a>
     </div>
-  </div>
-
-  <!-- === Блок Ботов === -->
-  <h2 class="section-title">Ботҳо 18+</h2>
-  <div class="cards-container">
-    <!-- VVEDI COD BOT -->
     <div class="card">
       <h3><i class="fa-solid fa-robot"></i> VVEDI COD BOT <span class="badge">18+</span></h3>
-      <a href="https://t.me/VvediCodBot?start" class="link-button">Запуск</a>
+      <a href="https://t.me/VvediCodBot?start">Запуск</a>
     </div>
-
-    <!-- ФАРЗОНА BOT -->
     <div class="card">
       <h3><i class="fa-solid fa-heart"></i> ФАРЗОНА BOT <span class="badge">18+</span></h3>
-      <a href="https://t.me/Farzoona_bot?start=" class="link-button">Дохил Шудан</a>
+      <a href="https://t.me/Farzoona_bot?start=">Дохил Шудан</a>
     </div>
-  </div>
-</div>
-
-<style>
-  .cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    padding: 20px;
-  }
-
-  .card {
-    background: #111;
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 0 15px rgba(255, 47, 139, 0.2);
-    transition: transform 0.3s ease;
-    animation: fadeIn 0.6s ease;
-  }
-
-  .card:hover {
-    transform: scale(1.02);
-  }
-
-  .card h3 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 18px;
-    margin-bottom: 12px;
-  }
-
-  .card a {
-    display: inline-block;
-    background: #ff2f8b;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-weight: bold;
-    text-decoration: none;
-  }
-
-  .card a:hover {
-    background: #e42072;
-  }
-
-  .badge {
-    background: #ff2f8b;
-    color: white;
-    font-size: 12px;
-    padding: 3px 10px;
-    border-radius: 12px;
-    margin-left: 10px;
-  }
-
-  @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
-  }
-</style>
-
-<!-- VIP Секция --><section id="vip" style="margin-top: 50px; text-align: center; padding: 30px; background: #0b0b0b; border-radius: 20px; box-shadow: 0 0 25px rgba(255, 47, 139, 0.3);">
-  <h2 style="font-size: 26px; color: white; margin-bottom: 20px;">
-    <i class="fa-solid fa-star"></i> VIP Дастрасии Хусусӣ
-  </h2>  <ul style="list-style: none; padding: 0; max-width: 400px; margin: 0 auto 30px; text-align: left; color: #ddd;">
-    <li style="margin-bottom: 10px;"><i class="fa-solid fa-heart" style="color:#ff2f8b;"></i> Сексои Тоҷикӣ & Узбекӣ</li>
-    <li style="margin-bottom: 10px;"><i class="fa-solid fa-fire" style="color:#ff5722;"></i> Видео ҳар рӯз</li>
-    <li style="margin-bottom: 10px;"><i class="fa-solid fa-lock" style="color:#ffd700;"></i> Каналҳои махфӣ</li>
-    <li style="margin-bottom: 10px;"><i class="fa-solid fa-kiss-wink-heart" style="color:#e91e63;"></i> Контент барои VIP</li>
-    <li style="margin-bottom: 10px;"><i class="fa-solid fa-crown" style="color:#ffd700;"></i> Моделҳои беҳтарин</li>
-  </ul>  <p style="font-size: 15px; color: #ccc; margin-bottom: 20px;">
-    Барои даромадан ба VIP — нависед ба Telegram: <strong style="color:#ff2f8b">https://t.me/m/upWS74sOMDc0</strong> ё клик кунед поён.
-  </p>  <a href="https://t.me/Fors_Admin" target="_blank" style="display:inline-block; background:#ff2f8b; color:white; padding:12px 30px; border-radius:10px; font-weight:bold; text-decoration:none; transition:0.3s;">
-    <i class="fa-solid fa-lock"></i> Гирифтани VIP
-  </a>  <p style="margin-top: 30px; color:#777; font-size: 14px;">
-    Сохта аз ҷониби <strong style="color:white">АЧАЛИ ПЕТКАХО</strong> — 18+ барои Калонсолонон
-  </p>
-</section>
+  </div>  <section id="vip">
+    <h2><i class="fa-solid fa-star"></i> VIP Дастрасии Хусусӣ</h2>
+    <ul>
+      <li><i class="fa-solid fa-heart" style="color:#ff2f8b;"></i> Сексои Тоҷикӣ & Узбекӣ</li>
+      <li><i class="fa-solid fa-fire" style="color:#ff5722;"></i> Видео ҳар рӯз</li>
+      <li><i class="fa-solid fa-lock" style="color:#ffd700;"></i> Каналҳои махфӣ</li>
+      <li><i class="fa-solid fa-kiss-wink-heart" style="color:#e91e63;"></i> Контент барои VIP</li>
+      <li><i class="fa-solid fa-crown" style="color:#ffd700;"></i> Моделҳои беҳтарин</li>
+    </ul>
+    <p>Барои даромадан ба VIP — нависед ба Telegram: <b>https://t.me/Fors_Admin</b></p>
+    <a href="https://t.me/Fors_Admin" target="_blank" class="vip-btn">
+      <i class="fa-solid fa-lock"></i> Гирифтани VIP
+    </a>
+    <p style="margin-top: 30px; color:#777; font-size: 14px;">
+      Сохта аз ҷониби <b style="color:white">АЧАЛИ ПЕТКАХО</b> — 18+ барои Калонсолонон
+    </p>
+  </section>
+</body>
+</html>
