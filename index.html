@@ -179,6 +179,18 @@ section#vip ul li {
   <a href="#film-bots"><i class="fa-solid fa-film"></i><span>БОТИ ФИЛМХОИ 18+</span></a>
 </div>
 
+<div class="top-banner">
+  <span>⚡ Только сегодня! Получи VIP-доступ со скидкой</span>
+</div>
+
+<div class="top-banner banner-alt">
+  <span>🔥 Подпишись на наш Telegram и получи бонус!</span>
+</div>
+
+<div class="top-banner banner-special">
+  <span>🎁 Акция! VIP за полцены — только 24 часа!</span>
+</div>
+
 <!-- Фильтр -->
 <div class="filters">
   <button onclick="filterCards('all')">Ҳама Каналҳо</button>
@@ -275,4 +287,27 @@ function filterCards(type) {
     }
   });
 }
+</script>
+
+<script>
+  const banners = document.querySelectorAll('.top-banner');
+  let current = 0;
+
+  function showBanner(index) {
+    banners.forEach((banner, i) => {
+      banner.classList.remove('active');
+      if (i === index) {
+        banner.classList.add('active');
+      }
+    });
+  }
+
+  function rotateBanners() {
+    showBanner(current);
+    current = (current + 1) % banners.length;
+  }
+
+  // Старт
+  rotateBanners();
+  setInterval(rotateBanners, 5000);
 </script>
