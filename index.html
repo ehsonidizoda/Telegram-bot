@@ -176,22 +176,60 @@
     <button onclick="filterChannels('all')">Ҳама Каналҳо</button>
     <button onclick="filterChannels('free')">18+</button>
     <button onclick="filterChannels('vip')">VIP</button>
-  </div>  <!-- Каналы -->  <div id="channels">
-    <div class="channel-card vip-channel" data-type="vip">
-      <h3><i class="fa-solid fa-star"></i> VIP KANAL</h3>
-      <a href="https://t.me/+IUec_xlw8dVjMjJi" class="menu-tile">Войти</a>
-      <div class="reaction" data-id="c1">
-        <span>❤️ 10</span>
-        <span>🔥 25</span>
-        <span>👎 1</span>
-      </div>
+
+<!-- Каналы --><div id="channels">
+  <div class="channel-card vip-channel" data-type="vip">
+    <h3><i class="fa-solid fa-star"></i> VIP KANAL</h3>
+    <a href="https://t.me/+IUec_xlw8dVjMjJi" class="menu-tile">Войти</a>
+    <div class="reaction" data-id="c1">
+      <span>❤️ 10</span>
+      <span>🔥 25</span>
+      <span>👎 1</span>
     </div>
-  </div>  <!-- Колесо фортуны -->  <div id="bonus-wheel">
+  </div>  <div class="channel-card" data-type="free">
+    <h3><i class="fa-solid fa-lock"></i> Секретный 18+ Канал</h3>
+    <a href="https://t.me/+2q3J4US8cXdjMTFi" class="menu-tile">Смотреть</a>
+    <div class="reaction" data-id="c2">
+      <span>❤️ 45</span>
+      <span>🔥 30</span>
+      <span>👎 2</span>
+    </div>
+  </div>  <div class="channel-card" data-type="free">
+    <h3><i class="fa-solid fa-fire"></i> Кудакона 🔞</h3>
+    <a href="https://t.me/+w4jDVeVHElMyYzli" class="menu-tile">Даромадан</a>
+    <div class="reaction" data-id="c3">
+      <span>❤️ 30</span>
+      <span>🔥 15</span>
+      <span>👎 0</span>
+    </div>
+  </div>
+</div><!-- Боты --><div id="bots">
+  <div class="channel-card" data-type="free">
+    <h3><i class="fa-solid fa-robot"></i> VVEDI COD BOT</h3>
+    <a class="menu-tile" href="https://t.me/VvediCodBot?start">Запуск</a>
+    <div class="reaction" data-id="b1">
+      <span>❤️ 0</span>
+      <span>🔥 0</span>
+      <span>👎 0</span>
+    </div>
+  </div>  <div class="channel-card vip-channel" data-type="vip">
+    <h3><i class="fa-solid fa-heart"></i> ФАРЗОНА BOT</h3>
+    <a class="menu-tile" href="https://t.me/Farzoona_bot?start=">Дохил Шудан!</a>
+    <div class="reaction" data-id="b2">
+      <span>❤️ 0</span>
+      <span>🔥 0</span>
+      <span>👎 0</span>
+    </div>
+  </div>
+</div>
+
+  <>❤️ Колесо фортуны -->  <div id="bonus-wheel">
     <h2><i class="fa-solid fa-dice"></i> Колесо Фортуны</h2>
     <button id="spin-btn">Крутить колесо</button>
     <div id="spin-result" style="margin-top: 20px; font-weight: bold;"></div>
     <p id="next-spin-timer" style="margin-top: 10px; font-weight: bold; color: var(--primary-hover);"></p>
   </div>  <script>
+
     // Слайдер баннера
     const slides = document.querySelectorAll('.banner-slide');
     let currentSlide = 0;
