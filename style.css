@@ -157,3 +157,37 @@
   text-decoration: underline;
   color: var(--vip-color);
 }
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 14px;
+  padding: 20px;
+  background: var(--primary);
+  text-align: center;
+}
+
+.menu a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: white;
+  border-radius: 16px;
+  padding: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(255, 47, 139, 0.5);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.menu a:hover {
+  background: var(--primary-hover);
+  transform: scale(1.05);
+}
+
+.menu i {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
