@@ -102,3 +102,11 @@
   padding: 3px 10px;
   border-radius: 10px;
 }
+
+.menu a, .filters button {
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.menu a:hover, .filters button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(255, 47, 139, 0.4);
+}
