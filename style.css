@@ -14,3 +14,27 @@ body { margin: 0; font-family: 'Segoe UI', sans-serif; background: linear-gradie
 
 /* Прочее */ .section { margin: 20px auto; max-width: 600px; } .channel-card { background: #1a0a1e; border-radius: 16px; padding: 16px; margin: 16px auto; box-shadow: 0 0 20px #ff2f8b88; animation: fadeIn 0.6s ease; } .channel-card h3 { font-size: 1.2em; color: #ff2f8b; }
 
+.moving-banner {
+  overflow: hidden;
+  background: linear-gradient(90deg, #ff2f8b, #e42072);
+  padding: 8px 0;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #ff2f8b;
+  margin: 10px auto;
+  max-width: 420px;
+}
+
+.moving-line {
+  white-space: nowrap;
+  display: inline-block;
+  animation: scrollText 15s linear infinite;
+  font-weight: bold;
+  font-size: 1em;
+  color: white;
+  padding: 4px 0;
+}
+
+@keyframes scrollText {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
