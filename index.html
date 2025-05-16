@@ -1,410 +1,526 @@
-<div class="top-banner">
-  <div class="banner-slide active">
-    <a href="#vip" class="banner-link">⚡ Только сегодня! Получи VIP-доступ со скидкой</a>
-  </div>
-  <div class="banner-slide">
-    <a href="#gift" class="banner-link">🎁 Подарок дня: Секретный канал бесплатно — Забрать</a>
-  </div>
-  <div class="banner-slide">
-    <a href="#model" class="banner-link">🔥 Модель недели: Дилбар — Смотреть</a>
-  </div>
-</div>
-
-  <!-- Остальной контент сайта ниже -->
-
-<!DOCTYPE html><html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Каналы и Боты</title>
+  <title>VIP Каналы и Боты 18+</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    :root {
+      --primary-color: #e42072;
+      --primary-hover: #ff2f8b;
+      --vip-color: #ffd700;
+      --adult-color: #ff5722;
+      --bot-color: #2196f3;
+      --channel-color: #9c27b0;
+    }
+    
     body {
       background: linear-gradient(135deg, #000000, #1c0022);
       color: white;
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
+      line-height: 1.6;
+    }
+    
+    /* Баннер */
+    .top-banner {
+      background: linear-gradient(90deg, #ff2f8b, #e42072);
+      padding: 15px;
       text-align: center;
-    }.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 20px;
-}
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    
+    .banner-slide {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .banner-slide.active {
+      display: block;
+    }
+    
+    .banner-link {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      display: inline-block;
+      padding: 8px 15px;
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+    
+    .banner-link:hover {
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.05);
+    }
+    
+    /* Основные кнопки */
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 12px;
+      background: var(--primary-color);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .button:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(226, 32, 114, 0.4);
+    }
+    
+    /* Карточки каналов */
+    .channel-card {
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 16px;
+      max-width: 420px;
+      animation: fadeIn 0.6s ease;
+      color: white;
+      box-shadow: 0 0 12px rgba(255, 47, 139, 0.3);
+    }
+    
+    .channel-card h3 {
+      font-size: 1.3em;
+      margin-bottom: 10px;
+      text-shadow: 0 0 4px #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .vip-channel {
+      background: linear-gradient(145deg, #2b0032, #000);
+      box-shadow: 0 0 20px var(--primary-hover);
+      border: 1px solid var(--vip-color);
+    }
+    
+    .photo-channel {
+      background: linear-gradient(145deg, #003241, #000);
+      box-shadow: 0 0 20px rgba(0, 188, 212, 0.7);
+      border: 1px solid #00bcd4;
+    }
+    
+    .secret-channel {
+      background: linear-gradient(145deg, #320000, #000);
+      box-shadow: 0 0 20px rgba(255, 75, 75, 0.7);
+      border: 1px solid #ff4b4b;
+    }
+    
+    .fun-channel {
+      background: linear-gradient(145deg, #113300, #000);
+      box-shadow: 0 0 20px rgba(170, 255, 0, 0.7);
+      border: 1px solid #aaff00;
+    }
+    
+    /* Кнопки ссылок */
+    .link-button {
+      display: inline-block;
+      background: var(--bot-color);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 10px 0;
+      transition: all 0.3s;
+      box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+    }
+    
+    .link-button:hover {
+      box-shadow: 0 0 20px rgba(33, 150, 243, 0.8);
+      transform: translateY(-2px);
+    }
+    
+    /* Реакции */
+    .reaction {
+      margin-top: 15px;
+      font-size: 1.3em;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    .reaction span {
+      transition: all 0.2s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .reaction span:hover {
+      transform: scale(1.4);
+    }
+    
+    /* Фильтры */
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 15px 0;
+    }
+    
+    .filter-buttons button {
+      background: var(--primary-color);
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .filter-buttons button:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+    
+    /* VIP секция */
+    .vip-card {
+      background: linear-gradient(145deg, #1a0030, #000);
+      border-radius: 16px;
+      padding: 25px;
+      margin: 30px auto;
+      max-width: 500px;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+      border: 1px solid var(--vip-color);
+      text-align: center;
+    }
+    
+    .vip-card h2 {
+      color: var(--vip-color);
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .vip-features {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+      max-width: 400px;
+      margin: 20px auto;
+    }
+    
+    .vip-features li {
+      margin-bottom: 10px;
+      padding: 8px 15px;
+      background: rgba(255, 215, 0, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .vip-btn {
+      display: inline-block;
+      background: var(--vip-color);
+      color: #000;
+      padding: 12px 30px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 20px 0;
+      transition: all 0.3s;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    }
+    
+    .vip-btn:hover {
+      background: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+    }
+    
+    /* Анимации */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 10px var(--bot-color); }
+      50% { box-shadow: 0 0 20px var(--bot-color); }
+    }
+    
+    /* Адаптивность */
+    @media (max-width: 600px) {
+      .buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .button, .filter-buttons button {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+      
+      .channel-card {
+        margin: 15px 10px;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Верхний баннер -->
+  <div class="top-banner">
+    <div class="banner-slide active">
+      <a href="#vip" class="banner-link">⚡ Только сегодня! Получи VIP-доступ со скидкой</a>
+    </div>
+    <div class="banner-slide">
+      <a href="#gift" class="banner-link">🎁 Подарок дня: Секретный канал бесплатно — Забрать</a>
+    </div>
+    <div class="banner-slide">
+      <a href="#model" class="banner-link">🔥 Модель недели: Дилбар — Смотреть</a>
+    </div>
+  </div>
 
-.buttons button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 12px;
-  background: #e42072;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-}
+  <!-- Основные кнопки навигации -->
+  <div class="buttons">
+    <a href="#channels" class="button"><i class="fa-brands fa-telegram"></i> Каналы</a>
+    <a href="#bots" class="button"><i class="fa-solid fa-robot"></i> Боты</a>
+    <a href="#vip" class="button"><i class="fa-solid fa-star"></i> VIP</a>
+    <a href="#models" class="button"><i class="fa-solid fa-heart"></i> Модели</a>
+    <a href="#bonus-wheel" class="button"><i class="fa-solid fa-dice"></i> Колесо Фортуны</a>
+  </div>
 
-.buttons button:hover {
-  background: #ff2f8b;
-}
+  <!-- Фильтры -->
+  <div class="filter-buttons">
+    <button onclick="filterChannels('all')">Ҳама Каналхо</button>
+    <button onclick="filterChannels('free')">18+</button>
+    <button onclick="filterChannels('vip')">VIP</button>
+  </div>
 
-.block {
-  margin: 20px auto;
-  max-width: 420px;
-  background: #1a1a1a;
-  border-radius: 16px;
-  box-shadow: 0 0 20px #ff2f8b88;
-  padding: 20px;
-}
+  <!-- Каналы -->
+  <div id="channels">
+    <!-- VIP КАНАЛ -->
+    <div class="channel-card vip-channel" data-type="vip">
+      <h3><i class="fa-solid fa-star"></i> VIP KANAL</h3>
+      <a href="https://t.me/+IUec_xlw8dVjMjJi" class="link-button glow">Войти</a>
+      <div class="reaction" data-id="c1">
+        <span>❤️ 10</span>
+        <span>🔥 25</span>
+        <span>👎 1</span>
+      </div>
+    </div>
+    
+    <!-- АЧАЛИ ПЕТКАХО🔞 -->
+    <div class="channel-card photo-channel" data-type="free" data-subtype="adult">
+      <h3><i class="fa-solid fa-image"></i> АЧАЛИ ПЕТКАХО🔞</h3>
+      <a href="https://t.me/+_O5ISU7emQxjZmJi" class="link-button glow">Смотреть</a>
+      <div class="reaction" data-id="c2">
+        <span>❤️ 45</span>
+        <span>🔥 30</span>
+        <span>👎 2</span>
+      </div>
+    </div>
+    
+    <!-- СЕКРЕТНЫЙ КАНАЛ🤫 -->
+    <div class="channel-card secret-channel" data-type="free" data-subtype="secret">
+      <h3><i class="fa-solid fa-lock"></i> Секреты 18+</h3>
+      <a href="https://t.me/+2q3J4US8cXdjMTFi" class="link-button glow">Открыть</a>
+      <div class="reaction" data-id="c3">
+        <span>❤️ 18</span>
+        <span>🔥 40</span>
+        <span>👎 0</span>
+      </div>
+    </div>
+    
+    <!-- Кудакона🔞 -->
+    <div class="channel-card fun-channel" data-type="free" data-subtype="fun">
+      <h3><i class="fa-solid fa-face-laugh"></i> Кудакона 🔞</h3>
+      <a href="https://t.me/+w4jDVeVHElMyYzli" class="link-button glow">Даромадан</a>
+      <div class="reaction" data-id="c4">
+        <span>❤️ 30</span>
+        <span>🔥 15</span>
+        <span>👎 0</span>
+      </div>
+    </div>
+  </div>
 
-.block h3 {
-  margin-top: 0;
-  color: #ff2f8b;
-}
+  <!-- Боты -->
+  <div id="bots">
+    <div class="channel-card" data-type="free">
+      <h3><i class="fa-solid fa-robot"></i> @VVEDICODBOT 🔞</h3>
+      <a class="link-button" href="https://t.me/VvediCodBot?start">Дохил Шудан!</a>
+      <div class="reaction" data-id="b1">
+        <span>❤️ 0</span>
+        <span>🔥 0</span>
+        <span>👎 0</span>
+      </div>
+    </div>
 
-.join-btn {
-  display: inline-block;
-  margin-top: 10px;
-  background: #007bff;
-  padding: 10px 20px;
-  border-radius: 12px;
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  box-shadow: 0 0 10px #007bff80;
-}
+    <div class="channel-card vip-channel" data-type="vip">
+      <h3><i class="fa-solid fa-heart"></i> ФАРЗОНА 🍑💋</h3>
+      <a class="link-button" href="https://t.me/Farzoona_bot?start=">Дохил Шудан!</a>
+      <div class="reaction" data-id="b2">
+        <span>❤️ 0</span>
+        <span>🔥 0</span>
+        <span>👎 0</span>
+      </div>
+    </div>
+  </div>
 
-.reaction span {
-  font-size: 1.2em;
-  margin: 5px;
-  cursor: pointer;
-  display: inline-block;
-  transition: transform 0.2s;
-}
+  <!-- VIP секция -->
+  <div class="vip-card" id="vip">
+    <h2><i class="fa-solid fa-star"></i> VIP Дастрасии Хусусӣ</h2>
+    
+    <ul class="vip-features">
+      <li><span>❤️</span> Сексои Точикӣ & Узбекӣ</li>
+      <li><span>🔥</span> Видео ҳар рӯз</li>
+      <li><span>🔐</span> Каналҳои махфӣ</li>
+      <li><span>💋</span> Контент барои VIP</li>
+      <li><span>👑</span> Моделҳои беҳтарин</li>
+    </ul>
+    
+    <p class="vip-note">
+      Шумо метавонед барои даромадан дар канали <strong>Сексои Точикӣ</strong> ёки дигар канала нависен личкада <strong>махфӣ</strong> ва ба беҳтарин 18+ контент дар шабака!
+    </p>
+    
+    <a href="https://t.me/Fors_Admin" target="_blank" class="vip-btn">
+      <i class="fa-solid fa-lock"></i> Гирифтани VIP
+    </a>
+    
+    <p class="vip-footer">
+      Сохта аз ҷониби <strong>АЧАЛИ ПЕТКАХО</strong> — 18+ барои Калонсолонон
+    </p>
+  </div>
 
-.reaction span:hover {
-  transform: scale(1.4);
-}
+  <!-- Колесо фортуны -->
+  <div id="bonus-wheel" class="channel-card" style="text-align: center;">
+    <h2><i class="fa-solid fa-dice"></i> Колесо Фортуны</h2>
+    <button id="spin-btn" class="link-button" style="background: var(--adult-color);">Крутить колесо</button>
+    <div id="spin-result" style="margin-top: 20px; font-weight: bold;"></div>
+    <p id="next-spin-timer" style="margin-top: 10px; font-weight: bold; color: var(--primary-hover);"></p>
+  </div>
 
-.hidden { display: none; }
-
-  </div>  <script>
-    function filter(type) {
-      document.querySelectorAll('.block').forEach(el => {
-        if (type === 'all') {
-          el.classList.remove('hidden');
+  <script>
+    // Слайдер баннера
+    const slides = document.querySelectorAll('.banner-slide');
+    let currentSlide = 0;
+    
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[index].classList.add('active');
+    }
+    
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+    
+    // Автопереключение каждые 7 секунд
+    setInterval(nextSlide, 7000);
+    
+    // Фильтрация каналов
+    function filterChannels(type) {
+      document.querySelectorAll('.channel-card').forEach(el => {
+        const cardType = el.dataset.type;
+        const subtype = el.dataset.subtype;
+        
+        if (type === 'vip') {
+          el.style.display = (cardType === 'vip' || subtype === 'vip') ? 'block' : 'none';
+        } else if (type === 'all') {
+          el.style.display = 'block';
         } else {
-          el.classList.toggle('hidden', !el.classList.contains(type));
+          el.style.display = (cardType === type) ? 'block' : 'none';
         }
       });
     }
- document.querySelectorAll('.reaction').forEach(r => {
+    
+    // Обработка реакций
+    document.querySelectorAll('.reaction').forEach(r => {
+      const id = r.dataset.id;
       r.addEventListener('click', e => {
         if (e.target.tagName === 'SPAN') {
           const parts = e.target.innerText.split(' ');
-          let count = parseInt(parts[1]);
+          let count = parseInt(parts[1]) || 0;
           count++;
           e.target.innerText = parts[0] + ' ' + count;
           e.target.style.transform = 'scale(1.4)';
           setTimeout(() => e.target.style.transform = '', 300);
+          
+          // Здесь можно добавить сохранение в localStorage
+          // localStorage.setItem(`reaction_${id}_${parts[0]}`, count);
         }
       });
     });
-  </script></body>
+    
+    // Имитация колеса фортуны
+    const spinBtn = document.getElementById('spin-btn');
+    const spinResult = document.getElementById('spin-result');
+    const nextSpinTimer = document.getElementById('next-spin-timer');
+    
+    if (spinBtn) {
+      spinBtn.disabled = false;
+      spinBtn.textContent = 'Крутить колесо';
+      
+      spinBtn.addEventListener('click', function() {
+        if (this.disabled) return;
+        
+        this.disabled = true;
+        this.textContent = 'Крутится...';
+        spinResult.textContent = '';
+        
+        // Имитация запроса
+        setTimeout(() => {
+          const prizes = [
+            "VIP на 1 день",
+            "Бесплатный доступ к каналу",
+            "100 баллов",
+            "Попробуйте еще раз",
+            "Секретный бонус"
+          ];
+          
+          const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
+          spinResult.innerHTML = `<span style="color: var(--vip-color);">🎉 Вы выиграли: ${randomPrize}!</span>`;
+          
+          this.textContent = 'Крутить снова';
+          this.disabled = false;
+          
+          // Таймер следующего кручения
+          let seconds = 60;
+          nextSpinTimer.textContent = `Следующее кручение через: ${seconds} сек`;
+          
+          const timer = setInterval(() => {
+            seconds--;
+            nextSpinTimer.textContent = `Следующее кручение через: ${seconds} сек`;
+            
+            if (seconds <= 0) {
+              clearInterval(timer);
+              nextSpinTimer.textContent = '';
+            }
+          }, 1000);
+        }, 2000);
+      });
+    }
+  </script>
+</body>
 </html>
-
-<style>
-  .section { margin: 40px 0; padding: 10px; }
-  .section h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    text-shadow: 0 0 10px #ff2f8b;
-  }
-
-  .filter-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 15px 0;
-  }
-
-  .filter-buttons button {
-    background: #e42072;
-    border: none;
-    padding: 8px 18px;
-    color: white;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  .filter-buttons button:hover {
-    background: #ff2f8b;
-  }
-
-  .channel-card {
-    background: #1a0a1e;
-    border-radius: 16px;
-    padding: 16px;
-    margin: 16px auto;
-    max-width: 420px;
-    box-shadow: 0 0 20px #ff2f8b88;
-    animation: fadeIn 0.6s ease;
-  }
-
-  .channel-card h3 {
-    margin: 0 0 10px;
-    font-size: 1.2em;
-  }
-
-  .link-button {
-    display: inline-block;
-    background: #2196f3;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 10px 0;
-    animation: glowPulse 2s infinite;
-  }
-
-  @keyframes glowPulse {
-    0%, 100% { box-shadow: 0 0 10px #2196f3; }
-    50% { box-shadow: 0 0 20px #2196f3; }
-  }
-
-  .reaction {
-    margin-top: 10px;
-    font-size: 1.3em;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    cursor: pointer;
-  }
-
-  .reaction span {
-    transition: 0.2s;
-  }
-
-  .reaction span:hover {
-    transform: scale(1.4);
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-</style>
-
-<!-- === КНОПКИ НАВИГАЦИИ === -->
-<div class="buttons">
-  <a href="#channels" class="button"><i class="fa-brands fa-telegram"></i> Каналы</a>
-  <a href="#bots" class="button"><i class="fa-solid fa-robot"></i> Боты</a>
-  <a href="#vip" class="button"><i class="fa-solid fa-star"></i> VIP</a>
-  <a href="models.html" class="button"><i class="fa-solid fa-heart"></i> Модели</a>
-</div>
-
-<!-- === КНОПКА КОЛЕСО ФОРТУНЫ В ЕДИНОМ СТИЛЕ === -->
-<a href="#bonus-wheel" class="button">
-  <i class="fa-solid fa-dice"></i> Колесо Фортуны
-</a>
-
-<div class="filter-buttons">
-  <button onclick="filterChannels('all')">Ҳама Каналхо</button>
-  <button onclick="filterChannels('free')">18+</button>
-  <button onclick="filterChannels('vip')">VIP</button>
-</div>
-
-  <!-- === КАНАЛЫ ПО КАТЕГОРИЯМ === --><div class="channel-section">  <!-- VIP КАНАЛ -->  <div class="channel-card vip-channel">
-    <h3><i class="fa-solid fa-star"></i> VIP KANAL</h3>
-    <a href="https://t.me/+IUec_xlw8dVjMjJi" class="link-button glow">Войти</a>
-    <div class="reaction">
-      <span>❤️ 10</span> <span>🔥 25</span> <span>👎 1</span>
-    </div>
-  </div>  <!-- АЧАЛИ ПЕТКАХО🔞-->  <div class="channel-card photo-channel">
-    <h3><i class="fa-solid fa-image"></i> АЧАЛИ ПЕТКАХО🔞</h3>
-    <a href="https://t.me/+_O5ISU7emQxjZmJi" class="link-button glow">Смотреть</a>
-    <div class="reaction">
-      <span>❤️ 45</span> <span>🔥 30</span> <span>👎 2</span>
-    </div>
-  </div>  <!-- СЕКРЕТНЫЙ КАНАЛ🤫 -->  <div class="channel-card secret-channel">
-    <h3><i class="fa-solid fa-lock"></i> Секреты 18+</h3>
-    <a href="https://t.me/+2q3J4US8cXdjMTFi" class="link-button glow">Открыть</a>
-    <div class="reaction">
-      <span>❤️ 18</span> <span>🔥 40</span> <span>👎 0</span>
-    </div>
-  </div>  <!-- Кудакона🔞 -->  <div class="channel-card fun-channel">
-    <h3><i class="fa-solid fa-face-laugh"></i> Кудакона 🔞</h3>
-    <a href="https://t.me/+w4jDVeVHElMyYzli" class="link-button glow">Даромадан</a>
-    <div class="reaction">
-      <span>❤️ 30</span> <span>🔥 15</span> <span>👎 0</span>
-    </div>
-  </div>
-</div><!-- === СТИЛИ ДЛЯ КАТЕГОРИЙ === --><style>
-.channel-card {
-  padding: 20px;
-  margin: 20px auto;
-  border-radius: 16px;
-  max-width: 420px;
-  animation: fadeIn 0.6s ease;
-  color: white;
-  box-shadow: 0 0 12px #ff2f8b55;
-}
-.channel-card h3 {
-  font-size: 1.3em;
-  margin-bottom: 10px;
-  text-shadow: 0 0 4px #fff;
-}
-.channel-card.vip-channel {
-  background: linear-gradient(145deg, #2b0032, #000);
-  box-shadow: 0 0 20px #ff2f8b;
-}
-.channel-card.photo-channel {
-  background: linear-gradient(145deg, #003241, #000);
-  box-shadow: 0 0 20px #00bcd4aa;
-}
-.channel-card.secret-channel {
-  background: linear-gradient(145deg, #320000, #000);
-  box-shadow: 0 0 20px #ff4b4baa;
-}
-.channel-card.fun-channel {
-  background: linear-gradient(145deg, #113300, #000);
-  box-shadow: 0 0 20px #aaff00aa;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-</style>
-
-<div class="section" id="bots">
-  <h2>🤖 БОТҲОИ МО</h2>
-
-  <div class="channel-card" data-type="free">
-    <h3>🤖 @VVEDICODBOT 🔞</h3>
-    <a class="link-button" href="https://t.me/VvediCodBot?start">Дохил Шудан!</a>
-    <div class="reaction" data-id="b1"><span>❤️ 0</span> <span>🔥 0</span> <span>👎 0</span></div>
-  </div>
-
-  <div class="channel-card vip-glow" data-type="vip">
-    <h3>❤️ ФАРЗОНА 🍑💋</h3>
-    <a class="link-button" href="https://t.me/Farzoona_bot?start=">Дохил Шудан!</a>
-    <div class="reaction" data-id="b2"><span>❤️ 0</span> <span>🔥 0</span> <span>👎 0</span></div>
-  </div>
-</div>
-
-<script>
-  // ФИЛЬТР КАНАЛОВ И БОТОВ
-  function filter(type) {
-    document.querySelectorAll('.channel-card').forEach(el => {
-      const elType = el.getAttribute('data-type');
-      el.style.display = (type === 'all' || elType === type) ? 'block' : 'none';
-    });
-  }
-
-  // АНИМАЦИЯ РЕАКЦИЙ
-  document.querySelectorAll(".reaction").forEach(r => {
-    const id = r.dataset.id;
-    r.addEventListener("click", e => {
-      if (e.target.tagName === "SPAN") {
-        e.target.style.transform = "scale(1.6)";
-        setTimeout(() => e.target.style.transform = "", 200);
-      }
-    });
-  });
-</script>
-
-
-<script>
-document.querySelectorAll(".reaction").forEach(r => {
-  const id = r.dataset.id;
-  r.addEventListener("click", e => {
-    if (e.target.tagName === "SPAN") {
-      e.target.style.transform = "scale(1.5)";
-      setTimeout(() => e.target.style.transform = "", 200);
-    }
-  });
-});
-</script>
-
-<div class="vip-card" id="vip">
-  <h2><i class="fa-solid fa-star"></i> VIP Дастрасии Хусусӣ</h2>
-
-  <ul class="vip-features">
-    <li><span>❤️</span> Сексои Точикӣ & Узбекӣ</li>
-    <li><span>🔥</span> Видео ҳар рӯз</li>
-    <li><span>🔐</span> Каналҳои махфӣ</li>
-    <li><span>💋</span> Контент барои VIP</li>
-    <li><span>👑</span> Моделҳои беҳтарин</li>
-  </ul>
-
-  <p class="vip-note">
-    Шумо метавонед барои даромадан дар канали <strong>Сексои Точикӣ</strong> ёки дигар канала нависен личкада <strong>махфӣ</strong> ва ба беҳтарин 18+ контент дар шабака!
-  </p>
-
-  <a href="https://t.me/Fors_Admin" target="_blank" class="vip-btn">
-    <i class="fa-solid fa-lock"></i> Гирифтани VIP
-  </a>
-
-  <p class="vip-footer">
-    Сохта аз ҷониби <strong>АЧАЛИ ПЕТКАХО</strong> — 18+ барои Калонсолонон
-  </p>
-</div>
-
-<link rel="stylesheet" href="style.css" />
-
-
-<script>
-function filterChannels(type) {
-  document.querySelectorAll('.channel-card').forEach(el => {
-    const cardType = el.dataset.type;
-    const subtype = el.dataset.subtype;
-
-    if (type === 'vip') {
-      el.style.display = (cardType === 'vip' || subtype === 'vip') ? 'block' : 'none';
-    } else if (type === 'all') {
-      el.style.display = 'block';
-    } else {
-      el.style.display = (cardType === type) ? 'block' : 'none';
-    }
-  });
-}
-</script>
-
-<script>
-  const slides = document.querySelectorAll('.banner-slide');
-  let currentSlide = 0;
-
-  setInterval(() => {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-  }, 7000); // каждые 7 секунд
-</script>
-
-<div class="section" id="bonus-wheel">
-  <h2><i class="fa-solid fa-dice"></i> Колесо Фортуны</h2>
-  <button id="spin-btn" disabled>Загрузка...</button>
-  <div id="spin-result" style="margin-top: 20px;"></div>
-  <p id="next-spin-timer" style="margin-top: 10px; font-weight: bold; color: #ff2f8b;"></p>
-</div>
-
-<div class="category-buttons">
-  <a href="#" class="category-button category-vip">
-    <i class="fa-solid fa-star"></i> VIP
-  </a>
-  <a href="#" class="category-button category-adult">
-    <i class="fa-solid fa-fire"></i> 18+
-  </a>
-  <a href="#" class="category-button category-secret">
-    <i class="fa-solid fa-lock"></i> Секрет
-  </a>
-  <a href="#" class="category-button category-bot">
-    <i class="fa-solid fa-robot"></i> Боты
-  </a>
-  <a href="#" class="category-button category-channel">
-    <i class="fa-brands fa-telegram"></i> Каналы
-  </a>
-</div>
