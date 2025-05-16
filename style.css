@@ -306,7 +306,6 @@
   gap: 20px;
   align-items: stretch;
 }
-
 .card {
   display: flex;
   flex-direction: column;
@@ -315,7 +314,7 @@
   border-radius: 16px;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 0 15px rgba(255, 47, 139, 0.3);
+  box-shadow: 0 0 20px rgba(255, 47, 139, 0.3);
   transition: transform 0.3s ease;
   height: 100%;
 }
