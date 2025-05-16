@@ -290,6 +290,8 @@
 </head>
 <body>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <!-- Верхний баннер -->
 <div class="top-banner">
   <div class="banner-slide active">
@@ -526,3 +528,40 @@
   </script>
 </body>
 </html>
+
+<div class="menu-grid">
+  <a href="#channels" class="menu-tile"><i class="fa-brands fa-telegram"></i><span>Каналы</span></a>
+  <a href="#bots" class="menu-tile"><i class="fa-solid fa-robot"></i><span>Боты</span></a>
+  <a href="#vip" class="menu-tile"><i class="fa-solid fa-star"></i><span>VIP</span></a>
+  <a href="models.html#model" class="menu-tile"><i class="fa-solid fa-heart"></i><span>Модели</span></a>
+  <a href="#wheel" class="menu-tile"><i class="fa-solid fa-dice"></i><span>Колесо</span></a>
+  <a href="#all" class="menu-tile"><i class="fa-solid fa-layer-group"></i><span>Все каналы</span></a>
+</div>
+
+<style>
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  padding: 20px;
+}
+.menu-tile {
+  background: #ff2f8b;
+  color: white;
+  border-radius: 16px;
+  text-align: center;
+  padding: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(255, 47, 139, 0.5);
+}
+.menu-tile:hover {
+  background: #e42072;
+}
+.menu-tile i {
+  display: block;
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+</style>
