@@ -363,3 +363,18 @@ body {
   0%, 100% { box-shadow: 0 0 15px #ff2f8b; }
   50% { box-shadow: 0 0 30px #ff2f8b; }
 }
+
+.filter-buttons button {
+  font-size: 1.1em;
+  padding: 10px 22px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #ff2f8b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: 0.3s;
+}
+
+.filter-buttons button:hover {
+  background: #ff2f8b;
+  transform: scale(1.05);
+}
