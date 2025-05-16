@@ -16,13 +16,13 @@
       --vip-gold: #ffd700;
       --vip-bg: linear-gradient(135deg, #434343 0%, #000000 100%);
     }
-    
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
       background: #000;
       color: white;
@@ -30,13 +30,13 @@
       padding-bottom: 60px;
       overflow-x: hidden;
     }
-    
+
     .container {
       max-width: 1400px;
       margin: 0 auto;
       padding: 0 20px;
     }
-    
+
     .back-button {
       display: inline-flex;
       align-items: center;
@@ -50,19 +50,19 @@
       transition: all 0.3s ease;
       font-weight: 500;
     }
-    
+
     .back-button:hover {
       background: var(--primary-dark);
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(228, 32, 114, 0.3);
     }
-    
+
     header {
       text-align: center;
       padding: 30px 0;
       position: relative;
     }
-    
+
     header::before {
       content: "";
       position: absolute;
@@ -72,7 +72,7 @@
       height: 3px;
       background: linear-gradient(90deg, var(--primary), #ff8a00, var(--primary));
     }
-    
+
     h1 {
       font-family: 'Playfair Display', serif;
       font-size: 2.8rem;
@@ -82,7 +82,7 @@
       -webkit-text-fill-color: transparent;
       text-shadow: 0 2px 10px rgba(228, 32, 114, 0.3);
     }
-    
+
     .subtitle {
       font-size: 1.1rem;
       color: #ccc;
@@ -90,7 +90,7 @@
       margin: 0 auto 30px;
       line-height: 1.6;
     }
-    
+
     .filter-btns {
       display: flex;
       flex-wrap: wrap;
@@ -98,7 +98,7 @@
       justify-content: center;
       margin: 30px 0;
     }
-    
+
     .filter-btns button {
       padding: 12px 24px;
       background: var(--secondary);
@@ -112,23 +112,23 @@
       font-size: 0.85rem;
       letter-spacing: 1px;
     }
-    
+
     .filter-btns button:hover {
       background: var(--primary);
       transform: translateY(-2px);
     }
-    
+
     .filter-btns button.active {
       background: var(--primary);
       box-shadow: 0 4px 12px rgba(228, 32, 114, 0.4);
     }
-    
+
     .search-box {
       max-width: 500px;
       margin: 0 auto 40px;
       position: relative;
     }
-    
+
     .search-box input {
       width: 100%;
       padding: 14px 20px 14px 50px;
@@ -139,7 +139,7 @@
       font-size: 1rem;
       outline: none;
     }
-    
+
     .search-box i {
       position: absolute;
       left: 20px;
@@ -147,14 +147,14 @@
       transform: translateY(-50%);
       color: #aaa;
     }
-    
+
     .models-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 25px;
       padding: 0 20px;
     }
-    
+
     .model-card {
       background: var(--dark);
       border-radius: 16px;
@@ -165,17 +165,17 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .model-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(228, 32, 114, 0.3);
     }
-    
+
     .model-card.vip {
       background: var(--vip-bg);
       border: 1px solid var(--vip-gold);
     }
-    
+
     .model-card.vip::after {
       content: "VIP";
       position: absolute;
@@ -188,7 +188,7 @@
       border-radius: 50px;
       font-size: 0.8rem;
     }
-    
+
     .model-card img {
       width: 100%;
       height: 300px;
@@ -197,17 +197,17 @@
       margin-bottom: 15px;
       transition: transform 0.3s ease;
     }
-    
+
     .model-card:hover img {
       transform: scale(1.03);
     }
-    
+
     .model-card h3 {
       font-size: 1.4rem;
       margin-bottom: 8px;
       font-family: 'Playfair Display', serif;
     }
-    
+
     .model-card .location {
       display: flex;
       align-items: center;
@@ -216,34 +216,34 @@
       font-size: 0.9rem;
       margin-bottom: 10px;
     }
-    
+
     .model-card .description {
       color: #ddd;
       margin-bottom: 15px;
       line-height: 1.5;
       font-size: 0.95rem;
     }
-    
+
     .model-card .stats {
       display: flex;
       justify-content: space-between;
       margin-bottom: 15px;
       font-size: 0.9rem;
     }
-    
+
     .model-card .stat {
       display: flex;
       align-items: center;
       gap: 5px;
       color: #ccc;
     }
-    
+
     .model-card .buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
-    
+
     .model-card button {
       flex: 1;
       min-width: 120px;
@@ -260,24 +260,24 @@
       justify-content: center;
       gap: 8px;
     }
-    
+
     .model-card button:hover {
       background: var(--primary-dark);
       transform: translateY(-2px);
     }
-    
+
     .model-card button.secondary {
       background: var(--secondary);
     }
-    
+
     .model-card button.secondary:hover {
       background: #3d3d3d;
     }
-    
+
     .model-card.hidden {
       display: none;
     }
-    
+
     .vip-badge {
       position: absolute;
       top: 15px;
@@ -289,14 +289,14 @@
       border-radius: 50px;
       font-size: 0.8rem;
     }
-    
+
     .pagination {
       display: flex;
       justify-content: center;
       margin-top: 40px;
       gap: 10px;
     }
-    
+
     .pagination button {
       width: 40px;
       height: 40px;
@@ -307,16 +307,16 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    
+
     .pagination button:hover {
       background: var(--primary);
     }
-    
+
     .pagination button.active {
       background: var(--primary);
       font-weight: bold;
     }
-    
+
     footer {
       text-align: center;
       margin-top: 60px;
@@ -325,42 +325,34 @@
       font-size: 0.9rem;
       border-top: 1px solid #333;
     }
-    
+
     @media (max-width: 768px) {
       .models-grid {
         grid-template-columns: 1fr;
       }
-      
+
       h1 {
         font-size: 2rem;
       }
-      
+
       .model-card {
         max-width: 100%;
       }
     }
-    
+
     /* Анимации */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    
+
     .model-card {
       animation: fadeIn 0.6s ease forwards;
       opacity: 0;
     }
-    
+
     .model-card:nth-child(1) { animation-delay: 0.1s; }
     .model-card:nth-child(2) { animation-delay: 0.2s; }
-    .model-card:nth-child(3) { animation-delay: 0.3s; }
-    .model-card:nth-child(4) { animation-delay: 0.4s; }
-    .model-card:nth-child(5) { animation-delay: 0.5s; }
-    .model-card:nth-child(6) { animation-delay: 0.6s; }
-    .model-card:nth-child(7) { animation-delay: 0.7s; }
-    .model-card:nth-child(8) { animation-delay: 0.8s; }
-    .model-card:nth-child(9) { animation-delay: 0.9s; }
-    .model-card:nth-child(10) { animation-delay: 1s; }
   </style>
 </head>
 
@@ -369,17 +361,17 @@
     <a href="index.html" class="back-button">
       <i class="fas fa-arrow-left"></i> Назад на главную
     </a>
-    
+
     <header>
       <h1>Элитные модели</h1>
       <p class="subtitle">Подберите идеальную спутницу для любого мероприятия. Наши модели - профессиональные сопровождающие с безупречными манерами и стилем.</p>
     </header>
-    
+
     <div class="search-box">
       <i class="fas fa-search"></i>
       <input type="text" id="searchInput" placeholder="Поиск по имени, описанию или городу..." oninput="searchModels()" />
     </div>
-    
+
     <div class="filter-btns">
       <button class="active" onclick="filterModels('all')">Все модели</button>
       <button onclick="filterModels('vip')">VIP эксклюзив</button>
@@ -387,7 +379,7 @@
       <button onclick="filterModels('new')">Новые</button>
       <button onclick="filterModels('popular')">Популярные</button>
     </div>
-    
+
     <div class="models-grid" id="models">
       <!-- Модель 1 -->
       <div class="model-card vip" data-type="vip" data-new="false" data-popular="true">
@@ -414,7 +406,7 @@
           </button>
         </div>
       </div>
-      
+
       <!-- Модель 2 -->
       <div class="model-card" data-type="free" data-new="true" data-popular="false">
         <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Фарзона" />
@@ -440,150 +432,54 @@
           </button>
         </div>
       </div>
+    </div>
+
+    <footer>
+      <p>© 2023 Элитные модели. Все права защищены.</p>
+    </footer>
+  </div>
+
+  <script>
+    function filterModels(type) {
+      const models = document.querySelectorAll('.model-card');
+      const buttons = document.querySelectorAll('.filter-btns button');
       
-      <!-- Модель 3 -->
-      <div class="model-card vip" data-type="vip" data-new="false" data-popular="true">
-        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Амина" />
-        <h3>Амина Шарипова</h3>
-        <div class="location">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>Москва, Лондон</span>
-        </div>
-        <p class="description">Элитная модель международного класса. Владеет 4 языками. Идеальна для бизнес-мероприятий высшего уровня.</p>
-        <div class="stats">
-          <div class="stat"><i class="fas fa-star"></i> 5.0 (112)</div>
-          <div class="stat"><i class="fas fa-calendar-alt"></i> 7 лет опыта</div>
-        </div>
-        <div class="buttons">
-          <button onclick="window.open('https://www.instagram.com/amina_vip_model', '_blank')">
-            <i class="fab fa-instagram"></i> Instagram
-          </button>
-          <button onclick="window.open('https://t.me/AminaVIP_bot', '_blank')">
-            <i class="fab fa-telegram"></i> Telegram
-          </button>
-          <button class="secondary" onclick="window.open('https://site.com/photos/amina', '_blank')">
-            <i class="fas fa-camera"></i> Портфолио
-          </button>
-        </div>
-      </div>
-      
-      <!-- Модель 4 -->
-      <div class="model-card" data-type="free" data-new="false" data-popular="true">
-        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=988&q=80" alt="Карина" />
-        <h3>Карина Меликова</h3>
-        <div class="location">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>Сочи</span>
-        </div>
-        <p class="description">Солнечная и энергичная модель для ярких мероприятий. Специализируется на пляжных фотосессиях и вечеринках.</p>
-        <div class="stats">
-          <div class="stat"><i class="fas fa-star"></i> 4.8 (65)</div>
-          <div class="stat"><i class="fas fa-calendar-alt"></i> 3 года опыта</div>
-        </div>
-        <div class="buttons">
-          <button onclick="window.open('https://www.instagram.com/karina_sochi_model', '_blank')">
-            <i class="fab fa-instagram"></i> Instagram
-          </button>
-          <button onclick="window.open('https://t.me/KarinaSochi_bot', '_blank')">
-            <i class="fab fa-telegram"></i> Telegram
-          </button>
-          <button class="secondary" onclick="window.open('https://site.com/photos/karina', '_blank')">
-            <i class="fas fa-camera"></i> Портфолио
-          </button>
-        </div>
-      </div>
-      
-      <!-- Модель 5 -->
-      <div class="model-card vip" data-type="vip" data-new="true" data-popular="false">
-        <img src="https://images.unsplash.com/photo-1542206395-9feb3edaa68d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Жасмин" />
-        <h3>Жасмин Юсупова</h3>
-        <div class="location">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>Дубай, Москва</span>
-        </div>
-        <p class="description">Новая звезда в нашем VIP-каталоге. Утонченная и стильная, с модельной внешностью и аристократическими манерами.</p>
-        <div class="stats">
-          <div class="stat"><i class="fas fa-star"></i> 4.9 (24)</div>
-          <div class="stat"><i class="fas fa-calendar-alt"></i> 1 год опыта</div>
-        </div>
-        <div class="buttons">
-          <button onclick="window.open('https://www.instagram.com/jasmin_dubai_vip', '_blank')">
-            <i class="fab fa-instagram"></i> Instagram
-          </button>
-          <button onclick="window.open('https://t.me/JasminVIP_bot', '_blank')">
-            <i class="fab fa-telegram"></i> Telegram
-          </button>
-          <button class="secondary" onclick="window.open('https://site.com/photos/jasmin', '_blank')">
-            <i class="fas fa-camera"></i> Портфолио
-          </button>
-        </div>
-      </div>
-      
-      <!-- Модель 6 -->
-      <div class="model-card" data-type="free" data-new="false" data-popular="true">
-        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Аиша" />
-        <h3>Аиша Каримова</h3>
-        <div class="location">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>Казань</span>
-        </div>
-        <p class="description">Очаровательная восточная красавица с мягким характером. Идеальна для романтических ужинов и культурных мероприятий.</p>
-        <div class="stats">
-          <div class="stat"><i class="fas fa-star"></i> 4.6 (38)</div>
-          <div class="stat"><i class="fas fa-calendar-alt"></i> 2 года опыта</div>
-        </div>
-        <div class="buttons">
-          <button onclick="window.open('https://www.instagram.com/aisha_kazan_model', '_blank')">
-            <i class="fab fa-instagram"></i> Instagram
-          </button>
-          <button onclick="window.open('https://t.me/AishaKazan_bot', '_blank')">
-            <i class="fab fa-telegram"></i> Telegram
-          </button>
-          <button class="secondary" onclick="window.open('https://site.com/photos/aisha', '_blank')">
-            <i class="fas fa-camera"></i> Портфолио
-          </button>
-        </div>
-      </div>
-      
-      <!-- Модель 7 -->
-      <div class="model-card vip" data-type="vip" data-new="false" data-popular="true">
-        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1061&q=80" alt="Виктория" />
-        <h3>Виктория Соколова</h3>
-        <div class="location">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>Москва, Париж</span>
-        </div>
-        <p class="description">Топовая международная модель с опытом работы на неделях моды в Париже и Милане. Безупречный стиль и знание этикета.</p>
-        <div class="stats">
-          <div class="stat"><i class="fas fa-star"></i> 5.0 (156)</div>
-          <div class="stat"><i class="fas fa-calendar-alt"></i> 8 лет опыта</div>
-        </div>
-        <div class="buttons">
-          <button onclick="window.open('https://www.instagram.com/viktoria_elite_model', '_blank')">
-            <i class="fab fa-instagram"></i> Instagram
-          </button>
-          <button onclick="window.open('https://t.me/ViktoriaElite_bot', '_blank')">
-            <i class="fab fa-telegram"></i> Telegram
-          </button>
-          <button class="secondary" onclick="window.open('https://site.com/photos/viktoria', '_blank')">
-            <i class="fas fa-camera"></i> Портфолио
-          </button>
-        </div>
-      </div>
-      
-      <!-- Модель 8 -->
-      <div class="model-card" data-type="free" data-new="true" data-popular="false">
-        <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=986&q=80" alt="Диана" />
-        <h3>Диана Ибрагимова</h3>
-        <div class="location">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>Ростов-на-Дону</span>
-        </div>
-        <p class="description">Новая модель в нашем агентстве. Молодая, стильная и амбициозная. Специализируется на современных фотосессиях.</p>
-        <div class="stats">
-          <div class="stat"><i class="fas fa-star"></i> 4.5 (12)</div>
-          <div class="stat"><i class="fas fa-calendar-alt"></i> 6 месяцев опыта</div>
-        </div>
-        <div class="buttons">
-          <button onclick="window.open('https://www.instagram.com/diana_new_model', '_blank')">
-            <i cl
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      models.forEach(model => {
+        model.classList.remove('hidden');
+        
+        if (type === 'all') return;
+        
+        if (type === 'vip' && !model.classList.contains('vip')) {
+          model.classList.add('hidden');
+        } else if (type === 'free' && model.classList.contains('vip')) {
+          model.classList.add('hidden');
+        } else if (type === 'new' && model.dataset.new === 'false') {
+          model.classList.add('hidden');
+        } else if (type === 'popular' && model.dataset.popular === 'false') {
+          model.classList.add('hidden');
+        }
+      });
+    }
+
+    function searchModels() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const models = document.querySelectorAll('.model-card');
+
+      models.forEach(model => {
+        const name = model.querySelector('h3').textContent.toLowerCase();
+        const location = model.querySelector('.location span').textContent.toLowerCase();
+        const description = model.querySelector('.description').textContent.toLowerCase();
+
+        if (name.includes(searchTerm) || location.includes(searchTerm) || description.includes(searchTerm)) {
+          model.classList.remove('hidden');
+        } else {
+          model.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
