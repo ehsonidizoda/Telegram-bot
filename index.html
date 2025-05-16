@@ -96,28 +96,36 @@
 <body>
 
 <style>
-  @keyframes slideBanner {
-    0% {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
+  .banner-wrapper {
+    position: relative;
+    width: 100%;
   }
 
-  .banner {
-    animation: slideBanner 2.5s ease-out forwards;
+  .banner-wrapper img {
+    width: 100%;
+    display: block;
+  }
+
+  .banner-text {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 7vw;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px #000;
+    text-align: center;
   }
 </style>
 
-<!-- VIP БАННЕР С АНИМАЦИЕЙ -->
-<a href="https://t.me/ajali_petkaho" class="banner">
-  <img src="https://i.postimg.cc/s2mJMmBf/file-0000000822c6246a058a7e881195cb3.png"
-       alt="VIP Banner"
-       style="width: 100%; display: block; border-bottom: 3px solid #ff2f8b;">
-</a>
+<div class="banner-wrapper">
+  <a href="https://t.me/ajali_petkaho">
+    <img src="https://i.postimg.cc/s2mJMmBf/file-0000000822c6246a058a7e881195cb3.png"
+         alt="VIP Banner">
+    <div class="banner-text">ВСТУПИ В VIP!<br>Только лучшее 18+</div>
+  </a>
+</div>
 
 <!-- Главное меню -->
 <div class="menu">
