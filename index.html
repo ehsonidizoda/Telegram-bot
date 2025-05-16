@@ -353,6 +353,14 @@
 
     .model-card:nth-child(1) { animation-delay: 0.1s; }
     .model-card:nth-child(2) { animation-delay: 0.2s; }
+    .model-card:nth-child(3) { animation-delay: 0.3s; }
+    .model-card:nth-child(4) { animation-delay: 0.4s; }
+    .model-card:nth-child(5) { animation-delay: 0.5s; }
+    .model-card:nth-child(6) { animation-delay: 0.6s; }
+    .model-card:nth-child(7) { animation-delay: 0.7s; }
+    .model-card:nth-child(8) { animation-delay: 0.8s; }
+    .model-card:nth-child(9) { animation-delay: 0.9s; }
+    .model-card:nth-child(10) { animation-delay: 1s; }
   </style>
 </head>
 
@@ -432,58 +440,151 @@
           </button>
         </div>
       </div>
-    </div>
 
-    <footer>
-      <p>© 2023 Элитные модели. Все права защищены.</p>
-    </footer>
-  </div>
+      <!-- Модель 3 -->
+      <div class="model-card vip" data-type="vip" data-new="false" data-popular="true">
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Амина" />
+        <h3>Амина Шарипова</h3>
+        <div class="location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Москва, Лондон</span>
+        </div>
+        <p class="description">Элитная модель международного класса. Владеет 4 языками. Идеальна для бизнес-мероприятий высшего уровня.</p>
+        <div class="stats">
+          <div class="stat"><i class="fas fa-star"></i> 5.0 (112)</div>
+          <div class="stat"><i class="fas fa-calendar-alt"></i> 7 лет опыта</div>
+        </div>
+        <div class="buttons">
+          <button onclick="window.open('https://www.instagram.com/amina_vip_model', '_blank')">
+            <i class="fab fa-instagram"></i> Instagram
+          </button>
+          <button onclick="window.open('https://t.me/AminaVIP_bot', '_blank')">
+            <i class="fab fa-telegram"></i> Telegram
+          </button>
+          <button class="secondary" onclick="window.open('https://site.com/photos/amina', '_blank')">
+            <i class="fas fa-camera"></i> Портфолио
+          </button>
+        </div>
+      </div>
 
-  <script>
-    function filterModels(type) {
-      const models = document.querySelectorAll('.model-card');
-      const buttons = document.querySelectorAll('.filter-btns button');
-      
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+      <!-- Модель 4 -->
+      <div class="model-card" data-type="free" data-new="false" data-popular="true">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=988&q=80" alt="Карина" />
+        <h3>Карина Меликова</h3>
+        <div class="location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Сочи</span>
+        </div>
+        <p class="description">Солнечная и энергичная модель для ярких мероприятий. Специализируется на пляжных фотосессиях и вечеринках.</p>
+        <div class="stats">
+          <div class="stat"><i class="fas fa-star"></i> 4.8 (65)</div>
+          <div class="stat"><i class="fas fa-calendar-alt"></i> 3 года опыта</div>
+        </div>
+        <div class="buttons">
+          <button onclick="window.open('https://www.instagram.com/karina_sochi_model', '_blank')">
+            <i class="fab fa-instagram"></i> Instagram
+          </button>
+          <button onclick="window.open('https://t.me/KarinaSochi_bot', '_blank')">
+            <i class="fab fa-telegram"></i> Telegram
+          </button>
+          <button class="secondary" onclick="window.open('https://site.com/photos/karina', '_blank')">
+            <i class="fas fa-camera"></i> Портфолио
+          </button>
+        </div>
+      </div>
 
-      models.forEach(model => {
-        model.classList.remove('hidden');
-        
-        if (type === 'all') return;
-        
-        if (type === 'vip' && !model.classList.contains('vip')) {
-          model.classList.add('hidden');
-        } else if (type === 'free' && model.classList.contains('vip')) {
-          model.classList.add('hidden');
-        } else if (type === 'new' && model.dataset.new === 'false') {
-          model.classList.add('hidden');
-        } else if (type === 'popular' && model.dataset.popular === 'false') {
-          model.classList.add('hidden');
-        }
-      });
-    }
+      <!-- Модель 5 -->
+      <div class="model-card vip" data-type="vip" data-new="true" data-popular="false">
+        <img src="https://images.unsplash.com/photo-1542206395-9feb3edaa68d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Жасмин" />
+        <h3>Жасмин Юсупова</h3>
+        <div class="location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Дубай, Москва</span>
+        </div>
+        <p class="description">Новая звезда в нашем VIP-каталоге. Утонченная и стильная, с модельной внешностью и аристократическими манерами.</p>
+        <div class="stats">
+          <div class="stat"><i class="fas fa-star"></i> 4.9 (24)</div>
+          <div class="stat"><i class="fas fa-calendar-alt"></i> 1 год опыта</div>
+        </div>
+        <div class="buttons">
+          <button onclick="window.open('https://www.instagram.com/jasmin_dubai_vip', '_blank')">
+            <i class="fab fa-instagram"></i> Instagram
+          </button>
+          <button onclick="window.open('https://t.me/JasminVIP_bot', '_blank')">
+            <i class="fab fa-telegram"></i> Telegram
+          </button>
+          <button class="secondary" onclick="window.open('https://site.com/photos/jasmin', '_blank')">
+            <i class="fas fa-camera"></i> Портфолио
+          </button>
+        </div>
+      </div>
 
-    function searchModels() {
-      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-      const models = document.querySelectorAll('.model-card');
+      <!-- Модель 6 -->
+      <div class="model-card" data-type="free" data-new="false" data-popular="true">
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Аиша" />
+        <h3>Аиша Каримова</h3>
+        <div class="location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Казань</span>
+        </div>
+        <p class="description">Очаровательная восточная красавица с мягким характером. Идеальна для романтических ужинов и культурных мероприятий.</p>
+        <div class="stats">
+          <div class="stat"><i class="fas fa-star"></i> 4.6 (38)</div>
+          <div class="stat"><i class="fas fa-calendar-alt"></i> 2 года опыта</div>
+        </div>
+        <div class="buttons">
+          <button onclick="window.open('https://www.instagram.com/aisha_kazan_model', '_blank')">
+            <i class="fab fa-instagram"></i> Instagram
+          </button>
+          <button onclick="window.open('https://t.me/AishaKazan_bot', '_blank')">
+            <i class="fab fa-telegram"></i> Telegram
+          </button>
+          <button class="secondary" onclick="window.open('https://site.com/photos/aisha', '_blank')">
+            <i class="fas fa-camera"></i> Портфолио
+          </button>
+        </div>
+      </div>
 
-      models.forEach(model => {
-        const name = model.querySelector('h3').textContent.toLowerCase();
-        const location = model.querySelector('.location span').textContent.toLowerCase();
-        const description = model.querySelector('.description').textContent.toLowerCase();
+      <!-- Модель 7 -->
+      <div class="model-card vip" data-type="vip" data-new="false" data-popular="true">
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1061&q=80" alt="Виктория" />
+        <h3>Виктория Соколова</h3>
+        <div class="location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Москва, Париж</span>
+        </div>
+        <p class="description">Топовая международная модель с опытом работы на неделях моды в Париже и Милане. Безупречный стиль и знание этикета.</p>
+        <div class="stats">
+          <div class="stat"><i class="fas fa-star"></i> 5.0 (156)</div>
+          <div class="stat"><i class="fas fa-calendar-alt"></i> 8 лет опыта</div>
+        </div>
+        <div class="buttons">
+          <button onclick="window.open('https://www.instagram.com/viktoria_elite_model', '_blank')">
+            <i class="fab fa-instagram"></i> Instagram
+          </button>
+          <button onclick="window.open('https://t.me/ViktoriaElite_bot', '_blank')">
+            <i class="fab fa-telegram"></i> Telegram
+          </button>
+          <button class="secondary" onclick="window.open('https://site.com/photos/viktoria', '_blank')">
+            <i class="fas fa-camera"></i> Портфолио
+          </button>
+        </div>
+      </div>
 
-        if (name.includes(searchTerm) || location.includes(searchTerm) || description.includes(searchTerm)) {
-          model.classList.remove('hidden');
-        } else {
-          model.classList.add('hidden');
-        }
-      });
-    }
-  </script>
-</body>
-</html> 
-
-<a href="https://ajalipetkaho.ru" class="back-button">
-  <i class="fas fa-arrow-left"></i> Назад на главную
-</a>
+      <!-- Модель 8 -->
+      <div class="model-card" data-type="free" data-new="true" data-popular="false">
+        <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=986&q=80" alt="Диана" />
+        <h3>Диана Ибрагимова</h3>
+        <div class="location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Ростов-на-Дону</span>
+        </div>
+        <p class="description">Новая модель в нашем агентстве. Молодая, стильная и амбициозная. Специализируется на современных фотосессиях.</p>
+        <div class="stats">
+          <div class="stat"><i class="fas fa-star"></i> 4.5 (12)</div>
+          <div class="stat"><i class="fas fa-calendar-alt"></i> 6 месяцев опыта</div>
+        </div>
+        <div class="buttons">
+          <button onclick="window.open('https://www.instagram.com/diana_new_model', '_blank')">
+            <i cl
+ 
