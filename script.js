@@ -104,3 +104,41 @@ document.addEventListener("DOMContentLoaded", () => {
     spinBtn.textContent = "Подожди...";
   }
 });
+
+.adult-card {
+  background: linear-gradient(145deg, #2c001f, #000000);
+  border: 2px solid #ff2f8b;
+  box-shadow: 0 0 20px #ff2f8b99;
+  border-radius: 16px;
+  padding: 18px;
+  margin: 20px auto;
+  animation: pulseAdult 3s infinite ease-in-out;
+}
+
+.adult-card h3 {
+  font-size: 1.2em;
+  color: #ff69b4;
+  text-shadow: 0 0 8px #ff2f8b;
+}
+
+.adult-card .link-button {
+  background: #e42072;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 10px 18px;
+  margin-top: 10px;
+  text-decoration: none;
+  box-shadow: 0 0 12px #ff2f8b;
+  transition: transform 0.3s;
+}
+
+.adult-card .link-button:hover {
+  transform: scale(1.05);
+  background: #ff2f8b;
+}
+
+@keyframes pulseAdult {
+  0%, 100% { box-shadow: 0 0 12px #ff2f8b80; }
+  50% { box-shadow: 0 0 25px #ff2f8b; }
+}
