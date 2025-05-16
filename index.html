@@ -96,36 +96,25 @@
 <body>
 
 <style>
-  .banner-wrapper {
-    position: relative;
-    width: 100%;
+  @keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.04); }
+    100% { transform: scale(1); }
   }
 
-  .banner-wrapper img {
+  .pulse-banner img {
+    animation: pulse 2.5s ease-in-out infinite;
     width: 100%;
     display: block;
-  }
-
-  .banner-text {
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 7vw;
-    color: #fff;
-    font-weight: bold;
-    text-shadow: 2px 2px 10px #000;
-    text-align: center;
+    border-bottom: 3px solid #ff2f8b;
   }
 </style>
 
-<div class="banner-wrapper">
-  <a href="https://t.me/ajali_petkaho">
-    <img src="https://i.postimg.cc/s2mJMmBf/file-0000000822c6246a058a7e881195cb3.png"
-         alt="VIP Banner">
-    <div class="banner-text">ВСТУПИ В VIP!<br>Только лучшее 18+</div>
-  </a>
-</div>
+<!-- Анимированный баннер -->
+<a href="https://t.me/ajali_petkaho" class="pulse-banner">
+  <img src="https://i.postimg.cc/s2mJMmBf/file-0000000822c6246a058a7e881195cb3.png"
+       alt="VIP Banner">
+</a>
 
 <!-- Главное меню -->
 <div class="menu">
