@@ -273,42 +273,67 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   <button onclick="filterChannels('vip')">VIP</button>
 </div>
 
-  <div class="channel-card" data-type="free">
-    <h3>📢 AJALI PETKA 🔞</h3>
-    <a class="link-button" href="https://t.me/+_O5ISU7emQxjZmJi">Дохил Шудан!</a>
-    <div class="reaction" data-id="c1"><span>❤️ 0</span> <span>🔥 0</span> <span>👎 0</span></div>
+  <!-- === КАНАЛЫ ПО КАТЕГОРИЯМ === --><div class="channel-section">  <!-- VIP КАНАЛ -->  <div class="channel-card vip-channel">
+    <h3><i class="fa-solid fa-star"></i> VIP KANAL</h3>
+    <a href="https://t.me/vip_channel" class="link-button glow">Войти</a>
+    <div class="reaction">
+      <span>❤️ 10</span> <span>🔥 25</span> <span>👎 1</span>
+    </div>
+  </div>  <!-- ФОТО КАНАЛ -->  <div class="channel-card photo-channel">
+    <h3><i class="fa-solid fa-image"></i> Фото Гюзалхо</h3>
+    <a href="https://t.me/photo_channel" class="link-button glow">Смотреть</a>
+    <div class="reaction">
+      <span>❤️ 45</span> <span>🔥 30</span> <span>👎 2</span>
+    </div>
+  </div>  <!-- СЕКРЕТНЫЙ КАНАЛ -->  <div class="channel-card secret-channel">
+    <h3><i class="fa-solid fa-lock"></i> Секреты 18+</h3>
+    <a href="https://t.me/secret_channel" class="link-button glow">Открыть</a>
+    <div class="reaction">
+      <span>❤️ 18</span> <span>🔥 40</span> <span>👎 0</span>
+    </div>
+  </div>  <!-- ВЕСЕЛЫЙ КАНАЛ -->  <div class="channel-card fun-channel">
+    <h3><i class="fa-solid fa-face-laugh"></i> Хандатарин канал</h3>
+    <a href="https://t.me/fun_channel" class="link-button glow">Улыбнись</a>
+    <div class="reaction">
+      <span>❤️ 30</span> <span>🔥 15</span> <span>👎 0</span>
+    </div>
   </div>
-
-  <div class="channel-card" data-type="free">
-    <h3>📢 ХОДИСА ТВ 🔞</h3>
-    <a class="link-button" href="https://t.me/+-WmmN-aTwVZlMGEy">Дохил Шудан!</a>
-    <div class="reaction" data-id="c2"><span>❤️ 0</span> <span>🔥 0</span> <span>👎 0</span></div>
-  </div>
-
-  <div class="channel-card vip-glow" data-type="vip">
-    <h3>⭐ VIP KANAL 🔞</h3>
-    <a class="link-button" href="https://t.me/+IUec_xlw8dVjMjJi">Дохил Шудан!</a>
-    <div class="reaction" data-id="c3"><span>❤️ 0</span> <span>🔥 0</span> <span>👎 0</span></div>
-  </div>
-
-  <div class="channel-card" data-type="free">
-    <h3>🙈 Сексои Кудакона 🤫</h3>
-    <a class="link-button" href="https://t.me/+w4jDVeVHElMyYzli">Дохил Шудан!</a>
-    <div class="reaction" data-id="c4"><span>❤️ 0</span> <span>🔥 0</span> <span>👎 0</span></div>
-  </div>
-ООО
-  <div class="channel-card vip-glow" data-type="vip">
-    <h3>🔐 СЕКРЕТЫ 18+ 🔐</h3>
-    <a class="link-button" href="https://t.me/+EJVr7iyuIR4zYWQy">Дохил Шудан!</a>
-    <div class="reaction" data-id="c5"><span>❤️ 0</span> <span>🔥 0</span> <span>👎 0</span></div>
-  </div>
-
-  <div class="channel-card vip-glow" data-type="vip">
-    <h3>🔑 МАРО БАХО ДИХЕД! 🔐</h3>
-    <a class="link-button" href="https://t.me/+EJVr7iyuIR4zYWQy">Дохил Шудан!</a>
-    <div class="reaction" data-id="c6"><span>❤️ 0</span> <span>🔥 0</span> <span>👎 0</span></div>
-  </div>
-</div>
+</div><!-- === СТИЛИ ДЛЯ КАТЕГОРИЙ === --><style>
+.channel-card {
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 16px;
+  max-width: 420px;
+  animation: fadeIn 0.6s ease;
+  color: white;
+  box-shadow: 0 0 12px #ff2f8b55;
+}
+.channel-card h3 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  text-shadow: 0 0 4px #fff;
+}
+.channel-card.vip-channel {
+  background: linear-gradient(145deg, #2b0032, #000);
+  box-shadow: 0 0 20px #ff2f8b;
+}
+.channel-card.photo-channel {
+  background: linear-gradient(145deg, #003241, #000);
+  box-shadow: 0 0 20px #00bcd4aa;
+}
+.channel-card.secret-channel {
+  background: linear-gradient(145deg, #320000, #000);
+  box-shadow: 0 0 20px #ff4b4baa;
+}
+.channel-card.fun-channel {
+  background: linear-gradient(145deg, #113300, #000);
+  box-shadow: 0 0 20px #aaff00aa;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
 
 <div class="section" id="bots">
   <h2>🤖 БОТҲОИ МО</h2>
