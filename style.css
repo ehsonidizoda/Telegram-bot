@@ -166,3 +166,44 @@
   display: block;
   opacity: 1;
 }
+
+.admin-contact {
+  animation: fadeInUp 1s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-card {
+  background: linear-gradient(145deg, #1a1a1a, #222);
+  box-shadow: 0 0 20px rgba(255, 47, 139, 0.4);
+  border: 2px solid #ff2f8b;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.admin-btn {
+  background: #ff2f8b;
+  color: white;
+  font-size: 15px;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  display: inline-block;
+  border-radius: 10px;
+  box-shadow: 0 0 12px #ff2f8b;
+  transition: transform 0.3s ease;
+}
+
+.admin-btn:hover {
+  transform: scale(1.08);
+  background: #e42072;
+}
