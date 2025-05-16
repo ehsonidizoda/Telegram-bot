@@ -62,3 +62,8 @@ body { margin: 0; font-family: 'Segoe UI', sans-serif; background: linear-gradie
 .moving-banner:nth-child(3) {
   animation-delay: 1s;
 }
+
+.moving-banner {
+  animation: fadeInSlide 1s ease forwards;
+  animation-fill-mode: both;
+}
