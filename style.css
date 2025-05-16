@@ -378,3 +378,7 @@ body {
   background: #ff2f8b;
   transform: scale(1.05);
 }
+
+.fortune-button {
+  margin-bottom: 30px; /* отступ вниз */
+}
