@@ -386,3 +386,20 @@ body {
 .buttons {
   margin-bottom: 30px;
 }
+
+#spin-btn {
+  background: #ff2f8b;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff2f8b88;
+  transition: 0.3s;
+}
+#spin-btn:hover:enabled {
+  transform: scale(1.05);
+  background: #e42072;
+}
