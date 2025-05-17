@@ -67,3 +67,48 @@ body {
   background: #e42072;
   transform: scale(1.05);
 }
+
+.banner {
+  position: relative;
+  background: url('https://i.postimg.cc/BPHHVPk5/banner-ajali.jpg') center/cover no-repeat;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.banner-text {
+  position: absolute;
+  color: #fff;
+  font-size: 26px;
+  font-weight: bold;
+  text-shadow: 0 0 10px #ff2f8b;
+  animation: fadeText 1s ease-in-out;
+}
+
+@keyframes fadeText {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.banner-icons {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.banner-icons a img {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 0 5px #ff2f8b);
+  transition: transform 0.3s;
+}
+
+.banner-icons a img:hover {
+  transform: scale(1.2);
+}
