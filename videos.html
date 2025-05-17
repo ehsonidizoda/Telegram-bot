@@ -390,3 +390,20 @@
   </script>
 </body>
 </html>
+
+<div class="video-grid" id="videoList"></div>
+
+<script>
+fetch('videos.json')
+  .then(res => res.json())
+  .then(videos => {
+    const container = document.getElementById('videoList');
+    videos.forEach(video => {
+      container.innerHTML += `
+        <div style="margin-bottom: 20px;">
+          <h3>${video.title}</h3>
+          <iframe src="${video.url}" width="100%" height="260" allowfullscreen></iframe>
+        </div>`;
+    });
+  });
+</script>
