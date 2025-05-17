@@ -1,141 +1,173 @@
-<!DOCTYPE html><html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <title>Ajali Petkaho</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background-color: #000; color: #fff; }
+    body {
+      background: black;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
     .banner {
-      background: url('banner.jpg') center/cover no-repeat;
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      box-shadow: 0 0 30px rgba(255, 47, 139, 0.4);
+      background: url('banner.jpg') no-repeat center/cover;
+      padding: 80px 20px;
+      color: #ff2f8b;
+      font-size: 28px;
+      font-weight: bold;
+      text-shadow: 0 0 10px black;
     }
-    .banner h1 {
-      font-size: 36px;
-      color: #fff;
-      text-shadow: 0 0 15px #ff2f8b;
-    }
-    h2 {
-      text-align: center;
-      font-size: 26px;
-      margin: 40px 0 20px;
-      text-shadow: 0 0 10px #ff2f8b;
-    }
-    .section { padding: 0 20px; }
-    .cards {
+    .menu {
+      background: #ff2f8b;
+      padding: 20px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+    }
+    .menu a {
+      background: #111;
+      padding: 15px;
+      border-radius: 10px;
+      color: white;
+      text-decoration: none;
+      box-shadow: 0 0 8px #ff2f8b;
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: 0.3s;
+    }
+    .menu a:hover {
+      transform: scale(1.05);
     }
     .card {
       background: #111;
-      border-radius: 16px;
+      margin: 15px auto;
       padding: 20px;
-      box-shadow: 0 0 15px rgba(255, 47, 139, 0.3);
-      text-align: center;
-      animation: fadeIn 0.8s ease;
+      border-radius: 12px;
+      max-width: 400px;
+      box-shadow: 0 0 12px #ff2f8b;
     }
-    .card i {
-      font-size: 32px;
-      margin-bottom: 10px;
-      color: #ff2f8b;
-      display: block;
-    }
-    .card h3 { margin: 10px 0; }
-    .card p { font-size: 14px; opacity: 0.7; margin-bottom: 12px; }
-    .btn {
-      display: inline-block;
+    .link-button {
       background: #ff2f8b;
       color: white;
       padding: 10px 20px;
       border-radius: 10px;
-      text-decoration: none;
       font-weight: bold;
-      transition: 0.3s;
-      box-shadow: 0 0 12px rgba(255, 47, 139, 0.5);
-    }
-    .btn:hover {
-      background: #e42072;
-      transform: scale(1.05);
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
     }
   </style>
 </head>
-<body>  <div class="banner">
-    <h1>Добро пожаловать в Ajali Petkaho</h1>
-  </div>  <section class="section">
-    <h2><i class="fa-brands fa-telegram"></i> Наши Каналы</h2>
-    <div class="cards">
-      <div class="card">
-        <i class="fa-brands fa-telegram"></i>
-        <h3>Ачали Петкахо</h3>
-        <p>Основной канал</p>
-        <a href="https://t.me/+_O5ISU7emQxjZmJi" class="btn">Перейти</a>
-      </div>
-      <div class="card">
-        <i class="fa-brands fa-telegram"></i>
-        <h3>Хониш TJ</h3>
-        <p>Контент для взрослых</p>
-        <a href="https://t.me/Xonish_TJ" class="btn">Перейти</a>
-      </div>
-      <div class="card">
-        <i class="fa-brands fa-telegram"></i>
-        <h3>Ракс Видео</h3>
-        <p>Ракс ва видео 18+</p>
-        <a href="https://t.me/raksvideo18" class="btn">Перейти</a>
-      </div>
-      <div class="card">
-        <i class="fa-brands fa-telegram"></i>
-        <h3>VIP TJ</h3>
-        <p>Эксклюзивный VIP</p>
-        <a href="https://t.me/viptj_channel" class="btn">Перейти</a>
-      </div>
-      <div class="card">
-        <i class="fa-brands fa-telegram"></i>
-        <h3>Секс TJ</h3>
-        <p>Только 18+ контент</p>
-        <a href="https://t.me/sex_tj_only" class="btn">Перейти</a>
-      </div>
+<body>
+
+<!-- БАННЕР САЙТА --><section class="main-banner" style="background: url('assets/banner.jpg') center/cover no-repeat; padding: 100px 20px 80px; text-align: center; color: white;">
+  <h1 style="font-size: 48px; font-weight: bold; text-shadow: 0 0 10px #ff2f8b; animation: fadeInDown 1s ease-in-out;">
+    Добро пожаловать на AjaliPetkaho
+  </h1>
+  <p style="margin-top: 20px; font-size: 20px; text-shadow: 0 0 5px #ff2f8b; animation: fadeInUp 1.5s ease-in-out;">
+    Только лучшее 18+ контент. Приватные видео, модели и VIP-доступ
+  </p>  <!-- VIP ДОСТУП -->  <div style="margin-top: 60px; animation: fadeIn 2s ease-in-out;">
+    <h2 style="font-size: 28px; margin-bottom: 20px; text-shadow: 0 0 8px #fff;">
+      Получи VIP доступ прямо сейчас!
+    </h2>
+    <a href="https://t.me/ehson_ajali" target="_blank" class="link-button" style="padding: 12px 25px; background: #ff2f8b; color: white; font-size: 18px; font-weight: bold; border-radius: 10px; text-decoration: none; box-shadow: 0 0 15px rgba(255,47,139,0.6);">
+      Написать Администратору
+    </a>
+    <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px;">
+      <a href="https://t.me/ajali_petkaho" target="_blank"><img src="assets/telegram_icon.png" width="40" style="filter: drop-shadow(0 0 5px #00f);"></a>
+      <a href="https://instagram.com/ajali_petka" target="_blank"><img src="assets/insta_icon.png" width="40" style="filter: drop-shadow(0 0 5px #f0f);"></a>
     </div>
-  </section>  <section class="section">
-    <h2><i class="fa-solid fa-robot"></i> Боты</h2>
-    <div class="cards">
-      <div class="card">
-        <i class="fa-solid fa-robot"></i>
-        <h3>VvediCodBot</h3>
-        <p>Код доступа к VIP</p>
-        <a href="https://t.me/VvediCodBot" class="btn">Запуск</a>
-      </div>
-      <div class="card">
-        <i class="fa-solid fa-robot"></i>
-        <h3>Номери Арус</h3>
-        <p>Поиск девушек и моделей</p>
-        <a href="https://t.me/Farzoona_bot?start=" class="btn">ГИРИФТАН‼️</a>
-      </div>
+  </div>
+</section><style>
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+</style>
+
+  <div class="menu">
+    <a href="#channels">Каналы</a>
+    <a href="#bots">Боты</a>
+    <a href="#vip">VIP</a>
+    <a href="#models">Модели</a>
+    <a href="#movies">ФИЛМХОИ 18+</a>
+  </div>
+
+  <section id="channels">
+    <div class="card">
+      <h3>‼️АЧАЛИ ПЕТКАХО🔥</h3>
+      <p>Основной канал с контентом 18+</p>
+      <a href="https://t.me/+_O5ISU7emQxjZmJi" class="link-button">‼️ДАРОМАДАН🔞</a>
     </div>
-  </section>  <section class="section">
-    <h2><i class="fa-brands fa-instagram"></i> Instagram</h2>
-    <div class="cards">
-      <div class="card">
-        <i class="fa-brands fa-instagram"></i>
-        <h3>Модель: Дилбар</h3>
-        <p>Instagram модели</p>
-        <a href="https://www.instagram.com/dilbar_model" class="btn">Открыть</a>
-      </div>
-      <div class="card">
-        <i class="fa-brands fa-instagram"></i>
-        <h3>Наш Insta</h3>
-        <p>Официальная страница</p>
-        <a href="https://www.instagram.com/ajali_petka" class="btn">Открыть</a>
-      </div>
+    <div class="card">
+      <h3>МОДЕЛЬ. Дилбар Зохирова</h3>
+      <p>Видео с танцами и фильмами 18+</p>
+      <a href="https://t.me/+KQIAzLQxuXliMDJi" class="link-button">‼️ДАРОМАДАН🔞</a>
     </div>
-  </section></body>
+    <div class="card">
+      <h3>VIP TJ</h3>
+      <p>Приватный контент для подписчиков</p>
+      <a href="https://t.me/+IUec_xlw8dVjMjJi" class="link-button">‼️ДАРОМАДАН🔞</a>
+    </div>
+    <div class="card">
+      <h3>ХОДИСА ТВ🔞</h3>
+      <p>Новости, обсуждения и многое другое</p>
+      <a href="https://t.me/+-WmmN-aTwVZlMGEy" class="link-button">ДАРОМАДАН🔥</a>
+    </div>
+    <div class="card">
+      <h3>‼️Сексои Кудакона😱</h3>
+      <p>Эксклюзив для взрослых</p>
+      <a href="https://t.me/+w4jDVeVHElMyYzli" class="link-button">ДАРОМАДАН🔞</a>
+    </div>
+  </section>
+
+  <section id="bots">
+    <div class="card">
+      <h3>‼️ВведиКод TJ🔞</h3>
+      <p>Бот с кодовым доступом к видео🔞</p>
+      <a href="https://t.me/VvediCodBot" class="link-button">Запускать🔞</a>
+    </div>
+    <div class="card">
+      <h3>Номери Петкачахо</h3>
+      <p>Получить контакты девушек🔞</p>
+      <a href="https://t.me/Farzoona_bot?start=" class="link-button">ГИРИФТАН‼️</a>
+    </div>
+  </section>
+
+  <section id="models">
+    <div class="card">
+      <h3>Дилбар (Instagram)</h3>
+      <p>Модель сайта, ДИЛБАР ЗОХИРОВА🔥 эксклюзив🔞</p>
+      <a href="https://www.instagram.com/dilbar_model" class="link-button">Перейти</a>
+    </div>
+    <div class="card">
+      <h3>(Admin)</h3>
+      <p>Мой профиль в Instagram</p>
+      <a href="https://www.instagram.com/ajali_petka" class="link-button">Подписаться КАРДАН‼️</a>
+    </div>
+  </section>
+
+  <section id="movies">
+    <div class="card">
+      <h3>СЕКСОИ ТОЧИКИ🔞</h3>
+      <p>Видеоконтент Хамаш ТОЧИКИ 😱 </p>
+      <a href="videos.html" class="link-button"></a>
+    </div>
+  </section>
+
+</body>
 </html>
