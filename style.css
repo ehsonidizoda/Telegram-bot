@@ -102,3 +102,24 @@ body {
   from { transform: translateX(0); }
   to { transform: translateX(-100%); }
 }
+
+.fixed-video-btn {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background: #ff2f8b;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  box-shadow: 0 0 12px rgba(255, 47, 139, 0.6);
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.fixed-video-btn:hover {
+  background: #e42072;
+  transform: scale(1.05);
+}
