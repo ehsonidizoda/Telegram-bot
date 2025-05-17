@@ -23,28 +23,6 @@
 }
 </style>
 
-<script>
-  const texts = [
-    "Добро пожаловать на AjaliPetkaho",
-    "Только лучшее 18+ видео",
-    "Приватные материалы, модели",
-    "Получите VIP доступ уже сейчас!"
-  ];
-  const bannerText = document.getElementById("bannerText");
-  let index = 0;
-
-  function rotateText() {
-    bannerText.style.opacity = 0;
-    setTimeout(() => {
-      bannerText.textContent = texts[index];
-      bannerText.style.opacity = 1;
-      bannerText.style.animation = "fadeText 1s ease-in-out";
-      index = (index + 1) % texts.length;
-    }, 400);
-  }
-  setInterval(rotateText, 6000);
-</script>
-
 <div class="menu">
   <a href="#channels">Каналы</a>
   <a href="#bots">Боты</a>
