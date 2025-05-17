@@ -1,297 +1,341 @@
-<!DOCTYPE html>
-<html lang="ru">
+<div class="menu">
+  <a href="#channels"><i class="fa-brands fa-telegram"></i> Каналы</a>
+  <a href="#bots"><i class="fa-solid fa-robot"></i> Боты</a>
+  <a href="#vip"><i class="fa-solid fa-star"></i> VIP</a>
+  <a href="#models"><i class="fa-solid fa-heart"></i> Модели</a>
+  <a href="#wheel"><i class="fa-solid fa-dice"></i> Колесо</a>
+  <a href="#movies"><i class="fa-solid fa-film"></i> БОТИ ФИЛМХОИ 18+</a>
+
+</div><!DOCTYPE html><html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Доступ к контенту 18+ после ввода кода">
-  <title>Верификация возраста 18+</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Каналы и Боты</title>
+
+ <style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
       --primary: #ff2f8b;
-      --primary-dark: #e42072;
-      --bg: #121212;
-      --text: #f5f5f5;
-      --input-bg: #222;
-      --error: #ff4444;
-    }
-    
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .container {
-      max-width: 600px;
-      width: 100%;
-      padding: 30px;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 15px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
-    }
-    
-    h2 {
-      font-size: 28px;
-      margin-bottom: 25px;
-      color: var(--primary);
-    }
-    
-    .warning {
-      color: #ff9800;
-      margin-bottom: 25px;
-      font-size: 16px;
-      line-height: 1.5;
-    }
-    
-    .input-group {
-      position: relative;
-      margin: 0 auto 20px;
-      max-width: 300px;
-      width: 100%;
-    }
-    
-    input[type="password"], 
-    input[type="text"] {
-      padding: 12px 15px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: 2px solid transparent;
-      width: 100%;
-      background: var(--input-bg);
-      color: var(--text);
-      transition: all 0.3s;
-    }
-    
-    input:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(255, 47, 139, 0.3);
-    }
-    
-    .toggle-password {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #aaa;
-      cursor: pointer;
-      font-size: 14px;
-      user-select: none;
-    }
-    
-    .button-group {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 25px;
-      flex-wrap: wrap;
-    }
-    
-    button {
-      padding: 12px 25px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: none;
-      font-weight: 600;
-      background: var(--primary);
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s;
-      min-width: 120px;
-    }
-    
-    button:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-    }
-    
-    button:active {
-      transform: translateY(0);
-    }
-    
-    button.secondary {
-      background: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-    }
-    
-    button.secondary:hover {
-      background: rgba(255, 47, 139, 0.1);
-    }
-    
-    .video-block {
-      display: none;
-      margin-top: 40px;
-      animation: fadeIn 0.5s ease-out;
-    }
-    
-    .videos-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-    
-    iframe {
-      width: 100%;
-      height: 200px;
-      border-radius: 10px;
-      border: none;
-      background: #000;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
-    
-    .error-message {
-      color: var(--error);
-      margin-top: 10px;
-      font-size: 14px;
-      height: 20px;
-    }
-    
-    .age-warning {
-      margin-top: 30px;
-      font-size: 12px;
-      color: #777;
-      line-height: 1.4;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-5px); }
-      40%, 80% { transform: translateX(5px); }
-    }
-    
-    .shake {
-      animation: shake 0.4s ease-in-out;
-    }
-    
-    @media (max-width: 480px) {
-      .container {
-        padding: 20px;
-      }
-      
-      h2 {
-        font-size: 24px;
-      }
-      
-      button {
-        width: 100%;
-      }
-    }
-  </style>
+      --primary-hover: #e42072;
+      --vip-color: #ffd700;
+      --bg-dark: #000;
+      --bg-card: #111;
+    }body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-dark);
+  color: white;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding: 20px;
+  background: var(--primary);
+  text-align: center;
+}
+
+.menu a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--primary);
+  color: white;
+  border-radius: 16px;
+  padding: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(255, 47, 139, 0.5);
+}
+
+.menu a:hover {
+  background: var(--primary-hover);
+}
+
+.menu i {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  background: #000;
+}
+
+.filters button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filters button:hover {
+  background: var(--primary-hover);
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(255, 47, 139, 0.2);
+  transition: transform 0.3s ease;
+  animation: fadeIn 0.6s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.card a {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.card a:hover {
+  background: var(--primary-hover);
+}
+
+.badge {
+  background: #ff2f8b;
+  color: white;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+section#vip {
+  margin: 50px 20px;
+  padding: 30px;
+  background: #0b0b0b;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(255, 47, 139, 0.3);
+  text-align: center;
+}
+
+section#vip ul {
+  list-style: none;
+  padding: 0;
+  max-width: 400px;
+  margin: 0 auto 30px;
+  text-align: left;
+  color: #ddd;
+}
+
+section#vip ul li {
+  margin-bottom: 10px;
+}
+
+.vip-btn {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.vip-btn:hover {
+  background: var(--primary-hover);
+}
+
+ </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Верификация возраста</h2>
-    <div class="warning">
-      ⚠️ Этот контент предназначен только для лиц старше 18 лет. 
-      Продолжая, вы подтверждаете, что достигли совершеннолетия.
-    </div>
-    
-    <div class="input-group">
-      <input type="password" id="access-code" placeholder="Введите код доступа" />
-      <span class="toggle-password" onclick="togglePassword()">👁️</span>
-    </div>
-    <div class="error-message" id="error-message"></div>
-    
-    <div class="button-group">
-      <button onclick="checkCode()">Подтвердить</button>
-      <button class="secondary" onclick="history.back()">Назад</button>
-    </div>
-    
-    <div class="age-warning">
-      Сайт содержит материалы для взрослых. Все модели старше 18 лет.
-    </div>
+
+<!-- Фильтр -->
+<div class="filters">
+  <button onclick="filterCards('all')">Ҳама Каналҳо</button>
+  <button onclick="filterCards('18')">18+</button>
+  <button onclick="filterCards('vip')">VIP</button>
+</div>
+
+<style>
+  .link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ff2f8b;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 12px rgba(255, 47, 139, 0.4);
+  }
+
+.link-button:hover {
+    transform: scale(1.05);
+    background: #e42072;
+  }
+
+  .link-button i {
+    margin-right: 8px;
+  }
+</style>
+
+<div class="cards-grid">
+
+  <!-- Каналы -->
+  <div class="card channel">
+    <h3><i class="fa-solid fa-star"></i> VIP KANAL <span class="badge">18+</span></h3>
+    <a href="https://t.me/+IUec_xlw8dVjMjJi" class="link-button"><i class="fa-brands fa-telegram"></i> Войти</a>
   </div>
 
-  <div class="video-block" id="videos">
-    <div class="container">
-      <h2>Контент 18+</h2>
-      <div class="videos-container">
-        <iframe src="https://t.me/hijabporn365/62?embed=1" allowfullscreen loading="lazy"></iframe>
-        <iframe src="https://t.me/hijabporn365/33?embed=1" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <button class="secondary" onclick="location.reload()">Скрыть контент</button>
-    </div>
+  <div class="card channel vip">
+    <h3><i class="fa-solid fa-lock"></i> Секретный Канал <span class="badge">18+</span></h3>
+    <a href="https://t.me/+2q3J4US8cXdjMTFi" class="link-button"><i class="fa-solid fa-eye"></i> Смотреть</a>
   </div>
 
-  <script>
-    const ACCESS_CODE = '1234567890'; // Рекомендуется заменить на более сложный код
-    let attempts = 0;
-    const MAX_ATTEMPTS = 3;
-    
-    function checkCode() {
-      const code = document.getElementById('access-code').value.trim();
-      const errorElement = document.getElementById('error-message');
-      
-      if (!code) {
-        showError("Пожалуйста, введите код");
-        return;
-      }
-      
-      if (code === ACCESS_CODE) {
-        document.getElementById('videos').style.display = 'block';
-        document.querySelector('.container').style.display = 'none';
-        window.scrollTo(0, 0);
-      } else {
-        attempts++;
-        const remainingAttempts = MAX_ATTEMPTS - attempts;
-        
-        if (attempts >= MAX_ATTEMPTS) {
-          showError("Доступ заблокирован. Попробуйте позже.");
-          document.getElementById('access-code').disabled = true;
-          setTimeout(() => {
-            document.getElementById('access-code').disabled = false;
-            attempts = 0;
-            errorElement.textContent = '';
-          }, 30000); // 30 секунд блокировки
-        } else {
-          showError(`Неверный код! Осталось попыток: ${remainingAttempts}`);
-          document.getElementById('access-code').classList.add('shake');
-          setTimeout(() => {
-            document.getElementById('access-code').classList.remove('shake');
-          }, 400);
-        }
-        
-        document.getElementById('access-code').value = '';
-        document.getElementById('access-code').focus();
-      }
+  <div class="card channel">
+    <h3><i class="fa-solid fa-image"></i> АЧАЛИ ПЕТКАХО <span class="badge">18+</span></h3>
+    <a href="https://t.me/+_O5ISU7emQxjZmJi" class="link-button"><i class="fa-brands fa-telegram"></i> Тамошо кардан</a>
+  </div>
+
+  <div class="card channel">
+    <h3><i class="fa-solid fa-fire"></i> Кудакона <span class="badge">18+</span></h3>
+    <a href="https://t.me/+w4jDVeVHElMyYzli" class="link-button"><i class="fa-brands fa-telegram"></i> Даромадан</a>
+  </div>
+
+  <div class="card channel">
+    <h3><i class="fa-solid fa-film"></i> Канал Филмхо 18+ <span class="badge">18+</span></h3>
+    <a href="https://t.me/+7EB_m9ACW2RjYjli" class="link-button"><i class="fa-solid fa-play"></i> Смотреть</a>
+  </div>
+
+  <div class="card channel">
+    <h3><i class="fa-solid fa-unlock-keyhole"></i> Обходной канал <span class="badge">18+</span></h3>
+    <a href="https://t.me/+t-tdaXtQvdw1NzJi" class="link-button"><i class="fa-solid fa-unlock"></i> Обойти</a>
+  </div>
+
+  <!-- Боты -->
+  <div class="card bot">
+    <h3><i class="fa-solid fa-robot"></i> VVEDI COD BOT <span class="badge">18+</span></h3>
+    <a href="https://t.me/VvediCodBot?start" class="link-button"><i class="fa-brands fa-telegram"></i> Запуск</a>
+  </div>
+
+  <div class="card bot">
+    <h3><i class="fa-solid fa-heart"></i> ФАРЗОНА BOT <span class="badge">18+</span></h3>
+    <a href="https://t.me/Farzoona_bot?start=" class="link-button"><i class="fa-brands fa-telegram"></i> Дохил Шудан</a>
+  </div>
+
+</div>
+
+</div><script>
+function filterCards(type) {
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    card.style.display = 'block';
+    if (type === 'vip' && !card.classList.contains('vip')) {
+      card.style.display = 'none';
+    } else if (type === '18' && !(card.classList.contains('channel') || card.classList.contains('bot'))) {
+      card.style.display = 'none';
+    } else if (type === 'all') {
+      card.style.display = 'block';
     }
-    
-    function showError(message) {
-      const errorElement = document.getElementById('error-message');
-      errorElement.textContent = message;
-      setTimeout(() => {
-        errorElement.textContent = '';
-      }, 3000);
-    }
-    
-    function togglePassword() {
-      const input = document.getElementById('access-code');
-      const toggle = document.querySelector('.toggle-password');
-      input.type = input.type === 'password' ? 'text' : 'password';
-      toggle.textContent = input.type === 'password' ? '👁️' : '🔒';
-    }
-    
-    // Обработка нажатия Enter
-    document.getElementById('access-code').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        checkCode();
-      }
-    });
-  </script>
+  });
+}
+</script>
+
+  </div>  <section id="vip">
+    <h2><i class="fa-solid fa-star"></i> VIP Дастрасии Хусусӣ</h2>
+    <ul>
+      <li><i class="fa-solid fa-heart" style="color:#ff2f8b;"></i> Сексои Тоҷикӣ & Узбекӣ</li>
+      <li><i class="fa-solid fa-fire" style="color:#ff5722;"></i> Видео ҳар рӯз</li>
+      <li><i class="fa-solid fa-lock" style="color:#ffd700;"></i> Каналҳои махфӣ</li>
+      <li><i class="fa-solid fa-kiss-wink-heart" style="color:#e91e63;"></i> Контент барои VIP</li>
+      <li><i class="fa-solid fa-crown" style="color:#ffd700;"></i> Моделҳои беҳтарин</li>
+    </ul>
+    <p>Барои даромадан ба VIP — нависед ба Telegram: <b>https://t.me/m/upWS74sOMDc0</b></p>
+    <a href="https://t.me/m/upWS74sOMDc0" target="_blank" class="vip-btn">
+      <i class="fa-solid fa-lock"></i> Гирифтани VIP
+    </a>
+    <p style="margin-top: 30px; color:#777; font-size: 14px;">
+      Сохта аз ҷониби <b style="color:white">АЧАЛИ ПЕТКАХО</b> — 18+ барои Калонсолонон
+    </p>
+  </section>
 </body>
 </html>
+
+<script>
+function filterCards(type) {
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    card.style.display = 'block';
+    if (type === 'vip' && !card.classList.contains('vip')) {
+
+card.style.display = 'none';
+    } else if (type === '18' && !card.classList.contains('channel') && !card.classList.contains('bot')) {
+      card.style.display = 'none';
+    } else if (type === 'all') {
+      card.style.display = 'block';
+    }
+  });
+}
+</script>
+
+<script>
+  const banners = document.querySelectorAll('.top-banner');
+  let current = 0;
+
+  function showBanner(index) {
+    banners.forEach((banner, i) => {
+      banner.classList.remove('active');
+      if (i === index) {
+        banner.classList.add('active');
+      }
+    });
+  }
+
+  function rotateBanners() {
+    showBanner(current);
+    current = (current + 1) % banners.length;
+  }
+
+  // Старт
+  rotateBanners();
+  setInterval(rotateBanners, 5000);
+</script>
