@@ -9,6 +9,41 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<section class="banner">
+  <div class="banner-text" id="bannerText">Добро пожаловать на AjaliPetkaho</div>
+  <div class="banner-icons">
+    <a href="https://t.me/ajali_petka" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
+    </a>
+    <a href="https://instagram.com/ajali_petka" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+    </a>
+  </div>
+</section>
+
+<script>
+  const texts = [
+    "Добро пожаловать на AjaliPetkaho",
+    "Только лучшее 18+ видео",
+    "Приватные материалы, модели",
+    "Получите VIP доступ уже сейчас!"
+  ];
+  const bannerText = document.getElementById("bannerText");
+  let index = 0;
+
+  function rotateText() {
+    bannerText.style.opacity = 0;
+    setTimeout(() => {
+      bannerText.textContent = texts[index];
+      bannerText.style.opacity = 1;
+      bannerText.style.animation = "fadeText 1s ease-in-out";
+      index = (index + 1) % texts.length;
+    }, 400);
+  }
+
+  setInterval(rotateText, 6000);
+</script>
 <div class="menu">
   <a href="#channels">Каналы</a>
   <a href="#bots">Боты</a>
