@@ -3,256 +3,368 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJALI PETKAHO — 18+</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Возрастная проверка 18+</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
       --primary: #ff2f8b;
-      --primary-hover: #e42072;
-      --bg-dark: #000;
-      --bg-card: #111;
+      --primary-dark: #d81b60;
+      --bg: #0f0f0f;
+      --card-bg: #1a1a1a;
+      --text: #f0f0f0;
+      --error: #ff4444;
+      --success: #4caf50;
     }
-    body {
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg-dark);
-      color: white;
-      scroll-behavior: smooth;
+      padding: 0;
     }
-    .menu {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  padding: 20px;
-  background: linear-gradient(135deg, #ff1493, #ff2f8b);
-  text-align: center;
-  border-bottom: 2px solid #ff1493;
-}
 
-.menu a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #111;
-  color: white;
-  border-radius: 16px;
-  padding: 20px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: transform 0.3s ease, background 0.3s ease;
-  box-shadow: 0 0 15px rgba(255, 47, 139, 0.3);
-  font-size: 16px;
-}
-
-.menu a:hover {
-  background: #222;
-  transform: scale(1.08);
-}
-
-.menu i {
-  font-size: 26px;
-  margin-bottom: 8px;
-  text-shadow: 0 0 5px #ff2f8b;
-}
-    .content-section {
-      padding: 40px 20px;
-    }
-    .content-section h2 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      padding: 0 20px;
-    }
-    .card {
-      background: var(--bg-card);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 0 15px rgba(255, 47, 139, 0.2);
-      text-align: center;
-    }
-    .card h3 {
-      font-size: 18px;
-      margin-bottom: 12px;
-    }
-    .link-button {
-      display: inline-flex;
-      align-items: center;
+    body {
+      font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
       justify-content: center;
-      background: var(--primary);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-weight: bold;
-      font-size: 15px;
-      text-decoration: none;
+      align-items: center;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .verification-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      text-align: center;
       transition: all 0.3s ease;
     }
-    .link-button:hover {
-      background: var(--primary-hover);
+
+    h1 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
     }
-    .link-button i {
-      margin-right: 8px;
+
+    .age-warning {
+      background: rgba(255, 47, 139, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--primary);
+    }
+
+    .input-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #333;
+      border-radius: 8px;
+      background: #222;
+      color: var(--text);
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 47, 139, 0.2);
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #666;
+      user-select: none;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 1.5rem;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 47, 139, 0.1);
+    }
+
+    .error-message {
+      color: var(--error);
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      min-height: 1.2rem;
+    }
+
+    .video-container {
+      display: none;
+      margin-top: 2rem;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: 250px;
+      border-radius: 8px;
+      border: none;
+      background: #000;
+    }
+
+    .legal-notice {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 2rem;
+      line-height: 1.4;
+    }
+
+    .loading {
+      display: none;
+      margin: 1rem 0;
+    }
+
+    .spinner {
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      border-top: 3px solid var(--primary);
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
+    }
+
+    .shake {
+      animation: shake 0.4s ease-in-out;
+    }
+
+    @media (max-width: 480px) {
+      .verification-card {
+        padding: 1.5rem;
+      }
+      
+      .button-group {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
-<body>
+  <div class="verification-card" id="verificationCard">
+    <h1>Подтверждение возраста</h1>
+    
+    <div class="age-warning">
+      <p>⚠️ Этот контент содержит материалы для взрослых. Доступ разрешен только лицам старше 18 лет.</p>
+    </div>
 
-<style>
-  @keyframes pulse {
-    0%   { transform: scale(1); }
-    50%  { transform: scale(1.04); }
-    100% { transform: scale(1); }
-  }
+    <form id="verificationForm">
+      <input type="hidden" id="_csrf" name="_csrf" value="{{csrfToken}}">
+      
+      <div class="input-group">
+        <input type="password" id="accessCode" name="code" placeholder="Введите код доступа" autocomplete="off" required>
+        <span class="toggle-password" id="togglePassword"><i class="fas fa-eye"></i></span>
+      </div>
+      <div class="error-message" id="errorMessage"></div>
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+      </div>
 
-  .pulse-banner img {
-    animation: pulse 2.5s ease-in-out infinite;
-    width: 100%;
-    display: block;
-    border-bottom: 3px solid #ff2f8b;
-  }
-</style>
+      <div class="button-group">
+        <button type="submit" class="btn-primary" id="submitBtn">Подтвердить</button>
+        <button type="button" class="btn-secondary" onclick="window.history.back()">Выйти</button>
+      </div>
+    </form>
 
-<!-- Анимированный баннер -->
-<a href="https://t.me/m/upWS74sOMDc0" class="pulse-banner">
-  <img src="https://i.postimg.cc/s2mJMmBf/file-0000000822c6246a058a7e881195cb3.png"
-       alt="VIP Banner">
-</a>
-
-<div class="menu">
-  <a href="#channels"><i class="fa-brands fa-telegram"></i> Каналы</a>
-  <a href="#bots"><i class="fa-solid fa-robot"></i> Боты</a>
-  <a href="#vip"><i class="fa-solid fa-star"></i> VIP</a>
-  <a href="#models"><i class="fa-solid fa-heart"></i> Модели</a>
-  <a href="#wheel"><i class="fa-solid fa-dice"></i> Колесо</a>
-  <a href="#movies"><i class="fa-solid fa-film"></i> ФИЛМХОИ 18+</a>
-</div>
-
-<section id="movies" class="content-section">
-  <div class="card">
-    <svg fill="#ff2f8b" viewBox="0 0 24 24" width="40" height="40">
-      <path d="M4 4h4v4H4V4zm6 0h4v4h-4V4zm6 0h4v4h-4V4zM4 10h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4zM4 16h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4z"/>
-    </svg>
-    <h3>СЕКСИ ТОЧИКИ‼️</h3>
-    <a href="https://t.me/VvediCodBot?start=" class="link-button">ТАМОШО КАРДАН🔞</a>
+    <div class="legal-notice">
+      Нажимая "Подтвердить", вы соглашаетесь с тем, что вам исполнилось 18 лет или больше, 
+      и принимаете наши Условия использования.
+    </div>
   </div>
-</section>
 
-<style>
-html {
-  
-  .link-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #ff2f8b;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background 0.3s ease, transform 0.3s ease;
-    margin-top: 10px;
-    font-size: 16px;
-    box-shadow: 0 0 10px rgba(255, 47, 139, 0.4);
-  }
-  .link-button:hover {
-    background: #e42072;
-    transform: scale(1.05);
-  }
-  .card svg {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 10px;
-    filter: drop-shadow(0 0 5px #ff2f8b);
-  }
-</style><section id="channels" class="content-section">
-  <div class="card">
-    <svg fill="#24A1DE" viewBox="0 0 24 24"><path d="M22 2 2 12l5.5 2L20 5.5 9 16.5v4L12.5 18l2.5 2z"/></svg>
-    <h3>Ачали Петкахо🔞</h3>
-    <a href="https://t.me/+_O5ISU7emQxjZmJi" class="link-button">Ба Канал Даромадан🔞</a>
+  <div class="verification-card video-container" id="videoContainer">
+    <h1>Контент 18+</h1>
+    
+    <div class="video-grid">
+      <iframe src="" data-src="https://t.me/hijabporn365/62?embed=1" loading="lazy" allowfullscreen></iframe>
+      <iframe src="" data-src="https://t.me/hijabporn365/33?embed=1" loading="lazy" allowfullscreen></iframe>
+    </div>
+    
+    <div class="button-group">
+      <button class="btn-secondary" onclick="hideContent()">Скрыть контент</button>
+    </div>
   </div>
-  <div class="card">
-    <svg fill="#24A1DE" viewBox="0 0 24 24"><path d="M22 2 2 12l5.5 2L20 5.5 9 16.5v4L12.5 18l2.5 2z"/></svg>
-    <h3>ХОДИСА ТВ😈</h3>
-    <a href="https://t.me/+7EB_m9ACW2RjYjli" class="link-button">Ба Канал Даромадан 🔞</a>
-  </div>
-  <div class="card">
-    <svg fill="#24A1DE" viewBox="0 0 24 24"><path d="M22 2 2 12l5.5 2L20 5.5 9 16.5v4L12.5 18l2.5 2z"/></svg>
-    <h3>VIP Канал🌟</h3>
-    <a href="https://t.me/m/upWS74sOMDc0" class="link-button">Ба Канал Даромадан 🔞</a>
-  </div>
-  <div class="card">
-    <svg fill="#24A1DE" viewBox="0 0 24 24"><path d="M22 2 2 12l5.5 2L20 5.5 9 16.5v4L12.5 18l2.5 2z"/></svg>
-    <h3>МАРО БАХО БИДЕХ🔞</h3>
-    <a href="https://t.me/+EJVr7iyuIR4zYWQy" class="link-button">Ба Канал Даромадан 🔞</a>
-  </div>
-  <div class="card">
-    <svg fill="#24A1DE" viewBox="0 0 24 24"><path d="M22 2 2 12l5.5 2L20 5.5 9 16.5v4L12.5 18l2.5 2z"/></svg>
-    <h3>СЕКСОИ КУДАКОНА😳</h3>
-    <a href="https://t.me/+w4jDVeVHElMyYzli" class="link-button">Ба Канал Даромадан 🔞</a>
-  </div>
-</section><section id="bots" class="content-section">
-  <div class="card">
-    <svg fill="#b200ff" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7v2H4a2 2 0 0 0-2 2v5h5v2h2v-2h6v2h2v-2h5v-5a2 2 0 0 0-2-2h-1V9a7 7 0 0 0-7-7zm-2 9a1 1 0 1 1 2 0v1h-2v-1zm6 0a1 1 0 1 1 2 0v1h-2v-1z"/></svg>
-    <h3> 🔴ВВЕДИКОДTJ🇹🇯</h3>
-    <a href="https://t.me/VvediCodBot" class="link-button">ФИЛМХОИ 18+</a>
-  </div>
-  <div class="card">
-    <svg fill="#b200ff" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7v2H4a2 2 0 0 0-2 2v5h5v2h2v-2h6v2h2v-2h5v-5a2 2 0 0 0-2-2h-1V9a7 7 0 0 0-7-7zm-2 9a1 1 0 1 1 2 0v1h-2v-1zm6 0a1 1 0 1 1 2 0v1h-2v-1z"/></svg>
-    <h3>НОМЕРОИ АРУС🤫</h3>
-    <a href="https://t.me/Farzoona_bot?start=" class="link-button"> НОМЕР ГИРИФТАН‼️</a>
-  </div>
-</section><section id="models" class="content-section">
-  <div class="card">
-    <svg fill="#E1306C" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .3 2.5.6.6.3 1 .7 1.4 1.4.3.5.5 1.3.6 2.5.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.6 2.5-.3.6-.7 1-1.4 1.4-.5.3-1.3.5-2.5.6-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.5-.6-.6-.3-1-.7-1.4-1.4-.3-.5-.5-1.3-.6-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-2 .6-2.5.3-.6.7-1 1.4-1.4.5-.3 1.3-.5 2.5-.6C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.6.2-1.9.4-.5.2-.8.4-1.1.8-.3.3-.5.7-.6 1.2-.1.3-.3.9-.3 1.9-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.4 1.9.2.5.4.8.8 1.1.3.3.7.5 1.2.6.3.1.9.3 1.9.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 1.9-.4.5-.2.8-.4 1.1-.8.3-.3.5-.7.6-1.2.1-.3.3-.9.3-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.4-1.9-.2-.5-.4-.8-.8-1.1-.3-.3-.7-.5-1.2-.6-.3-.1-.9-.3-1.9-.3-1.2-.1-1.6-.1-4.7-.1z"/></svg>
-    <h3>Дилбар (Instagram)</h3>
-    <a href="https://www.instagram.com/dilbar_model?igsh=MXR1aHNodnZqczl0eA==" class="link-button">ИНСТАГРАМИ МАН🫦</a>
-  </div>
-</section>
 
-<section id="vip" class="content-section admin-contact">
-  <h2><i class="fa-solid fa-user-shield"></i> Для Связи С Админом</h2>
-  <div class="card admin-card">
-    <svg fill="#ff2f8b" viewBox="0 0 24 24" width="40" height="40">
-      <path d="M2 4v16h20V4H2zm18 2v.5L12 13 4 6.5V6h16zM4 18V9.1l8 6 8-6V18H4z"/>
-    </svg>
-    <h3><i class="fa-solid fa-envelope"></i> Написать Админу</h3>
-    <a href="https://t.me/m/upWS74sOMDc0" class="link-button admin-btn">
-      <i class="fa-brands fa-telegram"></i> Да Админ Нависондан🔴
-    </a>
-  </div>
-</section>
+  <script>
+    // Элементы DOM
+    const elements = {
+      verificationCard: document.getElementById('verificationCard'),
+      videoContainer: document.getElementById('videoContainer'),
+      verificationForm: document.getElementById('verificationForm'),
+      accessCode: document.getElementById('accessCode'),
+      togglePassword: document.getElementById('togglePassword'),
+      submitBtn: document.getElementById('submitBtn'),
+      errorMessage: document.getElementById('errorMessage'),
+      loading: document.getElementById('loading'),
+      csrfToken: document.getElementById('_csrf').value
+    };
 
+    // Проверка cookie при загрузке
+    document.addEventListener('DOMContentLoaded', () => {
+      if (document.cookie.includes('ageVerified=true')) {
+        showContent();
+      }
+    });
 
-<a href="videos.html" class="go-video-btn">
-  <i class="fa-solid fa-film"></i> Посмотреть видео
-</a>
+    // Отправка формы
+    elements.verificationForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const code = elements.accessCode.value.trim();
+      
+      if (!code) {
+        showError('Введите код доступа');
+        elements.accessCode.focus();
+        return;
+      }
 
-<style>
-  .go-video-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: center;
-    background: #ff2f8b;
-    color: white;
-    padding: 14px 30px;
-    border-radius: 12px;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 0 15px rgba(255, 47, 139, 0.5);
-    transition: 0.3s ease;
-    margin-top: 30px;
-  }
+      try {
+        elements.loading.style.display = 'block';
+        elements.submitBtn.disabled = true;
+        
+        const response = await fetch('/verify', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams({
+            code: code,
+            _csrf: elements.csrfToken
+          })
+        });
 
-  .go-video-btn:hover {
-    background: #e42072;
-    transform: scale(1.05);
-  }
-</style>
+        const data = await response.json();
+        
+        if (data.success) {
+          showContent();
+        } else {
+          showError(data.error || 'Неверный код доступа');
+          elements.accessCode.classList.add('shake');
+          setTimeout(() => {
+            elements.accessCode.classList.remove('shake');
+          }, 400);
+          elements.accessCode.value = '';
+          elements.accessCode.focus();
+        }
+      } catch (error) {
+        showError('Ошибка соединения');
+        console.error('Error:', error);
+      } finally {
+        elements.loading.style.display = 'none';
+        elements.submitBtn.disabled = false;
+      }
+    });
+
+    // Показать контент
+    function showContent() {
+      elements.verificationCard.style.display = 'none';
+      elements.videoContainer.style.display = 'block';
+      
+      // Ленивая загрузка видео после подтверждения
+      document.querySelectorAll('iframe[data-src]').forEach(iframe => {
+        iframe.src = iframe.dataset.src;
+      });
+      
+      window.scrollTo(0, 0);
+    }
+
+    // Скрыть контент
+    function hideContent() {
+      // Удаляем cookie
+      document.cookie = 'ageVerified=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      
+      elements.videoContainer.style.display = 'none';
+      elements.verificationCard.style.display = 'block';
+      elements.accessCode.value = '';
+      elements.accessCode.focus();
+    }
+
+    // Переключение видимости пароля
+    elements.togglePassword.addEventListener('click', () => {
+      if (elements.accessCode.type === 'password') {
+        elements.accessCode.type = 'text';
+        elements.togglePassword.innerHTML = '<i class="fas fa-eye-slash"></i>';
+      } else {
+        elements.accessCode.type = 'password';
+        elements.togglePassword.innerHTML = '<i class="fas fa-eye"></i>';
+      }
+    });
+
+    // Показать ошибку
+    function showError(message) {
+      elements.errorMessage.textContent = message;
+      setTimeout(() => {
+        elements.errorMessage.textContent = '';
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
