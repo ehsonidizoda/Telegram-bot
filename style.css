@@ -318,3 +318,79 @@
   transition: transform 0.3s ease;
   height: 100%;
 }
+
+<style>
+.welcome-banner {
+  text-align: center;
+  padding: 60px 20px;
+  background: black;
+}
+
+.glow-title {
+  color: #ff2f8b;
+  font-size: 32px;
+  font-weight: bold;
+  text-shadow: 0 0 15px #ff2f8b;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.subtext {
+  font-size: 18px;
+  color: white;
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+.vip-access-text {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 20px #fff;
+  animation: pulse 2s infinite;
+}
+
+.vip-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #ff2f8b;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 0 15px #ff2f8b;
+  transition: 0.3s;
+}
+
+.vip-button:hover {
+  background: #e42072;
+  transform: scale(1.05);
+}
+
+.social-icons {
+  margin-top: 20px;
+}
+
+.social-icons a {
+  color: white;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: #ff2f8b;
+  transform: scale(1.2);
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #ff2f8b; }
+  to { text-shadow: 0 0 20px #ff2f8b; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.85; }
+}
+</style>
