@@ -245,5 +245,18 @@
   });
 </script>
 
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  window.OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "d76d58de-1471-4be3-8afc-08a7143171c0",
+      notifyButton: {
+        enable: true, // Показывать кнопку подписки
+      },
+    });
+  });
+</script>
+
 </body>
 </html>
