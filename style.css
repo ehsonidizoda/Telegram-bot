@@ -394,3 +394,12 @@
   50% { transform: scale(1.05); opacity: 0.85; }
 }
 </style>
+
+.banner-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(255, 47, 139, 0.4);
+}
