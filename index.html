@@ -187,3 +187,56 @@
 </button>
 
 <a href="videos.html" class="fixed-video-btn" title="Перейти к видео">Видео</a>
+
+
+<section id="add-video" style="padding: 20px;">
+  <h2>Добавить новое видео</h2>
+  <input type="text" id="video-title" placeholder="Название видео" style="margin: 10px; padding: 10px;">
+  <input type="text" id="video-url" placeholder="Ссылка на видео (Streamtape / Telegram)" style="margin: 10px; padding: 10px;">
+  <button onclick="addVideo()" style="padding: 10px 20px;">Добавить</button>
+  <p id="message"></p>
+</section>
+
+<section id="video-list" style="padding: 20px;">
+  <h2>Список видео</h2>
+  <div id="videos"></div>
+</section>
+
+<script>
+  function addVideo() {
+    const title = document.getElementById('video-title').value.trim();
+    const url = document.getElementById('video-url').value.trim();
+    const message = document.getElementById('message');
+
+    if (!title || !url) {
+      message.textContent = "Заполни оба поля!";
+      message.style.color = "red";
+      return;
+    }
+
+    const newVideo = { title, url };
+    let videos = JSON.parse(localStorage.getItem('videos') || '[]');
+    videos.push(newVideo);
+    localStorage.setItem('videos', JSON.stringify(videos));
+
+    message.textContent = "✅ Видео добавлено!";
+    message.style.color = "lime";
+    document.getElementById('video-title').value = '';
+    document.getElementById('video-url').value = '';
+    renderVideos();
+  }
+
+  function renderVideos() {
+    const container = document.getElementById('videos');
+    const videos = JSON.parse(localStorage.getItem('videos') || '[]');
+
+    container.innerHTML = videos.map(video =>
+      `<div style="margin: 15px 0; padding: 15px; background: #1a1a1a; border-radius: 10px;">
+         <h3>${video.title}</h3>
+         <a href="${video.url}" target="_blank" style="color: #ff2f8b;">Смотреть</a>
+       </div>`
+    ).join('');
+  }
+
+  renderVideos();
+</script>
