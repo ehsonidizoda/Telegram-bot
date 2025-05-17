@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Видео 18+</title>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .lock-screen {
+      margin-top: 100px;
+    }
+    input[type="password"] {
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      width: 200px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #ff2f8b;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .video-block {
+      display: none;
+      margin-top: 40px;
+    }
+    iframe {
+      width: 100%;
+      max-width: 400px;
+      height: 250px;
+      border-radius: 10px;
+      border: none;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="lock-screen" id="lock">
+    <h2>Введите код доступа</h2>
+    <input type="password" id="codeInput" placeholder="Код доступа">
+    <br>
+    <button onclick="checkCode()">Войти</button>
+    <p id="error" style="color: red; display: none;">Неверный код!</p>
+  </div>
+
+  <div class="video-block" id="videos">
+    <h2>Видео 18+</h2>
+
+    <iframe src="https://t.me/hijabporn365/62" allowfullscreen></iframe>
+    <iframe src="https://t.me/hijabporn365/33" allowfullscreen></iframe>
+
+  </div>
+
+  <script>
+    function checkCode() {
+      const correct = "1234567890";
+      const input = document.getElementById("codeInput").value;
+      if (input === correct) {
+        document.getElementById("lock").style.display = "none";
+        document.getElementById("videos").style.display = "block";
+      } else {
+        document.getElementById("error").style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>
