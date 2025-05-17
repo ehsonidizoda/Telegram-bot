@@ -1,341 +1,147 @@
-<div class="menu">
-  <a href="#channels"><i class="fa-brands fa-telegram"></i> Каналы</a>
-  <a href="#bots"><i class="fa-solid fa-robot"></i> Боты</a>
-  <a href="#vip"><i class="fa-solid fa-star"></i> VIP</a>
-  <a href="#models"><i class="fa-solid fa-heart"></i> Модели</a>
-  <a href="#wheel"><i class="fa-solid fa-dice"></i> Колесо</a>
-  <a href="#movies"><i class="fa-solid fa-film"></i> БОТИ ФИЛМХОИ 18+</a>
-
-</div><!DOCTYPE html><html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <title>Ajali Petkaho</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VIP Каналы и Боты</title>
-
- <style>
-  html {
-    scroll-behavior: smooth;
-  }
-</style>
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    :root {
-      --primary: #ff2f8b;
-      --primary-hover: #e42072;
-      --vip-color: #ffd700;
-      --bg-dark: #000;
-      --bg-card: #111;
-    }body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: var(--bg-dark);
-  color: white;
-}
-
-.menu {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  padding: 20px;
-  background: var(--primary);
-  text-align: center;
-}
-
-.menu a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: var(--primary);
-  color: white;
-  border-radius: 16px;
-  padding: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: 0.3s;
-  box-shadow: 0 0 10px rgba(255, 47, 139, 0.5);
-}
-
-.menu a:hover {
-  background: var(--primary-hover);
-}
-
-.menu i {
-  font-size: 22px;
-  margin-bottom: 6px;
-}
-
-.filters {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 15px;
-  background: #000;
-}
-
-.filters button {
-  background: var(--primary);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.filters button:hover {
-  background: var(--primary-hover);
-}
-
-.cards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.card {
-  background: var(--bg-card);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 0 15px rgba(255, 47, 139, 0.2);
-  transition: transform 0.3s ease;
-  animation: fadeIn 0.6s ease;
-}
-
-.card:hover {
-  transform: scale(1.02);
-}
-
-.card h3 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 18px;
-  margin-bottom: 12px;
-}
-
-.card a {
-  display: inline-block;
-  background: var(--primary);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.card a:hover {
-  background: var(--primary-hover);
-}
-
-.badge {
-  background: #ff2f8b;
-  color: white;
-  font-size: 12px;
-  padding: 3px 10px;
-  border-radius: 12px;
-}
-
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-section#vip {
-  margin: 50px 20px;
-  padding: 30px;
-  background: #0b0b0b;
-  border-radius: 20px;
-  box-shadow: 0 0 25px rgba(255, 47, 139, 0.3);
-  text-align: center;
-}
-
-section#vip ul {
-  list-style: none;
-  padding: 0;
-  max-width: 400px;
-  margin: 0 auto 30px;
-  text-align: left;
-  color: #ddd;
-}
-
-section#vip ul li {
-  margin-bottom: 10px;
-}
-
-.vip-btn {
-  display: inline-block;
-  background: var(--primary);
-  color: white;
-  padding: 12px 30px;
-  border-radius: 10px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.vip-btn:hover {
-  background: var(--primary-hover);
-}
-
- </style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+    .banner {
+      background: url('banner.jpg') center/cover no-repeat;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255, 47, 139, 0.4);
+    }
+    .banner h1 {
+      font-size: 36px;
+      color: #fff;
+      text-shadow: 0 0 15px #ff2f8b;
+    }
+    h2 {
+      text-align: center;
+      font-size: 26px;
+      margin: 40px 0 20px;
+      text-shadow: 0 0 10px #ff2f8b;
+    }
+    .section {
+      padding: 0 20px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #111;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(255, 47, 139, 0.3);
+      text-align: center;
+      animation: fadeIn 0.8s ease;
+    }
+    .card i {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #ff2f8b;
+      display: block;
+    }
+    .card h3 {
+      margin: 10px 0;
+    }
+    .card p {
+      font-size: 14px;
+      opacity: 0.7;
+      margin-bottom: 12px;
+    }
+    .btn {
+      display: inline-block;
+      background: #ff2f8b;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 0 12px rgba(255, 47, 139, 0.5);
+    }
+    .btn:hover {
+      background: #e42072;
+      transform: scale(1.05);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Фильтр -->
-<div class="filters">
-  <button onclick="filterCards('all')">Ҳама Каналҳо</button>
-  <button onclick="filterCards('18')">18+</button>
-  <button onclick="filterCards('vip')">VIP</button>
-</div>
-
-<style>
-  .link-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #ff2f8b;
-    color: white;
-    padding: 12px 25px;
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 15px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 12px rgba(255, 47, 139, 0.4);
-  }
-
-.link-button:hover {
-    transform: scale(1.05);
-    background: #e42072;
-  }
-
-  .link-button i {
-    margin-right: 8px;
-  }
-</style>
-
-<div class="cards-grid">
-
-  <!-- Каналы -->
-  <div class="card channel">
-    <h3><i class="fa-solid fa-star"></i> VIP KANAL <span class="badge">18+</span></h3>
-    <a href="https://t.me/+IUec_xlw8dVjMjJi" class="link-button"><i class="fa-brands fa-telegram"></i> Войти</a>
+  <div class="banner">
+    <h1>Добро пожаловать в Ajali Petkaho</h1>
   </div>
 
-  <div class="card channel vip">
-    <h3><i class="fa-solid fa-lock"></i> Секретный Канал <span class="badge">18+</span></h3>
-    <a href="https://t.me/+2q3J4US8cXdjMTFi" class="link-button"><i class="fa-solid fa-eye"></i> Смотреть</a>
-  </div>
-
-  <div class="card channel">
-    <h3><i class="fa-solid fa-image"></i> АЧАЛИ ПЕТКАХО <span class="badge">18+</span></h3>
-    <a href="https://t.me/+_O5ISU7emQxjZmJi" class="link-button"><i class="fa-brands fa-telegram"></i> Тамошо кардан</a>
-  </div>
-
-  <div class="card channel">
-    <h3><i class="fa-solid fa-fire"></i> Кудакона <span class="badge">18+</span></h3>
-    <a href="https://t.me/+w4jDVeVHElMyYzli" class="link-button"><i class="fa-brands fa-telegram"></i> Даромадан</a>
-  </div>
-
-  <div class="card channel">
-    <h3><i class="fa-solid fa-film"></i> Канал Филмхо 18+ <span class="badge">18+</span></h3>
-    <a href="https://t.me/+7EB_m9ACW2RjYjli" class="link-button"><i class="fa-solid fa-play"></i> Смотреть</a>
-  </div>
-
-  <div class="card channel">
-    <h3><i class="fa-solid fa-unlock-keyhole"></i> Обходной канал <span class="badge">18+</span></h3>
-    <a href="https://t.me/+t-tdaXtQvdw1NzJi" class="link-button"><i class="fa-solid fa-unlock"></i> Обойти</a>
-  </div>
-
-  <!-- Боты -->
-  <div class="card bot">
-    <h3><i class="fa-solid fa-robot"></i> VVEDI COD BOT <span class="badge">18+</span></h3>
-    <a href="https://t.me/VvediCodBot?start" class="link-button"><i class="fa-brands fa-telegram"></i> Запуск</a>
-  </div>
-
-  <div class="card bot">
-    <h3><i class="fa-solid fa-heart"></i> ФАРЗОНА BOT <span class="badge">18+</span></h3>
-    <a href="https://t.me/Farzoona_bot?start=" class="link-button"><i class="fa-brands fa-telegram"></i> Дохил Шудан</a>
-  </div>
-
-</div>
-
-</div><script>
-function filterCards(type) {
-  const cards = document.querySelectorAll('.card');
-  cards.forEach(card => {
-    card.style.display = 'block';
-    if (type === 'vip' && !card.classList.contains('vip')) {
-      card.style.display = 'none';
-    } else if (type === '18' && !(card.classList.contains('channel') || card.classList.contains('bot'))) {
-      card.style.display = 'none';
-    } else if (type === 'all') {
-      card.style.display = 'block';
-    }
-  });
-}
-</script>
-
-  </div>  <section id="vip">
-    <h2><i class="fa-solid fa-star"></i> VIP Дастрасии Хусусӣ</h2>
-    <ul>
-      <li><i class="fa-solid fa-heart" style="color:#ff2f8b;"></i> Сексои Тоҷикӣ & Узбекӣ</li>
-      <li><i class="fa-solid fa-fire" style="color:#ff5722;"></i> Видео ҳар рӯз</li>
-      <li><i class="fa-solid fa-lock" style="color:#ffd700;"></i> Каналҳои махфӣ</li>
-      <li><i class="fa-solid fa-kiss-wink-heart" style="color:#e91e63;"></i> Контент барои VIP</li>
-      <li><i class="fa-solid fa-crown" style="color:#ffd700;"></i> Моделҳои беҳтарин</li>
-    </ul>
-    <p>Барои даромадан ба VIP — нависед ба Telegram: <b>https://t.me/m/upWS74sOMDc0</b></p>
-    <a href="https://t.me/m/upWS74sOMDc0" target="_blank" class="vip-btn">
-      <i class="fa-solid fa-lock"></i> Гирифтани VIP
-    </a>
-    <p style="margin-top: 30px; color:#777; font-size: 14px;">
-      Сохта аз ҷониби <b style="color:white">АЧАЛИ ПЕТКАХО</b> — 18+ барои Калонсолонон
-    </p>
+  <section class="section">
+    <h2><i class="fa-brands fa-telegram"></i> Каналы</h2>
+    <div class="cards">
+      <div class="card">
+        <i class="fa-brands fa-telegram"></i>
+        <h3>Канал 1</h3>
+        <p>Описание канала 1</p>
+        <a href="https://t.me/example1" class="btn">Перейти</a>
+      </div>
+      <div class="card">
+        <i class="fa-brands fa-telegram"></i>
+        <h3>Канал 2</h3>
+        <p>Описание канала 2</p>
+        <a href="https://t.me/example2" class="btn">Перейти</a>
+      </div>
+    </div>
   </section>
+
+  <section class="section">
+    <h2><i class="fa-solid fa-robot"></i> Боты</h2>
+    <div class="cards">
+      <div class="card">
+        <i class="fa-solid fa-robot"></i>
+        <h3>Бот 1</h3>
+        <p>Описание бота 1</p>
+        <a href="https://t.me/bot1" class="btn">Запуск</a>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-robot"></i>
+        <h3>Бот 2</h3>
+        <p>Описание бота 2</p>
+        <a href="https://t.me/bot2" class="btn">Запуск</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2><i class="fa-brands fa-instagram"></i> Instagram</h2>
+    <div class="cards">
+      <div class="card">
+        <i class="fa-brands fa-instagram"></i>
+        <h3>Инста 1</h3>
+        <p>Описание профиля 1</p>
+        <a href="https://instagram.com/example1" class="btn">Открыть</a>
+      </div>
+      <div class="card">
+        <i class="fa-brands fa-instagram"></i>
+        <h3>Инста 2</h3>
+        <p>Описание профиля 2</p>
+        <a href="https://instagram.com/example2" class="btn">Открыть</a>
+      </div>
+    </div>
+  </section>
+
 </body>
 </html>
-
-<script>
-function filterCards(type) {
-  const cards = document.querySelectorAll('.card');
-  cards.forEach(card => {
-    card.style.display = 'block';
-    if (type === 'vip' && !card.classList.contains('vip')) {
-
-card.style.display = 'none';
-    } else if (type === '18' && !card.classList.contains('channel') && !card.classList.contains('bot')) {
-      card.style.display = 'none';
-    } else if (type === 'all') {
-      card.style.display = 'block';
-    }
-  });
-}
-</script>
-
-<script>
-  const banners = document.querySelectorAll('.top-banner');
-  let current = 0;
-
-  function showBanner(index) {
-    banners.forEach((banner, i) => {
-      banner.classList.remove('active');
-      if (i === index) {
-        banner.classList.add('active');
-      }
-    });
-  }
-
-  function rotateBanners() {
-    showBanner(current);
-    current = (current + 1) % banners.length;
-  }
-
-  // Старт
-  rotateBanners();
-  setInterval(rotateBanners, 5000);
-</script>
