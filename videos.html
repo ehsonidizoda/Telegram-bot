@@ -1,69 +1,33 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Видео 18+</title>
   <style>
     body {
-      background: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: white;
+      font-family: sans-serif;
       text-align: center;
-      padding: 20px;
+      padding: 40px 20px;
     }
-    .lock-screen {
-      margin-top: 100px;
-    }
-    input[type="password"] {
-      padding: 10px;
+    .back-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: #ff2f8b;
+      color: white;
+      border-radius: 10px;
+      font-weight: bold;
+      text-decoration: none;
       font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      width: 200px;
+      box-shadow: 0 0 15px rgba(255, 47, 139, 0.4);
+      transition: all 0.3s ease;
     }
-
-<a href="index.html" class="back-button">
-  <i class="fa-solid fa-arrow-left"></i> Вернуться на главную
-</a>
-
-<style>
-  .back-button {
-    display: inline-block;
-    margin-top: 40px;
-    padding: 12px 25px;
-    background: #ff2f8b;
-    color: white;
-    border-radius: 10px;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 16px;
-    box-shadow: 0 0 15px rgba(255, 47, 139, 0.4);
-    transition: all 0.3s ease;
-  }
-  .back-button:hover {
-    background: #e42072;
-    transform: scale(1.05);
-  }
-</style>
-
-  .back-button {
-    display: inline-block;
-    margin-top: 40px;
-    padding: 12px 25px;
-    background: #ff2f8b;
-    color: white;
-    border-radius: 10px;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 16px;
-    box-shadow: 0 0 15px rgba(255, 47, 139, 0.4);
-    transition: all 0.3s ease;
-  }
-  .back-button:hover {
-    background: #e42072;
-    transform: scale(1.05);
-  }
-</style>
+    .back-button:hover {
+      background: #e42072;
+      transform: scale(1.05);
+    }
     button {
       margin-top: 10px;
       padding: 10px 20px;
@@ -88,36 +52,23 @@
     }
   </style>
 </head>
-<body>
-
-  <div class="lock-screen" id="lock">
-    <h2>Введите код доступа</h2>
-    <input type="password" id="codeInput" placeholder="Код доступа">
-    <br>
-    <button onclick="checkCode()">Войти</button>
-    <p id="error" style="color: red; display: none;">Неверный код!</p>
-  </div>
-
-  <div class="video-block" id="videos">
+<body>  <h2>Введите код доступа</h2>
+  <input type="password" id="accessCode" placeholder="Код доступа">
+  <br>
+  <button onclick="checkCode()">Войти</button>  <div class="video-block" id="videoBlock">
     <h2>Видео 18+</h2>
-
-    <iframe src="https://t.me/hijabporn365/62" allowfullscreen></iframe>
-    <iframe src="https://t.me/hijabporn365/33" allowfullscreen></iframe>
-
-  </div>
+    <iframe src="https://t.me/hijabporn365/62"></iframe>
+    <iframe src="https://t.me/hijabporn365/33"></iframe>
+  </div><a href="index.html" class="back-button">Вернуться назад</a>
 
   <script>
     function checkCode() {
-      const correct = "1234567890";
-      const input = document.getElementById("codeInput").value;
-      if (input === correct) {
-        document.getElementById("lock").style.display = "none";
-        document.getElementById("videos").style.display = "block";
+      const code = document.getElementById('accessCode').value;
+      if (code === '1234567890') {
+        document.getElementById('videoBlock').style.display = 'block';
       } else {
-        document.getElementById("error").style.display = "block";
+        alert('Неверный код доступа!');
       }
     }
-  </script>
-
-</body>
+  </script></body>
 </html>
