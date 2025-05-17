@@ -123,3 +123,22 @@ body {
   background: #e42072;
   transform: scale(1.05);
 }
+
+.ajali-subtext {
+  font-size: 0.95em;
+  color: #ff7ac6;
+  margin-top: 8px;
+  animation: fadeInUp 1s ease forwards;
+  text-shadow: 0 0 5px #ff2f8b88;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
