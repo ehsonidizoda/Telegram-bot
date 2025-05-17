@@ -195,3 +195,35 @@ body {
     animation: fadeIn 0.5s ease-in-out;
   }
 </style>
+
+.call-to-action {
+  background: #1e1e1e;
+  padding: 12px;
+  margin-top: 12px;
+  border-left: 4px solid #ff2f8b;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 47, 139, 0.3);
+  animation: fadeIn 0.8s ease;
+}
+
+.call-to-action p {
+  font-size: 14px;
+  color: #ffb3d6;
+  margin-bottom: 10px;
+}
+
+.cta-btn {
+  background: #ff2f8b;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.cta-btn:hover {
+  background: #e42072;
+  transform: scale(1.05);
+}
