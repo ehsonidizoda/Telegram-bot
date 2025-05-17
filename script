@@ -28,3 +28,16 @@ function showContent() {
   
   window.scrollTo(0, 0);
 }
+
+
+const VIDEO_LINKS = [
+  "https://t.me/hijabporn365/62?embed=1",
+  "https://t.me/hijabporn365/33?embed=1",
+  "https://example.com/new_video.mp4" // Новое видео
+];
+
+// Обновление пароля каждый час
+setInterval(() => {
+  CONFIG.accessCode = generateNewCode();
+  console.log("Новый пароль:", CONFIG.accessCode);
+}, 3600000);
