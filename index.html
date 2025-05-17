@@ -1,10 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Возрастная проверка 18+</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
       --primary: #ff2f8b;
@@ -162,26 +162,6 @@
       line-height: 1.4;
     }
 
-    .loading {
-      display: none;
-      margin: 1rem 0;
-    }
-
-    .spinner {
-      border: 3px solid rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      border-top: 3px solid var(--primary);
-      width: 20px;
-      height: 20px;
-      animation: spin 1s linear infinite;
-      margin: 0 auto;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -216,23 +196,16 @@
       <p>⚠️ Этот контент содержит материалы для взрослых. Доступ разрешен только лицам старше 18 лет.</p>
     </div>
 
-    <form id="verificationForm">
-      <input type="hidden" id="_csrf" name="_csrf" value="{{csrfToken}}">
-      
-      <div class="input-group">
-        <input type="password" id="accessCode" name="code" placeholder="Введите код доступа" autocomplete="off" required>
-        <span class="toggle-password" id="togglePassword"><i class="fas fa-eye"></i></span>
-      </div>
-      <div class="error-message" id="errorMessage"></div>
-      <div class="loading" id="loading">
-        <div class="spinner"></div>
-      </div>
+    <div class="input-group">
+      <input type="password" id="accessCode" placeholder="Введите код доступа" autocomplete="off">
+      <span class="toggle-password" id="togglePassword">👁️</span>
+    </div>
+    <div class="error-message" id="errorMessage"></div>
 
-      <div class="button-group">
-        <button type="submit" class="btn-primary" id="submitBtn">Подтвердить</button>
-        <button type="button" class="btn-secondary" onclick="window.history.back()">Выйти</button>
-      </div>
-    </form>
+    <div class="button-group">
+      <button class="btn-primary" id="submitBtn">Подтвердить</button>
+      <button class="btn-secondary" onclick="window.history.back()">Выйти</button>
+    </div>
 
     <div class="legal-notice">
       Нажимая "Подтвердить", вы соглашаетесь с тем, что вам исполнилось 18 лет или больше, 
@@ -244,8 +217,8 @@
     <h1>Контент 18+</h1>
     
     <div class="video-grid">
-      <iframe src="" data-src="https://t.me/hijabporn365/62?embed=1" loading="lazy" allowfullscreen></iframe>
-      <iframe src="" data-src="https://t.me/hijabporn365/33?embed=1" loading="lazy" allowfullscreen></iframe>
+      <iframe src="https://t.me/hijabporn365/62?embed=1" loading="lazy" allowfullscreen></iframe>
+      <iframe src="https://t.me/hijabporn365/33?embed=1" loading="lazy" allowfullscreen></iframe>
     </div>
     
     <div class="button-group">
@@ -254,30 +227,60 @@
   </div>
 
   <script>
+    // Конфигурация
+    const CONFIG = {
+      accessCode: '18PLUS2023', // Рекомендуется менять регулярно
+      maxAttempts: 3,
+      lockTime: 30000, // 30 секунд
+      rememberDays: 30 // Хранить cookie 30 дней
+    };
+
     // Элементы DOM
     const elements = {
       verificationCard: document.getElementById('verificationCard'),
       videoContainer: document.getElementById('videoContainer'),
-      verificationForm: document.getElementById('verificationForm'),
       accessCode: document.getElementById('accessCode'),
       togglePassword: document.getElementById('togglePassword'),
       submitBtn: document.getElementById('submitBtn'),
-      errorMessage: document.getElementById('errorMessage'),
-      loading: document.getElementById('loading'),
-      csrfToken: document.getElementById('_csrf').value
+      errorMessage: document.getElementById('errorMessage')
     };
 
-    // Проверка cookie при загрузке
-    document.addEventListener('DOMContentLoaded', () => {
-      if (document.cookie.includes('ageVerified=true')) {
+    // Состояние
+    let state = {
+      attempts: 0,
+      isLocked: false
+    };
+
+    // Инициализация
+    function init() {
+      checkCookie();
+      setupEventListeners();
+    }
+
+    // Проверка cookie
+    function checkCookie() {
+      const cookie = getCookie('ageVerified');
+      if (cookie === 'true') {
         showContent();
       }
-    });
+    }
 
-    // Отправка формы
-    elements.verificationForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
+    // Настройка обработчиков событий
+    function setupEventListeners() {
+      elements.submitBtn.addEventListener('click', verifyAccess);
+      elements.togglePassword.addEventListener('click', togglePasswordVisibility);
+      elements.accessCode.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') verifyAccess();
+      });
+    }
+
+    // Проверка доступа
+    function verifyAccess() {
+      if (state.isLocked) {
+        showError(`Попробуйте через ${CONFIG.lockTime/1000} секунд`);
+        return;
+      }
+
       const code = elements.accessCode.value.trim();
       
       if (!code) {
@@ -286,61 +289,56 @@
         return;
       }
 
-      try {
-        elements.loading.style.display = 'block';
-        elements.submitBtn.disabled = true;
+      if (code === CONFIG.accessCode) {
+        // Успешный вход
+        setCookie('ageVerified', 'true', CONFIG.rememberDays);
+        showContent();
+      } else {
+        // Неверный код
+        state.attempts++;
+        const remainingAttempts = CONFIG.maxAttempts - state.attempts;
         
-        const response = await fetch('/verify', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: new URLSearchParams({
-            code: code,
-            _csrf: elements.csrfToken
-          })
-        });
-
-        const data = await response.json();
-        
-        if (data.success) {
-          showContent();
+        if (state.attempts >= CONFIG.maxAttempts) {
+          lockAccess();
+          showError(`Доступ временно заблокирован. Попробуйте через ${CONFIG.lockTime/1000} секунд.`);
         } else {
-          showError(data.error || 'Неверный код доступа');
+          showError(`Неверный код! Осталось попыток: ${remainingAttempts}`);
           elements.accessCode.classList.add('shake');
           setTimeout(() => {
             elements.accessCode.classList.remove('shake');
           }, 400);
-          elements.accessCode.value = '';
-          elements.accessCode.focus();
         }
-      } catch (error) {
-        showError('Ошибка соединения');
-        console.error('Error:', error);
-      } finally {
-        elements.loading.style.display = 'none';
-        elements.submitBtn.disabled = false;
+        
+        elements.accessCode.value = '';
+        elements.accessCode.focus();
       }
-    });
+    }
+
+    // Блокировка доступа
+    function lockAccess() {
+      state.isLocked = true;
+      elements.accessCode.disabled = true;
+      elements.submitBtn.disabled = true;
+      
+      setTimeout(() => {
+        state.isLocked = false;
+        state.attempts = 0;
+        elements.accessCode.disabled = false;
+        elements.submitBtn.disabled = false;
+        clearError();
+      }, CONFIG.lockTime);
+    }
 
     // Показать контент
     function showContent() {
       elements.verificationCard.style.display = 'none';
       elements.videoContainer.style.display = 'block';
-      
-      // Ленивая загрузка видео после подтверждения
-      document.querySelectorAll('iframe[data-src]').forEach(iframe => {
-        iframe.src = iframe.dataset.src;
-      });
-      
-      window.scrollTo(0, 0);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     }
 
     // Скрыть контент
     function hideContent() {
-      // Удаляем cookie
-      document.cookie = 'ageVerified=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-      
       elements.videoContainer.style.display = 'none';
       elements.verificationCard.style.display = 'block';
       elements.accessCode.value = '';
@@ -348,23 +346,48 @@
     }
 
     // Переключение видимости пароля
-    elements.togglePassword.addEventListener('click', () => {
+    function togglePasswordVisibility() {
       if (elements.accessCode.type === 'password') {
         elements.accessCode.type = 'text';
-        elements.togglePassword.innerHTML = '<i class="fas fa-eye-slash"></i>';
+        elements.togglePassword.textContent = '🔒';
       } else {
         elements.accessCode.type = 'password';
-        elements.togglePassword.innerHTML = '<i class="fas fa-eye"></i>';
+        elements.togglePassword.textContent = '👁️';
       }
-    });
+    }
 
     // Показать ошибку
     function showError(message) {
       elements.errorMessage.textContent = message;
-      setTimeout(() => {
-        elements.errorMessage.textContent = '';
-      }, 5000);
     }
+
+    // Очистить ошибку
+    function clearError() {
+      elements.errorMessage.textContent = '';
+    }
+
+    // Работа с cookie
+    function setCookie(name, value, days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = "expires=" + date.toUTCString();
+      document.cookie = `${name}=${value};${expires};path=/;SameSite=Lax`;
+    }
+
+    function getCookie(name) {
+      const cookieName = `${name}=`;
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i].trim();
+        if (cookie.indexOf(cookieName) === 0) {
+          return cookie.substring(cookieName.length, cookie.length);
+        }
+      }
+      return '';
+    }
+
+    // Запуск приложения
+    init();
   </script>
 </body>
 </html>
