@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавить Видео</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: white;
+      font-family: sans-serif;
+      padding: 40px;
+    }
+    .form {
+      max-width: 500px;
+      margin: auto;
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff2f8b;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+    }
+    input {
+      background: #2a2a2a;
+      color: white;
+    }
+    button {
+      background: #ff2f8b;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="form">
+    <h2>Добавить Видео</h2>
+    <form action="add_video.php" method="POST">
+      <input type="text" name="title" placeholder="Название видео" required>
+      <input type="url" name="url" placeholder="Ссылка на видео (Streamtape и т.д.)" required>
+      <button type="submit">Добавить</button>
+    </form>
+  </div>
+</body>
+</html>
