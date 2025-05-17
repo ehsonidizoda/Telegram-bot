@@ -112,3 +112,23 @@ body {
 .banner-icons a img:hover {
   transform: scale(1.2);
 }
+
+.banner-text-container {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+.banner-line {
+  font-size: 26px;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
