@@ -1,96 +1,392 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Видео 18+</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Возрастная проверка 18+</title>
   <style>
+    :root {
+      --primary: #ff2f8b;
+      --primary-dark: #d81b60;
+      --bg: #0f0f0f;
+      --card-bg: #1a1a1a;
+      --text: #f0f0f0;
+      --error: #ff4444;
+      --success: #4caf50;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      background: #000;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
+      font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 20px;
+      line-height: 1.6;
     }
-    h2 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-    input[type="password"], input[type="text"] {
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: none;
-      width: 80%;
-      max-width: 300px;
+
+    .verification-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
       text-align: center;
+      transition: all 0.3s ease;
     }
-    .button-group {
-      margin-top: 20px;
+
+    h1 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
     }
-    button {
-      margin: 5px;
-      padding: 10px 20px;
-      font-size: 16px;
+
+    .age-warning {
+      background: rgba(255, 47, 139, 0.1);
+      padding: 1rem;
       border-radius: 8px;
-      border: none;
-      font-weight: bold;
-      background: #ff2f8b;
-      color: white;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--primary);
+    }
+
+    .input-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #333;
+      border-radius: 8px;
+      background: #222;
+      color: var(--text);
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 47, 139, 0.2);
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
       cursor: pointer;
-      transition: 0.3s;
+      color: #666;
+      user-select: none;
     }
-    button:hover {
-      background: #e42072;
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 1.5rem;
     }
-    .video-block {
+
+    button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 47, 139, 0.1);
+    }
+
+    .error-message {
+      color: var(--error);
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      min-height: 1.2rem;
+    }
+
+    .video-container {
       display: none;
-      margin-top: 30px;
+      margin-top: 2rem;
+      animation: fadeIn 0.5s ease-out;
     }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
     iframe {
       width: 100%;
-      max-width: 400px;
       height: 250px;
-      border-radius: 10px;
+      border-radius: 8px;
       border: none;
-      margin-bottom: 20px;
+      background: #000;
     }
-    .toggle-password {
-      margin-top: 10px;
-      color: #aaa;
-      cursor: pointer;
-      font-size: 14px;
+
+    .legal-notice {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 2rem;
+      line-height: 1.4;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
+    }
+
+    .shake {
+      animation: shake 0.4s ease-in-out;
+    }
+
+    @media (max-width: 480px) {
+      .verification-card {
+        padding: 1.5rem;
+      }
+      
+      .button-group {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
-  <h2>Введите код доступа</h2>
-  <input type="password" id="access-code" placeholder="Код доступа" />
-  <div class="toggle-password" onclick="togglePassword()">Показать/Скрыть код</div>
-  <div class="button-group">
-    <button onclick="checkCode()">Войти</button>
-    <button onclick="history.back()">Вернуться назад</button>
+  <div class="verification-card" id="verificationCard">
+    <h1>Подтверждение возраста</h1>
+    
+    <div class="age-warning">
+      <p>⚠️ Этот контент содержит материалы для взрослых. Доступ разрешен только лицам старше 18 лет.</p>
+    </div>
+
+    <div class="input-group">
+      <input type="password" id="accessCode" placeholder="Введите код доступа" autocomplete="off">
+      <span class="toggle-password" id="togglePassword">👁️</span>
+    </div>
+    <div class="error-message" id="errorMessage"></div>
+
+    <div class="button-group">
+      <button class="btn-primary" id="submitBtn">Подтвердить</button>
+      <button class="btn-secondary" onclick="window.history.back()">Выйти</button>
+    </div>
+
+    <div class="legal-notice">
+      Нажимая "Подтвердить", вы соглашаетесь с тем, что вам исполнилось 18 лет или больше, 
+      и принимаете наши Условия использования.
+    </div>
   </div>
 
-  <div class="video-block" id="videos">
-    <h2>Видео 18+</h2>
-    <iframe src="https://t.me/hijabporn365/62?embed=1" allowfullscreen></iframe>
-    <iframe src="https://t.me/hijabporn365/33?embed=1" allowfullscreen></iframe>
+  <div class="verification-card video-container" id="videoContainer">
+    <h1>Контент 18+</h1>
+    
+    <div class="video-grid">
+      <iframe src="https://t.me/hijabporn365/62?embed=1" loading="lazy" allowfullscreen></iframe>
+      <iframe src="https://t.me/hijabporn365/33?embed=1" loading="lazy" allowfullscreen></iframe>
+    </div>
+    
+    <div class="button-group">
+      <button class="btn-secondary" onclick="hideContent()">Скрыть контент</button>
+    </div>
   </div>
 
   <script>
-    function checkCode() {
-      const code = document.getElementById('access-code').value;
-      if (code === '1234567890') {
-        document.getElementById('videos').style.display = 'block';
-      } else {
-        alert('Неверный код!');
+    // Конфигурация
+    const CONFIG = {
+      accessCode: '18PLUS2023', // Рекомендуется менять регулярно
+      maxAttempts: 3,
+      lockTime: 30000, // 30 секунд
+      rememberDays: 30 // Хранить cookie 30 дней
+    };
+
+    // Элементы DOM
+    const elements = {
+      verificationCard: document.getElementById('verificationCard'),
+      videoContainer: document.getElementById('videoContainer'),
+      accessCode: document.getElementById('accessCode'),
+      togglePassword: document.getElementById('togglePassword'),
+      submitBtn: document.getElementById('submitBtn'),
+      errorMessage: document.getElementById('errorMessage')
+    };
+
+    // Состояние
+    let state = {
+      attempts: 0,
+      isLocked: false
+    };
+
+    // Инициализация
+    function init() {
+      checkCookie();
+      setupEventListeners();
+    }
+
+    // Проверка cookie
+    function checkCookie() {
+      const cookie = getCookie('ageVerified');
+      if (cookie === 'true') {
+        showContent();
       }
     }
-    function togglePassword() {
-      const input = document.getElementById('access-code');
-      input.type = input.type === 'password' ? 'text' : 'password';
+
+    // Настройка обработчиков событий
+    function setupEventListeners() {
+      elements.submitBtn.addEventListener('click', verifyAccess);
+      elements.togglePassword.addEventListener('click', togglePasswordVisibility);
+      elements.accessCode.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') verifyAccess();
+      });
     }
+
+    // Проверка доступа
+    function verifyAccess() {
+      if (state.isLocked) {
+        showError(`Попробуйте через ${CONFIG.lockTime/1000} секунд`);
+        return;
+      }
+
+      const code = elements.accessCode.value.trim();
+      
+      if (!code) {
+        showError('Введите код доступа');
+        elements.accessCode.focus();
+        return;
+      }
+
+      if (code === CONFIG.accessCode) {
+        // Успешный вход
+        setCookie('ageVerified', 'true', CONFIG.rememberDays);
+        showContent();
+      } else {
+        // Неверный код
+        state.attempts++;
+        const remainingAttempts = CONFIG.maxAttempts - state.attempts;
+        
+        if (state.attempts >= CONFIG.maxAttempts) {
+          lockAccess();
+          showError(`Доступ временно заблокирован. Попробуйте через ${CONFIG.lockTime/1000} секунд.`);
+        } else {
+          showError(`Неверный код! Осталось попыток: ${remainingAttempts}`);
+          elements.accessCode.classList.add('shake');
+          setTimeout(() => {
+            elements.accessCode.classList.remove('shake');
+          }, 400);
+        }
+        
+        elements.accessCode.value = '';
+        elements.accessCode.focus();
+      }
+    }
+
+    // Блокировка доступа
+    function lockAccess() {
+      state.isLocked = true;
+      elements.accessCode.disabled = true;
+      elements.submitBtn.disabled = true;
+      
+      setTimeout(() => {
+        state.isLocked = false;
+        state.attempts = 0;
+        elements.accessCode.disabled = false;
+        elements.submitBtn.disabled = false;
+        clearError();
+      }, CONFIG.lockTime);
+    }
+
+    // Показать контент
+    function showContent() {
+      elements.verificationCard.style.display = 'none';
+      elements.videoContainer.style.display = 'block';
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+    // Скрыть контент
+    function hideContent() {
+      elements.videoContainer.style.display = 'none';
+      elements.verificationCard.style.display = 'block';
+      elements.accessCode.value = '';
+      elements.accessCode.focus();
+    }
+
+    // Переключение видимости пароля
+    function togglePasswordVisibility() {
+      if (elements.accessCode.type === 'password') {
+        elements.accessCode.type = 'text';
+        elements.togglePassword.textContent = '🔒';
+      } else {
+        elements.accessCode.type = 'password';
+        elements.togglePassword.textContent = '👁️';
+      }
+    }
+
+    // Показать ошибку
+    function showError(message) {
+      elements.errorMessage.textContent = message;
+    }
+
+    // Очистить ошибку
+    function clearError() {
+      elements.errorMessage.textContent = '';
+    }
+
+    // Работа с cookie
+    function setCookie(name, value, days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = "expires=" + date.toUTCString();
+      document.cookie = `${name}=${value};${expires};path=/;SameSite=Lax`;
+    }
+
+    function getCookie(name) {
+      const cookieName = `${name}=`;
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i].trim();
+        if (cookie.indexOf(cookieName) === 0) {
+          return cookie.substring(cookieName.length, cookie.length);
+        }
+      }
+      return '';
+    }
+
+    // Запуск приложения
+    init();
   </script>
 </body>
 </html>
