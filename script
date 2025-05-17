@@ -1,0 +1,9 @@
+document.getElementById("exitButton").addEventListener("click", function() {
+  // Проверяем, есть ли предыдущая страница в истории
+  if (history.length > 1) {
+    history.back(); // Возвращаемся назад
+  } else {
+    // Если нет истории — перенаправляем на главную или внешний сайт
+    window.location.href = "https://google.com";
+  }
+});
