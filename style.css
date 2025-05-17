@@ -143,40 +143,6 @@ body {
   }
 }
 
-.antenna-block {
-  background: #1a1a1a;
-  padding: 30px 20px;
-  margin: 40px 0;
-  border-radius: 12px;
-  box-shadow: 0 0 20px #ff2f8b;
-  text-align: center;
-  animation: fadeIn 1s ease-out;
-}
-.antenna-block h2 {
-  color: #ff2f8b;
-  font-size: 26px;
-  margin-bottom: 10px;
-}
-.antenna-block p {
-  color: #ccc;
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-.antenna-buttons a {
-  display: inline-block;
-  margin: 0 10px;
-  background: #ff2f8b;
-  padding: 10px 20px;
-  border-radius: 10px;
-  color: white;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-.antenna-buttons a:hover {
-  background: #e91e63;
-  transform: scale(1.05);
-}
-
 .card-promo {
   color: #ff94d3;
   font-size: 15px;
@@ -226,4 +192,10 @@ body {
 .cta-btn:hover {
   background: #e42072;
   transform: scale(1.05);
+}
+
+#vip-banner {
+  display: none;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 5s;
 }
