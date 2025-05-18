@@ -211,3 +211,19 @@ body {
 min-height
 flex
 height
+
+.card {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 0 15px rgba(255, 47, 139, 0.3);
+  text-align: center;
+}
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.card p {
+  margin: 10px 0;
+}
