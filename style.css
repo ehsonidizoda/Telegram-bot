@@ -199,3 +199,7 @@ body {
   animation: fadeIn 1s ease forwards;
   animation-delay: 5s;
 }
+
+.card {
+  min-height: 280px; /* выстави нужную высоту */
+}
