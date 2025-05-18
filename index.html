@@ -1,170 +1,113 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ачали Петкахо</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJALI PETKAHO</title>
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async="async"></script>
+  <script>
+    window.OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
+      OneSignal.init({
+        appId: "d76d58de-1471-4be3-8afc-08a7143171c0",
+      });
+    });
+  </script>
+  <style>
+    body {
+      background: #000;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      max-width: 500px;
+      margin: 0 auto;
+      overflow-x: hidden;
+    }
+    .card {
+      background: #111;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 400px;
+      box-shadow: 0 0 12px #ff2f8b;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    .cta-btn {
+      background: #ff2f8b;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+      box-shadow: 0 0 10px #ff2f8b;
+      transition: 0.3s ease;
+    }
+    .cta-btn:hover {
+      background: #e42072;
+      transform: scale(1.05);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
-<body>
-
-    <!-- Меню -->
-    <nav>
-        <a href="#kanals">Каналҳо</a>
-        <a href="#bots">Ботҳо</a>
-        <a href="#vip">VIP</a>
-        <a href="#models">Моделҳо</a>
-        <a href="#films">Филмхо 18+</a>
-    </nav>
-
-    <!-- БАННЕР -->
-    <div id="promo-banner" class="card">
-        <img src="https://i.ibb.co/SDdnw72f/photo.jpg" alt="18+ контент" style="width: 100%; border-radius: 14px; margin-bottom: 15px; max-height: 300px; object-fit: cover;">
-        <h3 style="color: white; font-size: 18px; margin-bottom: 10px;">Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун!</h3>
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
-            <a href="https://t.me/VvediCodBot?start=123" class="cta-btn">🔞 ДОМАШКА ХХХ</a>
-            <a href="https://t.me/+_O5ISU7emQxjZmJi" class="cta-btn">🥵АЧАЛИ ПЕТКАХО</a>
-            <a href="https://t.me/+pArHg8DLqiw4NjUy" class="cta-btn">🔞ТОЧИКИ Порно</a>
-        </div>
-    </div>
-
-<!-- СТИЛЬ ФОНА И АНИМАЦИЯ -->
-<style>
-  body {
-    background: radial-gradient(ellipse at top, #1a1a1a 0%, #000 100%);
-    font-family: sans-serif;
-    color: white;
-    margin: 0;
-    padding: 20px;
-  }
-
-  .card {
-    background: #111;
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 15px rgba(255, 47, 139, 0.4);
-    animation: fadeIn 1s ease-in-out;
-  }
-
-  .cta-btn {
-    display: inline-block;
-    background: #ff2f8b;
-    color: white;
-    padding: 12px 22px;
-    border-radius: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    margin-top: 15px;
-    box-shadow: 0 0 10px rgba(255, 47, 139, 0.3);
-    transition: 0.3s ease;
-  }
-
-  .cta-btn:hover {
-    background: #e42072;
-    transform: scale(1.05);
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
+<body><!-- Подтверждение возраста --><script>
+  if (!localStorage.getItem("ageConfirmed")) {
+    const agePrompt = confirm("Шумо 18+ ҳастед?");
+    if (agePrompt) {
+      localStorage.setItem("ageConfirmed", true);
+      setTimeout(() => OneSignal.showSlidedownPrompt(), 5000);
+    } else {
+      alert("Дастрасӣ маҳдуд аст.");
+      document.body.innerHTML = "<h2>Дастрасӣ танҳо барои 18+</h2>";
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-   }
-
-<!-- КАНАЛҲО 🔥 -->
-<div class="card" id="kanals">
+  }
+</script><!-- БАННЕР --><div class="card">
+  <img src="https://i.ibb.co/SDdnw72f/photo.jpg" alt="18+ контент" style="width: 100%; border-radius: 14px; max-height: 300px; object-fit: cover;">
+  <h3>Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун!</h3>
+  <div class="call-to-action">
+    <a href="https://t.me/VvediCodBot?start=123" class="cta-btn">🔞 ДОМАШКА ХХХ</a>
+    <a href="https://t.me/+_O5ISU7emQxjZmJi" class="cta-btn">🥵 АЧАЛИ ПЕТКАХО</a>
+    <a href="https://t.me/+pArHg8DLqiw4NjUy" class="cta-btn">🔞 ТОЧИКИ Порно</a>
+  </div>
+</div><!-- КАНАЛҲО --><div class="card" id="kanals">
   <h3>КАНАЛҲО 🔥</h3>
-
-  <!-- ВВЕДИ КОД -->
   <div class="call-to-action">
     <p>🤖 БОТ – Барои гирифтани дастрасии VIP рамз ворид кунед</p>
     <a href="https://t.me/VvediCodBot?start=66" class="cta-btn">👉 ВОРИДИ РАМЗ</a>
-  </div>
-
-  <!-- VIP KANAL -->
-  <div class="call-to-action">
-    <p>🔥 VIP KANAL – Видехои Точики, САТРДОРО 🧕, Кудакона. Барои дромадан нависен 🔞</p>
+    <p>🔥 VIP KANAL – Видеоҳои Точики, САТРДОРО 🧕, Кудакона 🔞</p>
     <a href="https://t.me/m/upWS74sOMDc0" class="cta-btn">👉 ВОРИД БА VIP 🔥</a>
-  </div>
-
-  <!-- ХОДИСА ТВ -->
-  <div class="call-to-action">
-    <p>📺 ХОДИСА ТВ – Наворҳои доғ, ахбор ва гузоришҳои 18+</p>
+    <p>📺 ХОДИСА ТВ – Ахбор ва гузоришҳои 18+</p>
     <a href="https://t.me/+-WmmN-aTwVZlMGEy" class="cta-btn">📺 Ворид шудан</a>
-  </div>
-
-  <!-- ТОЧИКИ ХХХ -->
-  <div class="call-to-action">
-    <p>🔞 ТОЧИКИ ХХХ – Контенти 18+ бо иштироки точикон</p>
+    <p>🌶 ТОЧИКИ ХХХ – Филмҳои 18+ бо иштироки точикон</p>
     <a href="https://t.me/+2q3J4US8cXdjMTFi" class="cta-btn">🌶 Дидани контент</a>
-  </div>
-
-  <!-- КУДАКОНА -->
-  <div class="call-to-action">
     <p>😱 КУДАКОНА – Контенти маҳрамона барои калонсолон</p>
     <a href="https://t.me/+w4jDVeVHElMyYzli" class="cta-btn">👉 Ҳоло ҳамроҳ шав 🔞</a>
   </div>
-</div>
-
-<!-- БОТҲО -->
-<div class="card" id="bots">
+</div><!-- БОТҲО --><div class="card" id="bots">
   <h3>БОТҲО 🤖</h3>
-
   <div class="call-to-action">
     <p>1. Форзонал – Бот барои ёрӣ ва дастгирӣ</p>
     <a href="https://t.me/ForzonalBot" class="cta-btn">🤖 Ворид шудан</a>
+    <p>2. Дар Рушд – Бот 1 барои тарҳрезӣ</p>
+    <a href="#" class="cta-btn">🔧 БОТ ДАР РУШД</a>
+    <p>3. Дар Рушд – Бот 2 барои VIP</p>
+    <a href="#" class="cta-btn">🔧 БОТИ ДУЮМ ДАР РУШД</a>
   </div>
-
-  <div class="call-to-action">
-    <p>2. Дар Рушд – Ботҳо барои лоиҳаҳои нав</p>
-    <a href="https://t.me/dev_channel" class="cta-btn">🚧 Дар Рушд</a>
-  </div>
-</div>
-
-<!-- ИНСТАГРАМ -->
-<div class="card" id="insta">
+</div><!-- ИНСТАГРАМ --><div class="card" id="insta">
   <h3>ИНСТАГРАМ 📸</h3>
-
   <div class="call-to-action">
-    <p>1. Дидани Саҳифа</p>
+    <p>1. Дидани Саҳифа – Петкачаҳои точикӣ</p>
     <a href="https://instagram.com/ajali_petkaho" class="cta-btn">📸 Дидани Саҳифа</a>
-  </div>
-
-  <div class="call-to-action">
-    <p>2. Instagram Models</p>
+    <p>2. Instagram Models – Моделҳои Sexy 🔞</p>
     <a href="https://instagram.com/models_tj" class="cta-btn">📸 Instagram Models</a>
-  </div>
-
-  <div class="call-to-action">
-    <p>3. ВВЕДИКОД TJ</p>
+    <p>3. ВВЕДИКОД TJ – Инфо ва дастрасии платформа</p>
     <a href="https://instagram.com/vvedikod_tj" class="cta-btn">📸 ВВЕДИКОД TJ</a>
   </div>
-</div>
-
-    <!-- ПОДТВЕРЖДЕНИЕ 18+ И PUSH УВЕДОМЛЕНИЯ -->
-    <script type="text/javascript">
-        // Код для подтверждения возраста и отправки push уведомлений
-        if (!localStorage.getItem('ageConfirmed')) {
-            const ageConfirm = confirm("Вам есть 18 лет?");
-            if (ageConfirm) {
-                localStorage.setItem('ageConfirmed', 'true');
-                // Включить уведомления
-                OneSignal.push(function() {
-                    OneSignal.showNativePrompt();
-                });
-            } else {
-                alert("Вы не можете продолжить просмотр.");
-                window.location.href = "about:blank";
-            }
-        }
-    </script>
-
-</body>
+</div></body>
 </html>
