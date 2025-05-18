@@ -1,43 +1,35 @@
 <?php
-require 'config.php'; // Подключает файл с токеном и chat_id
+$db = new PDO("sqlite:db.sqlite");
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Получаем данные из формы
-$name     = $_POST['name'] ?? 'не указано';
-$telegram = $_POST['telegram'] ?? 'не указано';
-$comment  = $_POST['comment'] ?? '-';
-$file     = $_FILES['check_file'] ?? null;
+$db->exec("CREATE TABLE IF NOT EXISTS checks (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT,
+  telegram TEXT,
+  comment TEXT,
+  file TEXT,
+  status TEXT DEFAULT 'pending',
+  created_at TEXT
+)");
 
-// Проверка файла
-if (!$file || $file['error'] !== UPLOAD_ERR_OK) {
-    exit('<script>alert("❌ Ошибка загрузки файла"); history.back();</script>');
-}
+$name = $_POST['name'] ?? '';
+$telegram = $_POST['telegram'] ?? '';
+$comment = $_POST['comment'] ?? '';
+$created_at = date('Y-m-d H:i:s');
 
-// Подпись сообщения
-$caption = "💳 Новая заявка на VIP:\n"
-         . "👤 Имя: $name\n"
-         . "📨 Telegram: $telegram\n"
-         . "💬 Комментарий: $comment";
+if (isset($_FILES['check_file'])) {
+  $filename = basename($_FILES['check_file']['name']);
+  $target = 'uploads/' . time() . '_' . $filename;
 
-// Подготовка и отправка файла в Telegram
-$send_url = "https://api.telegram.org/bot$token/sendDocument";
-$post_fields = [
-    'chat_id' => $chat_id,
-    'caption' => $caption,
-    'document' => new CURLFile($file['tmp_name'], $file['type'], $file['name'])
-];
+  if (!file_exists('uploads')) mkdir('uploads');
 
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $send_url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
-$response = curl_exec($ch);
-curl_close($ch);
+  move_uploaded_file($_FILES['check_file']['tmp_name'], $target);
 
-// Ответ пользователю
-if ($response) {
-    echo '<script>alert("✅ Чек отправлен! Мы свяжемся с вами."); history.back();</script>';
+  $stmt = $db->prepare("INSERT INTO checks (name, telegram, comment, file, created_at) VALUES (?, ?, ?, ?, ?)");
+  $stmt->execute([$name, $telegram, $comment, $target, $created_at]);
+
+  echo "<script>alert('✅ Заявка отправлена!'); window.location.href='vip.html';</script>";
 } else {
-    echo '<script>alert("❌ Ошибка при отправке. Проверьте данные."); history.back();</script>';
+  echo "<script>alert('❌ Ошибка: файл не загружен.'); window.history.back();</script>";
 }
 ?>
