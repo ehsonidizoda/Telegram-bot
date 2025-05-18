@@ -1,62 +1,53 @@
-<!DOCTYPE html><html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VIP ДОСТУП</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body { background: #000; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
-    h1 { color: #ff2f8b; margin-bottom: 30px; }
-    .btn { background: #ff2f8b; color: white; padding: 10px 20px; border-radius: 10px; margin: 10px; display: inline-block; font-weight: bold; text-decoration: none; transition: 0.3s; }
-    .btn:hover { background: #e42072; transform: scale(1.05); }
-    .vip-card { background: #111; padding: 20px; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 0 12px #ff2f8b; }
-    .recommended { border: 2px solid #ffea00; }
-    .plans { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 500px; margin: auto; }
-    .faq { text-align: left; max-width: 500px; margin: 40px auto; font-size: 14px; }
-    .faq h3 { color: #ff2f8b; }
-    footer { margin-top: 40px; font-size: 12px; color: #888; }
-  </style>
-</head>
-<body>
-  <h1>VIP ДОСТУП</h1>  <div class="plans">
-    <div class="vip-card">
-      <h3>1 День — 200₽</h3>
-      <p>Пробный доступ ко всему на сутки</p>
-      <a href="#" class="btn">Оплатить</a>
-    </div>
-    <div class="vip-card recommended">
-      <h3>1 Неделя — 300₽</h3>
-      <p>Плюс архив и быстрый доступ</p>
-      <a href="#" class="btn">Популярный</a>
-    </div>
-    <div class="vip-card">
-      <h3>1 Месяц — 500₽</h3>
-      <p>Доступ ко всему + чат и новые видео</p>
-      <a href="#" class="btn">Открыть</a>
-    </div>
-    <div class="vip-card">
-      <h3>Навсегда — 999₽</h3>
-      <p>Все бонусы + VIP-значок и приоритет</p>
-      <a href="#" class="btn">Стать VIP</a>
-    </div>
-  </div>  <div class="vip-card">
-    <h2>Бонус: Приведи друга — получи 1 день бесплатно!</h2>
-    <a href="#" class="btn">Получить бонус</a>
-  </div>  <div class="faq">
-    <h3>Что входит в VIP?</h3>
-    <p>Доступ к 18+ фото, видео, архивам и чату.</p>
-    <h3>Где доступ?</h3>
-    <p>После оплаты вы увидите кнопку “Перейти”.</p>
-    <h3>Как получить поддержку?</h3>
-    <p>Скрин оплаты отправьте в чат поддержки (встроенный).</p>
-  </div>  <footer>
-    <p>© 2025 ajalipetkaho.ru — Все права защищены</p>
-  </footer>  <!-- Встраиваемый чат -->  <script>
-    // Пример: показать окно оплаты или локального токена
-    document.querySelectorAll('.btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        alert('Отправьте чек в чат для подтверждения доступа.');
-      });
-    });
-  </script></body>
-</html>
+<!-- VIP HTML: Блок оплаты с формой подтверждения --><div class="card" style="margin-top: 40px;">
+  <h2 style="color: #ff2f8b;">Выберите тариф VIP</h2>
+  <div class="tariff-options">
+    <button class="cta-btn" onclick="showPayment('1 День', '200')">1 День — 200₽</button>
+    <button class="cta-btn" onclick="showPayment('1 Месяц', '500')">1 Месяц — 500₽</button>
+    <button class="cta-btn" onclick="showPayment('Навсегда', '1000')">Навсегда — 1000₽</button>
+  </div>
+</div><!-- Секция оплаты --><div id="payment-block" class="card" style="display:none; margin-top: 30px;">
+  <h3 style="color:#ff2f8b;">Оплатите переводом</h3>
+  <p><strong>Карта:</strong> 2202 2005 6247 9895</p>
+  <p><strong>Имя:</strong> Ахмаджонов А.</p>
+  <p id="selected-tariff"></p>
+  <p style="font-size:14px;color:#ff94d3;">После оплаты отправьте чек для подтверждения</p>
+  <button class="cta-btn" onclick="showCheckForm()">Отправить чек</button>
+</div><!-- Форма отправки чека --><div id="check-form" class="card" style="display:none;">
+  <h3>Форма подтверждения оплаты</h3>
+  <form onsubmit="event.preventDefault(); sendCheck()">
+    <input type="text" placeholder="Ваше имя" required class="input-field"><br>
+    <input type="tel" placeholder="Ваш номер телефона" required class="input-field"><br>
+    <input type="text" placeholder="Комментарий (необязательно)" class="input-field"><br>
+    <input type="file" accept="image/*" required class="input-field"><br>
+    <button class="cta-btn" type="submit">Отправить на проверку</button>
+  </form>
+</div><!-- JS: управление отображением --><script>
+  function showPayment(tariff, price) {
+    document.getElementById('payment-block').style.display = 'block';
+    document.getElementById('check-form').style.display = 'none';
+    document.getElementById('selected-tariff').innerText = `Вы выбрали: ${tariff} — ${price}₽`;
+  }
+
+  function showCheckForm() {
+    document.getElementById('check-form').style.display = 'block';
+    window.scrollTo({ top: document.getElementById('check-form').offsetTop, behavior: 'smooth' });
+  }
+
+  function sendCheck() {
+    alert('Чек отправлен! Мы проверим и дадим доступ в течение 10 минут.');
+  }
+</script><!-- Мини-стили --><style>
+  .input-field {
+    padding: 10px;
+    margin: 8px 0;
+    width: 90%;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+  }
+
+  .tariff-options button {
+    margin: 5px;
+    width: 80%;
+  }
+</style>
