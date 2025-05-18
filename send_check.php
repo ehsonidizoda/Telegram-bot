@@ -1,13 +1,19 @@
 <?php
-$token = '7663638497:AAFVBxzSSvq5alGFaqALowRNGTA42rjHsCc'; // ← сюда вставь токен своего Telegram-бота
-$chat_id = '7608899588';  // ← сюда вставь свой chat_id (можно взять у @userinfobot)
+$token = '7663638497:AAGbujp3Yv9uPc0P5C4FcuOa8RhjkZewd3k'; // Замените на свой токен Telegram-бота
+$chat_id = '7608899588'; // Замените на ваш chat_id (можно взять у @userinfobot)
 
 // Получаем данные из формы
 $name     = $_POST['name'] ?? 'не указано';
 $phone    = $_POST['phone'] ?? 'не указано';
 $telegram = $_POST['telegram'] ?? 'не указано';
 $comment  = $_POST['comment'] ?? '—';
-$file     = $_FILES['file'];
+$file     = $_FILES['check_file'];
+
+// Проверка файла
+if (!$file || $file['error'] !== UPLOAD_ERR_OK) {
+    echo '<script>alert("Ошибка загрузки файла."); window.history.back();</script>';
+    exit;
+}
 
 // Собираем сообщение
 $caption = "💳 Новая заявка на VIP доступ:\n"
