@@ -1,4 +1,4 @@
-<!-- VIP HTML: Блок оплаты с формой подтверждения --><div class="card" style="margin-top: 40px;">
+<!-- VIP HTML с формой отправки чека в Telegram --><div class="card" style="margin-top: 40px;">
   <h2 style="color: #ff2f8b;">Выберите тариф VIP</h2>
   <div class="tariff-options">
     <button class="cta-btn" onclick="showPayment('1 День', '200')">1 День — 200₽</button>
@@ -12,31 +12,27 @@
   <p id="selected-tariff"></p>
   <p style="font-size:14px;color:#ff94d3;">После оплаты отправьте чек для подтверждения</p>
   <button class="cta-btn" onclick="showCheckForm()">Отправить чек</button>
-</div><!-- Форма отправки чека --><div id="check-form" class="card" style="display:none;">
+</div><!-- Форма отправки чека в Telegram --><div id="check-form" class="card" style="display:none;">
   <h3>Форма подтверждения оплаты</h3>
-  <form onsubmit="event.preventDefault(); sendCheck()">
-    <input type="text" placeholder="Ваше имя" required class="input-field"><br>
-    <input type="tel" placeholder="Ваш номер телефона" required class="input-field"><br>
-    <input type="text" placeholder="Комментарий (необязательно)" class="input-field"><br>
-    <input type="file" accept="image/*" required class="input-field"><br>
+  <form action="send_check.php" method="POST" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="Ваше имя" required class="input-field"><br>
+    <input type="tel" name="phone" placeholder="Номер телефона" required class="input-field"><br>
+    <input type="text" name="telegram" placeholder="@username или Telegram ID" required class="input-field"><br>
+    <input type="text" name="comment" placeholder="Комментарий (необязательно)" class="input-field"><br>
+    <input type="file" name="file" accept="image/*" required class="input-field"><br>
     <button class="cta-btn" type="submit">Отправить на проверку</button>
   </form>
-</div><!-- JS: управление отображением --><script>
+</div><script>
   function showPayment(tariff, price) {
     document.getElementById('payment-block').style.display = 'block';
     document.getElementById('check-form').style.display = 'none';
     document.getElementById('selected-tariff').innerText = `Вы выбрали: ${tariff} — ${price}₽`;
   }
-
   function showCheckForm() {
     document.getElementById('check-form').style.display = 'block';
     window.scrollTo({ top: document.getElementById('check-form').offsetTop, behavior: 'smooth' });
   }
-
-  function sendCheck() {
-    alert('Чек отправлен! Мы проверим и дадим доступ в течение 10 минут.');
-  }
-</script><!-- Мини-стили --><style>
+</script><style>
   .input-field {
     padding: 10px;
     margin: 8px 0;
@@ -45,7 +41,6 @@
     border: none;
     font-size: 14px;
   }
-
   .tariff-options button {
     margin: 5px;
     width: 80%;
