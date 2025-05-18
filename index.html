@@ -76,7 +76,33 @@
     }
   </style>
 </head>
-<body><!-- Подтверждение возраста --><script>
+<body>
+
+<a href="payment.html" class="fixed-vip-btn">💳 VIP-доступ</a>
+
+<style>
+.fixed-vip-btn {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background: #ff2f8b;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  box-shadow: 0 0 12px rgba(255, 47, 139, 0.6);
+  z-index: 999;
+  transition: 0.3s ease;
+}
+.fixed-vip-btn:hover {
+  background: #e42072;
+  transform: scale(1.05);
+}
+</style>
+
+<!-- Подтверждение возраста --><script>
   if (!localStorage.getItem("ageConfirmed")) {
     const agePrompt = confirm("Шумо 18+ ҳастед?");
     if (agePrompt) {
