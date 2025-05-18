@@ -199,3 +199,11 @@ body {
   animation: fadeIn 1s ease forwards;
   animation-delay: 5s;
 }
+
+.card {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(255, 47, 139, 0.3);
+  min-height: 300px;
+}
