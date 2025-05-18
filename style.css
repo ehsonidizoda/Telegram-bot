@@ -207,3 +207,11 @@ body {
   box-shadow: 0 0 15px rgba(255, 47, 139, 0.3);
   min-height: 300px;
 }
+
+body {
+  background: #111;
+  color: white;
+  font-family: sans-serif;
+  text-align: center;
+  padding: 40px;
+}
