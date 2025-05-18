@@ -1,50 +1,86 @@
+<?php
+session_start();
+
+$login = 'admin';
+$password = 'vipaccess';
+
+// Обработка выхода
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("Location: admin.php");
+    exit;
+}
+
+// Обработка авторизации
+if (isset($_POST['auth'])) {
+    if ($_POST['login'] === $login && $_POST['password'] === $password) {
+        $_SESSION['auth'] = true;
+    } else {
+        $error = "Неверный логин или пароль!";
+    }
+}
+
+// Форма входа
+if (!isset($_SESSION['auth'])):
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Добавить Видео</title>
+  <title>Вход в админку</title>
+</head>
+<body>
+  <form method="POST" style="max-width:300px;margin:100px auto;text-align:center;">
+    <h2>Вход в админку</h2>
+    <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
+    <input type="text" name="login" placeholder="Логин" required><br><br>
+    <input type="password" name="password" placeholder="Пароль" required><br><br>
+    <button type="submit" name="auth">Войти</button>
+  </form>
+</body>
+</html>
+<?php
+exit;
+endif;
+?>
+
+<!-- Панель администратора -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Админ-панель</title>
   <style>
-    body {
-      background: #0f0f0f;
-      color: white;
-      font-family: sans-serif;
-      padding: 40px;
-    }
-    .form {
-      max-width: 500px;
-      margin: auto;
-      background: #1a1a1a;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px #ff2f8b;
-    }
-    input, button {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 8px;
-    }
-    input {
-      background: #2a2a2a;
-      color: white;
-    }
-    button {
-      background: #ff2f8b;
-      font-weight: bold;
-      color: white;
-      cursor: pointer;
-    }
+    body { font-family: sans-serif; background: #111; color: #fff; padding: 20px; }
+    .card { background: #1a1a1a; border-radius: 10px; padding: 15px; margin-bottom: 15px; box-shadow: 0 0 10px #ff2f8b; }
+    a { color: #ff2f8b; }
+    .logout { margin-top: 20px; }
   </style>
 </head>
 <body>
-  <div class="form">
-    <h2>Добавить Видео</h2>
-    <form action="add_video.php" method="POST">
-      <input type="text" name="title" placeholder="Название видео" required>
-      <input type="url" name="url" placeholder="Ссылка на видео (Streamtape и т.д.)" required>
-      <button type="submit">Добавить</button>
-    </form>
+  <h2>Заявки пользователей</h2>
+  <div id="list">Загрузка...</div>
+  <div class="logout">
+    <a href="?logout=true">Выйти</a>
   </div>
+
+  <script>
+    fetch('data/requests.json')
+      .then(r => r.json())
+      .then(data => {
+        const container = document.getElementById('list');
+        container.innerHTML = '';
+        data.reverse().forEach(req => {
+          container.innerHTML += `
+            <div class="card">
+              <strong>${req.name}</strong> | ${req.telegram}<br>
+              <small>${req.timestamp}</small><br>
+              ${req.comment ? `<em>${req.comment}</em><br>` : ''}
+              <a href="uploads/${req.file}" target="_blank">Чек</a>
+            </div>
+          `;
+        });
+      });
+  </script>
 </body>
 </html>
