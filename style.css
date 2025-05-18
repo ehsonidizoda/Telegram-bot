@@ -215,3 +215,93 @@ body {
   text-align: center;
   padding: 40px;
 }
+
+body {
+  background: #000;
+  font-family: sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  background: #1a1a1a;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.card {
+  background: #1a1a1a;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(255, 0, 128, 0.4);
+}
+
+.cta-btn {
+  display: inline-block;
+  background: #ff2f8b;
+  padding: 14px 20px;
+  margin-top: 10px;
+  color: white;
+  font-weight: bold;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(255, 47, 139, 0.3);
+  transition: 0.3s;
+}
+
+.cta-btn:hover {
+  background: #e42072;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.popup {
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.popup button {
+  background: #ff2f8b;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
