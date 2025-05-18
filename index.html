@@ -3,23 +3,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AJALI PETKAHO</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>АЧАЛИ ПЕТКАХО</title>
   <link rel="manifest" href="manifest.json" />
-  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+  <script>
+    window.OneSignal = window.OneSignal || [];
+    OneSignal.push(function () {
+      OneSignal.init({
+        appId: "d76d58de-1471-4be3-8afc-08a7143171c0",
+        notifyButton: {
+          enable: true,
+        },
+      });
+    });
+
+    setTimeout(() => {
+      OneSignal.showSlidedownPrompt();
+    }, 5000);
+  </script>
+  <style>
+    body {
+      background: #0d0d0d;
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background: #1a1a1a;
+      padding: 15px;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      border-bottom: 3px solid #ff2f8b;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px;
+      box-shadow: 0 0 20px rgba(255, 47, 139, 0.4);
+      text-align: center;
+    }
+
+    .cta-btn {
+      background: #ff2f8b;
+      color: white;
+      text-decoration: none;
+      padding: 12px 24px;
+      display: inline-block;
+      border-radius: 30px;
+      margin-top: 15px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .cta-btn:hover {
+      background: #e42072;
+      transform: scale(1.05);
+    }
+
+    #promo-banner img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 15px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- Подтверждение 18+ -->
-<div id="age-confirm" class="overlay">
-  <div class="popup">
-    <h2>18+</h2>
-    <p>Информация только для взрослых. Вам есть 18 лет?</p>
-    <button onclick="confirmAge()">Да, мне 18+</button>
-  </div>
-</div>
-
-<!-- Навигация -->
+<!-- Меню -->
 <nav>
   <a href="#kanals">Каналҳо</a>
   <a href="#bots">Ботҳо</a>
@@ -28,65 +102,77 @@
   <a href="#films">Филмҳо 18+</a>
 </nav>
 
-<!-- Баннер -->
-<div id="promo-banner" class="card">
+<!-- Подтверждение 18+ -->
+<div class="card" id="promo-banner">
   <img src="https://i.ibb.co/SDdnw72f/photo.jpg" alt="18+ контент" />
   <h3>Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун!</h3>
   <div class="button-row">
-    <a href="https://t.me/VvediCodBot?start=123">🔞 ДОМАШКА ХХХ</a>
-    <a href="https://t.me/+_O5ISU7emQxjZmJi">🥵АЧАЛИ ПЕТКАХО</a>
-    <a href="https://t.me/+pArHg8DLqiw4NjUy">🔞ТОЧИКИ Порно</a>
+    <a href="https://t.me/VvediCodBot?start=123" class="cta-btn">🔞 ДОМАШКА ХХХ</a>
+    <a href="https://t.me/+_O5ISU7emQxjZmJi" class="cta-btn">🥵АЧАЛИ ПЕТКАХО</a>
+    <a href="https://t.me/+pArHg8DLqiw4NjUy" class="cta-btn">🔞ТОЧИКИ Порно</a>
   </div>
 </div>
 
-<!-- Карточки -->
+<!-- VIP KANAL -->
 <div class="card" id="vip">
-  <h3>VIP KANAL🔥</h3>
-  <p>Видехои Точики , САТРДОРО 🧕 , Кудакона Хаст Барои Дромадан Нависен</p>
+  <h3>VIP KANAL 🔥</h3>
+  <p>🔞Видехои Точики , САТРДОРО 🧕 , Кудакона Хаст Барои Дромадан Нависен истифодабарандагон</p>
   <a href="https://t.me/+IUec_xlw8dVjMjJi" class="cta-btn">👉 ВОРИД БА VIP 🔥</a>
 </div>
 
+<!-- СЕКСИ ТОЧИКИ -->
 <div class="card">
   <h3>СЕКСИ ТОҶИКӢ 🔞</h3>
   <p>Филмҳои 18+ бо иштироки тоҷикон</p>
   <a href="https://t.me/+2q3J4US8cXdjMTFi" class="cta-btn">🌶 Дидани контент</a>
 </div>
 
+<!-- КУДАКОНА -->
 <div class="card">
-  <h3>КУДАКОНА😱</h3>
+  <h3>КУДАКОНА 😱</h3>
   <p>Контенти маҳрамона барои калонсолон</p>
-  <a href="https://t.me/+w4jDVeVHElMyYzli" class="cta-btn">👉 Ҳоло ҳамроҳ шав🔞</a>
+  <a href="https://t.me/+w4jDVeVHElMyYzli" class="cta-btn">👉 Ҳоло ҳамроҳ шав 🔞</a>
 </div>
 
+<!-- ХОДИСА ТВ -->
 <div class="card" id="kanals">
   <h3>ХОДИСА ТВ</h3>
   <p>Наворҳои доғ, ахбор ва гузоришҳои 18+</p>
   <a href="https://t.me/+-WmmN-aTwVZlMGEy" class="cta-btn">📺 Ворид шудан</a>
 </div>
 
+<!-- БОТ -->
 <div class="card" id="bots">
   <h3>🤖 БОТ — Вориди рамз</h3>
   <p>Барои гирифтани дастрасии VIP рамз ворид кунед</p>
   <a href="https://t.me/VvediCodBot?start=66" class="cta-btn">👉 ВОРИДИ РАМЗ</a>
 </div>
 
+<!-- Instagram -->
 <div class="card" id="models">
   <h3>Instagrami Mo</h3>
   <p>Видеоҳои петкачахои тоҷикӣ дар Instagram — обуна шавед, 10 ҳазор бошем! 🎁🎁</p>
   <a href="https://instagram.com/ajali_petka" class="cta-btn">📸 Дидани Саҳифа 🔞</a>
 </div>
 
+<!-- Instagram Models -->
 <div class="card" id="films">
   <h3>Instagram Models 🔞</h3>
-  <a href="https://www.instagram.com/dilbar_model?igsh=MXR1aHNodnZqczl0eA==" class="cta-btn">🔞ПОДПИСАТЬСЯ КАРДАН</a>
+  <a href="https://www.instagram.com/dilbar_model?igsh=MXR1aHNodnZqczl0eA==" class="cta-btn">🔞 ПОДПИСАТЬСЯ КАРДАН</a>
 </div>
 
+<!-- ВВЕДИКОДА TJ -->
+<div class="card">
+  <h3>Сайти ВВЕДИКОДА TJ в Instagram</h3>
+  <a href="https://www.instagram.com/vvedicodbot?igsh=MWdzYzkzYXk3YjhscA==" class="cta-btn">🔞 ПОДПИСАТЬСЯ КАРДАН!</a>
+</div>
+
+<!-- ЧЕРНЫЙ СПИСОК -->
 <div class="card">
   <h3>‼️ МАЪЛУМОТИ ХАФН 🔞</h3>
   <p>Контенти махфӣ барои калонсолони ҷиддӣ</p>
   <a href="https://t.me/+rgrN0IZid4k5ZGVi" class="cta-btn">⚠️ ЧЕРНЫЙ СПИСОК‼️</a>
 </div>
 
-<script src="push.js"></script>
 </body>
 </html>
