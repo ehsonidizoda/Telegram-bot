@@ -78,18 +78,18 @@
     <p class="notice">После оплаты отправьте чек для подтверждения доступа</p>
   </div>
 
-  <div class="card">
+<div class="card">
     <h3>Форма подтверждения оплаты</h3>
-    <form action="send_check.php" method="POST" enctype="multipart/form-data" class="vip-form">
-      <input type="text" name="name" placeholder="Имя" required>
-      <input type="text" name="telegram" placeholder="@username или Telegram ID" required>
-      <input type="file" name="file" accept="image/*,.pdf" required>
-      <textarea name="comment" placeholder="Комментарий (необязательно)" rows="4"></textarea>
-      <button type="submit">Отправить на проверку</button>
+    <form action="submit_check.php" method="POST" enctype="multipart/form-data" class="vip-form">
+        <input type="text" name="name" placeholder="Имя" required>
+        <input type="text" name="telegram" placeholder="@username или Telegram ID" required>
+        <input type="file" name="file" accept="image/*,.pdf" required>
+        <textarea name="comment" placeholder="Комментарий (необязательно)" rows="4"></textarea>
+        <button type="submit">Отправить на проверку</button>
     </form>
     <p class="notice">* Укажите правильный Telegram, чтобы мы могли вам ответить</p>
     <p class="notice">** Поддерживаются файлы: JPG, PNG, GIF, PDF (макс. 5MB)</p>
-  </div>
+</div>
 
   <script>
     // Валидация формы перед отправкой
