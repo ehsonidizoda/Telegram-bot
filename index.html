@@ -139,3 +139,31 @@
 </div>
 </body>
 </html>
+
+<!-- OneSignal Push Notification -->
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  window.OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "d76d58de-1471-4be3-8afc-08a7143171c0",
+      notifyButton: {
+        enable: true,
+        text: {
+          'tip.state.unsubscribed': 'Ба огоҳиномаҳо обуна шавед',
+          'tip.state.subscribed': 'Шумо обуна шудед!',
+          'tip.state.blocked': 'Шумо блок кардед',
+          'message.action.subscribed': "Ташаккур барои обуна!",
+          'message.action.resubscribed': "Шумо дубора обуна шудед",
+          'message.action.unsubscribed': "Обуна хомӯш шуд",
+          'dialog.main.title': 'Огоҳиномаҳо фаъол кунем?',
+          'dialog.main.button.subscribe': 'Обуна шудан',
+          'dialog.main.button.unsubscribe': 'Хомӯш кардан',
+        },
+        size: 'medium',
+        theme: 'default',
+        position: 'bottom-right',
+      }
+    });
+  });
+</script>
