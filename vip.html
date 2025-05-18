@@ -1,48 +1,79 @@
-<!-- VIP HTML с формой отправки чека в Telegram --><div class="card" style="margin-top: 40px;">
-  <h2 style="color: #ff2f8b;">Выберите тариф VIP</h2>
-  <div class="tariff-options">
-    <button class="cta-btn" onclick="showPayment('1 День', '200')">1 День — 200₽</button>
-    <button class="cta-btn" onclick="showPayment('1 Месяц', '500')">1 Месяц — 500₽</button>
-    <button class="cta-btn" onclick="showPayment('Навсегда', '1000')">Навсегда — 1000₽</button>
+<!DOCTYPE html><html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP доступ</title>
+  <style>
+    body {
+      background: #000;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    .card {
+      background: #111;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px auto;
+      box-shadow: 0 0 12px #ff2f8b;
+      max-width: 400px;
+    }
+    select, input, button {
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      width: 90%;
+      max-width: 350px;
+      font-size: 16px;
+    }
+    input[type="file"] {
+      background: #1a1a1a;
+      color: white;
+    }
+    button {
+      background: #ff2f8b;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 8px #ff2f8b;
+    }
+    button:hover {
+      background: #e42072;
+    }
+    .notice {
+      color: #ff91c2;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>VIP ДОСТУП</h1>  <div class="card">
+    <h3>Выберите тариф VIP</h3>
+    <select name="tariff" id="tariff-select" required>
+      <option value="">-- Выберите тариф --</option>
+      <option value="1 день">1 День — 200₽</option>
+      <option value="1 неделя">1 Неделя — 350₽</option>
+      <option value="1 месяц">1 Месяц — 500₽</option>
+      <option value="навсегда">Навсегда — 1000₽</option>
+    </select><h3>Оплатите переводом</h3>
+<p><strong>Карта:</strong> 2202 2005 6247 9895</p>
+<p><strong>Имя:</strong> Ахмаджонов А.</p>
+<p class="notice">После оплаты отправьте чек для подтверждения доступа</p>
+
+  </div>  <div class="card">
+    <h3>Форма подтверждения оплаты</h3>
+    <form action="sendcheck.php" method="POST" enctype="multipart/form-data">
+      <input type="text" name="telegram" placeholder="@username или Telegram ID" required>
+      <input type="tel" name="phone" placeholder="Номер телефона (опционально)">
+      <input type="file" name="screenshot" accept="image/*" required>
+      <textarea name="comment" placeholder="Комментарий (необязательно)" rows="3"></textarea>
+      <button type="submit">Отправить на проверку</button>
+    </form>
+    <p class="notice">* Укажите правильный Telegram, чтобы мы могли вам ответить</p>
   </div>
-</div><!-- Секция оплаты --><div id="payment-block" class="card" style="display:none; margin-top: 30px;">
-  <h3 style="color:#ff2f8b;">Оплатите переводом</h3>
-  <p><strong>Карта:</strong> 2202 2005 6247 9895</p>
-  <p><strong>Имя:</strong> Ахмаджонов А.</p>
-  <p id="selected-tariff"></p>
-  <p style="font-size:14px;color:#ff94d3;">После оплаты отправьте чек для подтверждения</p>
-  <button class="cta-btn" onclick="showCheckForm()">Отправить чек</button>
-</div><!-- Форма отправки чека в Telegram --><div id="check-form" class="card" style="display:none;">
-  <h3>Форма подтверждения оплаты</h3>
-  <form action="send_check.php" method="POST" enctype="multipart/form-data">
-    <input type="text" name="name" placeholder="Ваше имя" required class="input-field"><br>
-    <input type="tel" name="phone" placeholder="Номер телефона" required class="input-field"><br>
-    <input type="text" name="telegram" placeholder="@username или Telegram ID" required class="input-field"><br>
-    <input type="text" name="comment" placeholder="Комментарий (необязательно)" class="input-field"><br>
-    <input type="file" name="file" accept="image/*" required class="input-field"><br>
-    <button class="cta-btn" type="submit">Отправить на проверку</button>
-  </form>
-</div><script>
-  function showPayment(tariff, price) {
-    document.getElementById('payment-block').style.display = 'block';
-    document.getElementById('check-form').style.display = 'none';
-    document.getElementById('selected-tariff').innerText = `Вы выбрали: ${tariff} — ${price}₽`;
-  }
-  function showCheckForm() {
-    document.getElementById('check-form').style.display = 'block';
-    window.scrollTo({ top: document.getElementById('check-form').offsetTop, behavior: 'smooth' });
-  }
-</script><style>
-  .input-field {
-    padding: 10px;
-    margin: 8px 0;
-    width: 90%;
-    border-radius: 8px;
-    border: none;
-    font-size: 14px;
-  }
-  .tariff-options button {
-    margin: 5px;
-    width: 80%;
-  }
-</style>
+</body>
+</html>
