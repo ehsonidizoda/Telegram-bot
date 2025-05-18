@@ -2,95 +2,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VIP - AJALI PETKAHO</title>
+  <title>VIP ДОСТУП</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      background: #000;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 20px;
-      max-width: 500px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    h1 {
-      color: #ff2f8b;
-      margin-bottom: 20px;
-    }
-    .tabs {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-    .tab-btn {
-      background: #ff2f8b;
-      border: none;
-      padding: 10px 16px;
-      color: white;
-      border-radius: 8px;
-      font-weight: bold;
-      margin: 5px;
-      cursor: pointer;
-    }
-    .tab-btn.active {
-      background: #e42072;
-    }
-    .tab-content {
-      display: none;
-      padding: 10px;
-      background: #111;
-      border-radius: 12px;
-      box-shadow: 0 0 12px #ff2f8b;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    .cta-btn {
-      background: #ff2f8b;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-      margin-top: 10px;
-      box-shadow: 0 0 10px #ff2f8b;
-      transition: 0.3s ease;
-    }
-    .cta-btn:hover {
-      background: #e42072;
-    }
+    body { background: #000; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
+    h1 { color: #ff2f8b; margin-bottom: 30px; }
+    .btn { background: #ff2f8b; color: white; padding: 10px 20px; border-radius: 10px; margin: 10px; display: inline-block; font-weight: bold; text-decoration: none; transition: 0.3s; }
+    .btn:hover { background: #e42072; transform: scale(1.05); }
+    .vip-card { background: #111; padding: 20px; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 0 12px #ff2f8b; }
+    .recommended { border: 2px solid #ffea00; }
+    .plans { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 500px; margin: auto; }
+    .faq { text-align: left; max-width: 500px; margin: 40px auto; font-size: 14px; }
+    .faq h3 { color: #ff2f8b; }
+    footer { margin-top: 40px; font-size: 12px; color: #888; }
   </style>
 </head>
 <body>
-  <h1>VIP ДОСТУП</h1>
-  <div class="tabs">
-    <button class="tab-btn active" onclick="showTab('photo')">🖼 Фото</button>
-    <button class="tab-btn" onclick="showTab('video')">🎥 Видео</button>
-    <button class="tab-btn" onclick="showTab('archive')">📦 Архив</button>
-    <button class="tab-btn" onclick="showTab('chat')">💬 Чат</button>
-  </div>  <div id="photo" class="tab-content active">
-    <p>Только для VIP пользователей.</p>
-    <a href="payment.html" class="cta-btn">💳 Оплатить доступ</a>
-  </div>  <div id="video" class="tab-content">
-    <p>Только для VIP пользователей.</p>
-    <a href="payment.html" class="cta-btn">💳 Оплатить доступ</a>
-  </div>  <div id="archive" class="tab-content">
-    <p>Только для VIP пользователей.</p>
-    <a href="payment.html" class="cta-btn">💳 Оплатить доступ</a>
-  </div>  <div id="chat" class="tab-content">
-    <p>Только для VIP пользователей.</p>
-    <a href="payment.html" class="cta-btn">💳 Оплатить доступ</a>
-  </div>  <script>
-    function showTab(id) {
-      const buttons = document.querySelectorAll('.tab-btn');
-      const tabs = document.querySelectorAll('.tab-content');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      tabs.forEach(tab => tab.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      event.target.classList.add('active');
-    }
+  <h1>VIP ДОСТУП</h1>  <div class="plans">
+    <div class="vip-card">
+      <h3>1 День — 200₽</h3>
+      <p>Пробный доступ ко всему на сутки</p>
+      <a href="#" class="btn">Оплатить</a>
+    </div>
+    <div class="vip-card recommended">
+      <h3>1 Неделя — 300₽</h3>
+      <p>Плюс архив и быстрый доступ</p>
+      <a href="#" class="btn">Популярный</a>
+    </div>
+    <div class="vip-card">
+      <h3>1 Месяц — 500₽</h3>
+      <p>Доступ ко всему + чат и новые видео</p>
+      <a href="#" class="btn">Открыть</a>
+    </div>
+    <div class="vip-card">
+      <h3>Навсегда — 999₽</h3>
+      <p>Все бонусы + VIP-значок и приоритет</p>
+      <a href="#" class="btn">Стать VIP</a>
+    </div>
+  </div>  <div class="vip-card">
+    <h2>Бонус: Приведи друга — получи 1 день бесплатно!</h2>
+    <a href="#" class="btn">Получить бонус</a>
+  </div>  <div class="faq">
+    <h3>Что входит в VIP?</h3>
+    <p>Доступ к 18+ фото, видео, архивам и чату.</p>
+    <h3>Где доступ?</h3>
+    <p>После оплаты вы увидите кнопку “Перейти”.</p>
+    <h3>Как получить поддержку?</h3>
+    <p>Скрин оплаты отправьте в чат поддержки (встроенный).</p>
+  </div>  <footer>
+    <p>© 2025 ajalipetkaho.ru — Все права защищены</p>
+  </footer>  <!-- Встраиваемый чат -->  <script>
+    // Пример: показать окно оплаты или локального токена
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert('Отправьте чек в чат для подтверждения доступа.');
+      });
+    });
   </script></body>
 </html>
