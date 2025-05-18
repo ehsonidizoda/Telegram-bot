@@ -5,3 +5,19 @@
   "display": "standalone",
   "gcm_sender_id": "482941778795"
 }
+
+{
+  "name": "AJALI PETKAHO",
+  "short_name": "Ajali",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ff2f8b",
+  "icons": [
+    {
+      "src": "https://i.ibb.co/SDdnw72f/photo.jpg",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
