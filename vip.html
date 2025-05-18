@@ -1,1 +1,96 @@
-.
+<!DOCTYPE html><html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP - AJALI PETKAHO</title>
+  <style>
+    body {
+      background: #000;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    h1 {
+      color: #ff2f8b;
+      margin-bottom: 20px;
+    }
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .tab-btn {
+      background: #ff2f8b;
+      border: none;
+      padding: 10px 16px;
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
+      margin: 5px;
+      cursor: pointer;
+    }
+    .tab-btn.active {
+      background: #e42072;
+    }
+    .tab-content {
+      display: none;
+      padding: 10px;
+      background: #111;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #ff2f8b;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .cta-btn {
+      background: #ff2f8b;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 10px;
+      box-shadow: 0 0 10px #ff2f8b;
+      transition: 0.3s ease;
+    }
+    .cta-btn:hover {
+      background: #e42072;
+    }
+  </style>
+</head>
+<body>
+  <h1>VIP ДОСТУП</h1>
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('photo')">🖼 Фото</button>
+    <button class="tab-btn" onclick="showTab('video')">🎥 Видео</button>
+    <button class="tab-btn" onclick="showTab('archive')">📦 Архив</button>
+    <button class="tab-btn" onclick="showTab('chat')">💬 Чат</button>
+  </div>  <div id="photo" class="tab-content active">
+    <p>Только для VIP пользователей.</p>
+    <a href="payment.html" class="cta-btn">💳 Оплатить доступ</a>
+  </div>  <div id="video" class="tab-content">
+    <p>Только для VIP пользователей.</p>
+    <a href="payment.html" class="cta-btn">💳 Оплатить доступ</a>
+  </div>  <div id="archive" class="tab-content">
+    <p>Только для VIP пользователей.</p>
+    <a href="payment.html" class="cta-btn">💳 Оплатить доступ</a>
+  </div>  <div id="chat" class="tab-content">
+    <p>Только для VIP пользователей.</p>
+    <a href="payment.html" class="cta-btn">💳 Оплатить доступ</a>
+  </div>  <script>
+    function showTab(id) {
+      const buttons = document.querySelectorAll('.tab-btn');
+      const tabs = document.querySelectorAll('.tab-content');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      tabs.forEach(tab => tab.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script></body>
+</html>
