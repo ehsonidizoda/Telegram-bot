@@ -10,43 +10,29 @@
       --bg-soft: #1a1a1a;
       --text: #fff;
     }
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       background: var(--bg-dark);
       color: var(--text);
       font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
+      margin: 0; padding: 0;
     }
     header {
       background: linear-gradient(90deg, #ff2f8b, #ff71a0);
-      padding: 24px;
-      text-align: center;
-      font-size: 28px;
-      font-weight: bold;
-      color: white;
-      text-shadow: 0 0 8px rgba(255,255,255,0.3);
+      padding: 24px; text-align: center;
+      font-size: 28px; font-weight: bold;
+      color: white; text-shadow: 0 0 8px rgba(255,255,255,0.3);
     }
     nav {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      background: #111;
+      display: flex; justify-content: center;
+      gap: 14px; background: #111;
       padding: 14px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
     }
     nav button {
-      background: #1f1f1f;
-      color: white;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 30px;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
+      background: #1f1f1f; color: white;
+      border: none; padding: 10px 18px;
+      border-radius: 30px; font-size: 15px;
+      font-weight: bold; cursor: pointer;
       transition: 0.3s;
     }
     nav button:hover {
@@ -55,14 +41,11 @@
       box-shadow: 0 0 10px var(--main-color);
     }
     section {
-      display: none;
-      padding: 20px;
-      max-width: 500px;
-      margin: auto;
+      display: none; padding: 20px;
+      max-width: 500px; margin: auto;
     }
     section.active {
       display: block;
-      animation: fadeIn 0.6s ease-in-out;
     }
     h2 {
       color: var(--main-color);
@@ -71,51 +54,35 @@
       margin-bottom: 16px;
     }
     .preview img {
-      width: 100%;
-      margin: 10px 0;
+      width: 100%; margin: 10px 0;
       border-radius: 14px;
-      box-shadow: 0 4px 12px rgba(255,255,255,0.1);
-      transition: transform 0.4s;
-    }
-    .preview img:hover {
-      transform: scale(1.03);
     }
     .review {
-      background: linear-gradient(145deg, #202020, #151515);
-      padding: 16px;
-      margin: 12px 0;
+      background: #1d1d1d;
+      padding: 14px;
       border-radius: 14px;
-      box-shadow: 0 0 15px rgba(255,47,139,0.15);
+      margin: 10px 0;
     }
     select, button, input {
-      width: 100%;
-      padding: 14px;
-      margin: 12px 0;
-      border-radius: 12px;
-      border: none;
-      font-size: 16px;
+      width: 100%; padding: 14px;
+      margin: 12px 0; border-radius: 12px;
+      border: none; font-size: 16px;
     }
     button {
       background: var(--main-color);
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      color: white; font-weight: bold;
+      cursor: pointer; transition: all 0.3s ease;
     }
     button:hover {
       background: #e72073;
       box-shadow: 0 0 12px var(--main-color);
     }
     .faq button {
-      background: #1d1d1d;
-      margin-top: 10px;
-      text-align: left;
+      background: #1d1d1d; margin-top: 10px; text-align: left;
     }
     .faq-answer {
-      background: #111;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 10px;
+      background: #111; padding: 10px;
+      margin-top: 5px; border-radius: 10px;
       display: none;
     }
     .vip-panel {
@@ -123,21 +90,12 @@
       padding: 16px;
       border-radius: 14px;
       margin-top: 20px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.05);
     }
     #lang-toggle {
-      position: fixed;
-      bottom: 14px;
-      right: 14px;
-      background: #222;
-      padding: 10px 16px;
-      border-radius: 20px;
-      font-weight: bold;
+      position: fixed; bottom: 14px; right: 14px;
+      background: #222; padding: 10px 16px;
+      border-radius: 20px; font-weight: bold;
       cursor: pointer;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
     }
   </style>
 </head>
@@ -161,24 +119,24 @@
     <div class="review">💯 Рекомендую всем! — @user3</div>
   </section>  <section id="payment">
     <h2 id="t3">Оплата</h2>
-    <div id="paidMsg" class="vip-panel hidden">✅ Чек уже отправлен. Ожидайте подтверждение!</div>
     <div class="vip-panel" id="step1">
-      <select>
+      <select id="plan">
         <option>1 день — 200₽</option>
         <option>1 месяц — 400₽</option>
         <option>Навсегда — 600₽</option>
       </select>
-      <button onclick="step(2)">Продолжить</button>
+      <button onclick="goStep(2)">Продолжить</button>
     </div>
-    <div class="vip-panel hidden" id="step2">
+    <div class="vip-panel" id="step2" style="display:none">
       <p>Карта для оплаты: <code>2202 2010 3123 4567</code></p>
-      <button onclick="step(3)">Я оплатил</button>
+      <button onclick="goStep(3)">Я оплатил</button>
     </div>
-    <div class="vip-panel hidden" id="step3">
+    <div class="vip-panel" id="step3" style="display:none">
       <p>Перейдите в Telegram-бота и загрузите чек:</p>
       <a href="https://t.me/Test_vip_TJBot?start=upload" target="_blank">
         <button>Загрузить чек</button>
       </a>
+      <p style="margin-top:10px;color:lime;font-weight:bold" id="confirmText" class="hidden">✅ Чек уже отправлен. Ожидайте подтверждение!</p>
     </div>
   </section>  <section id="faq">
     <h2 id="t4">Часто задаваемые вопросы</h2>
@@ -200,14 +158,13 @@
       document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
     }
-    function step(n) {
-      document.getElementById('step1').classList.add('hidden');
-      if(n === 2) document.getElementById('step2').classList.remove('hidden');
+    function goStep(n) {
+      document.getElementById('step1').style.display = n === 1 ? 'block' : 'none';
+      document.getElementById('step2').style.display = n === 2 ? 'block' : 'none';
+      document.getElementById('step3').style.display = n === 3 ? 'block' : 'none';
       if(n === 3) {
-        document.getElementById('step2').classList.add('hidden');
-        document.getElementById('step3').classList.remove('hidden');
         localStorage.setItem('paid', 'true');
-        document.getElementById('paidMsg').classList.remove('hidden');
+        document.getElementById('confirmText').classList.remove('hidden');
       }
     }
     function faq(btn) {
@@ -225,7 +182,7 @@
       document.getElementById('lang-toggle').innerText = t.btn;
     }
     if(localStorage.getItem('paid')) {
-      document.getElementById('paidMsg').classList.remove('hidden');
+      goStep(3);
     }
   </script></body>
 </html>
