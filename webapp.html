@@ -3,75 +3,211 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VIP Доступ</title>
+  <title>VIP Доступ — Премиум услуги</title>
   <style>
+    :root {
+      --primary-color: #ff2f8b;
+      --background: #111;
+      --block-bg: #1d1d1d;
+    }
     body {
-      background: #111;
+      background: var(--background);
       color: white;
-      font-family: sans-serif;
-      text-align: center;
-      padding: 20px;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      padding-top: 60px;
+    }
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(29, 29, 29, 0.95);
+      padding: 15px;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    .nav-menu {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-menu a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-menu a:hover {
+      color: var(--primary-color);
     }
     h1 {
-      color: #ff2f8b;
+      color: var(--primary-color);
+      margin: 40px 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .block {
+      background: var(--block-bg);
+      padding: 30px;
+      border-radius: 15px;
+      margin: 20px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
     select, button {
-      width: 90%;
-      padding: 12px;
-      margin: 10px auto;
+      width: 100%;
+      padding: 15px;
+      margin: 15px 0;
       font-size: 16px;
       border-radius: 10px;
-      border: none;
+      border: 2px solid transparent;
+      transition: all 0.3s;
     }
     button {
-      background: #ff2f8b;
+      background: var(--primary-color);
       color: white;
       font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
     }
     .hidden { display: none; }
-    .block {
-      background: #1d1d1d;
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .review-card {
+      background: #2a2a2a;
       padding: 20px;
       border-radius: 10px;
-      margin: 20px auto;
-      max-width: 400px;
+      border: 1px solid #333;
+    }
+    .faq-item {
+      margin: 15px 0;
+      border-bottom: 1px solid #333;
+      padding-bottom: 15px;
+    }
+    .contact-info {
+      text-align: center;
+      padding: 40px 0;
+    }
+    .tg-widget {
+      background: #2a2a2a;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
     }
   </style>
 </head>
 <body>
-  <h1>Оформление VIP-доступа</h1>
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li><a href="#main">Главная</a></li>
+      <li><a href="#reviews">Отзывы</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+  </nav>
 
-  <div class="block" id="step1">
-    <select id="plan">
-      <option value="1 день — 200₽">1 день — 200₽</option>
-      <option value="1 месяц — 400₽">1 месяц — 400₽</option>
-      <option value="Навсегда — 600₽">Навсегда — 600₽</option>
-    </select>
-    <button onclick="showStep2()">Перейти к оплате</button>
-  </div>
+  <div class="container">
+    <!-- Основной блок оплаты -->
+    <section id="main" class="block">
+      <h1>🎁 Оформление VIP-доступа</h1>
+      
+      <div id="step1">
+        <select id="plan">
+          <option value="1 день — 200₽">1 день — 200₽</option>
+          <option value="1 месяц — 400₽">1 месяц — 400₽</option>
+          <option value="Навсегда — 600₽">Навсегда — 600₽</option>
+        </select>
+        <button onclick="showStep2()">Перейти к оплате</button>
+      </div>
 
-  <div class="block hidden" id="step2">
-    <p><strong>Реквизиты:</strong><br>Карта: <code>2202 2010 3123 4567</code></p>
-    <p>После оплаты нажмите кнопку ниже:</p>
-    <button onclick="showStep3()">Я оплатил</button>
-  </div>
+      <div class="hidden" id="step2">
+        <p><strong>Реквизиты для оплаты:</strong></p>
+        <div class="tg-widget">
+          <p>💳 Карта: <code>2202 2010 3123 4567</code></p>
+          <p>📌 Получатель: Иван Иванов</p>
+        </div>
+        <button onclick="showStep3()">Я оплатил</button>
+      </div>
 
-  <div class="block hidden" id="step3">
-    <p>✅ Теперь откройте бота и загрузите чек:</p>
-    <a href="https://t.me/Test_vip_TJBot?start=upload" target="_blank">
-      <button>Открыть Telegram-бота</button>
-    </a>
+      <div class="hidden" id="step3">
+        <p>✅ Оплата получена! Теперь:</p>
+        <a href="https://t.me/Test_vip_TJBot?start=upload" target="_blank">
+          <button>Открыть бота для подтверждения</button>
+        </a>
+      </div>
+    </section>
+
+    <!-- Блок отзывов -->
+    <section id="reviews" class="block">
+      <h2>💬 Отзывы клиентов</h2>
+      <div class="reviews">
+        <div class="review-card">
+          <p>⭐️⭐️⭐️⭐️⭐️</p>
+          <p>Лучший сервис! Все быстро и качественно. Поддержка помогла с настройкой.</p>
+          <p>- Алексей, Москва</p>
+        </div>
+        <div class="review-card">
+          <p>⭐️⭐️⭐️⭐️⭐️</p>
+          <p>Пользуюсь три месяца — никаких проблем. Рекомендую!</p>
+          <p>- Мария, СПб</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="block">
+      <h2>❓ Частые вопросы</h2>
+      <div class="faq-item">
+        <h3>Как активируется доступ?</h3>
+        <p>После проверки платежа мы активируем ваш аккаунт в течение 15 минут.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Какие способы оплаты?</h3>
+        <p>Принимаем переводы на карту, Qiwi, Яндекс.Деньги и криптовалюту.</p>
+      </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contacts" class="contact-info block">
+      <h2>📞 Поддержка 24/7</h2>
+      <p>Telegram: <a href="https://t.me/support_vip" style="color: var(--primary-color)">@vip_support</a></p>
+      <p>Email: support@vip-service.ru</p>
+    </section>
   </div>
 
   <script>
     function showStep2() {
       document.getElementById('step1').classList.add('hidden');
       document.getElementById('step2').classList.remove('hidden');
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }
+    
     function showStep3() {
       document.getElementById('step2').classList.add('hidden');
       document.getElementById('step3').classList.remove('hidden');
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }
+
+    // Плавная прокрутка для навигации
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
   </script>
 </body>
 </html>
