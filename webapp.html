@@ -1,176 +1,69 @@
-<!DOCTYPE html><html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>VIP Доступ</title>
   <style>
     body {
-      background: linear-gradient(to bottom, #0c0c0c, #1a1a1a);
-      color: #fff;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #0e0e0e;
-      padding: 20px;
+      background: #111;
+      color: white;
+      font-family: sans-serif;
       text-align: center;
-      font-size: 26px;
-      font-weight: bold;
-      color: #ff2f8b;
-      box-shadow: 0 4px 10px rgba(255, 47, 139, 0.2);
-    }
-    nav {
-      display: flex;
-      justify-content: space-around;
-      background: #191919;
-      padding: 10px 0;
-      border-top: 1px solid #333;
-    }
-    nav button {
-      background: none;
-      border: none;
-      color: #fff;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    section {
       padding: 20px;
-      max-width: 500px;
-      margin: auto;
-      display: none;
     }
-    section.active { display: block; }
-    h2 {
+    h1 {
       color: #ff2f8b;
-      font-size: 20px;
-      margin-top: 30px;
-      border-bottom: 1px solid #333;
-      padding-bottom: 10px;
-    }
-    .preview img {
-      width: 100%;
-      margin: 12px 0;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(255,255,255,0.1);
-    }
-    .review {
-      background: #181818;
-      padding: 14px;
-      margin: 10px 0;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255, 47, 139, 0.05);
     }
     select, button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 14px;
+      width: 90%;
+      padding: 12px;
+      margin: 10px auto;
+      font-size: 16px;
       border-radius: 10px;
       border: none;
-      font-size: 16px;
     }
     button {
       background: #ff2f8b;
       color: white;
       font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    button:hover {
-      background: #e41f76;
     }
     .hidden { display: none; }
-    .step-box {
-      background: #1e1e1e;
-      padding: 20px;
-      border-radius: 14px;
-      margin-top: 20px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.2);
-    }
-    .faq-item {
-      margin: 10px 0;
-    }
-    .faq-item button {
-      background: #2b2b2b;
-      width: 100%;
-      text-align: left;
-      font-weight: normal;
-      font-size: 15px;
-    }
-    .faq-answer {
-      padding: 10px;
+    .block {
       background: #1d1d1d;
+      padding: 20px;
       border-radius: 10px;
-      margin-top: 5px;
-      display: none;
-    }
-    a button {
-      background: #29b6f6;
-    }
-    a button:hover {
-      background: #0fa0db;
+      margin: 20px auto;
+      max-width: 400px;
     }
   </style>
 </head>
 <body>
-  <header>VIP Контент — Доступ к эксклюзиву</header>
-  <nav>
-    <button onclick="showTab('preview')">Предпросмотр</button>
-    <button onclick="showTab('reviews')">Отзывы</button>
-    <button onclick="showTab('payment')">Оплата</button>
-    <button onclick="showTab('faq')">Вопросы</button>
-  </nav>  <section id="preview" class="active">
-    <h2>Предпросмотр контента</h2>
-    <img src="preview1.jpg" alt="Preview 1">
-    <img src="preview2.jpg" alt="Preview 2">
-  </section>  <section id="reviews">
-    <h2>Отзывы</h2>
-    <div class="review">🔥 Очень качественный контент! Спасибо! — @user1</div>
-    <div class="review">❤️ Получил доступ сразу после оплаты — @user2</div>
-    <div class="review">💯 Рекомендую! Не пожалел! — @user3</div>
-  </section>  <section id="payment">
-    <h2>Выберите тариф</h2>
-    <div class="step-box" id="step1">
-      <select id="plan">
-        <option value="1 день — 200₽">1 день — 200₽</option>
-        <option value="1 месяц — 400₽">1 месяц — 400₽</option>
-        <option value="Навсегда — 600₽">Навсегда — 600₽</option>
-      </select>
-      <button onclick="showStep2()">Перейти к оплате</button>
-    </div><div class="step-box hidden" id="step2">
-  <p><strong>Оплатите по реквизитам:</strong></p>
-  <p>Карта: <br><code>2202 2010 3123 4567</code></p>
-  <p>После оплаты нажмите кнопку ниже:</p>
-  <button onclick="showStep3()">Я оплатил</button>
-</div>
+  <h1>Оформление VIP-доступа</h1>
 
-<div class="step-box hidden" id="step3">
-  <p>✅ Отлично! Теперь перейдите в наш Telegram-бот, чтобы загрузить чек и получить доступ:</p>
-  <a href="https://t.me/Test_vip_TJBot?start=upload" target="_blank">
-    <button>Перейти в Telegram-бота</button>
-  </a>
-</div>
+  <div class="block" id="step1">
+    <select id="plan">
+      <option value="1 день — 200₽">1 день — 200₽</option>
+      <option value="1 месяц — 400₽">1 месяц — 400₽</option>
+      <option value="Навсегда — 600₽">Навсегда — 600₽</option>
+    </select>
+    <button onclick="showStep2()">Перейти к оплате</button>
+  </div>
 
-  </section>  <section id="faq">
-    <h2>Часто задаваемые вопросы</h2>
-    <div class="faq-item">
-      <button onclick="toggleFAQ(this)">Как быстро я получу доступ?</button>
-      <div class="faq-answer">Обычно в течение 5–15 минут после отправки чека.</div>
-    </div>
-    <div class="faq-item">
-      <button onclick="toggleFAQ(this)">Что входит в VIP-доступ?</button>
-      <div class="faq-answer">Вы получите эксклюзивный контент, которого нет в открытом доступе.</div>
-    </div>
-    <div class="faq-item">
-      <button onclick="toggleFAQ(this)">Если возникнут проблемы?</button>
-      <div class="faq-answer">Напишите админу через Telegram-бота, мы решим всё быстро.</div>
-    </div>
-  </section>  <script>
-    function showTab(tabId) {
-      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-    }
+  <div class="block hidden" id="step2">
+    <p><strong>Реквизиты:</strong><br>Карта: <code>2202 2010 3123 4567</code></p>
+    <p>После оплаты нажмите кнопку ниже:</p>
+    <button onclick="showStep3()">Я оплатил</button>
+  </div>
+
+  <div class="block hidden" id="step3">
+    <p>✅ Теперь откройте бота и загрузите чек:</p>
+    <a href="https://t.me/Test_vip_TJBot?start=upload" target="_blank">
+      <button>Открыть Telegram-бота</button>
+    </a>
+  </div>
+
+  <script>
     function showStep2() {
       document.getElementById('step1').classList.add('hidden');
       document.getElementById('step2').classList.remove('hidden');
@@ -179,9 +72,6 @@
       document.getElementById('step2').classList.add('hidden');
       document.getElementById('step3').classList.remove('hidden');
     }
-    function toggleFAQ(button) {
-      const answer = button.nextElementSibling;
-      answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-    }
-  </script></body>
+  </script>
+</body>
 </html>
