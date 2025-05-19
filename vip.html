@@ -2,26 +2,35 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>VIP Доступ</title>
-  <style>
-    body { background: #111; color: #fff; font-family: sans-serif; padding: 40px; text-align: center; }
-    .card { background: #1a1a1a; border-radius: 12px; padding: 20px; max-width: 400px; margin: auto; box-shadow: 0 0 12px #ff2f8b; }
-    input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: none; border-radius: 8px; background: #2a2a2a; color: #fff; }
-    button { background: #ff2f8b; border: none; color: white; padding: 12px 20px; border-radius: 10px; font-weight: bold; cursor: pointer; }
-    .notice { font-size: 13px; color: #aaa; margin-top: 12px; }
-  </style>
+  <title>VIP доступ</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="card">
-  <h3>Форма подтверждения оплаты</h3>
-  <form action="send_check.php" method="POST" enctype="multipart/form-data">
-    <input type="text" name="name" placeholder="Имя" required>
-    <input type="text" name="telegram" placeholder="@username" required>
-    <input type="file" name="check_file" accept="image/*,.pdf" required>
-    <textarea name="comment" placeholder="Комментарий (необязательно)"></textarea>
-    <button type="submit">Отправить заявку</button>
-  </form>
-  <p class="notice">После проверки мы свяжемся с вами в Telegram</p>
-</div>
+  <div class="vip-container">
+    <div class="tariff-card" data-months="1">
+      <h3>1 месяц</h3>
+      <p class="price">$9.99</p>
+      <button class="buy-btn">Купить</button>
+    </div>
+    
+    <div class="tariff-card" data-months="3">
+      <h3>3 месяца</h3>
+      <p class="price">$24.99</p>
+      <button class="buy-btn">Купить</button>
+    </div>
+  </div>
+  
+  <div id="payment-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Оплата</h2>
+      <div id="payment-options">
+        <button class="payment-method" data-type="card">💳 Карта</button>
+        <button class="payment-method" data-type="crypto">🪙 Крипта</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="payment.js"></script>
 </body>
 </html>
