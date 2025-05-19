@@ -59,3 +59,50 @@
   </script>
 </body>
 </html>
+
+<script>
+const tg = window.Telegram.WebApp;
+tg.expand();
+
+console.log("Telegram WebApp:", tg);
+
+window.addEventListener("DOMContentLoaded", () => {
+  if (!tg || !tg.sendData) {
+    alert("❌ Ошибка: WebApp не активен. Открой через кнопку в Telegram.");
+    return;
+  }
+
+  try {
+    const user = tg.initDataUnsafe.user;
+    document.getElementById("telegram").value = user?.username
+      ? '@' + user.username
+      : user.first_name || "Без имени";
+  } catch (e) {
+    alert("❌ Telegram WebApp не загрузился.");
+  }
+});
+
+function sendData() {
+  const input = document.getElementById("fileInput");
+  const username = document.getElementById("telegram").value.trim();
+  if (!input.files[0]) return alert("❌ Файл не выбран");
+  if (!username) return alert("❌ Имя не указано");
+
+  const reader = new FileReader();
+  reader.onload = function () {
+    const base64 = reader.result.split(',')[1];
+    try {
+      tg.sendData(JSON.stringify({
+        telegram: username,
+        filename: input.files[0].name,
+        image: base64
+      }));
+      tg.close();
+    } catch (err) {
+      alert("❌ Ошибка при отправке. Открой через Telegram!");
+      console.error(err);
+    }
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+</script>
