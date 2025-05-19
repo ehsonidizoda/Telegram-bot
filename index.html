@@ -1,8 +1,9 @@
-<!DOCTYPE html><html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJALI PETKAHO</title>
+  <title>AJALI PETKAHO VIP</title>
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async="async"></script>
   <script>
     window.OneSignal = window.OneSignal || [];
@@ -45,6 +46,8 @@
       margin-top: 10px;
       box-shadow: 0 0 10px #ff2f8b;
       transition: 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
     }
     .cta-btn:hover {
       background: #e42072;
@@ -56,7 +59,7 @@
     }
     @media (max-width: 480px) {
       .card { padding: 16px; border-radius: 10px; margin: 14px auto; }
-      .cta-btn { padding: 10px 14px; font-size: 14px; border-radius: 8px; width: 100%; box-sizing: border-box; }
+      .cta-btn { padding: 10px 14px; font-size: 14px; border-radius: 8px; }
       .call-to-action p { font-size: 14px; }
       h3 { font-size: 18px; }
       body { padding: 10px; }
@@ -74,18 +77,45 @@
       margin-top: 20px;
       text-shadow: 0 0 8px #ff2f8b;
     }
+    .new-badge {
+      background: #ff2f8b;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .btn-group .cta-btn {
+      width: 50%;
+    }
+    .premium-icon {
+      color: gold;
+      margin-right: 5px;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
   </style>
 </head>
 <body>
 
-<a href="payment.html" class="fixed-vip-btn">💳 VIP-доступ</a>
+<a href="payment.html" class="fixed-vip-btn">💎 VIP-доступ</a>
 
 <style>
 .fixed-vip-btn {
   position: fixed;
   bottom: 15px;
   right: 15px;
-  background: #ff2f8b;
+  background: linear-gradient(45deg, #ff2f8b, #ff6b08);
   color: white;
   padding: 12px 16px;
   border-radius: 50px;
@@ -97,12 +127,13 @@
   transition: 0.3s ease;
 }
 .fixed-vip-btn:hover {
-  background: #e42072;
+  background: linear-gradient(45deg, #e42072, #e05500);
   transform: scale(1.05);
 }
 </style>
 
-<!-- Подтверждение возраста --><script>
+<!-- Подтверждение возраста -->
+<script>
   if (!localStorage.getItem("ageConfirmed")) {
     const agePrompt = confirm("Шумо 18+ ҳастед?");
     if (agePrompt) {
@@ -110,57 +141,139 @@
       setTimeout(() => OneSignal.showSlidedownPrompt(), 5000);
     } else {
       alert("Дастрасӣ маҳдуд аст.");
-      document.body.innerHTML = "<h2>Дастрасӣ танҳо барои 18+</h2>";
+      document.body.innerHTML = "<h2 style='color:#ff2f8b;margin-top:50px;'>Дастрасӣ танҳо барои калонсолон 18+</h2>";
     }
   }
-</script><!-- ВЕРХНЯЯ КАТЕГОРИЯ --><div class="top-category">САҲИФАИ АСОСӢ – AJALI PETKAHO</div><!-- БАННЕР --><div class="card">
+</script>
+
+<!-- ВЕРХНЯЯ КАТЕГОРИЯ -->
+<div class="top-category">VIP КАНАЛҲО – AJALI PETKAHO</div>
+
+<!-- БАННЕР -->
+<div class="card">
   <img src="https://i.ibb.co/SDdnw72f/photo.jpg" alt="18+ контент" style="width: 100%; border-radius: 14px; max-height: 300px; object-fit: cover;">
   <h3>Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун!</h3>
   <div class="call-to-action">
-    <a href="https://t.me/VvediCodBot?start=123" class="cta-btn">🔞 ДОМАШКА ХХХ</a>
-    <a href="https://t.me/+_O5ISU7emQxjZmJi" class="cta-btn">🥵 АЧАЛИ ПЕТКАХО</a>
+    <div class="btn-group">
+      <a href="https://t.me/VvediCodBot?start=123" class="cta-btn">🔞 ДОМАШКА ХХХ</a>
+      <a href="https://t.me/+_O5ISU7emQxjZmJi" class="cta-btn">🥵 АЧАЛИ ПЕТКАХО</a>
+    </div>
     <a href="https://t.me/+KQIAzLQxuXliMDJi" class="cta-btn">🔞 ТОЧИКИ Порно</a>
   </div>
-</div><!-- VIP РАЗДЕЛ --><div class="card" id="vip">
-  <h3>VIP ДОСТУП 🔥</h3>
+</div>
+
+<!-- VIP РАЗДЕЛ -->
+<div class="card" id="vip">
+  <h3 class="section-title"><span class="premium-icon">💎</span> VIP ДОСТУП 🔥</h3>
   <div class="call-to-action">
-    <p>🔥 VIP KANAL – Видеоҳои Точики, САТРДОРО 🧕, Кудакона. Барои дромадан нависен 🔞</p>
+    <p>🔥 <strong>VIP KANAL</strong> – Видеоҳои Точики, САТРДОРО 🧕, Кудакона. Барои дромадан нависен 🔞</p>
     <a href="https://t.me/m/upWS74sOMDc0" class="cta-btn">➡️ АДМИНИСТРАТОР 🔞</a>
-    <p>🔥 VIP KANAL – Видеоҳои САТРДОРО🧕</p>
+    
+    <p>🔥 <strong>VIP KANAL</strong> – Видеоҳои САТРДОРО🧕 <span class="new-badge">NEW</span></p>
     <a href="https://t.me/+j6Ar7wgV9CZhMjEy" class="cta-btn">👉 ВОРИД БА КАНАЛ🔥</a>
+    
+    <p>💫 <strong>EXCLUSIVE CONTENT</strong> – Филмҳои хусусии точикон</p>
+    <a href="https://t.me/+xYz8w9v2u1s3t4r5" class="cta-btn">🌟 ДИДАНИ ЭКСКЛЮЗИВ</a>
   </div>
-</div><!-- КАНАЛҲО --><div class="card" id="kanals">
-  <h3>КАНАЛҲО 🔥</h3>
+</div>
+
+<!-- КАНАЛҲО -->
+<div class="card" id="kanals">
+  <h3 class="section-title">🔥 КАНАЛҲОИ ТОП</h3>
   <div class="call-to-action">
-    <p>📺 ХОДИСА ТВ – Ахбор ва гузоришҳои 18+</p>
+    <p>📺 <strong>ХОДИСА ТВ</strong> – Ахбор ва гузоришҳои 18+</p>
     <a href="https://t.me/+-WmmN-aTwVZlMGEy" class="cta-btn">📺 Ворид шудан</a>
-    <p>🌶 ТОЧИКИ ХХХ – Филмҳои 18+ бо иштироки точикон</p>
+    
+    <p>🌶 <strong>ТОЧИКИ ХХХ</strong> – Филмҳои 18+ бо иштироки точикон</p>
     <a href="https://t.me/+2q3J4US8cXdjMTFi" class="cta-btn">🌶 Дидани контент</a>
-    <p>😱 КУДАКОНА – Контенти маҳрамона барои калонсолон</p>
+    
+    <p>😱 <strong>КУДАКОНА</strong> – Контенти маҳрамона барои калонсолон</p>
     <a href="https://t.me/+w4jDVeVHElMyYzli" class="cta-btn">👉 Ҳоло ҳамроҳ шав 🔞</a>
+    
+    <p>⚡ <strong>TAJIK SEX</strong> – Навтарин видеохои точик <span class="new-badge">HOT</span></p>
+    <a href="https://t.me/+aBcDeFgHiJkLmNoP" class="cta-btn">⚡ ОГОҲӢ ШУДАН</a>
   </div>
-</div><!-- БОТҲО --><div class="card" id="bots">
-  <h3>БОТҲО 🤖</h3>
+</div>
+
+<!-- БОТҲО -->
+<div class="card" id="bots">
+  <h3 class="section-title">🤖 БОТҲОИ ХИДМАТРАСОН</h3>
   <div class="call-to-action">
-    <p>1. Форзона-бот Бот Барои Тамошо видехои 18+</p>
+    <p>1. <strong>Форзона-бот</strong> Бот Барои Тамошо видехои 18+</p>
     <a href="https://t.me/Farzoona_bot?start=" class="cta-btn">🤖 Ворид шудан</a>
-    <p>2. Дар Рушд – Бот 1 барои тарҳрезӣ</p>
-    <a href="#" class="cta-btn">🔧 БОТ ДАР РУШД</a>
-    <p>3. Дар Рушд – Бот 2 барои VIP</p>
-    <a href="#" class="cta-btn">🔧 БОТИ ДУЮМ ДАР РУШД</a>
+    
+    <p>2. <strong>Дар Рушд</strong> – Бот 1 барои тарҳрезӣ</p>
+    <a href="https://t.me/DarRushdBot" class="cta-btn">🔧 БОТ ДАР РУШД</a>
+    
+    <p>3. <strong>Дар Рушд</strong> – Бот 2 барои VIP <span class="new-badge">VIP</span></p>
+    <a href="https://t.me/DarRushdVipBot" class="cta-btn">💎 БОТИ ДУЮМ ДАР РУШД</a>
+    
+    <p>4. <strong>Content Finder</strong> – Ёридоди ёфтани контент</p>
+    <a href="https://t.me/ContentFinderBot" class="cta-btn">🔍 Оғоз кардан</a>
   </div>
-</div><!-- ИНСТАГРАМ --><div class="card" id="insta">
-  <h3>ИНСТАГРАМ 📸</h3>
+</div>
+
+<!-- ИНСТАГРАМ -->
+<div class="card" id="insta">
+  <h3 class="section-title">📸 ИНСТАГРАМ ЧЕННЕЛС</h3>
   <div class="call-to-action">
-    <p>1. Дидани Саҳифа – Петкачаҳои точикӣ</p>
+    <p>1. <strong>Дидани Саҳифа</strong> – Петкачаҳои точикӣ</p>
     <a href="https://instagram.com/ajali_petkaho" class="cta-btn">📸 Дидани Саҳифа</a>
-    <p>2. Instagram Models – Моделҳои Sexy 🔞</p>
+    
+    <p>2. <strong>Instagram Models</strong> – Моделҳои Sexy 🔞 <span class="new-badge">NEW</span></p>
     <a href="https://instagram.com/models_tj" class="cta-btn">📸 Instagram Models</a>
-    <p>3. ВВЕДИКОД TJ – Инфо ва дастрасии платформа</p>
+    
+    <p>3. <strong>ВВЕДИКОД TJ</strong> – Инфо ва дастрасии платформа</p>
     <a href="https://instagram.com/vvedikod_tj" class="cta-btn">📸 ВВЕДИКОД TJ</a>
+    
+    <p>4. <strong>Tajik Beauty</strong> – Зебоиҳои точик</p>
+    <a href="https://instagram.com/tajik_beauty_18" class="cta-btn">🌸 Tajik Beauty</a>
   </div>
-</div><!-- ФУТЕР --><footer>
-  AJALI PETKAHO © 2025 – Ҳамаи ҳуқуқҳо ҳифз шудаанд<br>
-  Instagram: <a href="https://instagram.com/ajali_petkaho" style="color:#ff94d3">@ajali_petka</a>
-</footer></body>
+</div>
+
+<!-- НОВЫЙ РАЗДЕЛ: ТОП ВИДЕО -->
+<div class="card" id="top-videos">
+  <h3 class="section-title">🎬 ТОП ВИДЕОҲОИ ИН ҲАФТА</h3>
+  <div class="call-to-action">
+    <p>1. <strong>Видеои №1</strong> – Беҳтарин клипҳо</p>
+    <a href="https://t.me/+pQrStUvWxYzAbCdE" class="cta-btn">🎥 Дидан</a>
+    
+    <p>2. <strong>Трендҳо</strong> – Видеоҳои виралӣ <span class="new-badge">TRENDING</span></p>
+    <a href="https://t.me/+lMnOpQrStUvWxYzA" class="cta-btn">📈 Трендҳо</a>
+    
+    <p>3. <strong>Эксклюзив</strong> – Танҳо дар ин ҷо</p>
+    <a href="https://t.me/+bCdEfGhIjKlMnOpQ" class="cta-btn">💫 Эксклюзив</a>
+  </div>
+</div>
+
+<!-- ФУТЕР -->
+<footer>
+  AJALI PETKAHO VIP © 2025 – Ҳамаи ҳуқуқҳо ҳифз шудаанд<br>
+  Instagram: <a href="https://instagram.com/ajali_petkaho" style="color:#ff94d3">@ajali_petkaho</a> | 
+  Telegram: <a href="https://t.me/ajali_petkaho" style="color:#ff94d3">@ajali_petkaho</a><br>
+  <small>Истифодаи мӯҳтавои сомона фақат барои шахсони 18+ иҷозат дода шудааст</small>
+</footer>
+
+<!-- Новый скрипт для анимации -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, index) => {
+      card.style.animationDelay = `${index * 0.1}s`;
+    });
+    
+    // Добавляем эффект при наведении на кнопки
+    const buttons = document.querySelectorAll('.cta-btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('mouseenter', function() {
+        this.style.boxShadow = '0 0 15px #ff2f8b';
+      });
+      btn.addEventListener('mouseleave', function() {
+        this.style.boxShadow = '0 0 10px #ff2f8b';
+      });
+    });
+  });
+</script>
+
+</body>
 </html>
