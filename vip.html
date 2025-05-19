@@ -1,69 +1,61 @@
-<!DOCTYPE html><html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Загрузка чека</title>
+  <title>Загрузите чек</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { background: #111; color: white; font-family: sans-serif; text-align: center; padding: 30px; }
-    h2 { color: #fff; }
-    input, button {
-      margin-top: 10px;
-      padding: 12px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-    }
-    #telegram {
-      width: 80%;
-    }
-    #fileInput {
-      background: #fff;
-      color: black;
-    }
-    #submitBtn {
-      background: deeppink;
-      color: white;
-    }
-    #result { margin-top: 20px; }
+    body { background: #111; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
+    input, button { padding: 12px; margin: 10px 0; border-radius: 6px; width: 90%; max-width: 300px; font-size: 16px; }
+    button { background-color: #ff0066; color: white; border: none; }
+    .title { font-size: 24px; margin-bottom: 20px; }
   </style>
 </head>
 <body>
-  <h2>Загрузите чек</h2>
-  <input type="text" id="telegram" placeholder="Ваш Telegram" /><br>
-  <input type="file" id="fileInput" accept="image/*" /><br>
-  <button id="submitBtn" onclick="sendData()">Отправить чек</button>
-  <div id="result"></div>  <script>
+  <div class="title">Загрузите чек</div>
+  <input type="text" id="telegram" placeholder="Ваш Telegram" />
+  <input type="file" id="fileInput" accept="image/*" />
+  <button onclick="sendData()">Отправить чек</button>
+
+  <script>
     const tg = window.Telegram.WebApp;
     tg.expand();
 
-    window.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
       try {
         const user = tg.initDataUnsafe.user;
-        document.getElementById("telegram").value = user?.username ? '@' + user.username : user.first_name;
-      } catch {
-        document.getElementById("result").innerHTML = 'Откройте через Telegram';
+        if (user?.username) {
+          document.getElementById("telegram").value = '@' + user.username;
+        }
+      } catch (e) {
+        alert("❌ Открой через Telegram для загрузки!");
       }
     });
 
     function sendData() {
-      const input = document.getElementById("fileInput");
-      const username = document.getElementById("telegram").value.trim();
+      const fileInput = document.getElementById("fileInput");
+      const telegram = document.getElementById("telegram").value.trim();
 
-      if (!input.files[0]) return alert("❌ Файл не выбран");
-      if (!username) return alert("❌ Укажите Telegram");
+      if (!telegram) return alert("❌ Укажите Telegram!");
+      if (!fileInput.files[0]) return alert("❌ Выберите файл!");
 
       const reader = new FileReader();
       reader.onload = () => {
         const base64 = reader.result.split(',')[1];
-        tg.sendData(JSON.stringify({
-          telegram: username,
-          filename: input.files[0].name,
+        const payload = {
+          telegram,
+          filename: fileInput.files[0].name,
           image: base64
-        }));
-        document.getElementById("result").innerHTML = '✅ Чек отправлен!';
-        setTimeout(() => tg.close(), 1500);
+        };
+        try {
+          tg.sendData(JSON.stringify(payload));
+          tg.close();
+        } catch (e) {
+          alert("❌ Ошибка при отправке. Откройте через Telegram!");
+        }
       };
-      reader.readAsDataURL(input.files[0]);
+      reader.readAsDataURL(fileInput.files[0]);
     }
-  </script></body>
+  </script>
+</body>
 </html>
