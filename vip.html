@@ -1,36 +1,169 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>VIP доступ</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP доступ | AJALI PETKAHO</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .vip-card {
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 2px solid #ff2f8b;
+        }
+
+        .price-tag {
+            font-size: 2.5em;
+            color: #ff2f8b;
+            margin: 15px 0;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            padding: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .payment-buttons {
+            display: grid;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .payment-btn {
+            background: #ff2f8b;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: transform 0.3s;
+        }
+
+        .payment-btn:hover {
+            transform: translateY(-3px);
+        }
+    </style>
 </head>
 <body>
-  <div class="vip-container">
-    <div class="tariff-card" data-months="1">
-      <h3>1 месяц</h3>
-      <p class="price">$9.99</p>
-      <button class="buy-btn">Купить</button>
-    </div>
-    
-    <div class="tariff-card" data-months="3">
-      <h3>3 месяца</h3>
-      <p class="price">$24.99</p>
-      <button class="buy-btn">Купить</button>
-    </div>
-  </div>
-  
-  <div id="payment-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Оплата</h2>
-      <div id="payment-options">
-        <button class="payment-method" data-type="card">💳 Карта</button>
-        <button class="payment-method" data-type="crypto">🪙 Крипта</button>
-      </div>
-    </div>
-  </div>
+    <div class="container">
+        <div class="vip-card">
+            <h1>VIP ДОСТУП</h1>
+            <div class="price-tag">$9.99/мес</div>
+            
+            <ul class="features-list">
+                <li>✓ Закрытый канал с эксклюзивом</li>
+                <li>✓ Персональные видео по запросу</li>
+                <li>✓ Доступ к архиву 18+</li>
+                <li>✓ Приватный чат с моделями</li>
+            </ul>
 
-  <script src="payment.js"></script>
+            <div class="payment-buttons">
+                <button class="payment-btn" onclick="handlePayment('card')">
+                    💳 Оплатить картой
+                </button>
+                
+                <button class="payment-btn" onclick="handlePayment('crypto')">
+                    ₿ Криптовалюта
+                </button>
+                
+                <button class="payment-btn" onclick="handleTelegramPayment()">
+                    📲 Оплатить через Telegram
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        
+        // Инициализация Telegram Web App
+        tg.expand();
+        tg.enableClosingConfirmation();
+
+        // Обработка платежей
+        async function handlePayment(method) {
+            if(method === 'telegram') {
+                handleTelegramPayment();
+                return;
+            }
+
+            const paymentData = {
+                method,
+                amount: 9.99,
+                currency: 'USD'
+            };
+
+            try {
+                const response = await fetch('/api/create-payment', {
+                    method: 'POST',
+                    body: JSON.stringify(paymentData)
+                });
+                
+                if(method === 'card') {
+                    window.location.href = response.url;
+                } else {
+                    showCryptoAddress(response.address);
+                }
+            } catch (error) {
+                showError('Ошибка платежа');
+            }
+        }
+
+        // Интеграция с Telegram Payments
+        function handleTelegramPayment() {
+            tg.sendData(JSON.stringify({
+                method: "invoice",
+                params: {
+                    title: "VIP доступ",
+                    description: "Подписка на 1 месяц",
+                    currency: "USD",
+                    prices: [{ label: "VIP", amount: "999" }],
+                    payload: JSON.stringify({
+                        userId: tg.initDataUnsafe.user?.id,
+                        type: "vip_subscription"
+                    })
+                }
+            }));
+        }
+
+        tg.onEvent('invoiceClosed', (event) => {
+            if(event.status === 'paid') {
+                grantVipAccess(tg.initDataUnsafe.user.id);
+                tg.showAlert('✅ Оплата прошла успешно!');
+                tg.close();
+            }
+        });
+
+        // Выдача доступа
+        async function grantVipAccess(userId) {
+            try {
+                await fetch(`/api/grant-access?userId=${userId}`);
+                localStorage.setItem('vipStatus', 'active');
+            } catch (error) {
+                console.error('Ошибка выдачи доступа:', error);
+            }
+        }
+    </script>
 </body>
 </html>
+
