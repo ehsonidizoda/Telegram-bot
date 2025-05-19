@@ -2,62 +2,108 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VIP Доступ</title>
+  <title>VIP Центр</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
+    * { box-sizing: border-box; }
     body {
       background: #111;
       color: white;
       font-family: sans-serif;
-      padding: 20px;
-      text-align: center;
+      margin: 0;
+      padding: 0;
     }
-    h2 { color: #ff2f8b; }
-    input, button, select {
-      width: 90%;
-      margin: 10px auto;
+    header {
+      background: #1a1a1a;
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #ff2f8b;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav {
+      display: flex;
+      justify-content: space-around;
+      background: #222;
+      padding: 10px 0;
+      border-top: 1px solid #333;
+    }
+    nav button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    section {
+      display: none;
+      padding: 20px;
+    }
+    section.active {
+      display: block;
+    }
+    input, select, button {
+      width: 100%;
+      margin-top: 10px;
       padding: 12px;
       border-radius: 10px;
       border: none;
       font-size: 16px;
     }
-    button {
+    button.submit {
       background: #ff2f8b;
       color: white;
       font-weight: bold;
-      cursor: pointer;
+      margin-top: 20px;
     }
-    .section {
-      margin-top: 30px;
+    .preview-img {
+      width: 100%;
+      margin: 15px 0;
+      border-radius: 10px;
+    }
+    .review {
+      background: #1d1d1d;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
-  <div id="main">
-    <h2>Оформление VIP доступа</h2><div class="section">
-  <p>Выберите тариф:</p>
-  <select id="plan">
-    <option value="1 день — 200₽">1 день — 200₽</option>
-    <option value="1 месяц — 400₽">1 месяц — 400₽</option>
-    <option value="Навсегда — 600₽">Навсегда — 600₽</option>
-  </select>
-</div>
+  <header>VIP Центр</header>
+  <nav>
+    <button onclick="showSection('form')">Оформление</button>
+    <button onclick="showSection('preview')">Предпросмотр</button>
+    <button onclick="showSection('reviews')">Отзывы</button>
+  </nav>  <section id="form" class="active">
+    <h2>Оформление доступа</h2>
+    <select id="plan">
+      <option value="1 день — 200₽">1 день — 200₽</option>
+      <option value="1 месяц — 400₽">1 месяц — 400₽</option>
+      <option value="Навсегда — 600₽">Навсегда — 600₽</option>
+    </select>
+    <input type="text" id="telegram" placeholder="@username">
+    <input type="file" id="screenshot" accept="image/*">
+    <button class="submit" onclick="submitForm()">Отправить заявку</button>
+  </section>  <section id="preview">
+    <h2>Предпросмотр</h2>
+    <img class="preview-img" src="preview1.jpg" alt="Preview 1">
+    <img class="preview-img" src="preview2.jpg" alt="Preview 2">
+  </section>  <section id="reviews">
+    <h2>Отзывы</h2>
+    <div class="review">🔥 Очень крутой контент, спасибо! @user1</div>
+    <div class="review">❤️ Всё получил сразу после оплаты! @user2</div>
+    <div class="review">💯 Рекомендую всем друзьям! @user3</div>
+  </section>  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
 
-<div class="section">
-  <p>Укажите ваш Telegram:</p>
-  <input type="text" id="telegram" placeholder="@username">
-</div>
-
-<div class="section">
-  <p>Загрузите чек оплаты:</p>
-  <input type="file" id="screenshot" accept="image/*">
-</div>
-
-<div class="section">
-  <button onclick="submitForm()">Отправить заявку</button>
-</div>
-
-  </div>  <script>
     function isTelegramWebApp() {
       return typeof Telegram !== "undefined" && Telegram.WebApp && Telegram.WebApp.initDataUnsafe;
     }
