@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Загрузка чека</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    input, button {
+      width: 90%;
+      margin: 12px 0;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: none;
+    }
+    button {
+      background: #ff2f8b;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Загрузите чек</h2>
+  <input type="text" id="telegram" placeholder="@ваш_телеграм" />
+  <input type="file" id="file" accept="image/*" />
+  <button onclick="sendData()">Отправить чек</button>
+
+  <script>
+    function sendData() {
+      const tg = document.getElementById("telegram").value;
+      const fileInput = document.getElementById("file").files[0];
+      if (!tg || !fileInput) {
+        alert("Заполните все поля!");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64 = reader.result.split(',')[1];
+        Telegram.WebApp.sendData(JSON.stringify({
+          telegram: tg,
+          filename: fileInput.name,
+          image: base64
+        }));
+        Telegram.WebApp.close();
+      };
+      reader.readAsDataURL(fileInput);
+    }
+
+    Telegram.WebApp.ready();
+  </script>
+</body>
+</html>
