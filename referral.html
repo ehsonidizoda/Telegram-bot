@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <title>Партнёрская система</title>
+</head>
+<body style="background:#111; color:white; text-align:center; font-family:sans-serif;">
+  <h2>Партнёрская ссылка</h2>
+  <button onclick="getLink()">Получить ссылку</button>
+  <script>
+    function getLink() {
+      Telegram.WebApp.sendData(JSON.stringify({ action: 'referral' }));
+      Telegram.WebApp.close();
+    }
+  </script>
+</body>
+</html>
+
+<script>
+  function isTelegramWebApp() {
+    return typeof Telegram !== "undefined" &&
+           Telegram.WebApp &&
+           Telegram.WebApp.initDataUnsafe;
+  }
+
+  if (!isTelegramWebApp()) {
+    document.body.innerHTML = `
+      <div style="text-align:center; padding:30px; color:white;">
+        <h2>Откройте через Telegram</h2>
+        <a href="https://t.me/Test_vip_TJBot?startapp" style="color:#ff2f8b; font-size:18px;">Запустить бота</a>
+      </div>
+    `;
+  } else {
+    Telegram.WebApp.ready();
+  }
+</script>
