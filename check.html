@@ -2,23 +2,29 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Загрузка чека</title>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
     body {
-      background: #111;
+      background: #0c0c0c;
       color: white;
       font-family: sans-serif;
       text-align: center;
       padding: 20px;
     }
     input, button {
+      display: block;
       width: 90%;
-      margin: 12px 0;
-      padding: 14px;
+      max-width: 400px;
+      margin: 12px auto;
+      padding: 12px;
       font-size: 16px;
-      border-radius: 10px;
       border: none;
+      border-radius: 10px;
+    }
+    input[type="file"] {
+      background: #222;
+      color: #aaa;
     }
     button {
       background: #ff2f8b;
@@ -30,33 +36,43 @@
 </head>
 <body>
   <h2>Загрузите чек</h2>
-  <input type="text" id="telegram" placeholder="@ваш_телеграм" />
-  <input type="file" id="file" accept="image/*" />
+
+  <input type="text" id="telegram" placeholder="@username или имя" />
+  <input type="file" id="fileInput" accept="image/*" />
   <button onclick="sendData()">Отправить чек</button>
 
   <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    // Автозаполнение username
+    window.addEventListener("DOMContentLoaded", () => {
+      const user = tg.initDataUnsafe.user;
+      const username = user?.username;
+      const fullName = [user.first_name, user.last_name].filter(Boolean).join(" ");
+      document.getElementById("telegram").value = username ? '@' + username : fullName + " (без username)";
+    });
+
     function sendData() {
-      const tg = document.getElementById("telegram").value;
-      const fileInput = document.getElementById("file").files[0];
-      if (!tg || !fileInput) {
-        alert("Заполните все поля!");
-        return;
-      }
+      const input = document.getElementById("fileInput");
+      const username = document.getElementById("telegram").value.trim();
+
+      if (!input.files[0]) return alert("Пожалуйста, выберите файл.");
+      if (!username) return alert("Введите Telegram или имя.");
 
       const reader = new FileReader();
-      reader.onload = () => {
-        const base64 = reader.result.split(',')[1];
-        Telegram.WebApp.sendData(JSON.stringify({
-          telegram: tg,
-          filename: fileInput.name,
-          image: base64
-        }));
-        Telegram.WebApp.close();
+      reader.onload = function () {
+        const base64Image = reader.result.split(',')[1]; // убираем data:image/...;base64,
+        const payload = {
+          telegram: username,
+          filename: input.files[0].name,
+          image: base64Image
+        };
+        tg.sendData(JSON.stringify(payload));
+        tg.close();
       };
-      reader.readAsDataURL(fileInput);
+      reader.readAsDataURL(input.files[0]);
     }
-
-    Telegram.WebApp.ready();
   </script>
 </body>
 </html>
