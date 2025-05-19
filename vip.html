@@ -1,28 +1,161 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>VIP Доступ 18+</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оформить доступ</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #111;
+      color: white;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255, 0, 100, 0.5);
+    }
+    h1 {
+      text-align: center;
+      color: #ff2f8b;
+    }
+    .preview {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .description {
+      font-size: 1em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .tariffs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+    .tariff {
+      padding: 10px 15px;
+      border: 2px solid #ff2f8b;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .tariff:hover, .tariff.active {
+      background: #ff2f8b;
+      color: white;
+    }
+    .button {
+      display: block;
+      width: 100%;
+      background: #ff2f8b;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+    .form-block {
+      margin-top: 30px;
+    }
+    .form-block input, .form-block label {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .form-block input[type="text"] {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+    .form-block input[type="file"] {
+      color: white;
+    }
+    .telegram-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .telegram-link a {
+      color: #29b6f6;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .reviews {
+      margin-top: 30px;
+    }
+    .review {
+      background: #2a2a2a;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
-  <h1>VIP доступ к контенту 18+</h1>
-  <p>Оплатите доступ и получите эксклюзивную ссылку!</p>
-  <button id="pay-btn">Оплатить</button>
-  <div id="result"></div>
-  
-  <script>
-    document.getElementById('pay-btn').onclick = function() {
-      // Отправляем запрос на ваш сервер для инициализации платежа
-      fetch('/pay', { method: 'POST' })
-        .then(res => res.json())
-        .then(data => {
-          if (data.confirmation_url) {
-            window.location.href = data.confirmation_url; // Перенаправляем на ЮKassa
-          } else {
-            document.getElementById('result').innerText = 'Ошибка оплаты';
-          }
+  <div class="container">
+    <h1>Оформить доступ</h1>
+    <img src="preview.jpg" class="preview" alt="Предпросмотр">
+    <div class="description">
+      Получите доступ к эксклюзивному контенту прямо сейчас!
+    </div><div class="tariffs">
+  <div class="tariff">1 день — 200₽</div>
+  <div class="tariff">1 месяц — 400₽</div>
+  <div class="tariff">Навсегда — 600₽</div>
+</div>
+
+<div class="form-block">
+  <h3>Уже оплатили? Отправьте чек</h3>
+  <form id="paymentForm">
+    <label for="telegram">Ваш Telegram @username</label>
+    <input type="text" id="telegram" name="telegram" placeholder="@example" required>
+
+    <label for="screenshot">Загрузите чек</label>
+    <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
+
+    <button type="submit" class="button">Отправить заявку</button>
+  </form>
+</div>
+
+<div class="telegram-link">
+  <p>Есть вопросы? <a href="https://t.me/ajali_support">Напишите в Telegram</a></p>
+</div>
+
+<div class="reviews">
+  <h3>Отзывы</h3>
+  <div class="review">🔥 Очень крутой контент, спасибо! @user1</div>
+  <div class="review">❤️ Всё получил сразу после оплаты! @user2</div>
+  <div class="review">💯 Рекомендую! @user3</div>
+</div>
+
+  </div>  <script>
+    const form = document.getElementById('paymentForm');
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const telegram = document.getElementById('telegram').value;
+      const file = document.getElementById('screenshot').files[0];
+
+      const formData = new FormData();
+      formData.append('telegram', telegram);
+      formData.append('screenshot', file);
+
+      try {
+        await fetch('http://localhost:8000/receive', {
+          method: 'POST',
+          body: formData
         });
-    };
-  </script>
-</body>
+        alert('Заявка отправлена!');
+        form.reset();
+      } catch (err) {
+        alert('Ошибка отправки: ' + err.message);
+      }
+    });
+  </script></body>
 </html>
