@@ -1,65 +1,111 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Оплата VIP-доступа</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оформить доступ</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
       background: #111;
       color: white;
-      font-family: sans-serif;
-      text-align: center;
-      padding: 30px;
-    }
-    .card {
-      background: #1a1a1a;
-      border-radius: 10px;
       padding: 20px;
-      max-width: 420px;
-      margin: auto;
-      box-shadow: 0 0 10px #ff2f8b;
     }
-    select, input, button, textarea {
-      width: 90%;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 8px;
-      background: #2a2a2a;
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255, 0, 100, 0.5);
+    }
+    h1 {
+      text-align: center;
+      color: #ff2f8b;
+    }
+    .preview {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .description {
+      font-size: 1em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .tariffs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+    .tariff {
+      padding: 10px 15px;
+      border: 2px solid #ff2f8b;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .tariff:hover, .tariff.active {
+      background: #ff2f8b;
       color: white;
     }
-    button {
+    .button {
+      display: block;
+      width: 100%;
       background: #ff2f8b;
-      font-weight: bold;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
       cursor: pointer;
+      margin-bottom: 15px;
     }
-    button:hover {
-      background: #e42072;
+    .reviews {
+      margin-top: 30px;
     }
-    .notice {
-      font-size: 13px;
-      color: #aaa;
-      margin-top: 12px;
+    .review {
+      background: #2a2a2a;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .telegram-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .telegram-link a {
+      color: #29b6f6;
+      text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h2>Оплата VIP-доступа</h2>
-    <form action="send_check.php" method="POST" enctype="multipart/form-data">
-      <select name="tariff" required>
-        <option value="">Выберите тариф</option>
-        <option value="1 день / 200₽">1 день / 200₽</option>
-        <option value="1 месяц / 400₽">1 месяц / 400₽</option>
-        <option value="Навсегда / 600₽">Навсегда / 600₽</option>
-      </select>
-      <input type="text" name="name" placeholder="Ваше имя" required>
-      <input type="text" name="telegram" placeholder="@ваш_телеграм" required>
-      <input type="file" name="check_file" accept="image/*,.pdf" required>
-      <textarea name="comment" placeholder="Комментарий (необязательно)"></textarea>
-      <button type="submit">Отправить чек</button>
-    </form>
-    <p class="notice">После проверки админ свяжется с вами в Telegram.</p>
+  <div class="container">
+    <h1>Оформить доступ</h1>
+    <img src="preview.jpg" class="preview" alt="Предпросмотр">
+    <div class="description">
+      Получите доступ к эксклюзивному контенту прямо сейчас!
+    </div><div class="tariffs">
+  <div class="tariff">1 день — 200₽</div>
+  <div class="tariff">1 месяц — 400₽</div>
+  <div class="tariff">Навсегда — 600₽</div>
+</div>
+
+<button class="button">Оплатить</button>
+<div class="telegram-link">
+  <p>Есть вопросы? <a href="https://t.me/ajali_support">Напишите в Telegram</a></p>
+</div>
+
+<div class="reviews">
+  <h3>Отзывы</h3>
+  <div class="review">🔥 Очень крутой контент, спасибо! @user1</div>
+  <div class="review">❤️ Всё получил сразу после оплаты! @user2</div>
+  <div class="review">💯 Рекомендую! @user3</div>
+</div>
+
   </div>
 </body>
 </html>
