@@ -147,7 +147,7 @@
       formData.append('screenshot', file);
 
       try {
-        await fetch('http://localhost:8000/receive', {
+        await fetch('http://192.168.223.2:8000/receive', {
           method: 'POST',
           body: formData
         });
