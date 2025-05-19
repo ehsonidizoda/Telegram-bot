@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -59,3 +58,22 @@
   </script>
 </body>
 </html>
+
+<script>
+  function isTelegramWebApp() {
+    return typeof Telegram !== "undefined" &&
+           Telegram.WebApp &&
+           Telegram.WebApp.initDataUnsafe;
+  }
+
+  if (!isTelegramWebApp()) {
+    document.body.innerHTML = `
+      <div style="text-align:center; padding:30px; color:white;">
+        <h2>Откройте через Telegram</h2>
+        <a href="https://t.me/Test_vip_TJBot?startapp" style="color:#ff2f8b; font-size:18px;">Запустить бота</a>
+      </div>
+    `;
+  } else {
+    Telegram.WebApp.ready();
+  }
+</script>
