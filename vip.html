@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,6 +20,11 @@
       border-radius: 8px;
       cursor: pointer;
       margin-top: 10px;
+      transition: opacity 0.3s;
+    }
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
     .hidden { display: none; }
     .progress {
@@ -33,6 +39,7 @@
       background: lime;
       width: 33%;
       border-radius: 5px;
+      transition: width 0.3s;
     }
     .preview {
       margin-top: 20px;
@@ -42,49 +49,128 @@
       border-radius: 10px;
       margin-right: 10px;
     }
+    .file-input {
+      margin: 15px 0;
+    }
+    .file-input input {
+      color: white;
+    }
+    #status {
+      color: #ff0080;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
   <h2>Оформление VIP-доступа</h2>
-  <div class="progress"><div class="bar" id="progress"></div></div>  <p>Выберите тариф и оплатите на указанные реквизиты:</p>  <div>
-    <button class="btn" onclick="selectPlan('1 день')">1 день — 200₽</button>
-    <button class="btn" onclick="selectPlan('1 месяц')">1 месяц — 400₽</button>
-    <button class="btn" onclick="selectPlan('Навсегда')">Навсегда — 600₽</button>
-  </div>  <div class="preview">
+  <div class="progress">
+    <div class="bar" id="progress"></div>
+  </div>
+
+  <div id="planSelection">
+    <p>Выберите тариф и оплатите на указанные реквизиты:</p>
+    <div>
+      <button class="btn" onclick="selectPlan('1 день')">1 день — 200₽</button>
+      <button class="btn" onclick="selectPlan('1 месяц')">1 месяц — 400₽</button>
+      <button class="btn" onclick="selectPlan('Навсегда')">Навсегда — 600₽</button>
+    </div>
+  </div>
+
+  <div class="preview">
     <h3>Превью:</h3>
     <img src="https://via.placeholder.com/100" alt="Preview 1">
     <img src="https://via.placeholder.com/100" alt="Preview 2">
-  </div>  <div id="payment" class="hidden">
+  </div>
+
+  <div id="payment" class="hidden">
     <p>Карта для оплаты: <code>1234 5678 9012 3456</code></p>
-    <button class="btn" onclick="stepConfirm()">Я оплатил</button>
-  </div>  <div id="confirmBox" class="hidden">
+    <div class="file-input">
+      <input type="file" id="receipt" accept="image/*, .pdf" required>
+      <p style="font-size: 12px; color: #888;">Загрузите скриншот или фото чека</p>
+    </div>
+    <button class="btn" onclick="stepConfirm()" id="confirmBtn">Я оплатил</button>
+    <div id="status"></div>
+  </div>
+
+  <div id="confirmBox" class="hidden">
     <p>✅ Оплата зафиксирована. Загрузка чека...</p>
     <p>Окно закроется через <span id="countdown">5</span> сек.</p>
-  </div>  <script>
+  </div>
+
+  <script>
     const tg = window.Telegram.WebApp;
     tg.expand();
+    let selectedPlan = null;
+    let receiptFile = null;
+
+    document.getElementById('receipt').addEventListener('change', function(e) {
+      receiptFile = e.target.files[0];
+    });
 
     function selectPlan(plan) {
-      localStorage.setItem('vip_plan', plan);
+      selectedPlan = plan;
+      document.getElementById('planSelection').classList.add('hidden');
       document.getElementById('payment').classList.remove('hidden');
       document.getElementById('progress').style.width = '66%';
-      tg.sendData(JSON.stringify({ selected_plan: plan }));
     }
 
-    function stepConfirm() {
+    async function stepConfirm() {
+      const btn = document.getElementById('confirmBtn');
+      const status = document.getElementById('status');
+      
+      if (!receiptFile) {
+        status.textContent = '❌ Пожалуйста, загрузите чек!';
+        return;
+      }
+
+      btn.disabled = true;
+      status.textContent = 'Отправка данных...';
+
+      try {
+        // Создаем FormData для отправки файла
+        const formData = new FormData();
+        formData.append('plan', selectedPlan);
+        formData.append('receipt', receiptFile);
+        formData.append('user', tg.initDataUnsafe.user?.id || 'unknown');
+
+        // Отправка данных в бэкенд
+        const response = await fetch('YOUR_BACKEND_ENDPOINT', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (!response.ok) throw new Error('Ошибка отправки');
+
+        // Отправка данных в Telegram
+        tg.sendData(JSON.stringify({
+          plan: selectedPlan,
+          user: tg.initDataUnsafe.user,
+          receipt: true
+        }));
+
+        showConfirmation();
+      } catch (error) {
+        status.textContent = '❌ Ошибка отправки, попробуйте снова';
+        btn.disabled = false;
+      }
+    }
+
+    function showConfirmation() {
+      document.getElementById('payment').classList.add('hidden');
       document.getElementById('confirmBox').classList.remove('hidden');
       document.getElementById('progress').style.width = '100%';
+
       let counter = 5;
       const countdown = document.getElementById('countdown');
-
       const interval = setInterval(() => {
         counter--;
-        countdown.innerText = counter;
+        countdown.textContent = counter;
         if (counter <= 0) {
           clearInterval(interval);
           tg.close();
         }
       }, 1000);
     }
-  </script></body>
+  </script>
+</body>
 </html>
