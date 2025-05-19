@@ -1,8 +1,9 @@
-<!-- vip.html / webapp.html --><!DOCTYPE html><html lang="ru">
+
+<!DOCTYPE html><html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Оформление VIP-доступа</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { background: #111; color: white; font-family: sans-serif; margin: 0; padding: 20px; }
     .step { display: none; }
@@ -27,11 +28,8 @@
     <p>Карта для оплаты: <b>1234 5678 9012 3456 (Тест)</b></p>
     <button class="btn" onclick="nextStep(3)">Я оплатил</button>
   </div>  <div class="step" id="step3">
-    <p>Переход в Telegram-бота для загрузки чека:</p>
-    <a href="https://t.me/Test_vip_TJBot?start=upload">
-      <button class="btn">Загрузить чек</button>
-    </a>
-    <p id="timer"></p>
+    <p>Сейчас вы перейдёте к загрузке чека:</p>
+    <button class="btn" onclick="redirectToUpload()">Загрузить чек</button>
   </div>  <script>
     const steps = document.querySelectorAll('.step');
     const progress = document.getElementById('progress');
@@ -45,19 +43,14 @@
         const plan = document.getElementById('plan').value;
         localStorage.setItem('tarif', plan);
       }
+    }
 
-      if (step === 3) {
-        let sec = 30;
-        const timer = document.getElementById('timer');
-        timer.textContent = `Окно закроется через ${sec} сек.`;
-        const countdown = setInterval(() => {
-          sec--;
-          timer.textContent = `Окно закроется через ${sec} сек.`;
-          if (sec <= 0) {
-            clearInterval(countdown);
-            window.location.href = 'https://t.me/Test_vip_TJBot?start=upload';
-          }
-        }, 1000);
+    function redirectToUpload() {
+      const tg = window.Telegram.WebApp;
+      if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
+        window.location.href = 'https://ajalipetkaho.ru/check.html';
+      } else {
+        window.location.href = 'https://t.me/Test_vip_TJBot?start=upload';
       }
     }
 
