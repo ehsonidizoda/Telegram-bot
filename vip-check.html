@@ -1,36 +1,165 @@
-<!DOCTYPE html>
-<html>
+
+<!DOCTYPE html><html lang="ru">
 <head>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <title>Проверка доступа</title>
-</head>
-<body style="background:#111; color:white; text-align:center; font-family:sans-serif;">
-  <h2>Проверить VIP-доступ</h2>
-  <button onclick="check()">Проверить</button>
-  <script>
-    function check() {
-      Telegram.WebApp.sendData(JSON.stringify({ action: 'vip_check' }));
-      Telegram.WebApp.close();
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оплата VIP</title>
+  <style>
+    body {
+      background: linear-gradient(145deg, #0c0c0c, #1a1a1a);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 20px;
+      animation: fadeIn 1s ease;
     }
-  </script>
-</body>
+    .button {
+      display: inline-block;
+      padding: 14px 22px;
+      font-size: 16px;
+      font-weight: bold;
+      background: #ff2f8b;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+    }
+    .button:hover {
+      background: #e41b72;
+      transform: scale(1.05);
+    }
+    .lang-toggle {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background: #222;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .progress-bar {
+      width: 90%;
+      max-width: 400px;
+      height: 12px;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px auto;
+    }
+    .progress {
+      height: 100%;
+      width: 75%;
+      background: limegreen;
+      transition: width 0.3s ease;
+    }
+    .tariff-option {
+      background: #222;
+      margin: 10px auto;
+      padding: 10px;
+      max-width: 300px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .tariff-option.selected {
+      border: 2px solid #ff2f8b;
+      background: #2a2a2a;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>  <h1 id="title">Оформление VIP-доступа</h1>
+  <div class="progress-bar"><div class="progress"></div></div>  <p id="desc">Выберите тариф и оплатите на указанные реквизиты.</p>  <h2 id="tariffs">Тарифы:</h2>
+  <div id="tariffList">
+    <div class="tariff-option" onclick="selectTariff(this, '1day')">1 день — 200₽</div>
+    <div class="tariff-option" onclick="selectTariff(this, '1month')">1 месяц — 400₽</div>
+    <div class="tariff-option" onclick="selectTariff(this, 'forever')">Навсегда — 600₽</div>
+  </div>  <h2 id="payinfo">Реквизиты:</h2>
+  <p id="card">Карта: 1234 5678 9012 3456 (Тест)</p><button class="button" id="payBtn" onclick="confirmPayment()">Я оплатил</button>
+
+  <h3 style="margin-top:30px" id="afterpay">После оплаты:</h3>
+  <p id="instruction">Нажмите кнопку ниже, чтобы загрузить чек и получить доступ:</p>  <a href="https://t.me/Test_vip_TJBot?start=upload" target="_blank">
+    <button class="button" id="openbot">Перейти в Telegram-бот</button>
+  </a>  <div class="lang-toggle" onclick="toggleLang()">Тоҷикӣ</div>  <script>
+    let lang = 'ru';
+    const msg = {
+      ru: {
+        title: "Оформление VIP-доступа",
+        desc: "Выберите тариф и оплатите на указанные реквизиты.",
+        tariffs: "Тарифы:",
+        payinfo: "Реквизиты:",
+        card: "Карта: 1234 5678 9012 3456 (Тест)",
+        paid: "✅ Оплата зафиксирована. Закрытие через ",
+        afterpay: "После оплаты:",
+        instruction: "Нажмите кнопку ниже, чтобы загрузить чек и получить доступ:",
+        openbot: "Перейти в Telegram-бот",
+        langbtn: "Тоҷикӣ"
+      },
+      tj: {
+        title: "Пардохти VIP-дастрасӣ",
+        desc: "Нархи тарифро интихоб кунед ва ба корти зерин пардохт намоед.",
+        tariffs: "Тарифҳо:",
+        payinfo: "Маълумоти пардохт:",
+        card: "Корт: 1234 5678 9012 3456 (Тест)",
+        paid: "✅ Пардохт қабул шуд. Бастан пас аз ",
+        afterpay: "Пас аз пардохт:",
+        instruction: "Тугмаро зер кунед то чеки худро бор намоед ва дастрасӣ гиред:",
+        openbot: "Кушодани Telegram-бот",
+        langbtn: "Русский"
+      }
+    };
+
+    function toggleLang() {
+      lang = lang === 'ru' ? 'tj' : 'ru';
+      const t = msg[lang];
+      document.getElementById("title").innerText = t.title;
+      document.getElementById("desc").innerText = t.desc;
+      document.getElementById("tariffs").innerText = t.tariffs;
+      document.getElementById("payinfo").innerText = t.payinfo;
+      document.getElementById("card").innerText = t.card;
+      document.getElementById("afterpay").innerText = t.afterpay;
+      document.getElementById("instruction").innerText = t.instruction;
+      document.getElementById("openbot").innerText = t.openbot;
+      document.querySelector(".lang-toggle").innerText = t.langbtn;
+    }
+
+    // сохранение тарифа
+    function selectTariff(el, value) {
+      localStorage.setItem("tariff_plan", value);
+      document.querySelectorAll(".tariff-option").forEach(e => e.classList.remove("selected"));
+      el.classList.add("selected");
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const saved = localStorage.getItem("tariff_plan");
+      if (saved) {
+        const target = [...document.querySelectorAll(".tariff-option")].find(div => div.onclick.toString().includes(saved));
+        if (target) target.classList.add("selected");
+      }
+    });
+
+    // таймер перед закрытием (для красоты)
+    function confirmPayment() {
+      let seconds = 5;
+      const btn = document.getElementById("payBtn");
+      btn.disabled = true;
+      const t = msg[lang].paid;
+      const countdown = setInterval(() => {
+        btn.innerText = `${t}${seconds} сек...`;
+        seconds--;
+        if (seconds < 0) {
+          clearInterval(countdown);
+          btn.innerText = t;
+          btn.disabled = false;
+          document.getElementById("openbot").scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 1000);
+    }
+  </script></body>
 </html>
-
-<script>
-  function isTelegramWebApp() {
-    return typeof Telegram !== "undefined" &&
-           Telegram.WebApp &&
-           Telegram.WebApp.initDataUnsafe;
-  }
-
-  if (!isTelegramWebApp()) {
-    document.body.innerHTML = `
-      <div style="text-align:center; padding:30px; color:white;">
-        <h2>Откройте через Telegram</h2>
-        <a href="https://t.me/Test_vip_TJBot?startapp" style="color:#ff2f8b; font-size:18px;">Запустить бота</a>
-      </div>
-    `;
-  } else {
-    Telegram.WebApp.ready();
-  }
-</script>
