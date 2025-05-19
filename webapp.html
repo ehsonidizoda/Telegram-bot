@@ -1,60 +1,98 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Доступ</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <title>Оформить доступ</title>
   <style>
-    body { background: #111; color: white; font-family: sans-serif; padding: 20px; text-align: center; }
-    input, button { width: 90%; margin: 10px auto; padding: 12px; border-radius: 10px; border: none; }
-    button { background: #ff2f8b; color: white; font-weight: bold; cursor: pointer; }
+    body {
+      background: #111;
+      color: white;
+      font-family: sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+    h2 { color: #ff2f8b; }
+    input, button, select {
+      width: 90%;
+      margin: 10px auto;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+    button {
+      background: #ff2f8b;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .section {
+      margin-top: 30px;
+    }
   </style>
 </head>
 <body>
-  <h2>Загрузите чек</h2>
-  <input type="text" id="telegram" placeholder="@username" required>
-  <input type="file" id="screenshot" accept="image/*" required>
-  <button onclick="submit()">Отправить</button>
+  <div id="main">
+    <h2>Оформление VIP доступа</h2><div class="section">
+  <p>Выберите тариф:</p>
+  <select id="plan">
+    <option value="1 день — 200₽">1 день — 200₽</option>
+    <option value="1 месяц — 400₽">1 месяц — 400₽</option>
+    <option value="Навсегда — 600₽">Навсегда — 600₽</option>
+  </select>
+</div>
 
-  <script>
-    function submit() {
-      if (!(window.Telegram && Telegram.WebApp && Telegram.WebApp.initData)) {
-        alert('Откройте через Telegram');
-        return;
-      }
+<div class="section">
+  <p>Укажите ваш Telegram:</p>
+  <input type="text" id="telegram" placeholder="@username">
+</div>
 
+<div class="section">
+  <p>Загрузите чек оплаты:</p>
+  <input type="file" id="screenshot" accept="image/*">
+</div>
+
+<div class="section">
+  <button onclick="submitForm()">Отправить заявку</button>
+</div>
+
+  </div>  <script>
+    function isTelegramWebApp() {
+      return typeof Telegram !== "undefined" && Telegram.WebApp && Telegram.WebApp.initDataUnsafe;
+    }
+
+    if (!isTelegramWebApp()) {
+      document.body.innerHTML = `
+        <div style="text-align:center; padding:30px; color:white;">
+          <h2>Откройте через Telegram</h2>
+          <a href="https://t.me/Test_vip_TJBot?startapp" style="color:#ff2f8b; font-size:18px;">Запустить бота</a>
+        </div>
+      `;
+    } else {
+      Telegram.WebApp.ready();
+    }
+
+    function submitForm() {
       const telegram = document.getElementById('telegram').value;
       const file = document.getElementById('screenshot').files[0];
-      if (!telegram || !file) return alert('Заполните все поля');
+      const plan = document.getElementById('plan').value;
+
+      if (!telegram || !file || !plan) return alert("Заполните все поля!");
 
       const reader = new FileReader();
       reader.onload = () => {
         const base64 = reader.result.split(',')[1];
-        Telegram.WebApp.sendData(JSON.stringify({ action: 'check', telegram, filename: file.name, image: base64 }));
+        Telegram.WebApp.sendData(JSON.stringify({
+          action: "check",
+          telegram: telegram,
+          plan: plan,
+          filename: file.name,
+          image: base64
+        }));
         Telegram.WebApp.close();
       };
       reader.readAsDataURL(file);
     }
-  </script>
-</body>
+  </script></body>
 </html>
-
-<script>
-  function isTelegramWebApp() {
-    return typeof Telegram !== "undefined" &&
-           Telegram.WebApp &&
-           Telegram.WebApp.initDataUnsafe;
-  }
-
-  if (!isTelegramWebApp()) {
-    document.body.innerHTML = `
-      <div style="text-align:center; padding:30px; color:white;">
-        <h2>Откройте через Telegram</h2>
-        <a href="https://t.me/Test_vip_TJBot?startapp" style="color:#ff2f8b; font-size:18px;">Запустить бота</a>
-      </div>
-    `;
-  } else {
-    Telegram.WebApp.ready();
-  }
-</script>
