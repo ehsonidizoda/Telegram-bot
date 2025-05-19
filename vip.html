@@ -1,61 +1,69 @@
-
 <!DOCTYPE html><html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Оформление VIP-доступа</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Загрузка чека</title>
   <style>
-    body { background: #111; color: white; font-family: sans-serif; margin: 0; padding: 20px; }
-    .step { display: none; }
-    .active { display: block; }
-    .btn { background: #ff007f; border: none; padding: 12px 20px; font-size: 16px; margin-top: 10px; color: white; cursor: pointer; border-radius: 10px; }
-    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-    .bar { height: 10px; background: lime; border-radius: 5px; transition: 0.5s; }
-    select, option { font-size: 16px; padding: 5px; }
+    body { background: #111; color: white; font-family: sans-serif; text-align: center; padding: 30px; }
+    h2 { color: #fff; }
+    input, button {
+      margin-top: 10px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+    }
+    #telegram {
+      width: 80%;
+    }
+    #fileInput {
+      background: #fff;
+      color: black;
+    }
+    #submitBtn {
+      background: deeppink;
+      color: white;
+    }
+    #result { margin-top: 20px; }
   </style>
 </head>
 <body>
-  <h1>Оформление VIP-доступа</h1>
-  <div class="bar" id="progress" style="width: 0%"></div>  <div class="step active" id="step1">
-    <p>Выберите тариф и оплатите:</p>
-    <select id="plan">
-      <option value="1 день">1 день — 200₽</option>
-      <option value="1 месяц">1 месяц — 400₽</option>
-      <option value="Навсегда">Навсегда — 600₽</option>
-    </select>
-    <button class="btn" onclick="nextStep(2)">Продолжить</button>
-  </div>  <div class="step" id="step2">
-    <p>Карта для оплаты: <b>1234 5678 9012 3456 (Тест)</b></p>
-    <button class="btn" onclick="nextStep(3)">Я оплатил</button>
-  </div>  <div class="step" id="step3">
-    <p>Сейчас вы перейдёте к загрузке чека:</p>
-    <button class="btn" onclick="redirectToUpload()">Загрузить чек</button>
-  </div>  <script>
-    const steps = document.querySelectorAll('.step');
-    const progress = document.getElementById('progress');
-    let selectedPlan = localStorage.getItem('tarif');
+  <h2>Загрузите чек</h2>
+  <input type="text" id="telegram" placeholder="Ваш Telegram" /><br>
+  <input type="file" id="fileInput" accept="image/*" /><br>
+  <button id="submitBtn" onclick="sendData()">Отправить чек</button>
+  <div id="result"></div>  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
 
-    function nextStep(step) {
-      steps.forEach((s, i) => s.classList.toggle('active', i === step - 1));
-      progress.style.width = (step * 33.3) + '%';
-
-      if (step === 2) {
-        const plan = document.getElementById('plan').value;
-        localStorage.setItem('tarif', plan);
+    window.addEventListener("DOMContentLoaded", () => {
+      try {
+        const user = tg.initDataUnsafe.user;
+        document.getElementById("telegram").value = user?.username ? '@' + user.username : user.first_name;
+      } catch {
+        document.getElementById("result").innerHTML = 'Откройте через Telegram';
       }
-    }
+    });
 
-    function redirectToUpload() {
-      const tg = window.Telegram.WebApp;
-      if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
-        window.location.href = 'https://ajalipetkaho.ru/check.html';
-      } else {
-        window.location.href = 'https://t.me/Test_vip_TJBot?start=upload';
-      }
-    }
+    function sendData() {
+      const input = document.getElementById("fileInput");
+      const username = document.getElementById("telegram").value.trim();
 
-    if (selectedPlan) {
-      document.getElementById('plan').value = selectedPlan;
+      if (!input.files[0]) return alert("❌ Файл не выбран");
+      if (!username) return alert("❌ Укажите Telegram");
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64 = reader.result.split(',')[1];
+        tg.sendData(JSON.stringify({
+          telegram: username,
+          filename: input.files[0].name,
+          image: base64
+        }));
+        document.getElementById("result").innerHTML = '✅ Чек отправлен!';
+        setTimeout(() => tg.close(), 1500);
+      };
+      reader.readAsDataURL(input.files[0]);
     }
   </script></body>
 </html>
