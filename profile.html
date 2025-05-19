@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <title>Профиль</title>
+</head>
+<body style="background:#111; color:white; text-align:center; font-family:sans-serif;">
+  <h2>Ваш профиль</h2>
+  <button onclick="send()">Обновить данные</button>
+  <script>
+    function send() {
+      Telegram.WebApp.sendData(JSON.stringify({ action: 'profile_request' }));
+      Telegram.WebApp.close();
+    }
+  </script>
+</body>
+</html>
