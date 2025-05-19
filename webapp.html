@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <title>Оформить доступ</title>
+  <style>
+    body { background: #111; color: white; font-family: sans-serif; padding: 20px; text-align: center; }
+    input, button { width: 90%; margin: 10px auto; padding: 12px; border-radius: 10px; border: none; }
+    button { background: #ff2f8b; color: white; font-weight: bold; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>Загрузите чек</h2>
+  <input type="text" id="telegram" placeholder="@username" required>
+  <input type="file" id="screenshot" accept="image/*" required>
+  <button onclick="submit()">Отправить</button>
+
+  <script>
+    function submit() {
+      if (!(window.Telegram && Telegram.WebApp && Telegram.WebApp.initData)) {
+        alert('Откройте через Telegram');
+        return;
+      }
+
+      const telegram = document.getElementById('telegram').value;
+      const file = document.getElementById('screenshot').files[0];
+      if (!telegram || !file) return alert('Заполните все поля');
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64 = reader.result.split(',')[1];
+        Telegram.WebApp.sendData(JSON.stringify({ action: 'check', telegram, filename: file.name, image: base64 }));
+        Telegram.WebApp.close();
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+</body>
+</html>
