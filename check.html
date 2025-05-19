@@ -194,3 +194,41 @@
   </script>
 </body>
 </html>
+
+<script>
+  const tg = window.Telegram.WebApp;
+  tg.expand();
+
+  window.addEventListener("DOMContentLoaded", () => {
+    try {
+      const user = tg.initDataUnsafe.user;
+      document.getElementById("telegram").value = user?.username ? '@' + user.username : user.first_name;
+    } catch (e) {
+      alert("❌ Telegram WebApp не инициализировался.\nОткрой через бота!");
+    }
+  });
+
+  function sendData() {
+    const input = document.getElementById("fileInput");
+    const username = document.getElementById("telegram").value.trim();
+
+    if (!input.files[0]) return alert("❌ Файл не выбран");
+    if (!username) return alert("❌ Имя не указано");
+
+    const reader = new FileReader();
+    reader.onload = function () {
+      const base64 = reader.result.split(',')[1];
+      try {
+        tg.sendData(JSON.stringify({
+          telegram: username,
+          filename: input.files[0].name,
+          image: base64
+        }));
+        tg.close();
+      } catch (e) {
+        alert("❌ Не удалось отправить. Открой через Telegram!");
+      }
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+</script>
