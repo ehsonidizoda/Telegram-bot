@@ -4,113 +4,135 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VIP Доступ</title>
   <style>
+    :root {
+      --main-color: #ff2f8b;
+      --bg-dark: #0c0c0c;
+      --bg-soft: #1a1a1a;
+      --text: #fff;
+    }
+    * {
+      box-sizing: border-box;
+    }
     body {
-      background: linear-gradient(to bottom, #0c0c0c, #1a1a1a);
-      color: #fff;
+      background: var(--bg-dark);
+      color: var(--text);
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
     header {
-      background: #0e0e0e;
-      padding: 20px;
+      background: linear-gradient(90deg, #ff2f8b, #ff71a0);
+      padding: 24px;
       text-align: center;
-      font-size: 26px;
+      font-size: 28px;
       font-weight: bold;
-      color: #ff2f8b;
+      color: white;
+      text-shadow: 0 0 8px rgba(255,255,255,0.3);
     }
     nav {
       display: flex;
       justify-content: center;
-      gap: 15px;
-      background: #191919;
-      padding: 10px;
+      gap: 14px;
+      background: #111;
+      padding: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
     }
     nav button {
-      background: #2a2a2a;
+      background: #1f1f1f;
       color: white;
       border: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      cursor: pointer;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-size: 15px;
       font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
     }
     nav button:hover {
-      background: #ff2f8b;
+      background: var(--main-color);
+      transform: scale(1.05);
+      box-shadow: 0 0 10px var(--main-color);
     }
-    .section {
+    section {
       display: none;
       padding: 20px;
       max-width: 500px;
       margin: auto;
     }
-    .section.active {
+    section.active {
       display: block;
-      animation: fadeIn 0.5s ease-in-out;
+      animation: fadeIn 0.6s ease-in-out;
     }
     h2 {
-      color: #ff2f8b;
-      border-bottom: 1px solid #444;
-      padding-bottom: 10px;
+      color: var(--main-color);
+      font-size: 22px;
+      border-bottom: 1px solid #333;
+      margin-bottom: 16px;
     }
     .preview img {
       width: 100%;
-      border-radius: 10px;
-      margin-bottom: 12px;
+      margin: 10px 0;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(255,255,255,0.1);
+      transition: transform 0.4s;
+    }
+    .preview img:hover {
+      transform: scale(1.03);
     }
     .review {
-      background: #1e1e1e;
-      padding: 12px;
-      border-radius: 10px;
-      margin: 10px 0;
+      background: linear-gradient(145deg, #202020, #151515);
+      padding: 16px;
+      margin: 12px 0;
+      border-radius: 14px;
+      box-shadow: 0 0 15px rgba(255,47,139,0.15);
     }
-    .faq-group button {
+    select, button, input {
       width: 100%;
-      text-align: left;
-      padding: 10px;
-      background: #2b2b2b;
-      color: white;
+      padding: 14px;
+      margin: 12px 0;
+      border-radius: 12px;
       border: none;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
-    .faq-answer {
-      display: none;
-      background: #1d1d1d;
-      padding: 10px;
-      border-radius: 10px;
-    }
-    select, button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
       font-size: 16px;
-      border-radius: 10px;
-      border: none;
     }
     button {
-      background: #ff2f8b;
+      background: var(--main-color);
       color: white;
       font-weight: bold;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
-    .hidden { display: none; }
-    .vip-panel {
-      background: #222;
-      padding: 15px;
+    button:hover {
+      background: #e72073;
+      box-shadow: 0 0 12px var(--main-color);
+    }
+    .faq button {
+      background: #1d1d1d;
+      margin-top: 10px;
+      text-align: left;
+    }
+    .faq-answer {
+      background: #111;
+      padding: 10px;
+      margin-top: 5px;
       border-radius: 10px;
-      margin-top: 20px;
-      border: 1px solid #444;
+      display: none;
     }
-    #language-switcher {
+    .vip-panel {
+      background: #1b1b1b;
+      padding: 16px;
+      border-radius: 14px;
+      margin-top: 20px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.05);
+    }
+    #lang-toggle {
       position: fixed;
-      bottom: 10px;
-      right: 10px;
+      bottom: 14px;
+      right: 14px;
       background: #222;
-      border: 1px solid #444;
-      padding: 8px 14px;
+      padding: 10px 16px;
       border-radius: 20px;
-      font-size: 14px;
+      font-weight: bold;
       cursor: pointer;
     }
     @keyframes fadeIn {
@@ -122,110 +144,88 @@
 <body>
   <header id="title">VIP Доступ</header>
   <nav>
-    <button onclick="showSection('preview')">Предпросмотр</button>
-    <button onclick="showSection('reviews')">Отзывы</button>
-    <button onclick="showSection('payment')">Оплата</button>
-    <button onclick="showSection('faq')">FAQ</button>
-  </nav>  <div id="preview" class="section active">
-    <h2 id="previewTitle">Предпросмотр контента</h2>
+    <button onclick="show('preview')">Предпросмотр</button>
+    <button onclick="show('reviews')">Отзывы</button>
+    <button onclick="show('payment')">Оплата</button>
+    <button onclick="show('faq')">FAQ</button>
+  </nav>  <section id="preview" class="active">
+    <h2 id="t1">Предпросмотр контента</h2>
     <div class="preview">
-      <img src="preview1.jpg" alt="Preview 1" />
-      <img src="preview2.jpg" alt="Preview 2" />
+      <img src="preview1.jpg" alt="Preview 1">
+      <img src="preview2.jpg" alt="Preview 2">
     </div>
-  </div>  <div id="reviews" class="section">
-    <h2 id="reviewTitle">Отзывы</h2>
-    <div class="review">🔥 Очень качественно! — @user1</div>
-    <div class="review">❤️ Быстрая активация — @user2</div>
-    <div class="review">💯 Топ, советую всем! — @user3</div>
-  </div>  <div id="payment" class="section">
-    <h2 id="paymentTitle">Оплата</h2>
-    <div id="alreadySent" class="vip-panel hidden">✅ Вы уже отправили чек. Ожидайте подтверждение!</div>
+  </section>  <section id="reviews">
+    <h2 id="t2">Отзывы</h2>
+    <div class="review">🔥 Очень крутой контент — @user1</div>
+    <div class="review">❤️ Оплатил — сразу получил — @user2</div>
+    <div class="review">💯 Рекомендую всем! — @user3</div>
+  </section>  <section id="payment">
+    <h2 id="t3">Оплата</h2>
+    <div id="paidMsg" class="vip-panel hidden">✅ Чек уже отправлен. Ожидайте подтверждение!</div>
     <div class="vip-panel" id="step1">
-      <select id="plan">
-        <option value="1d">1 день — 200₽</option>
-        <option value="1m">1 месяц — 400₽</option>
-        <option value="forever">Навсегда — 600₽</option>
+      <select>
+        <option>1 день — 200₽</option>
+        <option>1 месяц — 400₽</option>
+        <option>Навсегда — 600₽</option>
       </select>
-      <button onclick="nextStep()">Продолжить</button>
+      <button onclick="step(2)">Продолжить</button>
     </div>
     <div class="vip-panel hidden" id="step2">
-      <p>Реквизиты: <code>2202 2010 3123 4567</code></p>
-      <button onclick="nextStep(true)">Я оплатил</button>
+      <p>Карта для оплаты: <code>2202 2010 3123 4567</code></p>
+      <button onclick="step(3)">Я оплатил</button>
     </div>
     <div class="vip-panel hidden" id="step3">
-      <p>✅ Перейдите в Telegram-бота:</p>
+      <p>Перейдите в Telegram-бота и загрузите чек:</p>
       <a href="https://t.me/Test_vip_TJBot?start=upload" target="_blank">
         <button>Загрузить чек</button>
       </a>
     </div>
-  </div>  <div id="faq" class="section">
-    <h2 id="faqTitle">Часто задаваемые вопросы</h2>
-    <div class="faq-group">
-      <button onclick="toggleAnswer(this)">Сколько ждать после оплаты?</button>
-      <div class="faq-answer">Обычно 5–15 минут. Иногда быстрее.</div><button onclick="toggleAnswer(this)">Что входит в VIP?</button>
-  <div class="faq-answer">Эксклюзивный фото/видео контент.</div>
-
-  <button onclick="toggleAnswer(this)">Как связаться с поддержкой?</button>
-  <div class="faq-answer">Через Telegram-бота. Кнопка внизу.</div>
-</div>
-
-  </div>  <div id="language-switcher" onclick="switchLang()">Тоҷикӣ</div>  <script>
-    let currentLang = 'ru';
-
-    const translations = {
-      ru: {
-        title: "VIP Доступ",
-        previewTitle: "Предпросмотр контента",
-        reviewTitle: "Отзывы",
-        paymentTitle: "Оплата",
-        faqTitle: "Часто задаваемые вопросы",
-        switch: "Тоҷикӣ"
-      },
-      tj: {
-        title: "Дастрасии VIP",
-        previewTitle: "Намоиши пешакӣ",
-        reviewTitle: "Шарҳҳо",
-        paymentTitle: "Пардохт",
-        faqTitle: "Саволҳои зиёд",
-        switch: "Русский"
-      }
+  </section>  <section id="faq">
+    <h2 id="t4">Часто задаваемые вопросы</h2>
+    <div class="faq">
+      <button onclick="faq(this)">Сколько ждать после оплаты?</button>
+      <div class="faq-answer">Обычно 5–10 минут, максимум 1 час.</div>
+      <button onclick="faq(this)">Что входит в VIP?</button>
+      <div class="faq-answer">Фото/видео контент, закрытые ссылки и обновления.</div>
+      <button onclick="faq(this)">Как связаться с поддержкой?</button>
+      <div class="faq-answer">Через Telegram-бота внизу есть кнопка.</div>
+    </div>
+  </section>  <div id="lang-toggle" onclick="switchLang()">Тоҷикӣ</div>  <script>
+    let lang = 'ru';
+    const texts = {
+      ru: { title: 'VIP Доступ', t1: 'Предпросмотр контента', t2: 'Отзывы', t3: 'Оплата', t4: 'Часто задаваемые вопросы', btn: 'Тоҷикӣ' },
+      tj: { title: 'Дастрасии VIP', t1: 'Намоиши пешакӣ', t2: 'Шарҳҳо', t3: 'Пардохт', t4: 'Саволҳои зиёд', btn: 'Русский' }
     };
-
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+    function show(id) {
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
     }
-
-    function nextStep(skip=false) {
-      if (!skip) {
-        document.getElementById('step1').classList.add('hidden');
-        document.getElementById('step2').classList.remove('hidden');
-      } else {
+    function step(n) {
+      document.getElementById('step1').classList.add('hidden');
+      if(n === 2) document.getElementById('step2').classList.remove('hidden');
+      if(n === 3) {
         document.getElementById('step2').classList.add('hidden');
         document.getElementById('step3').classList.remove('hidden');
         localStorage.setItem('paid', 'true');
-        document.getElementById('alreadySent').classList.remove('hidden');
+        document.getElementById('paidMsg').classList.remove('hidden');
       }
     }
-
-    function toggleAnswer(btn) {
-      const answer = btn.nextElementSibling;
-      answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+    function faq(btn) {
+      const next = btn.nextElementSibling;
+      next.style.display = next.style.display === 'block' ? 'none' : 'block';
     }
-
     function switchLang() {
-      currentLang = currentLang === 'ru' ? 'tj' : 'ru';
-      const t = translations[currentLang];
+      lang = lang === 'ru' ? 'tj' : 'ru';
+      const t = texts[lang];
       document.getElementById('title').innerText = t.title;
-      document.getElementById('previewTitle').innerText = t.previewTitle;
-      document.getElementById('reviewTitle').innerText = t.reviewTitle;
-      document.getElementById('paymentTitle').innerText = t.paymentTitle;
-      document.getElementById('faqTitle').innerText = t.faqTitle;
-      document.getElementById('language-switcher').innerText = t.switch;
+      document.getElementById('t1').innerText = t.t1;
+      document.getElementById('t2').innerText = t.t2;
+      document.getElementById('t3').innerText = t.t3;
+      document.getElementById('t4').innerText = t.t4;
+      document.getElementById('lang-toggle').innerText = t.btn;
     }
-
-    if (localStorage.getItem('paid')) {
-      document.getElementById('alreadySent').classList.remove('hidden');
+    if(localStorage.getItem('paid')) {
+      document.getElementById('paidMsg').classList.remove('hidden');
     }
   </script></body>
 </html>
