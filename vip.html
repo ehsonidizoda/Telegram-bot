@@ -1,79 +1,70 @@
 <!DOCTYPE html><html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Оформление VIP-доступа</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIP доступ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #111;
-      color: #fff;
-      font-family: sans-serif;
-      padding: 20px;
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #0d0d0d;
+      color: white;
+      text-align: center;
     }
-    .section {
-      margin-bottom: 30px;
+    .container {
+      padding: 30px 20px;
     }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #f07;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    .hidden { display: none; }
-    .progress-bar {
-      width: 100%;
-      background-color: #333;
-      border-radius: 10px;
-      margin: 20px 0;
+    h1 {
+      color: white;
+      font-size: 24px;
     }
     .progress {
+      width: 80%;
       height: 10px;
-      background-color: lime;
+      background: #333;
       border-radius: 10px;
-      width: 0%;
-      transition: width 0.5s ease;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 100%;
+      background: lime;
+      transition: width 0.3s;
+    }
+    p {
+      font-size: 16px;
+    }
+    button {
+      background: #ff007f;
+      color: white;
+      border: none;
+      padding: 14px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+    button:hover {
+      background: #e60073;
     }
   </style>
 </head>
-<body>  <h1>Оформление VIP-доступа</h1>
-  <div class="progress-bar"><div id="progress" class="progress"></div></div>  <div class="section" id="step1">
-    <p>Выберите тариф:</p>
-    <select id="plan">
-      <option value="1 день">1 день — 200₽</option>
-      <option value="1 месяц">1 месяц — 400₽</option>
-      <option value="навсегда">Навсегда — 600₽</option>
-    </select>
-    <button onclick="goStep(2)">Продолжить</button>
-  </div>  <div class="section hidden" id="step2">
-    <p>Карта для оплаты: <code>1234 5678 9012 3456</code></p>
-    <button onclick="goStep(3)">Я оплатил</button>
-  </div>  <div class="section hidden" id="step3">
-    <p>Перейдите в Telegram-бота и загрузите чек:</p>
-    <a id="uploadBtn" href="" target="_blank">
-      <button>Загрузить чек</button>
-    </a>
-  </div>  <script>
-    function goStep(step) {
-      document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
-      document.getElementById('step' + step).classList.remove('hidden');
-      document.getElementById('progress').style.width = step * 33 + '%';
-
-      if (step === 3) {
-        const plan = document.getElementById('plan').value;
-        const url = `https://t.me/Test_vip_TJBot?start=upload_${encodeURIComponent(plan)}`;
-        document.getElementById('uploadBtn').href = url;
-        localStorage.setItem('vip_plan', plan);
-      }
-    }
-
-    // Восстановление сохранённого плана
-    window.addEventListener('DOMContentLoaded', () => {
-      const saved = localStorage.getItem('vip_plan');
-      if (saved) document.getElementById('plan').value = saved;
-    });
-  </script></body>
+<body>
+  <div class="container">
+    <h1>Оформление VIP-доступа</h1>
+    <div class="progress">
+      <div class="progress-bar"></div>
+    </div>
+    <p>Загрузите чек, чтобы подтвердить оплату и получить доступ:</p>
+    <button onclick="window.Telegram.WebApp.openLink('https://ajalipetkaho.ru/check.html')">
+      Выбрать и отправить чек
+    </button>
+  </div>
+  <script>
+    window.Telegram.WebApp.ready();
+  </script>
+</body>
 </html>
