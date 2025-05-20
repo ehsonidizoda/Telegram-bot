@@ -2,82 +2,52 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>VIP доступ</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оформление VIP-доступа</title>
   <style>
     body {
       background: #111;
       color: white;
-      font-family: sans-serif;
-      padding: 20px;
+      font-family: Arial, sans-serif;
       text-align: center;
+      padding: 30px;
     }
     h1 {
-      color: #ff0080;
+      color: #ff007f;
+      margin-bottom: 30px;
     }
-    .tariff {
-      background: #1a1a1a;
-      border-radius: 10px;
+    button {
+      display: block;
+      width: 90%;
+      max-width: 300px;
+      margin: 15px auto;
       padding: 15px;
-      margin: 15px 0;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .tariff:hover {
-      background: #222;
-    }
-    .btn {
-      background: #ff0080;
-      color: white;
-      border: none;
-      padding: 15px 30px;
+      font-size: 18px;
       border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 20px;
+      border: none;
+      background: #222;
+      color: white;
     }
-    .loader {
-      margin-top: 15px;
-      display: none;
+    button:hover {
+      background: #ff007f;
     }
   </style>
 </head>
 <body>
-
   <h1>Оформление VIP-доступа</h1>
 
-  <div class="tariff" onclick="selectTariff(200)">1 день — 200₽</div>
-  <div class="tariff" onclick="selectTariff(400)">1 месяц — 400₽</div>
-  <div class="tariff" onclick="selectTariff(600)">Навсегда — 600₽</div>
-
-  <div id="payment-block" style="display:none;">
-    <p>Карта: <code>1234 5678 9012 3456</code></p>
-    <p>Сумма: <span id="amount">---</span></p>
-    <p>Комментарий: <strong id="comment">---</strong></p>
-    <button class="btn" onclick="confirmPayment()">Я оплатил</button>
-    <div id="loader" class="loader">Проверка...</div>
-  </div>
+  <button onclick="selectPlan('1 день — 200₽')">1 день — 200₽</button>
+  <button onclick="selectPlan('1 месяц — 400₽')">1 месяц — 400₽</button>
+  <button onclick="selectPlan('Навсегда — 600₽')">Навсегда — 600₽</button>
 
   <script>
     const tg = window.Telegram.WebApp;
     tg.expand();
-    let selectedPrice = 0;
-    let comment = '';
 
-    function selectTariff(price) {
-      selectedPrice = price;
-      comment = `VIP-${Date.now()}-${tg.initDataUnsafe.user?.id || 'user'}`;
-      document.getElementById('amount').textContent = price + '₽';
-      document.getElementById('comment').textContent = comment;
-      document.getElementById('payment-block').style.display = 'block';
-    }
-
-    function confirmPayment() {
-      document.getElementById('loader').style.display = 'block';
-      setTimeout(() => {
-        tg.sendData(JSON.stringify({ comment: comment }));
-        tg.close();
-      }, 1000);
+    function selectPlan(tariff) {
+      const comment = `vip-${Date.now()}-${tg.initDataUnsafe.user?.id || 'anon'}`;
+      tg.sendData(JSON.stringify({ comment, tariff }));
+      tg.close();
     }
   </script>
 </body>
