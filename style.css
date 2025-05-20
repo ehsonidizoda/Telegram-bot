@@ -252,3 +252,7 @@ nav a {
   animation: fadeIn 1s ease forwards;
   animation-delay: 5s;
 }
+
+.bottom-space {
+  height: 80px;
+}
