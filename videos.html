@@ -1,17 +1,25 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ВИДЕО 18+</title>
+  <title>Ачали Петкахо — Видео</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
+    body { background: #000; color: white; font-family: sans-serif; margin: 0; padding: 0; }
+    header { text-align: center; padding: 20px; background: #111; }
+    header img { max-width: 200px; }
+    .category-title {
+      font-size: 24px;
+      color: #ff2f8b;
+      margin: 20px;
+      text-align: center;
+    }
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 16px;
-      padding: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 0 20px 60px;
     }
     .video-card {
       background: #1a1a1a;
@@ -20,101 +28,78 @@
       box-shadow: 0 0 10px #ff2f8b88;
       position: relative;
     }
-    .video-card iframe {
+    .video-card video {
       width: 100%;
-      height: 180px;
-      object-fit: cover;
+      height: auto;
+      display: block;
     }
     .video-title {
       padding: 10px;
-      color: #fff;
       font-size: 14px;
       text-align: center;
-    }
-    .category-title {
-      margin: 30px 20px 10px;
-      font-size: 20px;
-      color: #ff2f8b;
-      font-weight: bold;
     }
     .video-actions {
       display: flex;
       justify-content: center;
       gap: 20px;
+      padding-bottom: 12px;
       color: #ff2f8b;
-      padding: 8px 0 16px;
-    }
-    .video-actions i {
-      margin-right: 5px;
-    }
-    .locked {
-      filter: blur(3px);
-      pointer-events: none;
     }
     .lock-overlay {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      font-size: 18px;
-      text-align: center;
-      z-index: 2;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: rgba(0, 0, 0, 0.9);
-      padding: 20px;
+      color: white;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      z-index: 10;
+    }
+    .cta-btn {
+      margin-top: 15px;
+      background: #ff2f8b;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
-<body>
-
-  <!-- Логотип и Название -->
-  <header style="text-align: center; margin-bottom: 30px;">
-    <img src="logo.png" alt="Ачали Петкахо" width="250px" />
-  </header>
-
-  <h2 class="category-title">ТОЧИКИ</h2>
-  <div class="video-grid">
-    <!-- Видео 1 -->
-    <div class="video-card">
-      <iframe src="https://streamtape.com/e/6Rxk7Vj4bbc9GVO/" frameborder="0" allowfullscreen></iframe>
-      <div class="video-title">Духтари Душанбе</div>
-      <div class="video-actions">
-        <span class="like-btn"><i class="fas fa-heart"></i> 125</span>
-        <span class="dislike-btn"><i class="fas fa-thumbs-down"></i> 4</span>
-      </div>
-    </div>
-
-    <!-- Видео 2 -->
-    <div class="video-card">
-      <iframe src="https://streamtape.com/e/6Rxk7Vj4bbc9GVO/" frameborder="0" allowfullscreen></iframe>
-      <div class="video-title">Махфӣ 18+</div>
-      <div class="video-actions">
-        <span class="like-btn"><i class="fas fa-heart"></i> 89</span>
-        <span class="dislike-btn"><i class="fas fa-thumbs-down"></i> 2</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Блокировка (5 секунд) для видео -->
-  <div class="locked">
-    <div class="lock-overlay" id="lock">
-      <p>Ин барои 5 сония. Барои идома — обуна шавед</p>
+<body><header>
+  <img src="logo.png" alt="Ачали Петкахо" />
+</header><h2 class="category-title">ТОЧИКИ</h2>
+<div class="video-grid">
+  <div class="video-card">
+    <video id="video1" src="videos/sample1.mp4" controls muted></video>
+    <div class="lock-overlay" id="lock1">
+      <p>Барои идома тамошо — обуна шавед</p>
       <a href="payment.html" class="cta-btn">Обуна шудан</a>
     </div>
+    <div class="video-title">Духтари Душанбе</div>
+    <div class="video-actions">
+      <span><i class="fas fa-heart"></i> 125</span>
+      <span><i class="fas fa-thumbs-down"></i> 4</span>
+    </div>
   </div>
+</div><!-- Назад --><div style="text-align: left; margin: 20px;">
+  <a href="index.html" class="cta-btn">
+    <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Бозгашт
+  </a>
+</div><script>
+  const video = document.getElementById("video1");
+  const lock = document.getElementById("lock1");
 
-  <!-- КНОПКА НАЗАД -->
-  <div style="text-align: left; margin: 30px 20px;">
-    <a href="index.html" class="cta-btn">
-      <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Бозгашт
-    </a>
-  </div>
-
-  <script>
+  video.addEventListener('play', () => {
     setTimeout(() => {
-      document.getElementById("lock").style.display = "flex";
-    }, 5000); // 5 секунд
-  </script>
-
-</body>
+      video.pause();
+      lock.style.display = "flex";
+    }, 5000);
+  });
+</script></body>
 </html>
