@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #111;
+  color: #fff;
+}
+
+.app {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1f1f1f;
+  padding: 10px 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff2f8b;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.video-wrapper {
+  background: #222;
+  border-radius: 12px;
+  padding: 10px;
+  position: relative;
+}
+
+video {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.ad-video {
+  border: 2px solid #ff2f8b;
+}
+
+.main-video {
+  border: 2px solid #444;
+}
