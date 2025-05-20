@@ -2,61 +2,82 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Загрузите чек</title>
+  <title>VIP доступ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { background: #111; color: #fff; font-family: sans-serif; text-align: center; padding: 20px; }
-    input, button { padding: 12px; margin: 10px 0; border-radius: 6px; width: 90%; max-width: 300px; font-size: 16px; }
-    button { background-color: #ff0066; color: white; border: none; }
-    .title { font-size: 24px; margin-bottom: 20px; }
+    body {
+      background: #111;
+      color: white;
+      font-family: sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #ff0080;
+    }
+    .tariff {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 15px 0;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .tariff:hover {
+      background: #222;
+    }
+    .btn {
+      background: #ff0080;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .loader {
+      margin-top: 15px;
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <div class="title">Загрузите чек</div>
-  <input type="text" id="telegram" placeholder="Ваш Telegram" />
-  <input type="file" id="fileInput" accept="image/*" />
-  <button onclick="sendData()">Отправить чек</button>
+
+  <h1>Оформление VIP-доступа</h1>
+
+  <div class="tariff" onclick="selectTariff(200)">1 день — 200₽</div>
+  <div class="tariff" onclick="selectTariff(400)">1 месяц — 400₽</div>
+  <div class="tariff" onclick="selectTariff(600)">Навсегда — 600₽</div>
+
+  <div id="payment-block" style="display:none;">
+    <p>Карта: <code>1234 5678 9012 3456</code></p>
+    <p>Сумма: <span id="amount">---</span></p>
+    <p>Комментарий: <strong id="comment">---</strong></p>
+    <button class="btn" onclick="confirmPayment()">Я оплатил</button>
+    <div id="loader" class="loader">Проверка...</div>
+  </div>
 
   <script>
     const tg = window.Telegram.WebApp;
     tg.expand();
+    let selectedPrice = 0;
+    let comment = '';
 
-    window.addEventListener("DOMContentLoaded", () => {
-      try {
-        const user = tg.initDataUnsafe.user;
-        if (user?.username) {
-          document.getElementById("telegram").value = '@' + user.username;
-        } else {
-          document.getElementById("telegram").value = user?.first_name || '';
-        }
-      } catch (e) {
-        alert("❌ Telegram WebApp не загружен. Открой через Telegram!");
-      }
-    });
+    function selectTariff(price) {
+      selectedPrice = price;
+      comment = `VIP-${Date.now()}-${tg.initDataUnsafe.user?.id || 'user'}`;
+      document.getElementById('amount').textContent = price + '₽';
+      document.getElementById('comment').textContent = comment;
+      document.getElementById('payment-block').style.display = 'block';
+    }
 
-    function sendData() {
-      const input = document.getElementById("fileInput");
-      const username = document.getElementById("telegram").value.trim();
-
-      if (!input.files[0]) return alert("❌ Файл не выбран");
-      if (!username) return alert("❌ Имя не указано");
-
-      const reader = new FileReader();
-      reader.onload = function () {
-        const base64 = reader.result.split(',')[1];
-        try {
-          tg.sendData(JSON.stringify({
-            telegram: username,
-            filename: input.files[0].name,
-            image: base64
-          }));
-          tg.close();
-        } catch (err) {
-          alert("❌ Ошибка при отправке. Открой через Telegram!");
-          console.error(err);
-        }
-      };
-      reader.readAsDataURL(input.files[0]);
+    function confirmPayment() {
+      document.getElementById('loader').style.display = 'block';
+      setTimeout(() => {
+        tg.sendData(JSON.stringify({ comment: comment }));
+        tg.close();
+      }, 1000);
     }
   </script>
 </body>
