@@ -256,3 +256,11 @@ nav a {
 .bottom-space {
   height: 80px;
 }
+
+.cta-btn.disabled {
+  background: #777;
+  color: #ccc;
+  pointer-events: none;
+  cursor: default;
+  box-shadow: none;
+}
