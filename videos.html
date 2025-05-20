@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,7 +20,6 @@
       box-shadow: 0 0 10px #ff2f8b88;
       position: relative;
     }
-    .video-card video,
     .video-card iframe {
       width: 100%;
       height: 180px;
@@ -60,46 +60,61 @@
       font-size: 18px;
       text-align: center;
       z-index: 2;
+      background: rgba(0, 0, 0, 0.9);
+      padding: 20px;
     }
   </style>
 </head>
-<body>  <h2 class="category-title">ТОЧИКИ</h2>
+<body>
+
+  <!-- Логотип и Название -->
+  <header style="text-align: center; margin-bottom: 30px;">
+    <img src="logo.png" alt="Ачали Петкахо" width="250px" />
+  </header>
+
+  <h2 class="category-title">ТОЧИКИ</h2>
   <div class="video-grid">
+    <!-- Видео 1 -->
     <div class="video-card">
-      <video src="videos/sample1.mp4" controls></video>
+      <iframe src="https://streamtape.com/e/6Rxk7Vj4bbc9GVO/" frameborder="0" allowfullscreen></iframe>
       <div class="video-title">Духтари Душанбе</div>
       <div class="video-actions">
         <span class="like-btn"><i class="fas fa-heart"></i> 125</span>
         <span class="dislike-btn"><i class="fas fa-thumbs-down"></i> 4</span>
       </div>
     </div>
+
+    <!-- Видео 2 -->
     <div class="video-card">
-      <video src="videos/sample2.mp4" controls></video>
+      <iframe src="https://streamtape.com/e/6Rxk7Vj4bbc9GVO/" frameborder="0" allowfullscreen></iframe>
       <div class="video-title">Махфӣ 18+</div>
       <div class="video-actions">
         <span class="like-btn"><i class="fas fa-heart"></i> 89</span>
         <span class="dislike-btn"><i class="fas fa-thumbs-down"></i> 2</span>
       </div>
     </div>
-  </div>  <h2 class="category-title">VIP</h2>
-  <div class="video-grid">
-    <div class="video-card locked">
-      <div class="lock-overlay">
-        <i class="fas fa-lock"></i><br> VIP-доступ
-      </div>
-      <video src="videos/vip1.mp4" controls></video>
-      <div class="video-title">VIP Хонадор</div>
+  </div>
+
+  <!-- Блокировка (5 секунд) для видео -->
+  <div class="locked">
+    <div class="lock-overlay" id="lock">
+      <p>Ин барои 5 сония. Барои идома — обуна шавед</p>
+      <a href="payment.html" class="cta-btn">Обуна шудан</a>
     </div>
-    <div class="video-card locked">
-      <div class="lock-overlay">
-        <i class="fas fa-lock"></i><br> VIP-доступ
-      </div>
-      <video src="videos/vip2.mp4" controls></video>
-      <div class="video-title">Сирри Шаб</div>
-    </div>
-  </div>  <!-- КНОПКА НАЗАД -->  <div style="text-align: left; margin: 30px 20px;">
+  </div>
+
+  <!-- КНОПКА НАЗАД -->
+  <div style="text-align: left; margin: 30px 20px;">
     <a href="index.html" class="cta-btn">
       <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Бозгашт
     </a>
-  </div></body>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("lock").style.display = "flex";
+    }, 5000); // 5 секунд
+  </script>
+
+</body>
 </html>
