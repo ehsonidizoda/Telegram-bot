@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Илова кардани Видео</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    .form-box {
+      max-width: 500px;
+      margin: auto;
+      background: #1f1f1f;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #ff2f8b88;
+    }
+    .form-box h2 {
+      margin-bottom: 20px;
+      color: #ff2f8b;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: #2a2a2a;
+      color: #fff;
+    }
+    .cta-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #ff2f8b;
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .cta-btn:hover {
+      background: #e42072;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2><i class="fas fa-upload"></i> Илова кардани Видео</h2>
+    <form>
+      <div class="form-group">
+        <label>Номи Видео</label>
+        <input type="text" placeholder="Мисол: Духтари Душанбе" />
+      </div>
+
+      <div class="form-group">
+        <label>Ссылка (MP4 ё YouTube/Telegram)</label>
+        <input type="text" placeholder="https://..." />
+      </div>
+
+      <div class="form-group">
+        <label>Категория</label>
+        <select>
+          <option>ТОЧИКИ</option>
+          <option>VIP</option>
+          <option>САТРДОР</option>
+          <option>КУДАКОНА</option>
+          <option>ШУХӢ</option>
+          <option>ХАРДКОР</option>
+          <option>ТАНҲОГӢ</option>
+          <option>МЕЛОДИК</option>
+        </select>
+      </div>
+
+      <a href="#" class="cta-btn">Загрузить</a>
+    </form>
+  </div>
+</body>
+</html>
