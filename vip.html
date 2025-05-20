@@ -3,52 +3,223 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Оформление VIP-доступа</title>
+  <title>VIP Access 18+</title>
   <style>
+    :root {
+      --primary: #ff0066;
+      --bg: #1a1a1a;
+      --text: #ffffff;
+    }
+
     body {
-      background: #111;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .age-gate {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .plan-card {
+      background: #2a2a2a;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 15px 0;
+      cursor: pointer;
+      transition: transform 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .plan-card.selected {
+      border-color: var(--primary);
+    }
+
+    .btn {
+      background: var(--primary);
       color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 30px;
-    }
-    h1 {
-      color: #ff007f;
-      margin-bottom: 30px;
-    }
-    button {
-      display: block;
-      width: 90%;
-      max-width: 300px;
-      margin: 15px auto;
-      padding: 15px;
-      font-size: 18px;
+      padding: 15px 30px;
       border-radius: 8px;
       border: none;
-      background: #222;
-      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      max-width: 300px;
+      margin: 20px auto;
+      display: block;
     }
-    button:hover {
-      background: #ff007f;
+
+    .hidden {
+      display: none;
+    }
+
+    .payment-details {
+      background: #2a2a2a;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+
+    .loader {
+      border: 4px solid #333;
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
-  <h1>Оформление VIP-доступа</h1>
+  <!-- Возрастные ворота -->
+  <div class="age-gate" id="ageGate">
+    <h2>ВНИМАНИЕ! Контент 18+</h2>
+    <p>Для доступа необходимо подтвердить совершеннолетие</p>
+    <button class="btn" onclick="confirmAge()">Мне есть 18 лет</button>
+    <button class="btn" onclick="window.close()">Выйти</button>
+  </div>
 
-  <button onclick="selectPlan('1 день — 200₽')">1 день — 200₽</button>
-  <button onclick="selectPlan('1 месяц — 400₽')">1 месяц — 400₽</button>
-  <button onclick="selectPlan('Навсегда — 600₽')">Навсегда — 600₽</button>
+  <!-- Основной интерфейс -->
+  <div class="container" id="mainApp" class="hidden">
+    <h1>🔞 VIP Доступ к закрытому контенту</h1>
+    
+    <!-- Выбор тарифа -->
+    <div id="planSelection">
+      <div class="plan-card" onclick="selectPlan('1d', 200)">
+        <h3>24 часа доступа</h3>
+        <p>▶️ Полный доступ на 1 день</p>
+        <p>🔥 Эксклюзивные материалы</p>
+        <h2>200₽</h2>
+      </div>
+      
+      <div class="plan-card" onclick="selectPlan('1m', 400)">
+        <h3>Месячная подписка</h3>
+        <p>▶️ Доступ на 30 дней</p>
+        <p>🎁 Бонусный контент</p>
+        <h2>400₽</h2>
+      </div>
+      
+      <div class="plan-card" onclick="selectPlan('forever', 600)">
+        <h3>Пожизненный доступ</h3>
+        <p>▶️ Вечный доступ</p>
+        <p>👑 Персональная поддержка</p>
+        <h2>600₽</h2>
+      </div>
+    </div>
+
+    <!-- Платежные реквизиты -->
+    <div id="paymentDetails" class="hidden">
+      <div class="payment-details">
+        <h3>💳 Данные для оплаты</h3>
+        <p>Банк: Тинькофф</p>
+        <p>Номер карты: <code>5536 9138 2357 8542</code></p>
+        <p>Сумма: <span id="paymentAmount">₽</span></p>
+        <p>Комментарий: <strong id="paymentComment"></strong></p>
+        <p style="color: var(--primary);">❗ Обязательно укажите комментарий!</p>
+      </div>
+      
+      <button class="btn" onclick="verifyPayment()">Я оплатил</button>
+      <div id="loader" class="loader hidden"></div>
+      <p id="errorMessage" style="color: #ff4444; display: none;"></p>
+    </div>
+  </div>
 
   <script>
     const tg = window.Telegram.WebApp;
-    tg.expand();
+    let selectedPlan = null;
+    let paymentComment = null;
 
-    function selectPlan(tariff) {
-      const comment = `vip-${Date.now()}-${tg.initDataUnsafe.user?.id || 'anon'}`;
-      tg.sendData(JSON.stringify({ comment, tariff }));
-      tg.close();
+    // Инициализация
+    function init() {
+      tg.expand();
+      tg.BackButton.hide();
+      checkAgeVerification();
     }
+
+    // Проверка возраста
+    function confirmAge() {
+      localStorage.setItem('ageVerified', 'true');
+      document.getElementById('ageGate').classList.add('hidden');
+      document.getElementById('mainApp').classList.remove('hidden');
+    }
+
+    function checkAgeVerification() {
+      if (!localStorage.getItem('ageVerified')) {
+        document.getElementById('ageGate').classList.remove('hidden');
+      }
+    }
+
+    // Выбор тарифа
+    function selectPlan(planId, amount) {
+      selectedPlan = { planId, amount };
+      paymentComment = `VIP-${Date.now()}-${tg.initDataUnsafe.user?.id || 'anon'}`;
+      
+      document.getElementById('planSelection').classList.add('hidden');
+      document.getElementById('paymentDetails').classList.remove('hidden');
+      document.getElementById('paymentAmount').textContent = `${amount}₽`;
+      document.getElementById('paymentComment').textContent = paymentComment;
+    }
+
+    // Проверка оплаты
+    async function verifyPayment() {
+      const loader = document.getElementById('loader');
+      const error = document.getElementById('errorMessage');
+      
+      loader.classList.remove('hidden');
+      error.style.display = 'none';
+
+      try {
+        // Эмуляция проверки платежа
+        const response = await fetch(`/api/check-payment?comment=${paymentComment}`);
+        const data = await response.json();
+
+        if (data.status === 'paid') {
+          tg.sendData(JSON.stringify({
+            type: 'vip_payment',
+            user: tg.initDataUnsafe.user,
+            plan: selectedPlan,
+            comment: paymentComment
+          }));
+          
+          window.location.href = `https://t.me/${tg.initDataUnsafe.bot.username}?start=${paymentComment}`;
+          setTimeout(() => tg.close(), 2000);
+        } else {
+          error.textContent = 'Оплата не найдена! Проверьте данные или попробуйте позже';
+          error.style.display = 'block';
+        }
+      } catch (error) {
+        error.textContent = 'Ошибка соединения';
+        error.style.display = 'block';
+      } finally {
+        loader.classList.add('hidden');
+      }
+    }
+
+    // Запуск приложения
+    init();
   </script>
 </body>
 </html>
