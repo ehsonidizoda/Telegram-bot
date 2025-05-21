@@ -38,6 +38,8 @@
 </head>
 <body>
 
+<button onclick="scrollToContent()" class="scroll-button">Перейти к контенту</button>
+
   <!-- ГЛАВНЫЙ БАННЕР -->
   <div class="card">
     <img src="https://i.ibb.co/SDdnw72f/photo.jpg" alt="18+ контент"
@@ -92,6 +94,15 @@
 
 <!-- ОТСТУП ПОД ФИКСИРОВАННЫМ МЕНЮ -->
 <div style="height: 80px;"></div>
+
+<script>
+  function scrollToContent() {
+    const target = document.getElementById("vip-content");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+</script>
 
 </body>
 </html>
