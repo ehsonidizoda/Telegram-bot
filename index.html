@@ -7,28 +7,33 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     .floating-menu {
-      position: fixed;
-      bottom: 15px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 12px;
-      z-index: 999;
-    }.fixed-btn {
-  background: #ff2f8b;
+      display: none;
+    }.bottom-menu {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1aee;
+  padding: 10px 16px;
+  border-radius: 24px;
+  box-shadow: 0 0 20px #ff2f8b55;
+  display: flex;
+  gap: 14px;
+  z-index: 1000;
+}
+.bottom-menu a {
   color: white;
-  padding: 10px 14px;
-  border-radius: 999px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 12px;
+  background: #ff2f8b;
+  padding: 8px 12px;
+  border-radius: 999px;
   display: flex;
   align-items: center;
   gap: 6px;
-  box-shadow: 0 0 12px #ff2f8b99;
   transition: 0.3s;
 }
-
-.fixed-btn:hover {
+.bottom-menu a:hover {
   background: #e42072;
 }
 
@@ -117,11 +122,11 @@
   <i class="fas fa-star" style="margin-right: 8px;"></i> ВОРИД БА КАНАЛ
 </a>
 
-  </div>  <!-- ФИКСИРОВАННЫЕ КНОПКИ ВНИЗУ -->  <div class="floating-menu">
-    <a href="https://t.me/m/HilJWR4YZmY0" class="fixed-btn"><i class="fas fa-crown"></i><span>VIP</span></a>
-    <a href="channels.html" class="fixed-btn"><i class="fas fa-bolt"></i><span>КАНАЛҲО</span></a>
-    <a href="bots.html" class="fixed-btn"><i class="fas fa-robot"></i><span>БОТҲО</span></a>
-    <a href="instagram.html" class="fixed-btn"><i class="fab fa-instagram"></i><span>ИНСТА</span></a>
+  </div>  <!-- НОВОЕ СТИЛЬНОЕ МЕНЮ ВНИЗУ -->  <div class="bottom-menu">
+    <a href="https://t.me/m/HilJWR4YZmY0"><i class="fas fa-crown"></i> VIP</a>
+    <a href="channels.html"><i class="fas fa-bolt"></i> КАНАЛҲО</a>
+    <a href="bots.html"><i class="fas fa-robot"></i> БОТҲО</a>
+    <a href="instagram.html"><i class="fab fa-instagram"></i> ИНСТА</a>
   </div>  <div style="height: 80px;"></div>
 </body>
 </html>
