@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -15,94 +14,114 @@
       display: flex;
       gap: 12px;
       z-index: 999;
-    }
+    }.fixed-btn {
+  background: #ff2f8b;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 0 12px #ff2f8b99;
+  transition: 0.3s;
+}
 
-    .fixed-btn {
-      background: #ff2f8b;
-      color: white;
-      padding: 10px 14px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 0 12px #ff2f8b99;
-      transition: 0.3s;
-    }
+.fixed-btn:hover {
+  background: #e42072;
+}
 
-    .fixed-btn:hover {
-      background: #e42072;
-    }
+.scroll-toggle-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(145deg, #ff3e6c, #e42072);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 20px;
+  z-index: 1000;
+  cursor: pointer;
+  box-shadow: 0 0 20px #ff2f8b88;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.scroll-toggle-btn:hover {
+  transform: scale(1.1);
+  background: #d21860;
+}
+
   </style>
 </head>
-<body>
+<body>  <!-- КНОПКА СТРЕЛКА ВВЕРХ/ВНИЗ -->  <button id="scrollToggleBtn" class="scroll-toggle-btn">
+    <i class="fas fa-arrow-down"></i>
+  </button>  <script>
+    const btn = document.getElementById("scrollToggleBtn");
+    let isAtTop = true;
 
-<button onclick="scrollToContent()" class="scroll-button">Перейти к контенту</button>
+    btn.addEventListener("click", () => {
+      if (isAtTop) {
+        document.getElementById("vip-section").scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
 
-  <!-- ГЛАВНЫЙ БАННЕР -->
-  <div class="card">
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      const icon = btn.querySelector("i");
+
+      if (scrollY > 200) {
+        isAtTop = false;
+        icon.className = "fas fa-arrow-up";
+      } else {
+        isAtTop = true;
+        icon.className = "fas fa-arrow-down";
+      }
+    });
+  </script>  <!-- ГЛАВНЫЙ БАННЕР -->  <div class="card">
     <img src="https://i.ibb.co/SDdnw72f/photo.jpg" alt="18+ контент"
       style="width: 100%; border-radius: 14px; max-height: 320px; object-fit: cover; margin-bottom: 20px;">
     <h3 style="font-size: 20px; margin-bottom: 25px;">
       Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун!
-    </h3>
+    </h3><a href="https://t.me/VvediCodBot?start=1178" class="cta-btn">
+  <i class="fas fa-fire" style="margin-right: 8px;"></i> ДОМАШКА ХХХ
+</a>
 
-    <a href="https://t.me/VvediCodBot?start=1178" class="cta-btn">
-      <i class="fas fa-fire" style="margin-right: 8px;"></i> ДОМАШКА ХХХ
-    </a>
+<a href="https://t.me/+w4jDVeVHElMyYzli" class="cta-btn">
+  <i class="fas fa-heart" style="margin-right: 8px;"></i> АЧАЛИ ПЕТКАХО
+</a>
 
-    <a href="https://t.me/+w4jDVeVHElMyYzli" class="cta-btn">
-      <i class="fas fa-heart" style="margin-right: 8px;"></i> АЧАЛИ ПЕТКАХО
-    </a>
+<a href="https://t.me/+7vjsHLjN8UA2ZGEy" class="cta-btn">
+  <i class="fas fa-video" style="margin-right: 8px;"></i> ТОЧИКИ Порно
+</a>
 
-    <a href="https://t.me/+7vjsHLjN8UA2ZGEy" class="cta-btn">
-      <i class="fas fa-video" style="margin-right: 8px;"></i> ТОЧИКИ Порно
-    </a>
-  </div>
-
-  <!-- VIP КАНАЛҲО -->
-  <div class="card">
+  </div>  <!-- VIP КАНАЛҲО -->  <div id="vip-section" class="card">
     <h3 class="section-title">
       <i class="fas fa-crown"></i> VIP КАНАЛҲО
-    </h3>
+    </h3><p class="channel-desc">
+  <span class="channel-number">1</span>
+  <strong>VIP KANAL</strong> – Видеоҳои Точики, САТРДОРО 🧕, Кудакона. Барои дромадан нависен 🔞
+</p>
+<a href="https://t.me/m/HilJWR4YZmY0" class="cta-btn">
+  <i class="fas fa-user-shield" style="margin-right: 8px;"></i> АДМИНИСТРАТОР
+</a>
 
-    <p class="channel-desc">
-      <span class="channel-number">1</span>
-      <strong>VIP KANAL</strong> – Видеоҳои Точики, САТРДОРО 🧕, Кудакона. Барои дромадан нависен 🔞
-    </p>
-    <a href="https://t.me/m/HilJWR4YZmY0" class="cta-btn">
-      <i class="fas fa-user-shield" style="margin-right: 8px;"></i> АДМИНИСТРАТОР
-    </a>
+<p class="channel-desc">
+  <span class="channel-number">2</span>
+  <strong>VIP KANAL</strong> – Видеоҳои САТРДОРО 🧕
+</p>
+<a href="https://t.me/+j6Ar7wgV9CZhMjEy" class="cta-btn">
+  <i class="fas fa-star" style="margin-right: 8px;"></i> ВОРИД БА КАНАЛ
+</a>
 
-    <p class="channel-desc">
-      <span class="channel-number">2</span>
-      <strong>VIP KANAL</strong> – Видеоҳои САТРДОРО 🧕
-    </p>
-    <a href="https://t.me/+j6Ar7wgV9CZhMjEy" class="cta-btn">
-      <i class="fas fa-star" style="margin-right: 8px;"></i> ВОРИД БА КАНАЛ
-    </a>
-  </div>
-
-  <!-- ФИКСИРОВАННЫЕ КНОПКИ ВНИЗУ -->
-  <div class="floating-menu">
+  </div>  <!-- ФИКСИРОВАННЫЕ КНОПКИ ВНИЗУ -->  <div class="floating-menu">
     <a href="https://t.me/m/HilJWR4YZmY0" class="fixed-btn"><i class="fas fa-crown"></i><span>VIP</span></a>
     <a href="channels.html" class="fixed-btn"><i class="fas fa-bolt"></i><span>КАНАЛҲО</span></a>
     <a href="bots.html" class="fixed-btn"><i class="fas fa-robot"></i><span>БОТҲО</span></a>
     <a href="instagram.html" class="fixed-btn"><i class="fab fa-instagram"></i><span>ИНСТА</span></a>
-  </div>
-
-<!-- ОТСТУП ПОД ФИКСИРОВАННЫМ МЕНЮ -->
-<div style="height: 80px;"></div>
-
-<script>
-  function scrollToContent() {
-    const target = document.getElementById("vip-content");
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
-  }
-</script>
-
+  </div>  <div style="height: 80px;"></div>
 </body>
 </html>
