@@ -264,3 +264,16 @@ nav a {
   cursor: default;
   box-shadow: none;
 }
+
+.scroll-button {
+  background-color: #FF3E6C;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 20px auto;
+  display: block;
+}
