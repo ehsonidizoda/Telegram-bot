@@ -1,130 +1,109 @@
-<!DOCTYPE html><html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VIP Каналҳо</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    body {
-      background: #0F0F0F;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-    .banner {
-      background: url('https://i.ibb.co/SDdnw72f/photo.jpg') center/cover no-repeat;
-      height: 280px;
-      border-radius: 0 0 40px 40px;
-    }
-    .button-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      padding: 20px;
-      max-width: 500px;
-      margin: -60px auto 30px;
-    }
-    .cta-btn {
-      background: #FF3E6C;
-      color: white;
-      text-align: center;
-      padding: 14px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 0 10px #ff2f8b66;
-      transition: 0.3s;
-    }
-    .cta-btn:hover {
-      background: #e42072;
-      transform: scale(1.05);
-    }
-    .section-title {
-      text-align: center;
-      font-size: 20px;
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
-    .vip-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      padding: 20px;
-      max-width: 500px;
-      margin: 0 auto 80px;
-    }
-    .vip-card {
-      background: #1a1a1a;
-      padding: 14px;
-      border-radius: 14px;
-      text-align: center;
-      box-shadow: 0 0 8px #ff2f8b55;
-    }
-    .vip-card h3 {
-      font-size: 16px;
-      margin-bottom: 8px;
-    }
-    .vip-card p {
-      font-size: 13px;
-      color: #ccc;
-      margin-bottom: 12px;
-    }
-    .bottom-menu {
-      position: fixed;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
-      z-index: 999;
-    }
-    .bottom-menu a {
-      background: #FF3E6C;
-      padding: 10px 16px;
-      border-radius: 24px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      font-size: 14px;
-    }
-  </style>
-</head>
-<body>
-  <div class="banner"></div>  <div class="button-grid">
-    <a href="#" class="cta-btn">ДОМАШКА ХХХ</a>
-    <a href="#" class="cta-btn">АЧАЛИ ПЕТКАХО</a>
-    <a href="#" class="cta-btn">ТОЧИКИ Порно</a>
-    <a href="#" class="cta-btn">VIP CHANNEL</a>
-  </div>  <div class="section-title">
-    <i class="fas fa-crown"></i> VIP КАНАЛҲО
-  </div>  <div class="vip-grid">
-    <div class="vip-card">
-      <h3>VIP TJ 1</h3>
-      <p>Филмҳои САТРДОРО, махсус барои калонсолон</p>
-      <a href="#" class="cta-btn">Ворид шудан</a>
-    </div>
-    <div class="vip-card">
-      <h3>VIP TJ 2</h3>
-      <p>Контенти махфӣ ва куҳнаи тоҷикӣ 18+</p>
-      <a href="#" class="cta-btn">Боз кардан</a>
-    </div>
-    <div class="vip-card">
-      <h3>VIP TJ 3</h3>
-      <p>Филмҳои гаштаги тоҷикӣ, 100% реалӣ</p>
-      <a href="#" class="cta-btn">Дидани контент</a>
-    </div>
-    <div class="vip-card">
-      <h3>VIP TJ 4</h3>
-      <p>Ахбор ва наворҳои тафтишнашудаи 18+</p>
-      <a href="#" class="cta-btn">Даромадан</a>
-    </div>
-  </div>  <div class="bottom-menu">
-    <a href="vip.html">VIP</a>
-    <a href="kanals.html">КАНАЛҲО</a>
-    <a href="bots.html">БОТҲО</a>
-    <a href="insta.html">ИНСТА</a>
+<style>
+body {
+  background-color: #0f0f0f;
+  font-family: 'Inter', sans-serif;
+  color: white;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+h3 {
+  margin-top: 20px;
+  font-size: 22px;
+}
+
+.cta-btn {
+  display: inline-block;
+  background-color: #ff2f8b;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 8px;
+  transition: background-color 0.3s;
+}
+
+.cta-btn:hover {
+  background-color: #e42072;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 20px;
+}
+
+.vip-card {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 16px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 10px #ff2f8b55;
+}
+
+.vip-card h4 {
+  color: white;
+  margin-bottom: 8px;
+}
+
+.vip-card p {
+  color: #ddd;
+  font-size: 14px;
+  margin-bottom: 12px;
+  flex: 1;
+}
+
+.bottom-buttons {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  background-color: #0f0f0f;
+  padding: 10px 0;
+  z-index: 999;
+}
+
+.bottom-buttons a {
+  background-color: #ff2f8b;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+</style><h3>VIP КАНАЛҲО</h3>
+<div class="card-grid">
+  <div class="vip-card">
+    <h4>VIP TJ 1</h4>
+    <p>Филмҳои САТРДОРО, махсус барои калонсолон</p>
+    <a href="#" class="cta-btn">Ворид шудан</a>
   </div>
-</body>
-</html>
+  <div class="vip-card">
+    <h4>VIP TJ 2</h4>
+    <p>Контенти махфӣ ва кухни точикӣ 18+</p>
+    <a href="#" class="cta-btn">Боз кардан</a>
+  </div>
+  <div class="vip-card">
+    <h4>VIP TJ 3</h4>
+    <p>Филмҳои гаштаги точикӣ, 100% реалӣ</p>
+    <a href="#" class="cta-btn">Дидани контент</a>
+  </div>
+  <div class="vip-card">
+    <h4>VIP TJ 4</h4>
+    <p>Ахбор ва наворҳои тафтишнашудаи 18+</p>
+    <a href="#" class="cta-btn">Даромадан</a>
+  </div>
+</div><div class="bottom-buttons">
+  <a href="#vip">VIP</a>
+  <a href="#bots">БОТҲО</a>
+  <a href="#insta">ИНСТА</a>
+</div>
