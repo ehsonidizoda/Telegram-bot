@@ -429,75 +429,86 @@
   </div>
 </div>
 
-<!-- Кнопка меню -->
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<!-- КНОПКА МЕНЮ (ПРАВО НИЗ) -->
+<div class="floating-menu" onclick="toggleSidebar()">☰</div>
 
-<!-- Меню с разделами -->
-<div id="mainMenu" class="main-menu hidden">
-  <a href="https://t.me/your_bot_link" class="menu-item"><i class="fas fa-robot"></i> Боты</a>
-  <a href="https://t.me/your_channels_link" class="menu-item"><i class="fas fa-paper-plane"></i> Каналы</a>
-  <a href="https://instagram.com/your_instalink" class="menu-item"><i class="fab fa-instagram"></i> Инсты</a>
-  <a href="https://t.me/m/HilJWR4YZmY0" class="menu-item"><i class="fas fa-crown"></i> VIP</a>
-  <a href="https://t.me/your_models_channel" class="menu-item"><i class="fas fa-users"></i> Модели</a>
+<!-- ВЫПАДАЮЩЕЕ МЕНЮ -->
+<div class="sidebar" id="sidebar">
+  <button onclick="navigateTo('#vip')">🔥 VIP</button>
+  <button onclick="navigateTo('#bots')">🤖 Боты</button>
+  <button onclick="navigateTo('#insta')">📸 Инстаграм</button>
+  <button onclick="navigateTo('#channels')">📡 Каналы</button>
+  <button onclick="navigateTo('#models')">💃 Модели</button>
 </div>
 
 <style>
-.menu-toggle {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: #ff2f8b;
-  color: #fff;
-  font-size: 28px;
-  padding: 12px 18px;
-  border-radius: 10px;
-  z-index: 999;
-  cursor: pointer;
-  box-shadow: 0 5px 15px rgba(255,47,139,0.4);
-}
+  .floating-menu {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ff0066;
+    color: white;
+    padding: 14px 18px;
+    font-size: 24px;
+    border-radius: 15px;
+    z-index: 9999;
+    box-shadow: 0 4px 10px rgba(255, 0, 102, 0.5);
+    cursor: pointer;
+  }
 
-.main-menu {
-  position: fixed;
-  bottom: 90px;
-  right: 30px;
-  background: #1f1f1f;
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 998;
-}
+  .sidebar {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background: #1a1a1a;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 0, 102, 0.4);
+    padding: 15px;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+  }
 
-.menu-item {
-  background: #2a2a2a;
-  color: white;
-  text-decoration: none;
-  padding: 12px 16px;
-  border-radius: 10px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: 0.3s;
-}
+  .sidebar button {
+    background: #ff0066;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
 
-.menu-item:hover {
-  background: #ff2f8b;
-}
-
-.hidden {
-  display: none;
-}
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
 </style>
 
 <script>
-function toggleMenu() {
-  const menu = document.getElementById("mainMenu");
-  menu.classList.toggle("hidden");
-}
+  function toggleSidebar() {
+    const menu = document.getElementById('sidebar');
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  function navigateTo(target) {
+    document.getElementById('sidebar').style.display = 'none';
+    const section = document.querySelector(target);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.href = target;
+    }
+  }
 </script>
+
+<div id="vip">...</div>
+<div id="bots">...</div>
+<div id="insta">...</div>
+<div id="channels">...</div>
+<div id="models">...</div>
 
 <!-- ЗАГОЛОВОК -->
 <div class="top-category sensual-animation">AJALI PETKAHO VIP</div>
