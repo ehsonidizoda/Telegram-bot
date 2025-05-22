@@ -52,6 +52,31 @@
       background: #e42072;
       transform: scale(1.05);
     }
+    form {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    input, textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      background: #1a1a1a;
+      color: white;
+    }
+    button {
+      padding: 12px;
+      background: #ff2f8b;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #e42072;
+    }
   </style>
 </head>
 <body>
@@ -64,8 +89,14 @@
       <li>3. Подпишись на <a href="https://instagram.com/ajali_petka" target="_blank">наш Instagram</a></li>
       <li>4. Оставь комментарий под постом розыгрыша</li>
     </ul>
-    <p class="small-note">Каждую неделю — 10 победителей по $10! Участвуй сейчас!</p>
-    <a href="https://instagram.com/ajali_petka" target="_blank" class="cta-btn">Участвовать</a>
+    <p class="small-note">Каждую неделю — 10 победителей по $10! Участвуй сейчас!</p><form action="#" method="POST">
+  <input type="text" name="name" placeholder="Имя" required>
+  <input type="text" name="telegram" placeholder="@ваш_ник в Telegram" required>
+  <input type="text" name="instagram" placeholder="@ваш Instagram" required>
+  <textarea name="comment" rows="3" placeholder="Ваш комментарий (необязательно)"></textarea>
+  <button type="submit">Участвовать</button>
+</form>
+
   </div>
 </body>
 </html>
