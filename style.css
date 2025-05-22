@@ -358,3 +358,43 @@ nav a {
     transform: scale(1);
   }
 }
+
+.floating-menu {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff3399;
+  color: white;
+  font-size: 28px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  z-index: 1000;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(255, 51, 153, 0.4);
+}
+
+.sidebar {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 999;
+}
+
+.menu-item {
+  background: #ff3399;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+.menu-item:hover {
+  background: #e12e8f;
+}
