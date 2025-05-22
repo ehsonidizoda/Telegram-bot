@@ -321,23 +321,3 @@ nav a {
   flex-wrap: wrap;
   justify-content: center;
 }
-</style>
-
-<div class="cta-grid">
-  <a href="https://t.me/VvediCodBot?start=1178" class="cta-btn">ДОМАШКА ХХХ</a>
-  <a href="https://t.me/+w4jDVeVHElMyYzli" class="cta-btn">АЧАЛИ ПЕТКАХО</a>
-  <a href="https://t.me/+0TNmJmcfZvwyN2Uy" class="cta-btn">ТОЧИКИ Порно</a>
-  <a href="#!" class="cta-btn" onclick="showExtra()">Показать ещё</a>
-</div>
-
-<div id="extra-buttons" class="cta-grid">
-  <a href="#!" class="cta-btn">КАНАЛ #4</a>
-  <a href="#!" class="cta-btn">VIP CHANNEL</a>
-</div>
-
-<script>
-function showExtra() {
-  const block = document.getElementById("extra-buttons");
-  block.style.display = "flex";
-}
-</script>
