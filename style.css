@@ -277,3 +277,67 @@ nav a {
   margin: 20px auto;
   display: block;
 }
+
+<style>
+.cta-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.cta-btn {
+  width: 44%;
+  margin: 6px;
+  background: #ff2f8b;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: fadeInZoom 0.5s forwards;
+}
+
+.cta-btn:hover {
+  background: #e42072;
+  transform: scale(1.05);
+}
+
+.cta-btn:active {
+  transform: scale(0.95);
+}
+
+@keyframes fadeInZoom {
+  from { opacity: 0; transform: scale(0.6); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#extra-buttons {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+</style>
+
+<div class="cta-grid">
+  <a href="https://t.me/VvediCodBot?start=1178" class="cta-btn">ДОМАШКА ХХХ</a>
+  <a href="https://t.me/+w4jDVeVHElMyYzli" class="cta-btn">АЧАЛИ ПЕТКАХО</a>
+  <a href="https://t.me/+0TNmJmcfZvwyN2Uy" class="cta-btn">ТОЧИКИ Порно</a>
+  <a href="#!" class="cta-btn" onclick="showExtra()">Показать ещё</a>
+</div>
+
+<div id="extra-buttons" class="cta-grid">
+  <a href="#!" class="cta-btn">КАНАЛ #4</a>
+  <a href="#!" class="cta-btn">VIP CHANNEL</a>
+</div>
+
+<script>
+function showExtra() {
+  const block = document.getElementById("extra-buttons");
+  block.style.display = "flex";
+}
+</script>
