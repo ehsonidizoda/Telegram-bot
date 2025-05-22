@@ -1,31 +1,4 @@
-// Автогенерация пароля (например: "A7B9-C2D4")
-CONFIG.accessCode = Math.random().toString(36).slice(2, 6).toUpperCase() + 
-                   '-' + 
-                   Math.random().toString(36).slice(2, 6).toUpperCase();
-console.log("Текущий пароль:", CONFIG.accessCode); // Чтобы узнать пароль
-
-// В начало скрипта добавьте:
-const VIDEO_LINKS = [
-  "https://example.com/video1",
-  "https://example.com/video2",
-  // Добавляйте новые ссылки здесь
-];
-
-// Замените функцию showContent():
-function showContent() {
-  elements.verificationCard.style.display = 'none';
-  elements.videoContainer.style.display = 'block';
-  
-  const videoGrid = document.querySelector('.video-grid');
-  videoGrid.innerHTML = ''; // Очищаем старые видео
-  
-  VIDEO_LINKS.forEach(link => {
-    videoGrid.innerHTML += `
-      <iframe src="${link}" loading="lazy" allowfullscreen></iframe>
-    `;
-  });
-  
-  window.scrollTo(0, 0);
+function toggleMenu() {
+  const menu = document.getElementById('sidebar');
+  menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
 }
-
-
