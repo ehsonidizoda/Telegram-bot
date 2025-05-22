@@ -2,121 +2,128 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1 месяц боту!</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>VIP Каналҳо</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
       background: #0F0F0F;
+      font-family: 'Segoe UI', sans-serif;
       color: white;
+      margin: 0;
+      padding: 0;
       overflow-x: hidden;
     }
-    h1 {
-      text-align: center;
-      font-size: 24px;
-      margin-top: 30px;
+    .banner {
+      background: url('https://i.ibb.co/SDdnw72f/photo.jpg') center/cover no-repeat;
+      height: 280px;
+      border-radius: 0 0 40px 40px;
+      position: relative;
     }
-    .confetti {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 9999;
-    }
-    .btn-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 30px;
-      gap: 10px;
+    .button-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding: 20px;
+      max-width: 500px;
+      margin: -60px auto 30px;
     }
     .cta-btn {
       background: #FF3E6C;
-      border: none;
-      border-radius: 12px;
-      padding: 15px 20px;
       color: white;
-      font-weight: bold;
       text-align: center;
-      font-size: 16px;
+      padding: 14px;
+      border-radius: 12px;
       text-decoration: none;
-      width: 45%;
+      font-weight: bold;
+      box-shadow: 0 0 10px #ff2f8b66;
       transition: 0.3s;
     }
     .cta-btn:hover {
-      background: #ff1a52;
+      background: #e42072;
+      transform: scale(1.05);
     }
-    .arrow {
-      position: absolute;
-      left: 20px;
-      top: 20px;
-      font-size: 24px;
-      background: #FF3E6C;
-      border-radius: 50%;
-      padding: 10px;
-      z-index: 100;
+    .section-title {
+      text-align: center;
+      font-size: 20px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    .vip-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      padding: 20px;
+      max-width: 500px;
+      margin: 0 auto 80px;
+    }
+    .vip-card {
+      background: #1a1a1a;
+      padding: 14px;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 0 8px #ff2f8b55;
+    }
+    .vip-card h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .vip-card p {
+      font-size: 13px;
+      color: #ccc;
+      margin-bottom: 12px;
     }
     .bottom-menu {
       position: fixed;
-      bottom: 20px;
-      width: 100%;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
-      justify-content: center;
       gap: 10px;
-      z-index: 10;
+      z-index: 999;
     }
-    .bottom-btn {
+    .bottom-menu a {
       background: #FF3E6C;
-      padding: 10px 14px;
-      border-radius: 30px;
-      font-size: 14px;
-      color: white;
+      padding: 10px 16px;
+      border-radius: 24px;
       text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
     }
   </style>
 </head>
-<body>
-  <div class="arrow" onclick="scrollToBottom()">
-    <i class="fas fa-arrow-down"></i>
-  </div>  <h1>Поздравляем! Боту 1 месяц!</h1>  <div class="btn-wrapper">
+<body>  <div class="banner"></div>  <div class="button-grid">
     <a href="#" class="cta-btn">ДОМАШКА ХХХ</a>
     <a href="#" class="cta-btn">АЧАЛИ ПЕТКАХО</a>
     <a href="#" class="cta-btn">ТОЧИКИ Порно</a>
-    <a href="#" class="cta-btn">КАНАЛ #4</a>
     <a href="#" class="cta-btn">VIP CHANNEL</a>
+  </div>  <div class="section-title">
+    <i class="fas fa-crown"></i> VIP КАНАЛҲО
+  </div>  <div class="vip-grid">
+    <div class="vip-card">
+      <h3>VIP TJ 1</h3>
+      <p>Филмҳои САТРДОРО, махсус барои калонсолон</p>
+      <a href="#" class="cta-btn">Ворид шудан</a>
+    </div>
+    <div class="vip-card">
+      <h3>VIP TJ 2</h3>
+      <p>Контенти махфӣ ва куҳнаи тоҷикӣ 18+</p>
+      <a href="#" class="cta-btn">Боз кардан</a>
+    </div>
+    <div class="vip-card">
+      <h3>VIP TJ 3</h3>
+      <p>Филмҳои гаштаги тоҷикӣ, 100% реалӣ</p>
+      <a href="#" class="cta-btn">Дидани контент</a>
+    </div>
+    <div class="vip-card">
+      <h3>VIP TJ 4</h3>
+      <p>Ахбор ва наворҳои тафтишнашудаи 18+</p>
+      <a href="#" class="cta-btn">Даромадан</a>
+    </div>
   </div>  <div class="bottom-menu">
-    <a href="#" class="bottom-btn">VIP</a>
-    <a href="#" class="bottom-btn">КАНАЛҲО</a>
-    <a href="#" class="bottom-btn">БОТҲО</a>
-    <a href="#" class="bottom-btn">ИНСТА</a>
-  </div><canvas class="confetti" id="confetti-canvas"></canvas>
-
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>  <script>
-    // Конфетти
-    const duration = 5 * 1000;
-    const end = Date.now() + duration;
-
-    (function frame() {
-      confetti({
-        particleCount: 5,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0 }
-      });
-      confetti({
-        particleCount: 5,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1 }
-      });
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
-      }
-    })();
-
-    function scrollToBottom() {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-  </script></body>
+    <a href="#">VIP</a>
+    <a href="#">КАНАЛҲО</a>
+    <a href="#">БОТҲО</a>
+    <a href="#">ИНСТА</a>
+  </div></body>
 </html>
