@@ -37,6 +37,48 @@
                       radial-gradient(circle at 80% 70%, rgba(255, 94, 94, 0.15) 0%, transparent 50%);
     }
     
+    .discount-banner {
+      background: linear-gradient(45deg, #ff2f8b, #ff6b08);
+      color: white;
+      padding: 15px;
+      margin: 15px auto;
+      border-radius: 12px;
+      max-width: 500px;
+      animation: pulse 2s infinite;
+      box-shadow: 0 5px 15px rgba(255, 47, 139, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .discount-banner::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        rgba(255,255,255,0.3) 0%,
+        rgba(255,255,255,0) 60%
+      );
+      transform: rotate(30deg);
+      pointer-events: none;
+    }
+    
+    .discount-banner h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    .discount-banner p {
+      margin: 8px 0 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    
     .card {
       background: var(--card-bg);
       margin: 25px auto;
@@ -115,7 +157,7 @@
     
     @keyframes pulse {
       0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      50% { transform: scale(1.03); }
       100% { transform: scale(1); }
     }
     
@@ -138,6 +180,12 @@
       body { 
         padding: 15px; 
         max-width: 100%;
+      }
+      .discount-banner {
+        padding: 12px;
+      }
+      .discount-banner h3 {
+        font-size: 16px;
       }
     }
     
@@ -240,7 +288,6 @@
       transform: rotate(360deg);
     }
     
-    /* New styles for interactive banner */
     .banner-buttons {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -259,7 +306,6 @@
       animation: fadeIn 0.5s ease-out;
     }
     
-    /* Sensual animation */
     @keyframes sensualPulse {
       0% { transform: scale(1) rotate(0deg); }
       25% { transform: scale(1.02) rotate(0.5deg); }
@@ -272,12 +318,10 @@
       animation: sensualPulse 8s infinite ease-in-out;
     }
     
-    /* Glow effect */
     .glow {
       text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
     }
     
-    /* Confetti effect */
     .confetti {
       position: absolute;
       width: 10px;
@@ -287,7 +331,6 @@
       z-index: 10;
     }
     
-    /* Age verification modal */
     .age-modal {
       position: fixed;
       top: 0;
@@ -340,7 +383,6 @@
       box-shadow: 0 5px 15px rgba(255, 47, 139, 0.4);
     }
     
-    /* New sexy elements */
     .sexy-divider {
       height: 2px;
       background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
@@ -359,6 +401,17 @@
       50% { transform: scale(1); }
       75% { transform: scale(1.1); }
       100% { transform: scale(1); }
+    }
+    
+    .discount-timer {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #fff;
+      background: rgba(0,0,0,0.3);
+      padding: 5px 10px;
+      border-radius: 20px;
+      display: inline-block;
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -383,22 +436,30 @@
 <!-- ЗАГОЛОВОК -->
 <div class="top-category sensual-animation">AJALI PETKAHO VIP</div>
 
+<!-- СКИДОЧНЫЙ БАННЕР -->
+<div class="discount-banner sensual-animation">
+  <h3>🔥 ТОЛЬКО СЕГОДНЯ! СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ 🔥</h3>
+  <p>Получите VIP доступ со скидкой 50%! Предложение ограничено</p>
+  <div class="discount-timer" id="discountTimer">⏳ Осталось: 23:59:59</div>
+  <a href="https://t.me/m/HilJWR4YZmY0" style="color: white; text-decoration: underline; display: inline-block; margin-top: 10px;">
+    Написать админу для получения скидки
+  </a>
+</div>
+
 <!-- ГЛАВНЫЙ БАННЕР -->
 <div class="card sensual-animation">
   <img src="https://i.ibb.co/SDdnw72f/photo.jpg" alt="18+ контент" style="width: 100%; border-radius: 14px; max-height: 320px; object-fit: cover; margin-bottom: 20px; border: 2px solid var(--primary-color);">
   <h3 style="font-size: 20px; margin-bottom: 25px;">Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун! <i class="fas fa-heart heart-beat" style="color: var(--primary-color);"></i></h3>
 
   <div class="banner-buttons">
-    <a href="https://t.me/VvediCodBot?start=1178" class="cta-btn" id="mainBtn1">
+    <a href="https://t.me/VvediCodBot?start=1178" class="cta-btn">
       <i class="fas fa-fire" style="margin-right: 8px;"></i> ДОМАШКА ХХХ
     </a>
 
-    <a href="https://t.me/+KQIAzLQxuXliMDJi" class="cta-btn" id="mainBtn2">
+    <a href="https://t.me/+KQIAzLQxuXliMDJi" class="cta-btn">
       <i class="fas fa-heart" style="margin-right: 8px;"></i> АЧАЛИ ПЕТКАХО
     </a>
-  </div>
 
-  <div class="hidden-buttons" id="hiddenButtons">
     <a href="https://t.me/+7vjsHLjN8UA2ZGEy" class="cta-btn">
       <i class="fas fa-video" style="margin-right: 8px;"></i> ТОЧИКИ Порно
     </a>
@@ -545,7 +606,7 @@
   </a>
 </div>
 
-<!-- НОВЫЙ РАЗДЕЛ: ТОП МОДЕЛИ -->
+<!-- ТОП МОДЕЛИ -->
 <div class="card sensual-animation">
   <h3 class="section-title">
     <i class="fas fa-trophy glow"></i> ТОП МОДЕЛИ
@@ -566,6 +627,16 @@
   <a href="https://t.me/+QrStUvWxYz123456" class="cta-btn">
     <i class="fas fa-lock" style="margin-right: 8px;"></i> ЗАКРЫТЫЙ КАНАЛ
   </a>
+  
+  <hr class="sexy-divider">
+  
+  <p class="channel-desc">
+    <span class="channel-number">3</span>
+    <strong>ТОП 10 Моделей</strong> – Лучшие модели месяца
+  </p>
+  <a href="https://t.me/+Top10ModelsTJ" class="cta-btn">
+    <i class="fas fa-heart" style="margin-right: 8px;"></i> ГОЛОСОВАТЬ
+  </a>
 </div>
 
 <!-- ФУТЕР -->
@@ -582,4 +653,47 @@
     </a>
   </div>
 
-  AJALI PETKAH
+  AJALI PETKAHO VIP © 2025<br>
+  Ҳамаи ҳуқуқҳо ҳифз шудаанд<br>
+  <small style="font-size:12px;opacity:0.7;">Истифодаи мӯҳтавои сомона фақат барои шахсони 18+</small>
+</footer>
+
+<script>
+  // Age verification
+  function showAgeModal() {
+    if (!localStorage.getItem("ageConfirmed")) {
+      document.getElementById('ageModal').style.display = 'flex';
+      return false;
+    }
+    return true;
+  }
+  
+  function confirmAge(confirmed) {
+    if (confirmed) {
+      localStorage.setItem("ageConfirmed", true);
+      document.getElementById('ageModal').style.display = 'none';
+      setTimeout(() => OneSignal.showSlidedownPrompt(), 5000);
+      createConfetti();
+    } else {
+      document.body.innerHTML = `
+        <div style="height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+          <h2 style="color:#ff2f8b;text-align:center;margin-bottom:20px;">
+            Дастрасӣ танҳо барои калонсолон 18+<br>
+            <small style="font-size:14px;color:#aaa;">AJALI PETKAHO VIP</small>
+          </h2>
+          <img src="https://i.ibb.co/0nXQ5yH/18plus.png" style="width:150px;opacity:0.7;">
+        </div>`;
+    }
+  }
+  
+  // Discount timer
+  function updateDiscountTimer() {
+    const now = new Date();
+    const endOfDay = new Date();
+    endOfDay.setHours(23, 59, 59, 999);
+    
+    const diff = endOfDay - now;
+    
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floo
