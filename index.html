@@ -493,30 +493,70 @@
   </div>
 </div>
 
-<!-- Кнопка меню -->
-<div class="floating-menu" onclick="toggleSidebar()">
-  <i class="fas fa-bars"></i>
-</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- Боковое меню -->
-<div class="sidebar" id="sidebar">
-  <button onclick="scrollToSection('vip')">
-    <i class="fas fa-crown"></i> VIP
-  </button>
-  <button onclick="scrollToSection('bots')">
-    <i class="fas fa-robot"></i> Боты
-  </button>
-  <button onclick="scrollToSection('instagram')">
-    <i class="fab fa-instagram"></i> Инстаграм
-  </button>
-  <button onclick="scrollToSection('channels')">
-    <i class="fas fa-satellite-dish"></i> Каналы
-  </button>
-  <button onclick="scrollToSection('models')">
-    <i class="fas fa-user-friends"></i> Модели
-  </button>
-</div>
+<style>
+  .fixed-menu {
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    z-index: 9999;
+    animation: slideUp 1s ease forwards;
+  }
 
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .menu-btn {
+    flex: 1;
+    max-width: 120px;
+    background: linear-gradient(135deg, #ff2f8b, #ff5e5e);
+    color: white;
+    text-decoration: none;
+    padding: 12px 10px;
+    font-size: 14px;
+    border-radius: 15px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 12px rgba(255, 47, 139, 0.5);
+    transition: all 0.3s ease;
+  }
+
+  .menu-btn i {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  .menu-btn:hover,
+  .menu-btn.active {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 47, 139, 0.8);
+    background: linear-gradient(135deg, #ff2f8b, #ff2fb2);
+  }
+</style>
+
+<div class="fixed-menu">
+  <a href="vip.html" class="menu-btn active"><i class="fa-solid fa-crown"></i>VIP</a>
+  <a href="bots.html" class="menu-btn"><i class="fa-solid fa-robot"></i>Боты</a>
+  <a href="insta.html" class="menu-btn"><i class="fa-brands fa-instagram"></i>Инстаграм</a>
+  <a href="channels.html" class="menu-btn"><i class="fa-solid fa-star"></i>Каналы</a>
+  <a href="models.html" class="menu-btn"><i class="fa-solid fa-user-group"></i>Модели</a>
+</div>
+ 
 <!-- ЗАГОЛОВОК -->
 <div class="top-category sensual-animation">AJALI PETKAHO VIP</div>
 
