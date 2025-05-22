@@ -1,159 +1,132 @@
 <!DOCTYPE html><html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AJALI PETKAHO VIP</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Кнопки</title>
   <style>
-    .floating-menu {
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #0F0F0F;
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    .card {
+      padding: 20px;
+    }
+    .cta-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .cta-btn {
+      width: 44%;
+      margin: 6px;
+      background: #ff2f8b;
+      color: white;
+      border: none;
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-size: 16px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: scale(0.8);
+      animation: fadeInZoom 0.5s forwards;
+    }
+    .cta-btn:hover {
+      background: #e42072;
+      transform: scale(1.05);
+    }
+    .cta-btn:active {
+      transform: scale(0.95);
+    }
+    @keyframes fadeInZoom {
+      from { opacity: 0; transform: scale(0.6); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    #extra-buttons {
       display: none;
-    }.bottom-menu {
-  position: fixed;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #1a1a1aee;
-  padding: 10px 16px;
-  border-radius: 24px;
-  box-shadow: 0 0 20px #ff2f8b55;
-  display: flex;
-  gap: 14px;
-  z-index: 1000;
-  opacity: 1;
-  transition: opacity 0.5s ease, transform 0.3s ease;
-  animation: fadeInUp 0.8s ease;
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translate(-50%, 30px); }
-  to { opacity: 1; transform: translate(-50%, 0); }
-}
-
-.bottom-menu.hide {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.bottom-menu a {
-  color: white;
-  text-decoration: none;
-  font-size: 12px;
-  background: #ff2f8b;
-  padding: 8px 12px;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: 0.3s;
-}
-.bottom-menu a:hover {
-  background: #e42072;
-}
-
-.scroll-toggle-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background: linear-gradient(145deg, #ff3e6c, #e42072);
-  color: white;
-  border: none;
-  padding: 14px;
-  border-radius: 12px;
-  font-size: 20px;
-  z-index: 1000;
-  cursor: pointer;
-  box-shadow: 0 0 20px #ff2f8b88;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.scroll-toggle-btn:hover {
-  transform: scale(1.1);
-  background: #d21860;
-}
-
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    /* Конфетти */
+    .confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
   </style>
 </head>
-<body>  <!-- КНОПКА СТРЕЛКА ВВЕРХ/ВНИЗ -->  <button id="scrollToggleBtn" class="scroll-toggle-btn">
-    <i class="fas fa-arrow-down"></i>
-  </button>  <script>
-    const btn = document.getElementById("scrollToggleBtn");
-    const bottomMenu = document.querySelector(".bottom-menu");
-    let isAtTop = true;
-    let lastScrollY = 0;
+<body><div class="card">
+  <h2>Поздравляем! Боту 1 месяц!</h2>
+  <canvas class="confetti" id="confetti"></canvas>  <div class="cta-grid">
+    <a href="https://t.me/VvediCodBot?start=1178" class="cta-btn">ДОМАШКА ХХХ</a>
+    <a href="https://t.me/+w4jDVeVHElMyYzli" class="cta-btn">АЧАЛИ ПЕТКАХО</a>
+    <a href="https://t.me/+0TNmJmcfZvwyN2Uy" class="cta-btn">ТОЧИКИ Порно</a>
+    <a href="#" class="cta-btn" onclick="showExtra(this)">Показать ещё</a>
+  </div>  <div id="extra-buttons" class="cta-grid">
+    <a href="#" class="cta-btn">КАНАЛ #4</a>
+    <a href="#" class="cta-btn">VIP CHANNEL</a>
+  </div>
+</div><script>
+function showExtra(btn) {
+  document.getElementById("extra-buttons").style.display = "flex";
+  btn.style.display = "none";
+}
 
-    btn.addEventListener("click", () => {
-      if (isAtTop) {
-        document.getElementById("vip-section").scrollIntoView({ behavior: "smooth" });
-      } else {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    });
+// Конфетти эффект
+const canvas = document.getElementById('confetti');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-    window.addEventListener("scroll", () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const icon = btn.querySelector("i");
+const pieces = Array.from({ length: 150 }, () => {
+  return {
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 6 + 4,
+    d: Math.random() * 50,
+    color: `hsl(${Math.random() * 360}, 100%, 60%)`,
+    tilt: Math.floor(Math.random() * 10) - 10,
+    tiltAngleIncremental: (Math.random() * 0.07) + 0.05,
+    tiltAngle: 0
+  };
+});
 
-      if (scrollY > 200) {
-        isAtTop = false;
-        icon.className = "fas fa-arrow-up";
-      } else {
-        isAtTop = true;
-        icon.className = "fas fa-arrow-down";
-      }
+function drawConfetti() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  pieces.forEach(p => {
+    ctx.beginPath();
+    ctx.lineWidth = p.r;
+    ctx.strokeStyle = p.color;
+    ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
+    ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
+    ctx.stroke();
+  });
+  updateConfetti();
+  requestAnimationFrame(drawConfetti);
+}
 
-      // Автоскрытие нижнего меню при прокрутке вниз
-      if (scrollY > lastScrollY) {
-        bottomMenu.classList.add("hide");
-      } else {
-        bottomMenu.classList.remove("hide");
-      }
-      lastScrollY = scrollY;
-    });
+function updateConfetti() {
+  pieces.forEach(p => {
+    p.tiltAngle += p.tiltAngleIncremental;
+    p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
+    p.x += Math.sin(p.d);
+    p.tilt = Math.sin(p.tiltAngle - p.d / 3) * 15;
+    if (p.y > canvas.height) {
+      p.x = Math.random() * canvas.width;
+      p.y = -20;
+    }
+  });
+}
 
-<a href="giveaway.html" class="cta-btn">🎉 Розыгрыш $100</a>
-
-  </script>  <!-- ГЛАВНЫЙ БАННЕР -->  <div class="card">
-    <img src="https://i.ibb.co/SDdnw72f/photo.jpg" alt="18+ контент"
-      style="width: 100%; border-radius: 14px; max-height: 320px; object-fit: cover; margin-bottom: 20px;">
-    <h3 style="font-size: 20px; margin-bottom: 25px;">
-      Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун!
-    </h3><a href="https://t.me/VvediCodBot?start=1178" class="cta-btn">
-  <i class="fas fa-fire" style="margin-right: 8px;"></i> ДОМАШКА ХХХ
-</a>
-
-<a href="https://t.me/+w4jDVeVHElMyYzli" class="cta-btn">
-  <i class="fas fa-heart" style="margin-right: 8px;"></i> АЧАЛИ ПЕТКАХО
-</a>
-
-<a href="https://t.me/+0TNmJmcfZvwyN2Uy" class="cta-btn">
-  <i class="fas fa-video" style="margin-right: 8px;"></i> ТОЧИКИ Порно
-</a>
-
-  </div>  <!-- VIP КАНАЛҲО -->  <div id="vip-section" class="card">
-    <h3 class="section-title">
-      <i class="fas fa-crown"></i> VIP КАНАЛҲО
-    </h3><p class="channel-desc">
-  <span class="channel-number">1</span>
-  <strong>VIP KANAL</strong> – Видеоҳои Точики, САТРДОРО 🧕, Кудакона. Барои дромадан нависен 🔞
-</p>
-<a href="https://t.me/m/HilJWR4YZmY0" class="cta-btn">
-  <i class="fas fa-user-shield" style="margin-right: 8px;"></i> АДМИНИСТРАТОР
-</a>
-
-<p class="channel-desc">
-  <span class="channel-number">2</span>
-  <strong>VIP KANAL</strong> – Видеоҳои САТРДОРО 🧕
-</p>
-<a href="https://t.me/+j6Ar7wgV9CZhMjEy" class="cta-btn">
-  <i class="fas fa-star" style="margin-right: 8px;"></i> ВОРИД БА КАНАЛ
-</a>
-
-  </div>  <!-- НОВОЕ СТИЛЬНОЕ МЕНЮ ВНИЗУ -->  <div class="bottom-menu">
-    <a href="https://t.me/m/HilJWR4YZmY0"><i class="fas fa-crown"></i> VIP</a>
-    <a href="channels.html"><i class="fas fa-bolt"></i> КАНАЛҲО</a>
-    <a href="bots.html"><i class="fas fa-robot"></i> БОТҲО</a>
-    <a href="instagram.html"><i class="fab fa-instagram"></i> ИНСТА</a>
-  </div>  <div style="height: 80px;"></div>
-</body>
+drawConfetti();
+</script></body>
 </html>
