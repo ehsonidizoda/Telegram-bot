@@ -389,108 +389,33 @@
     <img src="https://images2.imgbox.com/67/7f/RKL6Lahc.jpg" alt="VIP Photo" loading="lazy" width="600" height="400" />
     <div class="photo-overlay"></div>
   </div>
+
   <p class="vip-text">
     Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун!
-    <span class="icon-18">18+</span>
+    <span class="icon-18" style="animation: heartbeat 1.5s infinite; color: #ff2f8b; margin-left: 6px;">18+</span>
   </p>
-  <div class="vip-buttons">
-    <a href="https://t.me/VvediCodBot?start=0180" class="vip-btn">
-      <i class="fas fa-eye"></i> БОТ ДЛЯ ПРОСМОТА ФИЛЬМОВ 18+🔞
+
+  <div class="vip-buttons" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px;">
+    <a href="https://t.me/VvediCodBot?start=0180" class="vip-btn" style="background: linear-gradient(45deg, #ff2f8b, #ff6b08); color: white; padding: 14px; font-weight: bold; border-radius: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+      <i class="fas fa-eye"></i> БОТ ДЛЯ ПРОСМОТА 18+ 🔞
     </a>
-    <a href="#" class="vip-btn" onclick="showPremiumContent()">
+    <a href="#" class="vip-btn" onclick="showPremiumContent()" style="background: linear-gradient(45deg, #ff2f8b, #ff6b08); color: white; padding: 14px; font-weight: bold; border-radius: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
       <i class="fas fa-lock"></i> АЧАЛИ ПЕТКАҲО
     </a>
-    <a href="https://t.me/+5hf8QxX8h305MzJi" class="vip-btn">
-      <i class="fas fa-heart"></i> КАНАЛ КОДОВ ДЛЯ ПРОСМОТРА ФИЛЬМОВ 🔞
+    <a href="https://t.me/+5hf8QxX8h305MzJi" class="vip-btn" style="background: linear-gradient(45deg, #ff2f8b, #ff6b08); color: white; padding: 14px; font-weight: bold; border-radius: 12px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+      <i class="fas fa-heart"></i> КАНАЛ КОДОВ 18+ 🔞
     </a>
   </div>
 </div>
 
 <style>
-  .vip-block {
-    text-align: center;
-    margin: 30px auto;
-    padding: 0 15px;
-    max-width: 600px;
-  }
-
-  .protected-photo {
-    position: relative;
-    overflow: hidden;
-    border-radius: 18px;
-    border: 2px solid #ff2f8b;
-    box-shadow: 0 0 20px rgba(255, 47, 139, 0.4);
-    animation: fadeInUp 1s ease;
-  }
-
-  .protected-photo img {
-    width: 100%;
-    pointer-events: none;
-    user-select: none;
-    max-height: 420px;
-    object-fit: cover;
-  }
-
-  .vip-text {
-    color: white;
-    margin: 20px 0 15px;
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 1.5;
-  }
-
-  .icon-18 {
-    display: inline-block;
-    background: #ff2f8b;
-    color: white;
-    font-weight: bold;
-    padding: 3px 8px;
-    border-radius: 10px;
-    font-size: 13px;
-    animation: pulse 1.5s infinite;
-    box-shadow: 0 0 10px rgba(255, 47, 139, 0.6);
-    margin-left: 6px;
-  }
-
-  .vip-buttons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 12px;
-    margin-top: 25px;
-  }
-
-  .vip-btn {
-    background: linear-gradient(45deg, #ff2f8b, #ff6b08);
-    color: white;
-    padding: 14px 20px;
-    border-radius: 14px;
-    font-weight: bold;
-    font-size: 16px;
-    border: none;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(255, 47, 139, 0.3);
-  }
-
-  .vip-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 47, 139, 0.5);
-  }
-
-  @keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-  }
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.2); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
 </style>
 
   <!-- VIP Channels -->
