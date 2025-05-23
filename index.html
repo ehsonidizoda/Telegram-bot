@@ -553,11 +553,13 @@
 <div class="top-category sensual-animation">AJALI PETKAHO VIP</div>
 
 <!-- VIP Фото Блок -->
-<div class="vip-block">
-  <div class="protected-photo animate-up">
-    <img src="https://i.ibb.co/0jZ4F1gP" alt="VIP Content" />
+<div class="vip-block sensual-animation">
+  <div class="protected-photo">
+    <img src="https://i.ibb.co/0jZ4F1gP" alt="VIP Content" loading="lazy" />
   </div>
-  <p class="vip-text">Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун!</p>
+  <p class="vip-text">Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун!
+    <i class="fas fa-heart heart-beat" style="color:#ff2f8b;"></i>
+  </p>
 
   <div class="vip-buttons">
     <a href="https://t.me/VvediCodBot?start=1178" class="vip-btn"><i class="fas fa-fire"></i> ДОМАШКА ХХХ</a>
@@ -572,57 +574,55 @@
     text-align: center;
     margin: 30px auto;
     padding: 0 15px;
-    max-width: 600px;
+    max-width: 640px;
+    animation: fadeInUp 1s ease;
   }
 
   .protected-photo {
-    position: relative;
+    border-radius: 20px;
     overflow: hidden;
-    border-radius: 18px;
+    box-shadow: 0 0 25px rgba(255, 47, 139, 0.5);
     border: 2px solid #ff2f8b;
-    box-shadow: 0 0 20px rgba(255, 47, 139, 0.4);
-    animation: fadeInUp 1s ease;
+    position: relative;
   }
 
   .protected-photo img {
     width: 100%;
-    pointer-events: none;
-    user-select: none;
+    height: auto;
     max-height: 420px;
     object-fit: cover;
+    pointer-events: none;
+    user-select: none;
   }
 
   .vip-text {
-    color: white;
-    margin: 20px 0 10px;
+    margin-top: 20px;
+    color: #fff;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(255, 47, 139, 0.4);
   }
 
   .vip-buttons {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 12px;
-    justify-content: center;
     margin-top: 20px;
   }
 
   .vip-btn {
-    flex: 1 1 45%;
-    max-width: 240px;
-    min-width: 140px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: linear-gradient(135deg, #ff2f8b, #ff6b08);
-    color: white;
+    color: #fff;
     padding: 12px 16px;
     border-radius: 14px;
+    font-size: 15px;
     font-weight: bold;
     text-decoration: none;
     box-shadow: 0 0 15px rgba(255, 47, 139, 0.3);
-    transition: 0.3s;
-    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
   }
 
   .vip-btn i {
@@ -631,17 +631,29 @@
 
   .vip-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 47, 139, 0.5);
+    box-shadow: 0 0 20px rgba(255, 47, 139, 0.6);
   }
 
   @keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(30px); }
+    0% { opacity: 0; transform: translateY(40px); }
     100% { opacity: 1; transform: translateY(0); }
   }
 
+  .heart-beat {
+    animation: heartbeat 1.5s infinite;
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+  }
+
   @media (max-width: 420px) {
+    .vip-text {
+      font-size: 15px;
+    }
     .vip-btn {
-      flex: 1 1 100%;
+      font-size: 14px;
     }
   }
 </style>
