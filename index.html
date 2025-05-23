@@ -561,16 +561,57 @@
 <div class="top-category sensual-animation">AJALI PETKAHO VIP</div>
 
 <!-- СКИДОЧНЫЙ БАННЕР -->
-<div id="discountContainer">
-  <div class="discount-banner sensual-animation" id="discountBanner">
-    <button onclick="hideBanner()" style="position: absolute; top: 10px; right: 10px; background: transparent; color: white; border: none; font-size: 18px; cursor: pointer;">✖</button>
-    <h3 style="font-size: 20px; animation: pulse 1.5s infinite;">🔥 ФАКАТ ИМРӮЗ! ПЕШНИҲОДИ МАХСУС 🔥</h3>
-    <p>Дастрасии VIP-ро бо тахфиф гиред! Пешниҳод маҳдуд аст</p>
-    <div class="discount-timer" id="discountTimer">⏳ Боқӣ мондааст: 23:59:59</div>
-    <a href="https://t.me/m/HilJWR4YZmY0" class="cta-btn" style="display: inline-block; margin-top: 10px; width: auto; padding: 10px 20px;">
-      Написать админу барои тахфиф
-    </a>
+<div id="discountContainer" style="position: relative; margin: 0 auto; max-width: 520px;">
+  <div id="discountBanner" class="discount-banner sensual-animation" style="
+    background: linear-gradient(135deg, #ff2f8b, #ff6b08);
+    padding: 22px;
+    border-radius: 14px;
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 47, 139, 0.5);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  ">
+    <button onclick="hideBanner()" style="
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 8px;
+      padding: 4px 8px;
+    ">✖</button>
+
+    <h3 style="font-size: 22px; margin-bottom: 10px;">🔥 ФАКАТ ИМРӮЗ! ПЕШНИҲОДИ МАХСУС 🔥</h3>
+    <p style="margin-bottom: 12px;">Дастрасии VIP-ро бо тахфифи <strong>50%</strong> гиред! Пешниҳод маҳдуд аст</p>
+
+    <div id="discountTimer" style="
+      background: rgba(0, 0, 0, 0.3);
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 17px;
+      margin-bottom: 14px;
+    ">⏳ Боқӣ мондааст: 23:59:59</div>
+
+    <br>
+    <a href="https://t.me/m/HilJWR4YZmY0" style="
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 24px;
+      background: black;
+      color: white;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+    ">Написать админу барои тахфиф</a>
   </div>
+</div>
 
   <!-- Кнопка показать -->
   <div id="showBannerBtn" style="display: none; text-align: center; margin-top: 10px;">
