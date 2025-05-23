@@ -379,14 +379,6 @@
   </div>
 </div>
 
-<div class="vip-buttons-animated">
-  <a href="#" class="vip-animated-btn"><i class="fas fa-fire"></i>🔥 ТОЧИКИ СЕКС</a>
-  <a href="#" class="vip-animated-btn"><i class="fas fa-heart"></i>❤️ ЛЮБОВЬ</a>
-  <a href="#" class="vip-animated-btn"><i class="fas fa-video"></i>🎥 ВИДЕО 18+</a>
-  <a href="#" class="vip-animated-btn"><i class="fas fa-star"></i>⭐ VIP ДОСТУП</a>
-  <a href="#" class="vip-animated-btn"><i class="fas fa-lock"></i>🔐 СКРЫТЫЙ КОНТЕНТ</a>
-</div>
-
 <!-- Main Content -->
 <div class="container" id="mainContent" style="display: none;">
   <!-- VIP Content Block -->
@@ -595,41 +587,56 @@
 </body>
 </html>
 
-.vip-buttons-animated {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 12px;
-  margin: 20px auto;
-  max-width: 600px;
-  animation: fadeInUp 1s ease;
-}
+<!-- VIP Нижние Кнопки --><div class="fixed-vip-buttons">
+  <a href="#vip" class="vip-action-btn"><i class="fas fa-crown"></i><span>VIP</span></a>
+  <a href="#bots" class="vip-action-btn"><i class="fas fa-robot"></i><span>Боты</span></a>
+  <a href="#instagram" class="vip-action-btn"><i class="fab fa-instagram"></i><span>Инстаграм</span></a>
+  <a href="#channels" class="vip-action-btn"><i class="fas fa-satellite-dish"></i><span>Каналы</span></a>
+  <a href="#models" class="vip-action-btn"><i class="fas fa-users"></i><span>Модели</span></a>
+</div><style>
+  .fixed-vip-buttons {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(15,15,15,0.95);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    z-index: 9999;
+    box-shadow: 0 -2px 10px rgba(255, 47, 139, 0.4);
+    animation: slideUp 0.8s ease;
+  }
 
-.vip-animated-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 18px;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #ff2f8b, #ff6b08);
-  box-shadow: 0 0 15px rgba(255, 47, 139, 0.4);
-  transition: all 0.3s ease;
-  font-size: 16px;
-}
+  .vip-action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 12px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
 
-.vip-animated-btn:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 47, 139, 0.6);
-}
+  .vip-action-btn i {
+    font-size: 18px;
+    margin-bottom: 4px;
+    animation: pulse 2s infinite;
+  }
 
-.vip-animated-btn i {
-  margin-right: 8px;
-  animation: pulseIcon 1.8s infinite;
-}
+  .vip-action-btn:hover {
+    transform: translateY(-4px);
+    color: #ff2f8b;
+  }
 
-@keyframes pulseIcon {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
+  @keyframes slideUp {
+    0% { transform: translateY(100%); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+</style>
