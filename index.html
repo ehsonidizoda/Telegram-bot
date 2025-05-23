@@ -369,39 +369,39 @@
   <h2>Шумо 18+ ҳастед?</h2>
   <p>Ин саҳифа танҳо барои калонсолон дастрас аст. Аз рӯи қонун, барои ворид шудан бояд ҳадди ақал 18 сол дошта бошед.</p>
 
-<!-- VIP Content Block: Updated with real photo + Subscribe Verification + Back button --><div class="vip-block" id="vip-photo-block">
-  <div class="protected-photo">
-    <img src="https://images2.imgbox.com/67/7f/RKL6Lahc.jpg" alt="VIP Photo" loading="lazy">
+  <div class="age-buttons">
+    <div class="age-btn age-confirm" onclick="confirmAge(true)">
+      <i class="fas fa-check-circle"></i> Бале, ман 18+ ҳастам
+    </div>
+    <div class="age-btn age-deny" onclick="confirmAge(false)">
+      <i class="fas fa-times-circle"></i> Не, ман аз 18 сол хурдтар ҳастам
+    </div>
   </div>
-  <p class="vip-text">
-    Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун! <span class="icon-18">18+</span>
-  </p>
-  <div class="vip-buttons">
-    <a href="https://t.me/VvediCodBot?start=0180" class="vip-btn"><i class="fas fa-eye"></i> БОТ ДЛЯ ПРОСМОТА 18+</a>
-    <button class="vip-btn" onclick="showVideoBlock()"><i class="fas fa-lock"></i> ДАСТРАСӢ БА ВИДЕО</button>
-    <a href="https://t.me/+mKyoXD_w9bMxMmQy" class="vip-btn"><i class="fas fa-heart"></i> СЕКСОИ ТОҶИКИ</a>
-  </div>
-</div><!-- Video Block hidden by default --><div class="vip-block" id="vip-video-block" style="display: none;">
-  <div class="video-container">
-    <iframe src="https://sendvid.com/embed/c3p5jpvz" allowfullscreen></iframe>
-  </div>
-  <p class="vip-text">Дастрасӣ танҳо пас аз обуна! <span class="icon-18">18+</span></p>
-  <div class="vip-buttons">
-    <a href="https://t.me/VvediCodBot?start=0180" class="vip-btn"><i class="fas fa-paper-plane"></i> ОБУНА ШАВ</a>
-    <button class="vip-btn" onclick="goBackToPhoto()"><i class="fas fa-arrow-left"></i> Бозгашт</button>
-    <a href="https://t.me/+mKyoXD_w9bMxMmQy" class="vip-btn"><i class="fas fa-fire"></i> VIP Канал</a>
-  </div>
-</div><script>
-function showVideoBlock() {
-  document.getElementById('vip-photo-block').style.display = 'none';
-  document.getElementById('vip-video-block').style.display = 'block';
-}
+</div>
 
-function goBackToPhoto() {
-  document.getElementById('vip-video-block').style.display = 'none';
-  document.getElementById('vip-photo-block').style.display = 'block';
-}
-</script>
+<!-- Main Content -->
+<div class="container" id="mainContent" style="display: none;">
+  <!-- VIP Content Block -->
+  <div class="top-category">AJALI PETKAHO VIP</div>
+
+  <div id="vip-content-block" class="vip-block">
+    <div class="protected-photo">
+      <img src="https://images2.imgbox.com/67/7f/RKL6Lahc.jpg" alt="VIP Photo" loading="lazy" width="600" height="400" />
+      <div class="photo-overlay"></div>
+    </div>
+    <p class="vip-text">Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун! <span class="icon-18">18+</span></p>
+    <div class="vip-buttons">
+      <a href="https://t.me/VvediCodBot?start=0180" class="vip-btn">
+        <i class="fas fa-eye"></i> БОТ ДЛЯ ПРОСМОТА 18+🔞
+      </a>
+      <a href="#" class="vip-btn" onclick="showPremiumContent()">
+        <i class="fas fa-lock"></i> АЧАЛИ ПЕТКАҲО
+      </a>
+      <a href="https://t.me/+mKyoXD_w9bMxMmQy" class="vip-btn">
+        <i class="fas fa-heart"></i> СЕКСОИ ТОҶИКИ
+      </a>
+    </div>
+  </div>
 
   <!-- VIP Channels -->
   <div class="card" id="vip-channels">
