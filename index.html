@@ -560,121 +560,38 @@
 <!-- ЗАГОЛОВОК -->
 <div class="top-category sensual-animation">AJALI PETKAHO VIP</div>
 
-
-<!-- АНИМИРОВАННЫЙ VIP-БАННЕР --><div class="vip-banner">
-  <div class="vip-icon">
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-      <path d="M12 2l2.09 6.26L20 9.27l-5 4.87L16.18 22 12 18.56 7.82 22 9 14.14l-5-4.87 5.91-.91L12 2z" />
-    </svg>
-  </div>
-  <div class="vip-text">VIP ДОСТУП</div>
+<!-- ГЛАВНЫЙ VIP-БАННЕР --><div class="card sensual-animation">
+  <h3 class="section-title">
+    <i class="fas fa-star"></i> VIP АКЦИЯ!
+  </h3>
+  <p>Факат Хамин Руз — даступ бо скидка!</p>
+</div><!-- КАТЕГОРИИ С ПЕРЕХОДАМИ --><div class="card sensual-animation">
+  <a href="#vip" class="category-tile">🔥 VIP</a>
+  <a href="#bots" class="category-tile">🤖 Боты</a>
+  <a href="#insta" class="category-tile">📸 Инстаграм</a>
+  <a href="#channels" class="category-tile">📡 Каналы</a>
+  <a href="#models" class="category-tile">💃 Модели</a>
 </div><style>
-  .vip-banner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(45deg, #ff2f8b, #ff6b08);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 14px;
-    box-shadow: 0 0 18px rgba(255, 47, 139, 0.6);
-    animation: bannerGlow 3s ease-in-out infinite;
-    margin: 25px auto;
-    max-width: 400px;
-  }
-
-  .vip-icon {
-    margin-right: 12px;
-    font-size: 24px;
-    animation: rotateIcon 6s linear infinite;
-  }
-
-  .vip-text {
-    font-weight: bold;
-    font-size: 18px;
-    letter-spacing: 1px;
-  }
-
-  @keyframes bannerGlow {
-    0% { box-shadow: 0 0 18px rgba(255, 47, 139, 0.6); }
-    50% { box-shadow: 0 0 30px rgba(255, 47, 139, 1); }
-    100% { box-shadow: 0 0 18px rgba(255, 47, 139, 0.6); }
-  }
-
-  @keyframes rotateIcon {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-</style><!-- ОБНОВЛЁННЫЕ СЕКЦИИ --><div class="section-grid">
-  <div class="section-card new">
-    <div class="section-icon">🔥</div>
-    <div class="section-title">VIP</div>
-  </div>
-  <div class="section-card">
-    <div class="section-icon">🤖</div>
-    <div class="section-title">Боты</div>
-  </div>
-  <div class="section-card">
-    <div class="section-icon">📸</div>
-    <div class="section-title">Инстаграм</div>
-  </div>
-  <div class="section-card">
-    <div class="section-icon">📡</div>
-    <div class="section-title">Каналы</div>
-  </div>
-  <div class="section-card">
-    <div class="section-icon">💃</div>
-    <div class="section-title">Модели</div>
-  </div>
-</div><style>
-  .section-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin: 30px auto;
-    max-width: 400px;
-  }
-
-  .section-card {
-    background: #1a1a1a;
-    border: 2px solid #ff2f8b;
-    border-radius: 16px;
-    text-align: center;
-    padding: 20px 10px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    color: white;
-    position: relative;
-  }
-
-  .section-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(255, 47, 139, 0.6);
-  }
-
-  .section-icon {
-    font-size: 26px;
-    margin-bottom: 10px;
-  }
-
-  .section-title {
-    font-weight: bold;
-    font-size: 16px;
-    letter-spacing: 0.5px;
-  }
-
-  .section-card.new::after {
-    content: 'NEW';
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background: #ff2f8b;
-    color: white;
-    font-size: 10px;
-    padding: 4px 8px;
-    border-radius: 10px;
-    font-weight: bold;
-  }
-</style>
+.category-tile {
+  display: block;
+  margin: 10px auto;
+  padding: 15px;
+  background: #111;
+  color: #ff2f8b;
+  border: 1px solid #ff2f8b;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  font-size: 18px;
+  transition: 0.3s;
+  max-width: 280px;
+}
+.category-tile:hover {
+  background: #ff2f8b;
+  color: white;
+}
+</style><!-- СТАРЫЙ VIP БЛОК ИЗ НИЖНЕГО МЕНЮ УДАЛЁН --><!-- Нижнее меню оставляем рабочим, основной доступ через плитки выше -->
 
   <!-- Кнопка показать -->
   <div id="showBannerBtn" style="display: none; text-align: center; margin-top: 10px;">
