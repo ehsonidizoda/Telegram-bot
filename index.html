@@ -552,107 +552,111 @@
 <!-- ЗАГОЛОВОК -->
 <div class="top-category sensual-animation">AJALI PETKAHO VIP</div>
 
-<!-- VIP Фото Блок -->
-<div class="vip-block sensual-animation">
-  <div class="protected-photo animate-up">
-    <img src="https://images2.imgbox.com/67/7f/RKL6Lahc.jpg" alt="VIP Content" loading="lazy" />
-  </div>
-  <p class="vip-text">Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун!</p>
+<!-- VIP Галерея с двумя блоками --><div class="vip-gallery">  <!-- Первый БЛОК -->  <div class="vip-block active fade-in">
+    <div class="protected-photo">
+      <img src="https://images2.imgbox.com/a5/33/qiUGDLsw_o.jpg" alt="VIP Content 1" loading="lazy" />
+    </div>
+    <p class="vip-text">Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун!</p>
+    <div class="vip-buttons">
+      <a href="#" class="vip-btn"><i class="fas fa-fire"></i> ДОМАШКА ХХХ</a>
+      <a href="#" class="vip-btn"><i class="fas fa-heart"></i> АЧАЛИ ПЕТКАХО</a>
+    </div>
+  </div>  <!-- Второй БЛОК -->  <div class="vip-block fade-in">
+    <div class="protected-photo">
+      <img src="https://images2.imgbox.com/6f/ab/kzID8OSo_o.jpg" alt="VIP Content 2" loading="lazy" />
+    </div>
+    <p class="vip-text">Контенти махфӣ барои VIP аъзоён. Обуна шав ва дастрас шав!</p>
+    <div class="vip-buttons">
+      <a href="#" class="vip-btn"><i class="fas fa-lock"></i> VIP КАНАЛ</a>
+      <a href="#" class="vip-btn"><i class="fas fa-video"></i> ТОҶИК ВИДЕО</a>
+    </div>
+  </div>  <!-- Кнопка переключения --><button class="switch-btn" onclick="switchVipBlock()">▶️ Дигар медиа</button>
 
-  <div class="vip-buttons">
-    <a href="https://t.me/VvediCodBot?start=1178" class="vip-btn"><i class="fas fa-fire"></i> ДОМАШКА ХХХ</a>
-    <a href="https://t.me/+KQIAzLQxuXliMDJi" class="vip-btn"><i class="fas fa-heart"></i> АЧАЛИ ПЕТКАХО</a>
-    <a href="https://t.me/+IUec_xlw8dVjMjJi" class="vip-btn"><i class="fas fa-video"></i> ТОЧИКИ Порно</a>
-    <a href="https://t.me/+pArHg8DLqiw4NjUy" class="vip-btn"><i class="fas fa-lock-open"></i> ИНТИМ КЛУБ</a>
-  </div>
-</div>
-
-<style>
-  .vip-block {
+</div><style>
+  .vip-gallery {
     text-align: center;
-    margin: 30px auto;
-    padding: 0 15px;
     max-width: 600px;
-  }
-
-  .protected-photo {
+    margin: 30px auto;
     position: relative;
-    overflow: hidden;
+  }
+  .vip-block {
+    display: none;
+    animation: fadeIn 1s ease forwards;
+  }
+  .vip-block.active {
+    display: block;
+  }
+  .protected-photo {
     border-radius: 18px;
+    overflow: hidden;
     border: 2px solid #ff2f8b;
     box-shadow: 0 0 20px rgba(255, 47, 139, 0.4);
-    animation: fadeInUp 1s ease;
   }
-
   .protected-photo img {
     width: 100%;
+    object-fit: cover;
+    max-height: 420px;
     pointer-events: none;
     user-select: none;
-    max-height: 420px;
-    object-fit: cover;
   }
-
   .vip-text {
     color: white;
-    margin: 20px 0 10px;
     font-size: 16px;
     font-weight: bold;
+    margin: 20px 0 10px;
   }
-
   .vip-buttons {
     display: flex;
+    gap: 10px;
     flex-wrap: wrap;
-    gap: 12px;
     justify-content: center;
-    margin-top: 20px;
   }
-
   .vip-btn {
-    flex: 1 1 45%;
-    max-width: 240px;
-    min-width: 140px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: linear-gradient(135deg, #ff2f8b, #ff6b08);
-    color: white;
-    padding: 12px 16px;
-    border-radius: 14px;
-    font-weight: bold;
+    color: #fff;
+    border-radius: 12px;
+    padding: 10px 16px;
     text-decoration: none;
+    font-weight: bold;
     box-shadow: 0 0 15px rgba(255, 47, 139, 0.3);
     transition: 0.3s;
     font-size: 15px;
   }
-
-  .vip-btn i {
-    margin-right: 8px;
-  }
-
   .vip-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 47, 139, 0.5);
+    box-shadow: 0 0 25px rgba(255, 47, 139, 0.5);
   }
-
-  @keyframes fadeInUp {
+  .switch-btn {
+    margin-top: 20px;
+    background: #222;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+  }
+  @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(30px); }
     100% { opacity: 1; transform: translateY(0); }
   }
-
-  @media (max-width: 420px) {
-    .vip-btn {
-      flex: 1 1 100%;
-    }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255,47,139, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255,47,139, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,47,139, 0); }
   }
-</style>
-
-<script>
-  document.addEventListener("contextmenu", e => {
-    if (e.target.tagName === "IMG") e.preventDefault();
-  });
-</script>
- document.addEventListener("contextmenu", e => {
-    if (e.target.tagName === "IMG") e.preventDefault();
+</style><script>
+  let currentBlock = 0;
+  function switchVipBlock() {
+    const blocks = document.querySelectorAll('.vip-block');
+    blocks[currentBlock].classList.remove('active');
+    currentBlock = (currentBlock + 1) % blocks.length;
+    blocks[currentBlock].classList.add('active');
+  }
+  // Показ первого блока при загрузке
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.vip-block')[0].classList.add('active');
   });
 </script>
 
