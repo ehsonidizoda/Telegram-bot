@@ -1,18 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="tg">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJALI PETKAHO VIP</title>
-  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async="async"></script>
-  <script>
-    window.OneSignal = window.OneSignal || [];
-    OneSignal.push(function() {
-      OneSignal.init({
-        appId: "d76d58de-1471-4be3-8afc-08a7143171c0",
-      });
-    });
-  </script>
+  <title>AJALI PETKAHO VIP | Каналҳои 18+</title>
+  <meta name="description" content="Каналҳои VIP барои калонсолон. Контенти эксклюзивӣ аз Тоҷикистон">
+  <meta name="theme-color" content="#ff2f8b">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
       --primary-color: #ff2f8b;
@@ -26,9 +20,9 @@
     body {
       background: var(--dark-bg);
       color: var(--text-color);
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 0;
+      padding: 20px;
       text-align: center;
       max-width: 580px;
       margin: 0 auto;
@@ -37,48 +31,84 @@
                       radial-gradient(circle at 80% 70%, rgba(255, 94, 94, 0.15) 0%, transparent 50%);
     }
 
-    .discount-banner {
-      background: linear-gradient(45deg, #ff2f8b, #ff6b08);
+    /* Age Verification Modal */
+    .age-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
       color: white;
-      padding: 15px;
-      margin: 15px auto;
-      border-radius: 12px;
-      max-width: 500px;
-      animation: pulse 2s infinite;
-      box-shadow: 0 5px 15px rgba(255, 47, 139, 0.5);
-      position: relative;
-      overflow: hidden;
+      text-align: center;
+      padding: 20px;
     }
 
-    .discount-banner::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        to bottom right,
-        rgba(255,255,255,0.3) 0%,
-        rgba(255,255,255,0) 60%
-      );
-      transform: rotate(30deg);
-      pointer-events: none;
+    .age-modal h2 {
+      color: var(--primary-color);
+      font-size: 24px;
+      margin-bottom: 30px;
     }
 
-    .discount-banner h3 {
-      margin: 0;
-      font-size: 18px;
+    .age-buttons {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .age-btn {
+      padding: 12px 30px;
+      border-radius: 8px;
       font-weight: bold;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 200px;
     }
 
-    .discount-banner p {
-      margin: 8px 0 0;
-      font-size: 14px;
-      opacity: 0.9;
+    .age-confirm {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: white;
     }
 
+    .age-deny {
+      background: #333;
+      color: white;
+    }
+
+    /* Header Styles */
+    .top-category {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary-color);
+      margin: 30px 0 10px;
+      text-shadow: 0 0 15px rgba(255, 47, 139, 0.7);
+      letter-spacing: 0.5px;
+      position: relative;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+
+    .top-category::after {
+      content: '18+';
+      position: absolute;
+      top: -10px;
+      right: -25px;
+      background: var(--primary-color);
+      color: white;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    /* Card Styles */
     .card {
       background: var(--card-bg);
       margin: 25px auto;
@@ -105,168 +135,119 @@
       pointer-events: none;
     }
 
-    .cta-btn {
-      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-      color: white;
-      padding: 14px 25px;
-      font-size: 17px;
-      font-weight: bold;
-      border-radius: 12px;
-      text-decoration: none;
-      display: block;
-      margin: 15px 0;
-      box-shadow: 0 5px 15px rgba(255, 47, 139, 0.4);
-      transition: all 0.3s ease;
-      border: none;
+    /* VIP Content Block */
+    .vip-block {
+      text-align: center;
+      margin: 30px auto;
+      padding: 0 15px;
+      max-width: 600px;
+      position: relative;
+    }
+    
+    .protected-photo {
       position: relative;
       overflow: hidden;
-      z-index: 1;
+      border-radius: 18px;
+      border: 2px solid #ff2f8b;
+      box-shadow: 0 0 20px rgba(255, 47, 139, 0.4);
+      animation: fadeInUp 1s ease;
     }
-
-    .cta-btn::after {
-      content: '';
+    
+    .protected-photo img {
+      width: 100%;
+      height: auto;
+      max-height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .photo-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-      z-index: -1;
+      background: rgba(0,0,0,0.3);
+      pointer-events: none;
+    }
+    
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      margin-bottom: 20px;
+    }
+    
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .vip-text {
+      color: white;
+      margin: 20px 0 15px;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+    
+    .vip-text .icon-18 {
+      display: inline-block;
+      animation: pulse 1.5s infinite;
+      color: #ff2f8b;
+      font-weight: bold;
+      margin-left: 6px;
+    }
+    
+    .vip-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    /* Button Styles */
+    .cta-btn, .vip-btn {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 14px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 12px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 5px 15px rgba(255, 47, 139, 0.4);
       transition: all 0.3s ease;
-      opacity: 0;
+      border: none;
+      cursor: pointer;
     }
 
-    .cta-btn:hover::after {
-      opacity: 1;
+    .cta-btn i, .vip-btn i {
+      font-size: 14px;
     }
 
-    .cta-btn:hover {
+    .cta-btn:hover, .vip-btn:hover {
       background: linear-gradient(45deg, #e42072, #e04a4a);
-      transform: translateY(-3px) scale(1.02);
+      transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(255, 47, 139, 0.6);
     }
 
-    .cta-btn:active {
-      transform: translateY(1px) scale(0.98);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
-    }
-
-    @media (max-width: 480px) {
-      .card { 
-        padding: 20px; 
-        margin: 20px auto;
-        border-radius: 14px;
-      }
-      .cta-btn { 
-        padding: 12px 20px; 
-        font-size: 16px; 
-      }
-      body { 
-        padding: 15px; 
-        max-width: 100%;
-      }
-      .discount-banner {
-        padding: 12px;
-      }
-      .discount-banner h3 {
-        font-size: 16px;
-      }
-    }
-
-    footer {
-      margin: 50px auto 30px;
-      color: #ff94d3;
-      font-size: 14px;
-      opacity: 0.7;
-      line-height: 1.6;
-    }
-
-    .top-category {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--primary-color);
-      margin: 30px 0 10px;
-      text-shadow: 0 0 15px rgba(255, 47, 139, 0.7);
-      letter-spacing: 0.5px;
-      animation: pulse 2s infinite;
-      position: relative;
-      display: inline-block;
-    }
-
-    .top-category::after {
-      content: '18+';
-      position: absolute;
-      top: -10px;
-      right: -25px;
-      background: var(--primary-color);
-      color: white;
-      font-size: 12px;
-      padding: 2px 8px;
-      border-radius: 10px;
-      font-weight: bold;
-    }
-
+    /* Channel Styles */
     .channel-desc {
       font-size: 16px;
       margin: 15px 0;
       line-height: 1.5;
       color: #ddd;
-    }
-
-    .section-title {
-      font-size: 22px;
-      margin-bottom: 20px;
-      color: var(--accent-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .section-title i {
-      font-size: 26px;
-    }
-
-    .fixed-vip-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(45deg, var(--primary-color), #ff6b08);
-      color: white;
-      padding: 14px 20px;
-      border-radius: 50px;
-      font-weight: bold;
-      font-size: 15px;
-      text-decoration: none;
-      box-shadow: 0 0 20px rgba(255, 47, 139, 0.7);
-      z-index: 999;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .fixed-vip-btn:hover {
-      background: linear-gradient(45deg, #e42072, #e05500);
-      transform: scale(1.05) translateY(-3px);
-      box-shadow: 0 0 25px rgba(255, 47, 139, 0.9);
+      text-align: left;
     }
 
     .channel-number {
@@ -288,101 +269,22 @@
       transform: rotate(360deg);
     }
 
-    .banner-buttons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-bottom: 15px;
-    }
-
-    .banner-buttons .cta-btn {
-      margin: 0;
-    }
-
-    .hidden-buttons {
-      display: none;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      animation: fadeIn 0.5s ease-out;
-    }
-
-    @keyframes sensualPulse {
-      0% { transform: scale(1) rotate(0deg); }
-      25% { transform: scale(1.02) rotate(0.5deg); }
-      50% { transform: scale(1.01) rotate(-0.5deg); }
-      75% { transform: scale(1.02) rotate(0.3deg); }
-      100% { transform: scale(1) rotate(0deg); }
-    }
-
-    .sensual-animation {
-      animation: sensualPulse 8s infinite ease-in-out;
-    }
-
-    .glow {
-      text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
-    }
-
-    .confetti {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background-color: var(--primary-color);
-      opacity: 0;
-      z-index: 10;
-    }
-
-    .age-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.9);
+    /* Section Titles */
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: var(--accent-color);
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      z-index: 9999;
-      color: white;
-      text-align: center;
-      padding: 20px;
+      justify-content: center;
+      gap: 10px;
     }
 
-    .age-modal h2 {
-      color: var(--primary-color);
-      font-size: 24px;
-      margin-bottom: 30px;
+    .section-title i {
+      font-size: 26px;
     }
 
-    .age-buttons {
-      display: flex;
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .age-btn {
-      padding: 12px 30px;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .age-confirm {
-      background: var(--primary-color);
-      color: white;
-    }
-
-    .age-deny {
-      background: #333;
-      color: white;
-    }
-
-    .age-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(255, 47, 139, 0.4);
-    }
-
+    /* Divider */
     .sexy-divider {
       height: 2px;
       background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
@@ -391,9 +293,30 @@
       width: 100%;
     }
 
-    .heart-beat {
-      animation: heartbeat 1.5s infinite;
-      display: inline-block;
+    /* Footer */
+    footer {
+      margin: 50px auto 30px;
+      color: #ff94d3;
+      font-size: 14px;
+      opacity: 0.7;
+      line-height: 1.6;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes heartbeat {
@@ -404,499 +327,262 @@
       100% { transform: scale(1); }
     }
 
-    .discount-timer {
-      font-size: 16px;
-      font-weight: bold;
-      margin-top: 10px;
-      color: #fff;
-      background: rgba(0,0,0,0.3);
-      padding: 5px 10px;
-      border-radius: 20px;
-      display: inline-block;
-    }
-
-    /* Стили для меню */
-    .floating-menu {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color);
-      color: white;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      cursor: pointer;
-      z-index: 999;
-      box-shadow: 0 0 20px rgba(255, 47, 139, 0.5);
-      transition: all 0.3s ease;
-    }
-
-    .floating-menu:hover {
-      transform: scale(1.1);
-    }
-
-    .sidebar {
-      position: fixed;
-      bottom: 80px;
-      left: 20px;
-      background: var(--card-bg);
-      border-radius: 15px;
-      padding: 15px;
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 998;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      border: 1px solid #2a2a2a;
-      width: 200px;
-    }
-
-    .sidebar button {
-      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-align: left;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .sidebar button:hover {
-      transform: translateX(5px);
-    }
-
-    .sidebar button i {
-      font-size: 18px;
+    /* Responsive Styles */
+    @media (max-width: 480px) {
+      .card { 
+        padding: 20px; 
+        margin: 20px auto;
+        border-radius: 14px;
+      }
+      
+      .cta-btn, .vip-btn { 
+        padding: 12px 20px; 
+        font-size: 15px; 
+      }
+      
+      body { 
+        padding: 15px; 
+      }
+      
+      .top-category {
+        font-size: 24px;
+      }
+      
+      .section-title {
+        font-size: 20px;
+      }
+      
+      .vip-buttons {
+        grid-template-columns: 1fr;
+      }
+      
+      .age-btn {
+        min-width: 100%;
+      }
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
 <!-- Age verification modal -->
-<div id="ageModal" class="age-modal" style="display: none;">
+<div id="ageModal" class="age-modal">
   <h2>Шумо 18+ ҳастед?</h2>
   <p>Ин саҳифа танҳо барои калонсолон дастрас аст. Аз рӯи қонун, барои ворид шудан бояд ҳадди ақал 18 сол дошта бошед.</p>
-  
+
   <div class="age-buttons">
-    <div class="age-btn age-confirm" onclick="confirmAge(true)">Бале, ман 18+ ҳастам</div>
-    <div class="age-btn age-deny" onclick="confirmAge(false)">Не, ман аз 18 сол хурдтар ҳастам</div>
+    <div class="age-btn age-confirm" onclick="confirmAge(true)">
+      <i class="fas fa-check-circle"></i> Бале, ман 18+ ҳастам
+    </div>
+    <div class="age-btn age-deny" onclick="confirmAge(false)">
+      <i class="fas fa-times-circle"></i> Не, ман аз 18 сол хурдтар ҳастам
+    </div>
   </div>
 </div>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Main Content -->
+<div class="container" id="mainContent" style="display: none;">
+  <!-- VIP Content Block -->
+  <div class="top-category">AJALI PETKAHO VIP</div>
 
-<style>
-  .fixed-menu {
-    position: fixed;
-    bottom: 10px;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    z-index: 9999;
-    animation: slideUp 1s ease forwards;
-  }
+  <div id="vip-content-block" class="vip-block">
+    <div class="protected-photo">
+      <img src="https://images2.imgbox.com/67/7f/RKL6Lahc.jpg" alt="VIP Photo" loading="lazy" width="600" height="400" />
+      <div class="photo-overlay"></div>
+    </div>
+    <p class="vip-text">Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун! <span class="icon-18">18+</span></p>
+    <div class="vip-buttons">
+      <a href="https://t.me/VvediCodBot?start=0180" class="vip-btn">
+        <i class="fas fa-eye"></i> БОТ ДЛЯ ПРОСМОТА 18+🔞
+      </a>
+      <a href="#" class="vip-btn" onclick="showPremiumContent()">
+        <i class="fas fa-lock"></i> АЧАЛИ ПЕТКАҲО
+      </a>
+      <a href="https://t.me/+mKyoXD_w9bMxMmQy" class="vip-btn">
+        <i class="fas fa-heart"></i> СЕКСОИ ТОҶИКИ
+      </a>
+    </div>
+  </div>
 
-  @keyframes slideUp {
-    from {
-      transform: translateY(100%);
-      opacity: 0;
+  <!-- VIP Channels -->
+  <div class="card" id="vip-channels">
+    <h3 class="section-title">
+      <i class="fas fa-crown"></i> КАНАЛҲОИ VIP
+    </h3>
+
+    <p class="channel-desc">
+      <span class="channel-number">1</span>
+      <strong>VIP KANAL</strong> – Видеоҳои Точики, САТРДОРО 🧕, Кудакона. Барои дромадан нависен 🔞
+    </p>
+    <a href="https://t.me/+j6Ar7wgV9CZhMjEy" class="cta-btn">
+      <i class="fas fa-user-shield"></i> ВОРИД БА КАНАЛ
+    </a>
+
+    <p class="channel-desc">
+      <span class="channel-number">2</span>
+      <strong>VIP KANAL</strong> – Видеоҳои САТРДОРО🧕
+    </p>
+    <a href="https://t.me/+j6Ar7wgV9CZhMjEy" class="cta-btn">
+      <i class="fas fa-star"></i> ВОРИД БА КАНАЛ
+    </a>
+
+    <hr class="sexy-divider">
+
+    <p class="channel-desc">
+      <span class="channel-number">3</span>
+      <strong>VIP PRIVATE</strong> – Exclusive content for members only
+    </p>
+    <a href="https://t.me/+Fu_4b0aUQJdiZTEx" class="cta-btn">
+      <i class="fas fa-gem"></i> PRIVATE ACCESS
+    </a>
+  </div>
+
+  <!-- Main Channels -->
+  <div class="card" id="channels">
+    <h3 class="section-title">
+      <i class="fas fa-bolt"></i> КАНАЛҲОИ АСОСӢ
+    </h3>
+
+    <p class="channel-desc">
+      <span class="channel-number">1</span>
+      <strong>ХОДИСА ТВ</strong> – Ахбор ва гузоришҳои 18+
+    </p>
+    <a href="https://t.me/+-WmmN-aTwVZlMGEy" class="cta-btn">
+      <i class="fas fa-tv"></i> ВОРИД ШУДАН
+    </a>
+
+    <p class="channel-desc">
+      <span class="channel-number">2</span>
+      <strong>ТОЧИКИ ХХХ</strong> – Филмҳои 18+ бо иштироки точикон
+    </p>
+    <a href="https://t.me/+_y-jvauCdk4zMzkx" class="cta-btn">
+      <i class="fas fa-pepper-hot"></i> ДИДАНИ КОНТЕНТ
+    </a>
+
+    <p class="channel-desc">
+      <span class="channel-number">3</span>
+      <strong>КУДАКОНА</strong> – Контенти маҳрамона барои калонсолон
+    </p>
+    <a href="https://t.me/+Fu_4b0aUQJdiZTEx" class="cta-btn">
+      <i class="fas fa-exclamation-triangle"></i> ҲАМРОҲ ШАВ
+    </a>
+  </div>
+
+  <!-- Bots Section -->
+  <div class="card" id="bots">
+    <h3 class="section-title">
+      <i class="fas fa-robot"></i> БОТҲОИ ХИДМАТӢ
+    </h3>
+
+    <p class="channel-desc">
+      <span class="channel-number">1</span>
+      <strong>Форзона-бот</strong> – Барои Тамошо видехои 18+
+    </p>
+    <a href="https://t.me/Farzoona_bot?start=" class="cta-btn">
+      <i class="fas fa-play"></i> ОГОЗ КАРДАН
+    </a>
+
+    <p class="channel-desc">
+      <span class="channel-number">2</span>
+      <strong>Дар Рушд</strong> – Бот барои каналҳои хусусӣ
+    </p>
+    <a href="https://t.me/DarRushdBot" class="cta-btn">
+      <i class="fas fa-tools"></i> БОТ ДАР РУШД
+    </a>
+
+    <p class="channel-desc">
+      <span class="channel-number">3</span>
+      <strong>Дар Рушд V2</strong> – Бот барои VIP
+    </p>
+    <a href="https://t.me/DarRushdVipBot" class="cta-btn">
+      <i class="fas fa-gem"></i> БОТИ VIP
+    </a>
+
+    <hr class="sexy-divider">
+
+    <p class="channel-desc">
+      <span class="channel-number">4</span>
+      <strong>Секс Бот</strong> – Интерактивные игры 18+
+    </p>
+    <a href="https://t.me/SexGameBot" class="cta-btn">
+      <i class="fas fa-gamepad"></i> ИГРЫ ДЛЯ ВЗРОСЛЫХ
+    </a>
+  </div>
+
+  <!-- Instagram Pages -->
+  <div class="card" id="instagram">
+    <h3 class="section-title">
+      <i class="fab fa-instagram"></i> ИНСТАГРАМ САҲИФАҲО
+    </h3>
+
+    <p class="channel-desc">
+      <span class="channel-number">1</span>
+      <strong>AJALI PETKAHO</strong> – Петкачаҳои точикӣ
+    </p>
+    <a href="https://instagram.com/ajali_petka" class="cta-btn">
+      <i class="fas fa-camera"></i> ДИДАНИ САҲИФА
+    </a>
+
+    <p class="channel-desc">
+      <span class="channel-number">2</span>
+      <strong>Models TJ</strong> – Моделҳои Sexy 🔞
+    </p>
+    <a href="https://t.me/+t-tdaXtQvdw1NzJi" class="cta-btn">
+      <i class="fas fa-user-secret"></i> MODELS
+    </a>
+
+    <p class="channel-desc">
+      <span class="channel-number">3</span>
+      <strong>ВВЕДИ КОД</strong> – Канали расмии бот
+    </p>
+    <a href="https://t.me/VvediCod" class="cta-btn">
+      <i class="fas fa-code"></i> КАНАЛИ БОТ
+    </a>
+  </div>
+
+  <footer>
+    <p>© 2023 AJALI PETKAHO VIP | Истифода аз мӯҳтаво танҳо барои калонсолон иҷозат дорад</p>
+    <p>Ҳамаи ҳуқуқҳо ҳифз шудаанд. Нусхабардорӣ манъ аст.</p>
+  </footer>
+</div>
+
+<script>
+  // Age Verification
+  function confirmAge(isAdult) {
+    const ageModal = document.getElementById('ageModal');
+    const mainContent = document.getElementById('mainContent');
+    
+    if (isAdult) {
+      ageModal.style.display = 'none';
+      mainContent.style.display = 'block';
+      localStorage.setItem('ageVerified', 'true');
+    } else {
+      window.location.href = 'https://www.google.com';
     }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
   }
 
-  .menu-btn {
-    flex: 1;
-    max-width: 120px;
-    background: linear-gradient(135deg, #ff2f8b, #ff5e5e);
-    color: white;
-    text-decoration: none;
-    padding: 12px 10px;
-    font-size: 14px;
-    border-radius: 15px;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 0 12px rgba(255, 47, 139, 0.5);
-    transition: all 0.3s ease;
+  // Check if already verified
+  if (localStorage.getItem('ageVerified') === 'true') {
+    document.getElementById('ageModal').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+  } else {
+    document.getElementById('ageModal').style.display = 'flex';
   }
 
-  .menu-btn i {
-    font-size: 18px;
-    margin-bottom: 5px;
+  // Show premium content
+  function showPremiumContent() {
+    alert("Барои дастрасӣ ба ин контент бояд аз бот ҳуҷҷатҳои тасдиқи синну солро ирсол намоед!");
   }
 
-  .menu-btn:hover,
-  .menu-btn.active {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px rgba(255, 47, 139, 0.8);
-    background: linear-gradient(135deg, #ff2f8b, #ff2fb2);
-  }
-</style>
- 
-<!-- ЗАГОЛОВОК -->
-<div class="top-category sensual-animation">AJALI PETKAHO VIP</div>
-
-<!-- VIP Контент Блок с Фото + Проверка подписки --><div id="vip-content-block" class="vip-block sensual-animation">
-  <div class="protected-photo">
-    <img src="https://images2.imgbox.com/67/7f/RKL6Lahc.jpg" alt="VIP Photo" loading="lazy" />
-  </div>
-  <p class="vip-text">Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун! <span class="icon-18">18+</span></p>
-  <div class="https://t.me/VvediCodBot?start=0180">
-    <button class="vip-btn">БОТ ДЛЯ ПРОСМОТА 18+🔞</button>
-    <button class="vip-btn">АЧАЛИ ПЕТКАҲО</button>
-    <button class="https://t.me/+mKyoXD_w9bMxMmQy" onclick="document.getElementById('verify-block').style.display='block'; document.getElementById('vip-content-block').style.display='none';">СЕКСОИ ТОҶИКИ</button>
-  </div>
-</div><!-- Блок Подтверждения + Видео --><div id="verify-block" class="vip-block" style="display: none;">
-  <iframe src="https://sendvid.com/embed/c3p5jpvz" frameborder="0" scrolling="no" allowfullscreen style="width:100%; max-width:600px; height:340px; border-radius:14px; box-shadow:0 0 20px rgba(255,47,139,0.4);"></iframe>
-  <p class="vip-text">Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун! <span class="icon-18">18+</span></p>
-  <div class="vip-buttons">
-    <button class="vip-btn">Кнопка 1</button>
-    <button class="vip-btn">Кнопка 2</button>
-    <button class="vip-btn">Кнопка 3</button>
-  </div>
-</div><style>
-  .vip-block {
-    text-align: center;
-    margin: 30px auto;
-    padding: 0 15px;
-    max-width: 600px;
-  }
-  .protected-photo {
-    position: relative;
-    overflow: hidden;
-    border-radius: 18px;
-    border: 2px solid #ff2f8b;
-    box-shadow: 0 0 20px rgba(255, 47, 139, 0.4);
-    animation: fadeInUp 1s ease;
-  }
-  .protected-photo img {
-    width: 100%;
-    pointer-events: none;
-    user-select: none;
-    max-height: 420px;
-    object-fit: cover;
-  }
-  .vip-text {
-    color: white;
-    margin: 20px 0 10px;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  .vip-text .icon-18 {
-    display: inline-block;
-    animation: pulse 1s infinite;
-    color: #ff2f8b;
-    font-weight: bold;
-    margin-left: 6px;
-  }
-  .vip-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-  }
-  .vip-btn {
-    background: linear-gradient(135deg, #ff2f8b, #ff6b08);
-    color: white;
-    padding: 14px 20px;
-    border-radius: 14px;
-    font-weight: bold;
-    font-size: 16px;
-    border: none;
-    box-shadow: 0 0 15px rgba(255, 47, 139, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 120px;
-  }
-  .vip-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 47, 139, 0.5);
-  }
-  @keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(30px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes pulse {
-    0% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.1); opacity: 1; }
-    100% { transform: scale(1); opacity: 0.8; }
-  }
-</style><script>
+  // Right click protection
   document.addEventListener("contextmenu", e => {
     if (e.target.tagName === "IMG") e.preventDefault();
   });
+
+  // Back to VIP content
+  function goBack() {
+    document.getElementById('verify-block').style.display = 'none';
+    document.getElementById('vip-content-block').style.display = 'block';
+  }
 </script>
-
- VIP КАНАЛҲО
-  </h3>
-
-  <p class="channel-desc">
-    <span class="channel-number">1</span>
-    <strong>VIP KANAL</strong> – Видеоҳои Точики, САТРДОРО 🧕, Кудакона. Барои дромадан нависен 🔞
-  </p>
-  <a href="https://t.me/m/HilJWR4YZmY0" class="cta-btn">
-    <i class="fas fa-user-shield" style="margin-right: 8px;"></i> АДМИНИСТРАТОР
-  </a>
-
-  <p class="channel-desc">
-    <span class="channel-number">2</span>
-    <strong>VIP KANAL</strong> – Видеоҳои САТРДОРО🧕
-  </p>
-  <a href="https://t.me/+j6Ar7wgV9CZhMjEy" class="cta-btn">
-    <i class="fas fa-star" style="margin-right: 8px;"></i> ВОРИД БА КАНАЛ
-  </a>
-
-  <hr class="sexy-divider">
-
-  <p class="channel-desc">
-    <span class="channel-number">3</span>
-    <strong>VIP PRIVATE</strong> – Exclusive content for members only
-  </p>
-  <a href="https://t.me/+Fu_4b0aUQJdiZTEx" class="cta-btn">
-    <i class="fas fa-gem" style="margin-right: 8px;"></i> PRIVATE ACCESS
-  </a>
-</div>
-
-<!-- ОСНОВНЫЕ КАНАЛЫ -->
-<div class="card sensual-animation" id="channels">
-  <h3 class="section-title">
-    <i class="fas fa-bolt glow"></i> КАНАЛҲОИ АСОСӢ
-  </h3>
-
-  <p class="channel-desc">
-    <span class="channel-number">1</span>
-    <strong>ХОДИСА ТВ</strong> – Ахбор ва гузоришҳои 18+
-  </p>
-  <a href="https://t.me/+-WmmN-aTwVZlMGEy" class="cta-btn">
-    <i class="fas fa-tv" style="margin-right: 8px;"></i> ВОРИД ШУДАН
-  </a>
-
-  <p class="channel-desc">
-    <span class="channel-number">2</span>
-    <strong>ТОЧИКИ ХХХ</strong> – Филмҳои 18+ бо иштироки точикон
-  </p>
-  <a href="https://t.me/+_y-jvauCdk4zMzkx" class="cta-btn">
-    <i class="fas fa-pepper-hot" style="margin-right: 8px;"></i> ДИДАНИ КОНТЕНТ
-  </a>
-
-  <p class="channel-desc">
-    <span class="channel-number">3</span>
-    <strong>КУДАКОНА</strong> – Контенти маҳрамона барои калонсолон
-  </p>
-  <a href="https://t.me/+Fu_4b0aUQJdiZTEx" class="cta-btn">
-    <i class="fas fa-exclamation-triangle" style="margin-right: 8px;"></i> ҲАМРОҲ ШАВ
-  </a>
-</div>
-
-<!-- БОТЫ -->
-<div class="card sensual-animation" id="bots">
-  <h3 class="section-title">
-    <i class="fas fa-robot glow"></i> БОТҲОИ ХИДМАТӢ
-  </h3>
-
-  <p class="channel-desc">
-    <span class="channel-number">1</span>
-    <strong>Форзона-бот</strong> – Барои Тамошо видехои 18+
-  </p>
-  <a href="https://t.me/Farzoona_bot?start=" class="cta-btn">
-    <i class="fas fa-play" style="margin-right: 8px;"></i> ОГОЗ КАРДАН
-  </a>
-
-  <p class="channel-desc">
-    <span class="channel-number">2</span>
-    <strong>Дар Рушд</strong> – Бот барои 
-  </p>
-  <a href="https://t.me/DarRushdBot" class="cta-btn">
-    <i class="fas fa-tools" style="margin-right: 8px;"></i> БОТ ДАР РУШД
-  </a>
-
-  <p class="channel-desc">
-    <span class="channel-number">3</span>
-    <strong>Дар Рушд V2</strong> – Бот барои VIP
-  </p>
-  <a href="https://t.me/DarRushdVipBot" class="cta-btn">
-    <i class="fas fa-gem" style="margin-right: 8px;"></i> БОТИ VIP
-  </a>
-  
-  <hr class="sexy-divider">
-  
-  <p class="channel-desc">
-    <span class="channel-number">4</span>
-    <strong>Секс Бот</strong> – Интерактивные игры 18+
-  </p>
-  <a href="https://t.me/SexGameBot" class="cta-btn">
-    <i class="fas fa-gamepad" style="margin-right: 8px;"></i> ИГРЫ ДЛЯ ВЗРОСЛЫХ
-  </a>
-</div>
-
-<!-- ИНСТАГРАМ -->
-<div class="card sensual-animation" id="instagram">
-  <h3 class="section-title">
-    <i class="fab fa-instagram glow"></i> ИНСТАГРАМ САҲИФАҲО
-  </h3>
-
-  <p class="channel-desc">
-    <span class="channel-number">1</span>
-    <strong>AJALI PETKAHO</strong> – Петкачаҳои точикӣ
-  </p>
-  <a href="https://instagram.com/ajali_petka" class="cta-btn">
-    <i class="fas fa-camera" style="margin-right: 8px;"></i> ДИДАНИ САҲИФА
-  </a>
-
-  <p class="channel-desc">
-    <span class="channel-number">2</span>
-    <strong>Models TJ</strong> – Моделҳои Sexy 🔞
-  </p>
-  <a href="https://t.me/+t-tdaXtQvdw1NzJi" class="cta-btn">
-    <i class="fas fa-user-secret" style="margin-right: 8px;"></i> MODELS
-  </a>
-
-  <p class="channel-desc">
-    <span class="channel-number">3</span>
-    <strong>ВВЕДИКОД TJ</strong> – Инфо ва дастрасии платформа
-  </p>
-  <a href="https://www.instagram.com/vvedicodbot?igsh=eTNzbms5cDg3eHc0" class="cta-btn">
-    <i class="fas fa-info-circle" style="margin-right: 8px;"></i> ИНФОРМАТСИЯ
-  </a>
-</div>
-
-<!-- ТОП МОДЕЛИ -->
-<div class="card sensual-animation" id="models">
-  <h3 class="section-title">
-    <i class="fas fa-trophy glow"></i> ТОП МОДЕЛИ
-  </h3>
-
-  <p class="channel-desc">
-    <span class="channel-number">1</span>
-    <strong>Мисс Точикистон</strong> – Эксклюзивные фотосессии
-  </p>
-  <a href="https://t.me/+_y-jvauCdk4zMzkx" class="cta-btn">
-    <i class="fas fa-crown" style="margin-right: 8px;"></i> ФОТОАЛЬБОМ
-  </a>
-
-  <p class="channel-desc">
-    <span class="channel-number">2</span>
-    <strong>VIP Модели</strong> – Private content
-  </p>
-  <a href="https://t.me/+Fu_4b0aUQJdiZTEx" class="cta-btn">
-    <i class="fas fa-lock" style="margin-right: 8px;"></i> ЗАКРЫТЫЙ КАНАЛ
-  </a>
-  
-  <hr class="sexy-divider">
-  
-  <p class="channel-desc">
-    <span class="channel-number">3</span>
-    <strong>ТОП 10 Моделей</strong> – Лучшие модели месяца
-  </p>
-  <a href="https://t.me/+KQIAzLQxuXliMDJi" class="cta-btn">
-    <i class="fas fa-heart" style="margin-right: 8px;"></i> ГОЛОСОВАТЬ
-  </a>
-</div>
-
-<!-- NEW ANIMATED FOOTER MENU --><div class="footer-menu">
-  <a href="#vip" class="footer-btn">
-    <i class="fas fa-crown"></i>
-    <span>VIP</span>
-  </a>
-  <a href="#bots" class="footer-btn">
-    <i class="fas fa-robot"></i>
-    <span>Боты</span>
-  </a>
-  <a href="#insta" class="footer-btn">
-    <i class="fab fa-instagram"></i>
-    <span>Инстаграм</span>
-  </a>
-  <a href="#channels" class="footer-btn">
-    <i class="fas fa-satellite-dish"></i>
-    <span>Каналы</span>
-  </a>
-  <a href="#models" class="footer-btn">
-    <i class="fas fa-users"></i>
-    <span>Модели</span>
-  </a>
-</div><style>
-.footer-menu {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  background: rgba(0,0,0,0.8);
-  padding: 10px 0;
-  z-index: 9999;
-  backdrop-filter: blur(5px);
-  animation: slideUp 0.5s ease-in-out;
-}
-
-.footer-btn {
-  color: white;
-  text-align: center;
-  font-size: 13px;
-  flex: 1;
-  transition: 0.3s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
-
-.footer-btn i {
-  font-size: 20px;
-  animation: pulseIcon 2s infinite;
-  color: #ff2f8b;
-}
-
-.footer-btn span {
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 0 0 5px #ff2f8b;
-}
-
-.footer-btn:hover {
-  transform: scale(1.1);
-  color: #ff6bcb;
-}
-
-@keyframes pulseIcon {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-</style><!-- FontAwesome for icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<!-- ФУТЕР -->
-<footer>
-  <div style="margin
+</body>
+</html>
