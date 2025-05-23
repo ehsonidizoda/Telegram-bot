@@ -552,37 +552,105 @@
 <!-- ЗАГОЛОВОК -->
 <div class="top-category sensual-animation">AJALI PETKAHO VIP</div>
 
-<!-- ГЛАВНЫЙ БАННЕР -->
-<div class="card sensual-animation">
-  <img src="https://i.ibb.co/SDdnw72f/photo.jpg" alt="18+ контент" style="width: 100%; border-radius: 14px; max-height: 320px; object-fit: cover; margin-bottom: 20px; border: 2px solid var(--primary-color);">
-  <h3 style="font-size: 20px; margin-bottom: 25px;">Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун! <i class="fas fa-heart heart-beat" style="color: var(--primary-color);"></i></h3>
+<!-- VIP Фото Блок -->
+<div class="vip-block">
+  <div class="protected-photo animate-up">
+    <img src="https://i.ibb.co/0jZ4F1gP" alt="VIP Content" />
+  </div>
+  <p class="vip-text">Контент барои калонсолон. Агар 18-сола поён бошӣ — тамошо накун!</p>
 
-  <div class="banner-buttons">
-    <a href="https://t.me/VvediCodBot?start=1178" class="cta-btn">
-      <i class="fas fa-fire" style="margin-right: 8px;"></i> ДОМАШКА ХХХ
-    </a>
-
-    <a href="https://t.me/+KQIAzLQxuXliMDJi" class="cta-btn">
-      <i class="fas fa-heart" style="margin-right: 8px;"></i> АЧАЛИ ПЕТКАХО
-    </a>
-
-    <a href="https://t.me/+IUec_xlw8dVjMjJi" class="cta-btn">
-      <i class="fas fa-video" style="margin-right: 8px;"></i> ТОЧИКИ Порно
-    </a>
-
-    <a href="https://t.me/+HEI03N3P8K8yYjJh" class="cta-btn">
-      <i class="fas fa-lock-open" style="margin-right: 8px;"></i> ИНТИМ КЛУБ
-    </a>
+  <div class="vip-buttons">
+    <a href="https://t.me/VvediCodBot?start=1178" class="vip-btn"><i class="fas fa-fire"></i> ДОМАШКА ХХХ</a>
+    <a href="https://t.me/+KQIAzLQxuXliMDJi" class="vip-btn"><i class="fas fa-heart"></i> АЧАЛИ ПЕТКАХО</a>
+    <a href="https://t.me/+IUec_xlw8dVjMjJi" class="vip-btn"><i class="fas fa-video"></i> ТОЧИКИ Порно</a>
+    <a href="https://t.me/+pArHg8DLqiw4NjUy" class="vip-btn"><i class="fas fa-lock-open"></i> ИНТИМ КЛУБ</a>
   </div>
 </div>
 
-  <!-- Кнопка показать -->
-  <div id="showBannerBtn" style="display: none; text-align: center; margin-top: 10px;">
-    <button onclick="showBanner()" class="cta-btn" style="display: inline-block; width: auto; padding: 10px 20px;">
-      Показать тахфиф
-    </button>
-  </div>
-</div>
+<style>
+  .vip-block {
+    text-align: center;
+    margin: 30px auto;
+    padding: 0 15px;
+    max-width: 600px;
+  }
+
+  .protected-photo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 2px solid #ff2f8b;
+    box-shadow: 0 0 20px rgba(255, 47, 139, 0.4);
+    animation: fadeInUp 1s ease;
+  }
+
+  .protected-photo img {
+    width: 100%;
+    pointer-events: none;
+    user-select: none;
+    max-height: 420px;
+    object-fit: cover;
+  }
+
+  .vip-text {
+    color: white;
+    margin: 20px 0 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .vip-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .vip-btn {
+    flex: 1 1 45%;
+    max-width: 240px;
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ff2f8b, #ff6b08);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 0 15px rgba(255, 47, 139, 0.3);
+    transition: 0.3s;
+    font-size: 15px;
+  }
+
+  .vip-btn i {
+    margin-right: 8px;
+  }
+
+  .vip-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 47, 139, 0.5);
+  }
+
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 420px) {
+    .vip-btn {
+      flex: 1 1 100%;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("contextmenu", e => {
+    if (e.target.tagName === "IMG") e.preventDefault();
+  });
+</script>
 
 <!-- VIP КАНАЛЫ -->
 <div class="card sensual-animation" id="vip">
