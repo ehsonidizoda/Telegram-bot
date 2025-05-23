@@ -560,58 +560,67 @@
 <!-- ЗАГОЛОВОК -->
 <div class="top-category sensual-animation">AJALI PETKAHO VIP</div>
 
-<!-- СКИДОЧНЫЙ БАННЕР -->
-<div id="discountContainer" style="position: relative; margin: 0 auto; max-width: 520px;">
-  <div id="discountBanner" class="discount-banner sensual-animation" style="
-    background: linear-gradient(135deg, #ff2f8b, #ff6b08);
-    padding: 22px;
-    border-radius: 14px;
-    color: white;
-    box-shadow: 0 0 20px rgba(255, 47, 139, 0.5);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  ">
-    <button onclick="hideBanner()" style="
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      background: rgba(255,255,255,0.15);
-      color: white;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-      border-radius: 8px;
-      padding: 4px 8px;
-    ">✖</button>
-
-    <h3 style="font-size: 22px; margin-bottom: 10px;">🔥 ФАКАТ ИМРӮЗ! ПЕШНИҲОДИ МАХСУС 🔥</h3>
-    <p style="margin-bottom: 12px;">Дастрасии VIP-ро бо тахфифи <strong>50%</strong> гиред! Пешниҳод маҳдуд аст</p>
-
-    <div id="discountTimer" style="
-      background: rgba(0, 0, 0, 0.3);
-      display: inline-block;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-weight: bold;
-      font-size: 17px;
-      margin-bottom: 14px;
-    ">⏳ Боқӣ мондааст: 23:59:59</div>
-
-    <br>
-    <a href="https://t.me/m/HilJWR4YZmY0" style="
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 24px;
-      background: black;
-      color: white;
-      border-radius: 25px;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
-    ">Написать админу барои тахфиф</a>
+<!-- VIP АНИМИРОВАННЫЙ БАННЕР --><div class="vip-banner">
+  <div class="vip-icon">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8L12 2Z" />
+    </svg>
   </div>
-</div>
+  <div class="https://t.me/m/8Lx_Fiu8NjI0">
+    <h2>VIP АКЦИЯ!</h2>
+    <p> Факат Хамин Руз — доступ бо скидка!</p>
+  </div>
+</div><style>
+  .vip-banner {
+    background: linear-gradient(135deg, #ff2f8b, #ff6b08);
+    padding: 18px;
+    border-radius: 14px;
+    box-shadow: 0 0 20px rgba(255, 47, 139, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px auto;
+    max-width: 520px;
+    animation: glow 3s infinite alternate;
+    position: relative;
+  }
+
+  .vip-icon svg {
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    animation: spin 6s linear infinite;
+  }
+
+  .vip-content h2 {
+    margin: 0;
+    font-size: 20px;
+    color: white;
+    text-shadow: 0 0 8px rgba(0,0,0,0.4);
+  }
+
+  .vip-content p {
+    margin: 5px 0 0;
+    color: #fff9;
+    font-size: 15px;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 15px rgba(255, 47, 139, 0.5);
+    }
+    100% {
+      box-shadow: 0 0 30px rgba(255, 47, 139, 0.9);
+    }
+  }
+</style>
+
+
 
   <!-- Кнопка показать -->
   <div id="showBannerBtn" style="display: none; text-align: center; margin-top: 10px;">
