@@ -753,6 +753,81 @@
   </a>
 </div>
 
+<div class="bottom-nav animated-bottom" id="bottomNav">
+  <a href="#vip" class="nav-btn"><i class="fas fa-crown"></i><span>VIP</span></a>
+  <a href="#bots" class="nav-btn"><i class="fas fa-robot"></i><span>Боты</span></a>
+  <a href="#insta" class="nav-btn"><i class="fab fa-instagram"></i><span>Инстаграм</span></a>
+  <a href="#channels" class="nav-btn"><i class="fas fa-satellite-dish"></i><span>Каналы</span></a>
+  <a href="#models" class="nav-btn"><i class="fas fa-fire"></i><span>Модели</span></a>
+</div>
+
+<style>
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(20, 0, 30, 0.95);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0 10px;
+    z-index: 9999;
+    border-top: 1px solid #ff2f8b;
+    box-shadow: 0 -4px 15px rgba(255, 47, 139, 0.5);
+    animation: fadeUp 0.5s ease-out;
+    transition: transform 0.4s ease;
+  }
+
+  .bottom-nav.hidden {
+    transform: translateY(100%);
+  }
+
+  .nav-btn {
+    flex: 1;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    font-size: 11px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s;
+  }
+
+  .nav-btn i {
+    font-size: 18px;
+    margin-bottom: 2px;
+    transition: 0.4s ease;
+  }
+
+  .nav-btn:hover i {
+    color: #ff69b4;
+    text-shadow: 0 0 8px #ff2f8b, 0 0 12px #ff5e5e;
+    transform: scale(1.25) rotate(5deg);
+  }
+
+  @keyframes fadeUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+  }
+</style>
+
+<script>
+  let lastScroll = 0;
+  const nav = document.getElementById("bottomNav");
+
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > lastScroll) {
+      nav.classList.add("hidden");
+    } else {
+      nav.classList.remove("hidden");
+    }
+    lastScroll = currentScroll;
+  });
+</script>
+
 <!-- ФУТЕР -->
 <footer>
   <div style="margin
