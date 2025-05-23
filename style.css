@@ -398,3 +398,57 @@ nav a {
 .menu-item:hover {
   background: #e12e8f;
 }
+
+.fixed-vip-buttons {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 8px 0;
+  z-index: 9999;
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  animation: slideUp 0.6s ease forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.vip-action-btn {
+  flex: 1;
+  color: white;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 5px 0;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.vip-action-btn i {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 4px;
+  animation: pulse 2s infinite;
+}
+
+.vip-action-btn:hover {
+  color: #ff2f8b;
+  transform: scale(1.1);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
