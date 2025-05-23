@@ -379,6 +379,14 @@
   </div>
 </div>
 
+<div class="vip-buttons-animated">
+  <a href="#" class="vip-animated-btn"><i class="fas fa-fire"></i>🔥 ТОЧИКИ СЕКС</a>
+  <a href="#" class="vip-animated-btn"><i class="fas fa-heart"></i>❤️ ЛЮБОВЬ</a>
+  <a href="#" class="vip-animated-btn"><i class="fas fa-video"></i>🎥 ВИДЕО 18+</a>
+  <a href="#" class="vip-animated-btn"><i class="fas fa-star"></i>⭐ VIP ДОСТУП</a>
+  <a href="#" class="vip-animated-btn"><i class="fas fa-lock"></i>🔐 СКРЫТЫЙ КОНТЕНТ</a>
+</div>
+
 <!-- Main Content -->
 <div class="container" id="mainContent" style="display: none;">
   <!-- VIP Content Block -->
@@ -586,3 +594,42 @@
 </script>
 </body>
 </html>
+
+.vip-buttons-animated {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin: 20px auto;
+  max-width: 600px;
+  animation: fadeInUp 1s ease;
+}
+
+.vip-animated-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 18px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ff2f8b, #ff6b08);
+  box-shadow: 0 0 15px rgba(255, 47, 139, 0.4);
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.vip-animated-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 47, 139, 0.6);
+}
+
+.vip-animated-btn i {
+  margin-right: 8px;
+  animation: pulseIcon 1.8s infinite;
+}
+
+@keyframes pulseIcon {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
