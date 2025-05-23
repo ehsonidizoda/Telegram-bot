@@ -753,80 +753,92 @@
   </a>
 </div>
 
-<div class="bottom-nav animated-bottom" id="bottomNav">
-  <a href="#vip" class="nav-btn"><i class="fas fa-crown"></i><span>VIP</span></a>
-  <a href="#bots" class="nav-btn"><i class="fas fa-robot"></i><span>Боты</span></a>
-  <a href="#insta" class="nav-btn"><i class="fab fa-instagram"></i><span>Инстаграм</span></a>
-  <a href="#channels" class="nav-btn"><i class="fas fa-satellite-dish"></i><span>Каналы</span></a>
-  <a href="#models" class="nav-btn"><i class="fas fa-fire"></i><span>Модели</span></a>
-</div>
+<!-- NEW ANIMATED FOOTER MENU --><div class="footer-menu">
+  <a href="#vip" class="footer-btn">
+    <i class="fas fa-crown"></i>
+    <span>VIP</span>
+  </a>
+  <a href="#bots" class="footer-btn">
+    <i class="fas fa-robot"></i>
+    <span>Боты</span>
+  </a>
+  <a href="#insta" class="footer-btn">
+    <i class="fab fa-instagram"></i>
+    <span>Инстаграм</span>
+  </a>
+  <a href="#channels" class="footer-btn">
+    <i class="fas fa-satellite-dish"></i>
+    <span>Каналы</span>
+  </a>
+  <a href="#models" class="footer-btn">
+    <i class="fas fa-users"></i>
+    <span>Модели</span>
+  </a>
+</div><style>
+.footer-menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background: rgba(0,0,0,0.8);
+  padding: 10px 0;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+  animation: slideUp 0.5s ease-in-out;
+}
 
-<style>
-  .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: rgba(20, 0, 30, 0.95);
-    backdrop-filter: blur(8px);
-    display: flex;
-    justify-content: space-around;
-    padding: 8px 0 10px;
-    z-index: 9999;
-    border-top: 1px solid #ff2f8b;
-    box-shadow: 0 -4px 15px rgba(255, 47, 139, 0.5);
-    animation: fadeUp 0.5s ease-out;
-    transition: transform 0.4s ease;
+.footer-btn {
+  color: white;
+  text-align: center;
+  font-size: 13px;
+  flex: 1;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.footer-btn i {
+  font-size: 20px;
+  animation: pulseIcon 2s infinite;
+  color: #ff2f8b;
+}
+
+.footer-btn span {
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 5px #ff2f8b;
+}
+
+.footer-btn:hover {
+  transform: scale(1.1);
+  color: #ff6bcb;
+}
+
+@keyframes pulseIcon {
+  0%, 100% {
+    transform: scale(1);
   }
+  50% {
+    transform: scale(1.2);
+  }
+}
 
-  .bottom-nav.hidden {
+@keyframes slideUp {
+  from {
     transform: translateY(100%);
+    opacity: 0;
   }
-
-  .nav-btn {
-    flex: 1;
-    text-align: center;
-    color: white;
-    font-weight: 600;
-    font-size: 11px;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: 0.3s;
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-
-  .nav-btn i {
-    font-size: 18px;
-    margin-bottom: 2px;
-    transition: 0.4s ease;
-  }
-
-  .nav-btn:hover i {
-    color: #ff69b4;
-    text-shadow: 0 0 8px #ff2f8b, 0 0 12px #ff5e5e;
-    transform: scale(1.25) rotate(5deg);
-  }
-
-  @keyframes fadeUp {
-    from { transform: translateY(100%); opacity: 0; }
-    to   { transform: translateY(0); opacity: 1; }
-  }
-</style>
-
-<script>
-  let lastScroll = 0;
-  const nav = document.getElementById("bottomNav");
-
-  window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset;
-    if (currentScroll > lastScroll) {
-      nav.classList.add("hidden");
-    } else {
-      nav.classList.remove("hidden");
-    }
-    lastScroll = currentScroll;
-  });
-</script>
+}
+</style><!-- FontAwesome for icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <!-- ФУТЕР -->
 <footer>
